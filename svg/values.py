@@ -91,6 +91,7 @@ NumberOptionalNumber = Union[Number, Tuple[Number, Number]]
 Opacity = Union[Number, INHERIT]
 StrokeDashArray = Union[str, List[Number]]
 StrokeDashOffset = Union[NONE, Length]
+Spacing = Union[Length, AUTO, Literal["exact"]]
 
 
 # list of strings

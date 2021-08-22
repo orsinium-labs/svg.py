@@ -125,13 +125,123 @@ class PreserveAspectRatioScaleType(Enum):
     SLICE = "slice"
 
 
-class Spacing(Enum):
-    AUTO = "auto"
-    EXACT = "exact"
-
-
 class TextDecoration(Enum):
     NONE = "none"
     UNDERLINE = "underline"
     OVERLINE = "overline"
     LINE_THROUGH = "line-through"
+
+
+class ColorInterpolation(Enum):
+    AUTO = "auto"
+    SRGB = "sRGB"
+    LINEAR_RGB = "linearRGB"
+    INHERIT = "inherit"
+
+
+class Rendering(Enum):
+    AUTO = "auto"
+    OPTIMIZE_SPEED = "optimizeSpeed"
+    OPTIMIZE_QUALITY = "optimizeQuality"
+    INHERIT = "inherit"
+
+
+class LineCap(Enum):
+    BUTT = "butt"
+    ROUND = "round"
+    SQUARE = "square"
+    INHERIT = "inherit"
+
+
+class LineJoin(Enum):
+    MITER = "miter"
+    ROUND = "round"
+    BEVEL = "bevel"
+    INHERIT = "inherit"
+
+
+class FontStyle(Enum):
+    NORMAL = "normal"
+    ITALIC = "italic"
+    OBLIQUE = "oblique"
+    INHERIT = "inherit"
+
+
+class FontValiant(Enum):
+    NORMAL = "normal"
+    SMALL_CAPS = "small-caps"
+    INHERIT = "inherit"
+
+
+class FontWeight(Enum):
+    NORMAL = "normal"
+    BOLD = "bold"
+    BOLDER = "bolder"
+    LIGHTER = "lighter"
+    V100 = "100"
+    V200 = "200"
+    V300 = "300"
+    V400 = "400"
+    V500 = "500"
+    V600 = "600"
+    V700 = "700"
+    V800 = "800"
+    V900 = "900"
+    INHERIT = "inherit"
+
+
+class Visibility(Enum):
+    VISIBLE = "visible"
+    HIDDEN = "hidden"
+    INHERIT = "inherit"
+
+
+class TextAlignment(Enum):
+    BASELINE = "baseline"
+    TOP = "top"
+    BEFORE_EDGE = "before-edge"
+    TEXT_TOP = "text-top"
+    TEXT_BEFORE_EDGE = "text-before-edge"
+    MIDDLE = "middle"
+    BOTTOM = "bottom"
+    AFTER_EDGE = "after-edge"
+    TEXT_BOTTOM = "text-bottom"
+    TEXT_AFTER_EDGE = "text-after-edge"
+    IDEOGRAPHIC = "ideographic"
+    LOWER = "lower"
+    HANGING = "hanging"
+    MATHEMATICAL = "mathematical"
+    INHERIT = "inherit"
+
+
+class TextDirection(Enum):
+    LTR = "ltr"
+    RTL = "rtl"
+    INHERIT = "inherit"
+
+
+class DominantBaseline(Enum):
+    AUTO = "auto"
+    AUTOSENSE_SCRIPT = "autosense-script"
+    NO_CHANGE = "no-change"
+    RESET = "reset"
+    IDEOGRAPHIC = "ideographic"
+    LOWER = "lower"
+    HANGING = "hanging"
+    MATHEMATICAL = "mathematical"
+    INHERIT = "inherit"
+
+
+class TextAnchor(Enum):
+    START = "start"
+    MIDDLE = "middle"
+    END = "end"
+    INHERIT = "inherit"
+
+
+class Overflow(Enum):
+    VISIBLE = "visible"
+    HIDDEN = "hidden"
+    SCROLL = "scroll"
+    AUTO = "auto"
+    INHERIT = "inherit"
