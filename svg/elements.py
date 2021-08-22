@@ -1,6 +1,6 @@
 from dataclasses import dataclass, asdict
 from enum import Enum
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 from . import _mixins as m, values, enums
 
 
@@ -27,6 +27,7 @@ class Element:
             if key == 'elements':
                 continue
             key = key.rstrip('_')
+            key = key.replace('__', ':')
             key = key.replace('_', '-')
             result[key] = self._as_str(val)
         return result
@@ -112,21 +113,59 @@ class Title(Element, m.StdAttrs):
 
 
 @dataclass
-class Symbol(Element, m.StdAttrs):
+class Symbol(
+    Element,
+    m.StdAttrs,
+    m.Presentation,
+    m.GraphicsElementEvents,
+):
     element_name = "symbol"
-    pass
+    elements: Optional[List[Element]] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    viewBox: Optional[values.ViewBoxSpec] = None
+    preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
 
 
 @dataclass
-class Use(Element, m.StdAttrs):
+class Use(
+    Element,
+    m.StdAttrs,
+    m.Presentation,
+    m.GraphicsElementEvents,
+):
     element_name = "use"
-    pass
+    elements: Optional[List[Union[
+        'Set', 'Animate', 'AnimateMotion', 'AnimateColor', 'AnimateTransform',
+    ]]] = None
+    href: Optional[str] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    transform: Optional[values.Transforms] = None
+    x: Optional[values.Coordinate] = None
+    y: Optional[values.Coordinate] = None
+    width: Optional[values.Length] = None
+    height: Optional[values.Length] = None
 
 
 @dataclass
-class Image(Element, m.StdAttrs):
+class Image(
+    Element,
+    m.StdAttrs,
+    m.Color,
+    m.Graphics,
+    m.Viewports,
+    m.GraphicsElementEvents,
+):
     element_name = "image"
-    pass
+    href: Optional[str] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    transform: Optional[values.Transforms] = None
+    x: Optional[values.Coordinate] = None
+    y: Optional[values.Coordinate] = None
+    width: Optional[values.Length] = None
+    height: Optional[values.Length] = None
 
 
 @dataclass
