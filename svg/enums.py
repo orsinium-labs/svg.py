@@ -267,3 +267,18 @@ class TransformType(Enum):
     ROTATE = "rotate"
     SKEWX = "skewX"
     SKEWY = "skewY"
+
+
+class LengthAdjust(Enum):
+    SPACING = "spacing"
+    SPACING_AND_GLYPHS = "spacingAndGlyphs"
+
+
+class TextPathMethod(Enum):
+    ALIGN = "align"
+    STRETCH = "stretch"
+
+
+class TextSpacing(Enum):
+    AUTO = "auto"
+    EXACT = "exact"

@@ -131,11 +131,11 @@ class TextContentElements(AttrsMixin):
     dominant_baseline: Optional[enums.DominantBaseline] = None
     glyph_orientation_horizontal: Optional[values.GlyphOrientationHorizontal] = None
     glyph_orientation_vertical: Optional[values.GlyphOrientationVertical] = None
-    letter_spacing: Optional[values.Spacing] = None
+    letter_spacing: Optional[enums.TextSpacing] = None
     text_anchor: Optional[enums.TextAnchor] = None
     text_decoration: Optional[enums.TextDecoration] = None
     unicode_bidi: Optional[str] = None  # TODO
-    word_spacing: Optional[values.Spacing] = None
+    word_spacing: Optional[enums.TextSpacing] = None
 
 
 @dataclass

@@ -180,8 +180,8 @@ class Switch(Element, m.StdAttrs):
 @dataclass
 class Style(Element, m.StdAttrs):
     element_name = "style"
-    type: Optional[Any] = None
-    media: Optional[Any] = None
+    type: Optional[values.ContentType] = None
+    media: Optional[values.MediaDesc] = None
     title: Optional[str] = None
 
 
@@ -214,8 +214,8 @@ class Rect(Element, m.StdAttrs, _FigElements):
     y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
-    rx: Optional[Any] = None
-    ry: Optional[Any] = None
+    rx: Optional[values.Length] = None
+    ry: Optional[values.Length] = None
 
 
 @dataclass
@@ -225,9 +225,9 @@ class Circle(Element, m.StdAttrs, _FigElements):
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
-    cx: Optional[Any] = None
-    cy: Optional[Any] = None
-    r: Optional[Any] = None
+    cx: Optional[values.Length] = None
+    cy: Optional[values.Length] = None
+    r: Optional[values.Length] = None
 
 
 @dataclass
@@ -237,10 +237,10 @@ class Ellipse(Element, m.StdAttrs, _FigElements):
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
-    cx: Optional[Any] = None
-    cy: Optional[Any] = None
-    rx: Optional[Any] = None
-    ry: Optional[Any] = None
+    cx: Optional[values.Length] = None
+    cy: Optional[values.Length] = None
+    rx: Optional[values.Length] = None
+    ry: Optional[values.Length] = None
 
 
 @dataclass
@@ -250,10 +250,10 @@ class Line(Element, m.StdAttrs, _FigElements):
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
-    x1: Optional[Any] = None
-    y1: Optional[Any] = None
-    x2: Optional[Any] = None
-    y2: Optional[Any] = None
+    x1: Optional[values.Coordinate] = None
+    y1: Optional[values.Coordinate] = None
+    x2: Optional[values.Coordinate] = None
+    y2: Optional[values.Coordinate] = None
 
 
 @dataclass
@@ -263,7 +263,7 @@ class Polyline(Element, m.StdAttrs, _FigElements):
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
-    points: Optional[Any] = None
+    points: Optional[values.Points] = None
 
 
 @dataclass
@@ -273,7 +273,7 @@ class Polygon(Element, m.StdAttrs, _FigElements):
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
-    points: Optional[Any] = None
+    points: Optional[values.Points] = None
 
 
 @dataclass
@@ -285,8 +285,8 @@ class Text(Element, m.StdAttrs):
     transform: Optional[values.Transforms] = None
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
-    textLength: Optional[Any] = None
-    lengthAdjust: Optional[Any] = None
+    textLength: Optional[values.Length] = None
+    lengthAdjust: Optional[enums.LengthAdjust] = None
 
 
 @dataclass
@@ -300,8 +300,8 @@ class TSpan(Element, m.StdAttrs):
     dx: Optional[values.Coordinate] = None
     dy: Optional[values.Coordinate] = None
     rotate: Optional[str] = None
-    textLength: Optional[Any] = None
-    lengthAdjust: Optional[Any] = None
+    textLength: Optional[values.Length] = None
+    lengthAdjust: Optional[enums.LengthAdjust] = None
 
 
 @dataclass
@@ -315,8 +315,8 @@ class TRef(Element, m.StdAttrs):
     dx: Optional[values.Coordinate] = None
     dy: Optional[values.Coordinate] = None
     rotate: Optional[str] = None
-    textLength: Optional[Any] = None
-    lengthAdjust: Optional[Any] = None
+    textLength: Optional[values.Length] = None
+    lengthAdjust: Optional[enums.LengthAdjust] = None
 
 
 @dataclass
@@ -326,10 +326,10 @@ class TextPath(Element, m.StdAttrs):
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
     startOffset: Optional[str] = None
-    textLength: Optional[Any] = None
-    lengthAdjust: Optional[Any] = None
-    method: Optional[Any] = None
-    spacing: Optional[Any] = None
+    textLength: Optional[values.Length] = None
+    lengthAdjust: Optional[enums.LengthAdjust] = None
+    method: Optional[enums.TextPathMethod] = None
+    spacing: Optional[enums.TextSpacing] = None
 
 
 @dataclass
@@ -378,10 +378,10 @@ class Marker(Element, m.StdAttrs):
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
-    viewBox: Optional[Any] = None
-    preserveAspectRatio: Optional[Any] = None
-    refX: Optional[Any] = None
-    refY: Optional[Any] = None
+    viewBox: Optional[values.ViewBoxSpec] = None
+    preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
+    refX: Optional[values.Coordinate] = None
+    refY: Optional[values.Coordinate] = None
     markerUnits: Optional[Any] = None
     markerWidth: Optional[values.Length] = None
     markerHeight: Optional[values.Length] = None
@@ -410,18 +410,18 @@ class LinearGradient(Element, m.StdAttrs, _Gradient):
     element_name = "linearGradient"
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
-    x1: Optional[Any] = None
-    y1: Optional[Any] = None
-    x2: Optional[Any] = None
-    y2: Optional[Any] = None
+    x1: Optional[values.Coordinate] = None
+    y1: Optional[values.Coordinate] = None
+    x2: Optional[values.Coordinate] = None
+    y2: Optional[values.Coordinate] = None
 
 
 @dataclass
 class RadialGradient(Element, m.StdAttrs, _Gradient):
     element_name = "radialGradient"
-    cx: Optional[Any] = None
-    cy: Optional[Any] = None
-    r: Optional[Any] = None
+    cx: Optional[values.Length] = None
+    cy: Optional[values.Length] = None
+    r: Optional[values.Length] = None
     fx: Optional[Any] = None
     fy: Optional[Any] = None
 
@@ -431,7 +431,7 @@ class Stop(Element, m.StdAttrs):
     element_name = "stop"
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
-    offset: Optional[Any] = None
+    offset: Optional[values.Length] = None
 
 
 @dataclass
@@ -441,7 +441,7 @@ class Pattern(Element, m.StdAttrs):
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
     viewBox: Optional[Any] = None
-    preserveAspectRatio: Optional[Any] = None
+    preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
     patternUnits: Optional[Any] = None
     patternTransform: Optional[Any] = None
     x: Optional[values.Coordinate] = None
@@ -503,7 +503,7 @@ class View(Element, m.StdAttrs):
     element_name = "view"
     externalResourcesRequired: Optional[bool] = None
     viewBox: Optional[Any] = None
-    preserveAspectRatio: Optional[Any] = None
+    preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
     zoomAndPan: Optional[Any] = None
     viewTarget: Optional[str] = None
 
