@@ -193,7 +193,7 @@ class Path(Element, m.StdAttrs):
     style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
     d: Optional[Any] = None
-    pathLength: Optional[Any] = None
+    pathLength: Optional[float] = None
 
 
 @dataclass
@@ -551,12 +551,12 @@ class Font(Element, m.StdAttrs):
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
-    horiz_origin_x: Optional[Any] = None
-    horiz_origin_y: Optional[Any] = None
-    horiz_adv_x: Optional[Any] = None
-    vert_origin_x: Optional[Any] = None
-    vert_origin_y: Optional[Any] = None
-    vert_adv_y: Optional[Any] = None
+    horiz_origin_x: Optional[float] = None
+    horiz_origin_y: Optional[float] = None
+    horiz_adv_x: Optional[float] = None
+    vert_origin_x: Optional[float] = None
+    vert_origin_y: Optional[float] = None
+    vert_adv_y: Optional[float] = None
 
 
 @dataclass
@@ -570,8 +570,8 @@ class Glyph(Element, m.StdAttrs):
     vert_text_orient: Optional[str] = None
     arabic: Optional[str] = None
     han: Optional[str] = None
-    horiz_adv_x: Optional[Any] = None
-    vert_adv_y: Optional[Any] = None
+    horiz_adv_x: Optional[float] = None
+    vert_adv_y: Optional[float] = None
 
 
 @dataclass
@@ -580,8 +580,8 @@ class MissingGlyph(Element, m.StdAttrs):
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
     d: Optional[Any] = None
-    horiz_adv_x: Optional[Any] = None
-    vert_adv_y: Optional[Any] = None
+    horiz_adv_x: Optional[float] = None
+    vert_adv_y: Optional[float] = None
 
 
 @dataclass
@@ -591,7 +591,7 @@ class HKern(Element, m.StdAttrs):
     g1: Optional[str] = None
     u2: Optional[str] = None
     g2: Optional[str] = None
-    k: Optional[Any] = None
+    k: Optional[float] = None
 
 
 @dataclass
@@ -601,7 +601,7 @@ class VKern(Element, m.StdAttrs):
     g1: Optional[str] = None
     u2: Optional[str] = None
     g2: Optional[str] = None
-    k: Optional[Any] = None
+    k: Optional[float] = None
 
 
 @dataclass
@@ -614,30 +614,30 @@ class FontFace(Element, m.StdAttrs):
     font_stretch: Optional[str] = None
     font_size: Optional[Any] = None
     unicode_range: Optional[str] = None
-    units_per_em: Optional[Any] = None
+    units_per_em: Optional[float] = None
     panose_1: Optional[str] = None
-    stemv: Optional[Any] = None
-    stemh: Optional[Any] = None
-    slope: Optional[Any] = None
-    cap_height: Optional[Any] = None
-    x_height: Optional[Any] = None
-    accent_height: Optional[Any] = None
-    ascent: Optional[Any] = None
-    descent: Optional[Any] = None
+    stemv: Optional[float] = None
+    stemh: Optional[float] = None
+    slope: Optional[float] = None
+    cap_height: Optional[float] = None
+    x_height: Optional[float] = None
+    accent_height: Optional[float] = None
+    ascent: Optional[float] = None
+    descent: Optional[float] = None
     widths: Optional[str] = None
     bbox: Optional[str] = None
-    ideographic: Optional[Any] = None
-    baseline: Optional[Any] = None
-    centerline: Optional[Any] = None
-    mathline: Optional[Any] = None
-    hanging: Optional[Any] = None
-    topline: Optional[Any] = None
-    underline_position: Optional[Any] = None
-    underline_thickness: Optional[Any] = None
-    strikethrough_position: Optional[Any] = None
-    strikethrough_thickness: Optional[Any] = None
-    overline_position: Optional[Any] = None
-    overline_thickness: Optional[Any] = None
+    ideographic: Optional[float] = None
+    baseline: Optional[float] = None
+    centerline: Optional[float] = None
+    mathline: Optional[float] = None
+    hanging: Optional[float] = None
+    topline: Optional[float] = None
+    underline_position: Optional[float] = None
+    underline_thickness: Optional[float] = None
+    strikethrough_position: Optional[float] = None
+    strikethrough_thickness: Optional[float] = None
+    overline_position: Optional[float] = None
+    overline_thickness: Optional[float] = None
 
 
 @dataclass
