@@ -1,3 +1,3 @@
-from . import elements, enums, values
+from . import elements, enums, filters, values
 
-__all__ = ['elements', 'enums', 'values']
+__all__ = ['elements', 'enums', 'filters', 'values']

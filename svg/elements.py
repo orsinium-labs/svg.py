@@ -171,85 +171,173 @@ class Image(
 @dataclass
 class Switch(Element, m.StdAttrs):
     element_name = "switch"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    transform: Optional[Any] = None
 
 
 @dataclass
 class Style(Element, m.StdAttrs):
     element_name = "style"
-    pass
+    type: Optional[Any] = None
+    media: Optional[Any] = None
+    title: Optional[Any] = None
 
 
 @dataclass
 class Path(Element, m.StdAttrs):
     element_name = "path"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    transform: Optional[Any] = None
+    d: Optional[Any] = None
+    pathLength: Optional[Any] = None
 
 
 @dataclass
 class Rect(Element, m.StdAttrs):
     element_name = "rect"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    transform: Optional[Any] = None
+    x: Optional[Any] = None
+    y: Optional[Any] = None
+    width: Optional[Any] = None
+    height: Optional[Any] = None
+    rx: Optional[Any] = None
+    ry: Optional[Any] = None
 
 
 @dataclass
 class Circle(Element, m.StdAttrs):
     element_name = "circle"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    transform: Optional[Any] = None
+    cx: Optional[Any] = None
+    cy: Optional[Any] = None
+    r: Optional[Any] = None
 
 
 @dataclass
 class Ellipse(Element, m.StdAttrs):
     element_name = "ellipse"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    transform: Optional[Any] = None
+    cx: Optional[Any] = None
+    cy: Optional[Any] = None
+    rx: Optional[Any] = None
+    ry: Optional[Any] = None
 
 
 @dataclass
 class Line(Element, m.StdAttrs):
     element_name = "line"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    transform: Optional[Any] = None
+    x1: Optional[Any] = None
+    y1: Optional[Any] = None
+    x2: Optional[Any] = None
+    y2: Optional[Any] = None
 
 
 @dataclass
 class Polyline(Element, m.StdAttrs):
     element_name = "polyline"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    transform: Optional[Any] = None
+    points: Optional[Any] = None
 
 
 @dataclass
 class Polygon(Element, m.StdAttrs):
     element_name = "polygon"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    transform: Optional[Any] = None
+    points: Optional[Any] = None
 
 
 @dataclass
 class Text(Element, m.StdAttrs):
     element_name = "text"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    transform: Optional[Any] = None
+    x: Optional[Any] = None
+    y: Optional[Any] = None
+    textLength: Optional[Any] = None
+    lengthAdjust: Optional[Any] = None
 
 
 @dataclass
-class Tspan(Element, m.StdAttrs):
+class TSpan(Element, m.StdAttrs):
     element_name = "tspan"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    x: Optional[Any] = None
+    y: Optional[Any] = None
+    dx: Optional[Any] = None
+    dy: Optional[Any] = None
+    rotate: Optional[Any] = None
+    textLength: Optional[Any] = None
+    lengthAdjust: Optional[Any] = None
 
 
 @dataclass
-class Tref(Element, m.StdAttrs):
+class TRef(Element, m.StdAttrs):
     element_name = "tref"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    x: Optional[Any] = None
+    y: Optional[Any] = None
+    dx: Optional[Any] = None
+    dy: Optional[Any] = None
+    rotate: Optional[Any] = None
+    textLength: Optional[Any] = None
+    lengthAdjust: Optional[Any] = None
 
 
 @dataclass
 class TextPath(Element, m.StdAttrs):
     element_name = "textPath"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    startOffset: Optional[Any] = None
+    textLength: Optional[Any] = None
+    lengthAdjust: Optional[Any] = None
+    method: Optional[Any] = None
+    spacing: Optional[Any] = None
 
 
 @dataclass
 class AltGlyph(Element, m.StdAttrs):
     element_name = "altGlyph"
-    pass
+    glyphRef: Optional[Any] = None
+    format: Optional[Any] = None
+    externalResourcesRequired: Optional[Any] = None
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    x: Optional[Any] = None
+    y: Optional[Any] = None
+    dx: Optional[Any] = None
+    dy: Optional[Any] = None
+    rotate: Optional[Any] = None
 
 
 @dataclass
@@ -267,301 +355,289 @@ class AltGlyphItem(Element, m.StdAttrs):
 @dataclass
 class GlyphRef(Element, m.StdAttrs):
     element_name = "glyphRef"
-    pass
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    glyphRef: Optional[Any] = None
+    format: Optional[Any] = None
+    x: Optional[Any] = None
+    y: Optional[Any] = None
+    dx: Optional[Any] = None
+    dy: Optional[Any] = None
 
 
 @dataclass
 class Marker(Element, m.StdAttrs):
     element_name = "marker"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    viewBox: Optional[Any] = None
+    preserveAspectRatio: Optional[Any] = None
+    refX: Optional[Any] = None
+    refY: Optional[Any] = None
+    markerUnits: Optional[Any] = None
+    markerWidth: Optional[Any] = None
+    markerHeight: Optional[Any] = None
+    orient: Optional[Any] = None
 
 
 @dataclass
 class ColorProfile(Element, m.StdAttrs):
     element_name = "color-profile"
-    pass
+    local: Optional[Any] = None
+    name: Optional[Any] = None
+    rendering_intent: Optional[Any] = None
 
 
 @dataclass
 class LinearGradient(Element, m.StdAttrs):
     element_name = "linearGradient"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    gradientUnits: Optional[Any] = None
+    gradientTransform: Optional[Any] = None
+    x1: Optional[Any] = None
+    y1: Optional[Any] = None
+    x2: Optional[Any] = None
+    y2: Optional[Any] = None
+    spreadMethod: Optional[Any] = None
 
 
 @dataclass
 class RadialGradient(Element, m.StdAttrs):
     element_name = "radialGradient"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    gradientUnits: Optional[Any] = None
+    gradientTransform: Optional[Any] = None
+    cx: Optional[Any] = None
+    cy: Optional[Any] = None
+    r: Optional[Any] = None
+    fx: Optional[Any] = None
+    fy: Optional[Any] = None
+    spreadMethod: Optional[Any] = None
 
 
 @dataclass
 class Stop(Element, m.StdAttrs):
     element_name = "stop"
-    pass
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    offset: Optional[Any] = None
 
 
 @dataclass
 class Pattern(Element, m.StdAttrs):
     element_name = "pattern"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    viewBox: Optional[Any] = None
+    preserveAspectRatio: Optional[Any] = None
+    patternUnits: Optional[Any] = None
+    patternTransform: Optional[Any] = None
+    x: Optional[Any] = None
+    y: Optional[Any] = None
+    width: Optional[Any] = None
+    height: Optional[Any] = None
 
 
 @dataclass
 class ClipPath(Element, m.StdAttrs):
     element_name = "clipPath"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    transform: Optional[Any] = None
+    clipPathUnits: Optional[Any] = None
 
 
 @dataclass
 class Mask(Element, m.StdAttrs):
     element_name = "mask"
-    pass
-
-
-@dataclass
-class Filter(Element, m.StdAttrs):
-    element_name = "filter"
-    pass
-
-
-@dataclass
-class FeDistantLight(Element, m.StdAttrs):
-    element_name = "feDistantLight"
-    pass
-
-
-@dataclass
-class FePointLight(Element, m.StdAttrs):
-    element_name = "fePointLight"
-    pass
-
-
-@dataclass
-class FeSpotLight(Element, m.StdAttrs):
-    element_name = "feSpotLight"
-    pass
-
-
-@dataclass
-class FeBlend(Element, m.StdAttrs):
-    element_name = "feBlend"
-    pass
-
-
-@dataclass
-class FeColorMatrix(Element, m.StdAttrs):
-    element_name = "feColorMatrix"
-    pass
-
-
-@dataclass
-class FeComponentTransfer(Element, m.StdAttrs):
-    element_name = "feComponentTransfer"
-    pass
-
-
-@dataclass
-class FeFuncR(Element, m.StdAttrs):
-    element_name = "feFuncR"
-    pass
-
-
-@dataclass
-class FeFuncG(Element, m.StdAttrs):
-    element_name = "feFuncG"
-    pass
-
-
-@dataclass
-class FeFuncB(Element, m.StdAttrs):
-    element_name = "feFuncB"
-    pass
-
-
-@dataclass
-class FeFuncA(Element, m.StdAttrs):
-    element_name = "feFuncA"
-    pass
-
-
-@dataclass
-class FeComposite(Element, m.StdAttrs):
-    element_name = "feComposite"
-    pass
-
-
-@dataclass
-class FeConvolveMatrix(Element, m.StdAttrs):
-    element_name = "feConvolveMatrix"
-    pass
-
-
-@dataclass
-class FeDiffuseLighting(Element, m.StdAttrs):
-    element_name = "feDiffuseLighting"
-    pass
-
-
-@dataclass
-class FeDisplacementMap(Element, m.StdAttrs):
-    element_name = "feDisplacementMap"
-    pass
-
-
-@dataclass
-class FeFlood(Element, m.StdAttrs):
-    element_name = "feFlood"
-    pass
-
-
-@dataclass
-class FeGaussianBlur(Element, m.StdAttrs):
-    element_name = "feGaussianBlur"
-    pass
-
-
-@dataclass
-class FeImage(Element, m.StdAttrs):
-    element_name = "feImage"
-    pass
-
-
-@dataclass
-class FeMerge(Element, m.StdAttrs):
-    element_name = "feMerge"
-    pass
-
-
-@dataclass
-class FeMergeNode(Element, m.StdAttrs):
-    element_name = "feMergeNode"
-    pass
-
-
-@dataclass
-class FeMorphology(Element, m.StdAttrs):
-    element_name = "feMorphology"
-    pass
-
-
-@dataclass
-class FeOffset(Element, m.StdAttrs):
-    element_name = "feOffset"
-    pass
-
-
-@dataclass
-class FeSpecularLighting(Element, m.StdAttrs):
-    element_name = "feSpecularLighting"
-    pass
-
-
-@dataclass
-class FeTile(Element, m.StdAttrs):
-    element_name = "feTile"
-    pass
-
-
-@dataclass
-class FeTurbulence(Element, m.StdAttrs):
-    element_name = "feTurbulence"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    transform: Optional[Any] = None
+    maskUnits: Optional[Any] = None
+    x: Optional[Any] = None
+    y: Optional[Any] = None
+    width: Optional[Any] = None
+    height: Optional[Any] = None
 
 
 @dataclass
 class Cursor(Element, m.StdAttrs):
     element_name = "cursor"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    x: Optional[Any] = None
+    y: Optional[Any] = None
 
 
 @dataclass
 class A(Element, m.StdAttrs):
     element_name = "a"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    transform: Optional[Any] = None
+    target: Optional[Any] = None
 
 
 @dataclass
 class View(Element, m.StdAttrs):
     element_name = "view"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    viewBox: Optional[Any] = None
+    preserveAspectRatio: Optional[Any] = None
+    zoomAndPan: Optional[Any] = None
+    viewTarget: Optional[Any] = None
 
 
 @dataclass
 class Script(Element, m.StdAttrs):
     element_name = "script"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    type: Optional[Any] = None
 
 
 @dataclass
 class Animate(Element, m.StdAttrs):
     element_name = "animate"
-    pass
+    externalResourcesRequired: Optional[Any] = None
 
 
 @dataclass
 class Set(Element, m.StdAttrs):
     element_name = "set"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    to: Optional[Any] = None
 
 
 @dataclass
 class AnimateMotion(Element, m.StdAttrs):
     element_name = "animateMotion"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    path: Optional[Any] = None
+    keyPoints: Optional[Any] = None
+    rotate: Optional[Any] = None
+    origin: Optional[Any] = None
 
 
 @dataclass
 class MPath(Element, m.StdAttrs):
     element_name = "mpath"
+    externalResourcesRequired: Optional[Any] = None
     pass
 
 
 @dataclass
 class AnimateColor(Element, m.StdAttrs):
     element_name = "animateColor"
+    externalResourcesRequired: Optional[Any] = None
     pass
 
 
 @dataclass
 class AnimateTransform(Element, m.StdAttrs):
     element_name = "animateTransform"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    type: Optional[Any] = None
 
 
 @dataclass
 class Font(Element, m.StdAttrs):
     element_name = "font"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    horiz_origin_x: Optional[Any] = None
+    horiz_origin_y: Optional[Any] = None
+    horiz_adv_x: Optional[Any] = None
+    vert_origin_x: Optional[Any] = None
+    vert_origin_y: Optional[Any] = None
+    vert_adv_y: Optional[Any] = None
 
 
 @dataclass
 class Glyph(Element, m.StdAttrs):
     element_name = "glyph"
-    pass
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    unicode: Optional[Any] = None
+    glyph_name: Optional[Any] = None
+    d: Optional[Any] = None
+    vert_text_orient: Optional[Any] = None
+    arabic: Optional[Any] = None
+    han: Optional[Any] = None
+    horiz_adv_x: Optional[Any] = None
+    vert_adv_y: Optional[Any] = None
 
 
 @dataclass
 class MissingGlyph(Element, m.StdAttrs):
     element_name = "missing-glyph"
-    pass
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    d: Optional[Any] = None
+    horiz_adv_x: Optional[Any] = None
+    vert_adv_y: Optional[Any] = None
 
 
 @dataclass
 class HKern(Element, m.StdAttrs):
     element_name = "hkern"
-    pass
+    u1: Optional[Any] = None
+    g1: Optional[Any] = None
+    u2: Optional[Any] = None
+    g2: Optional[Any] = None
+    k: Optional[Any] = None
 
 
 @dataclass
 class VKern(Element, m.StdAttrs):
     element_name = "vkern"
-    pass
+    u1: Optional[Any] = None
+    g1: Optional[Any] = None
+    u2: Optional[Any] = None
+    g2: Optional[Any] = None
+    k: Optional[Any] = None
 
 
 @dataclass
 class FontFace(Element, m.StdAttrs):
     element_name = "font-face"
-    pass
+    font_family: Optional[Any] = None
+    font_style: Optional[Any] = None
+    font_variant: Optional[Any] = None
+    font_weight: Optional[Any] = None
+    font_stretch: Optional[Any] = None
+    font_size: Optional[Any] = None
+    unicode_range: Optional[Any] = None
+    units_per_em: Optional[Any] = None
+    panose_1: Optional[Any] = None
+    stemv: Optional[Any] = None
+    stemh: Optional[Any] = None
+    slope: Optional[Any] = None
+    cap_height: Optional[Any] = None
+    x_height: Optional[Any] = None
+    accent_height: Optional[Any] = None
+    ascent: Optional[Any] = None
+    descent: Optional[Any] = None
+    widths: Optional[Any] = None
+    bbox: Optional[Any] = None
+    ideographic: Optional[Any] = None
+    baseline: Optional[Any] = None
+    centerline: Optional[Any] = None
+    mathline: Optional[Any] = None
+    hanging: Optional[Any] = None
+    topline: Optional[Any] = None
+    underline_position: Optional[Any] = None
+    underline_thickness: Optional[Any] = None
+    strikethrough_position: Optional[Any] = None
+    strikethrough_thickness: Optional[Any] = None
+    overline_position: Optional[Any] = None
+    overline_thickness: Optional[Any] = None
 
 
 @dataclass
@@ -579,13 +655,13 @@ class FontFaceURI(Element, m.StdAttrs):
 @dataclass
 class FontFaceFormat(Element, m.StdAttrs):
     element_name = "font-face-format"
-    pass
+    string: Optional[Any] = None
 
 
 @dataclass
 class FontFaceName(Element, m.StdAttrs):
     element_name = "font-face-name"
-    pass
+    name: Optional[Any] = None
 
 
 @dataclass
@@ -603,4 +679,12 @@ class Metadata(Element, m.StdAttrs):
 @dataclass
 class ForeignObject(Element, m.StdAttrs):
     element_name = "foreignObject"
-    pass
+    externalResourcesRequired: Optional[Any] = None
+    class_: Optional[Any] = None
+    style: Optional[Any] = None
+    transform: Optional[Any] = None
+    x: Optional[Any] = None
+    y: Optional[Any] = None
+    width: Optional[Any] = None
+    height: Optional[Any] = None
+    content: Optional[Any] = None
