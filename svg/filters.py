@@ -16,7 +16,7 @@ class Filter(Element, m.StdAttrs):
     y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
-    filterRes: Optional[Any] = None
+    filterRes: Optional[str] = None
 
 
 @dataclass
@@ -50,7 +50,7 @@ class FeSpotLight(Element, m.StdAttrs):
 @dataclass
 class FeBlend(Element, m.StdAttrs):
     element_name = "feBlend"
-    in2: Optional[Any] = None
+    in2: Optional[str] = None
     mode: Optional[Any] = None
 
 
@@ -58,7 +58,7 @@ class FeBlend(Element, m.StdAttrs):
 class FeColorMatrix(Element, m.StdAttrs):
     element_name = "feColorMatrix"
     type: Optional[Any] = None
-    values: Optional[Any] = None
+    values: Optional[str] = None
 
 
 @dataclass
@@ -94,7 +94,7 @@ class FeFuncA(Element, m.StdAttrs):
 @dataclass
 class FeComposite(Element, m.StdAttrs):
     element_name = "feComposite"
-    in2: Optional[Any] = None
+    in2: Optional[str] = None
     operator: Optional[Any] = None
     k1: Optional[Any] = None
     k2: Optional[Any] = None
@@ -106,13 +106,13 @@ class FeComposite(Element, m.StdAttrs):
 class FeConvolveMatrix(Element, m.StdAttrs):
     element_name = "feConvolveMatrix"
     order: Optional[Any] = None
-    kernelMatrix: Optional[Any] = None
+    kernelMatrix: Optional[str] = None
     divisor: Optional[Any] = None
     bias: Optional[Any] = None
     targetX: Optional[Any] = None
     targetY: Optional[Any] = None
     edgeMode: Optional[Any] = None
-    kernelUnitLength: Optional[Any] = None
+    kernelUnitLength: Optional[str] = None
     preserveAlpha: Optional[Any] = None
 
 
@@ -128,7 +128,7 @@ class FeDiffuseLighting(Element, m.StdAttrs):
 @dataclass
 class FeDisplacementMap(Element, m.StdAttrs):
     element_name = "feDisplacementMap"
-    in2: Optional[Any] = None
+    in2: Optional[str] = None
     scale: Optional[Any] = None
     xChannelSelector: Optional[Any] = None
     yChannelSelector: Optional[Any] = None
@@ -165,7 +165,7 @@ class FeMerge(Element, m.StdAttrs):
 @dataclass
 class FeMergeNode(Element, m.StdAttrs):
     element_name = "feMergeNode"
-    in_: Optional[Any] = None
+    in_: Optional[str] = None
 
 
 @dataclass
@@ -201,7 +201,7 @@ class FeTile(Element, m.StdAttrs):
 @dataclass
 class FeTurbulence(Element, m.StdAttrs):
     element_name = "feTurbulence"
-    baseFrequency: Optional[Any] = None
+    baseFrequency: Optional[str] = None
     numOctaves: Optional[Any] = None
     seed: Optional[Any] = None
     stitchTiles: Optional[Any] = None

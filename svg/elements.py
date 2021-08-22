@@ -182,7 +182,7 @@ class Style(Element, m.StdAttrs):
     element_name = "style"
     type: Optional[Any] = None
     media: Optional[Any] = None
-    title: Optional[Any] = None
+    title: Optional[str] = None
 
 
 @dataclass
@@ -203,8 +203,8 @@ class Rect(Element, m.StdAttrs):
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
-    x: Optional[values.Coordinates] = None
-    y: Optional[values.Coordinates] = None
+    x: Optional[values.Coordinate] = None
+    y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
     rx: Optional[Any] = None
@@ -276,8 +276,8 @@ class Text(Element, m.StdAttrs):
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
-    x: Optional[values.Coordinates] = None
-    y: Optional[values.Coordinates] = None
+    x: Optional[values.Coordinate] = None
+    y: Optional[values.Coordinate] = None
     textLength: Optional[Any] = None
     lengthAdjust: Optional[Any] = None
 
@@ -288,11 +288,11 @@ class TSpan(Element, m.StdAttrs):
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
-    x: Optional[values.Coordinates] = None
-    y: Optional[values.Coordinates] = None
-    dx: Optional[Any] = None
-    dy: Optional[Any] = None
-    rotate: Optional[Any] = None
+    x: Optional[values.Coordinate] = None
+    y: Optional[values.Coordinate] = None
+    dx: Optional[values.Coordinate] = None
+    dy: Optional[values.Coordinate] = None
+    rotate: Optional[str] = None
     textLength: Optional[Any] = None
     lengthAdjust: Optional[Any] = None
 
@@ -303,11 +303,11 @@ class TRef(Element, m.StdAttrs):
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
-    x: Optional[values.Coordinates] = None
-    y: Optional[values.Coordinates] = None
-    dx: Optional[Any] = None
-    dy: Optional[Any] = None
-    rotate: Optional[Any] = None
+    x: Optional[values.Coordinate] = None
+    y: Optional[values.Coordinate] = None
+    dx: Optional[values.Coordinate] = None
+    dy: Optional[values.Coordinate] = None
+    rotate: Optional[str] = None
     textLength: Optional[Any] = None
     lengthAdjust: Optional[Any] = None
 
@@ -318,7 +318,7 @@ class TextPath(Element, m.StdAttrs):
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
-    startOffset: Optional[Any] = None
+    startOffset: Optional[str] = None
     textLength: Optional[Any] = None
     lengthAdjust: Optional[Any] = None
     method: Optional[Any] = None
@@ -328,16 +328,16 @@ class TextPath(Element, m.StdAttrs):
 @dataclass
 class AltGlyph(Element, m.StdAttrs):
     element_name = "altGlyph"
-    glyphRef: Optional[Any] = None
-    format: Optional[Any] = None
+    glyphRef: Optional[str] = None
+    format: Optional[str] = None
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
-    x: Optional[values.Coordinates] = None
-    y: Optional[values.Coordinates] = None
-    dx: Optional[Any] = None
-    dy: Optional[Any] = None
-    rotate: Optional[Any] = None
+    x: Optional[values.Coordinate] = None
+    y: Optional[values.Coordinate] = None
+    dx: Optional[values.Coordinate] = None
+    dy: Optional[values.Coordinate] = None
+    rotate: Optional[str] = None
 
 
 @dataclass
@@ -357,12 +357,12 @@ class GlyphRef(Element, m.StdAttrs):
     element_name = "glyphRef"
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
-    glyphRef: Optional[Any] = None
-    format: Optional[Any] = None
-    x: Optional[values.Coordinates] = None
-    y: Optional[values.Coordinates] = None
-    dx: Optional[Any] = None
-    dy: Optional[Any] = None
+    glyphRef: Optional[str] = None
+    format: Optional[str] = None
+    x: Optional[values.Coordinate] = None
+    y: Optional[values.Coordinate] = None
+    dx: Optional[values.Coordinate] = None
+    dy: Optional[values.Coordinate] = None
 
 
 @dataclass
@@ -376,16 +376,16 @@ class Marker(Element, m.StdAttrs):
     refX: Optional[Any] = None
     refY: Optional[Any] = None
     markerUnits: Optional[Any] = None
-    markerWidth: Optional[Any] = None
-    markerHeight: Optional[Any] = None
-    orient: Optional[Any] = None
+    markerWidth: Optional[values.Length] = None
+    markerHeight: Optional[values.Length] = None
+    orient: Optional[str] = None
 
 
 @dataclass
 class ColorProfile(Element, m.StdAttrs):
     element_name = "color-profile"
-    local: Optional[Any] = None
-    name: Optional[Any] = None
+    local: Optional[str] = None
+    name: Optional[str] = None
     rendering_intent: Optional[Any] = None
 
 
@@ -436,8 +436,8 @@ class Pattern(Element, m.StdAttrs):
     preserveAspectRatio: Optional[Any] = None
     patternUnits: Optional[Any] = None
     patternTransform: Optional[Any] = None
-    x: Optional[values.Coordinates] = None
-    y: Optional[values.Coordinates] = None
+    x: Optional[values.Coordinate] = None
+    y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
 
@@ -460,8 +460,8 @@ class Mask(Element, m.StdAttrs):
     style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
     maskUnits: Optional[Any] = None
-    x: Optional[values.Coordinates] = None
-    y: Optional[values.Coordinates] = None
+    x: Optional[values.Coordinate] = None
+    y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
 
@@ -470,8 +470,8 @@ class Mask(Element, m.StdAttrs):
 class Cursor(Element, m.StdAttrs):
     element_name = "cursor"
     externalResourcesRequired: Optional[bool] = None
-    x: Optional[values.Coordinates] = None
-    y: Optional[values.Coordinates] = None
+    x: Optional[values.Coordinate] = None
+    y: Optional[values.Coordinate] = None
 
 
 @dataclass
@@ -491,7 +491,7 @@ class View(Element, m.StdAttrs):
     viewBox: Optional[Any] = None
     preserveAspectRatio: Optional[Any] = None
     zoomAndPan: Optional[Any] = None
-    viewTarget: Optional[Any] = None
+    viewTarget: Optional[str] = None
 
 
 @dataclass
@@ -511,17 +511,17 @@ class Animate(Element, m.StdAttrs):
 class Set(Element, m.StdAttrs):
     element_name = "set"
     externalResourcesRequired: Optional[bool] = None
-    to: Optional[Any] = None
+    to: Optional[str] = None
 
 
 @dataclass
 class AnimateMotion(Element, m.StdAttrs):
     element_name = "animateMotion"
     externalResourcesRequired: Optional[bool] = None
-    path: Optional[Any] = None
-    keyPoints: Optional[Any] = None
-    rotate: Optional[Any] = None
-    origin: Optional[Any] = None
+    path: Optional[str] = None
+    keyPoints: Optional[str] = None
+    rotate: Optional[str] = None
+    origin: Optional[str] = None
 
 
 @dataclass
@@ -564,12 +564,12 @@ class Glyph(Element, m.StdAttrs):
     element_name = "glyph"
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
-    unicode: Optional[Any] = None
-    glyph_name: Optional[Any] = None
+    unicode: Optional[str] = None
+    glyph_name: Optional[str] = None
     d: Optional[Any] = None
-    vert_text_orient: Optional[Any] = None
-    arabic: Optional[Any] = None
-    han: Optional[Any] = None
+    vert_text_orient: Optional[str] = None
+    arabic: Optional[str] = None
+    han: Optional[str] = None
     horiz_adv_x: Optional[Any] = None
     vert_adv_y: Optional[Any] = None
 
@@ -587,35 +587,35 @@ class MissingGlyph(Element, m.StdAttrs):
 @dataclass
 class HKern(Element, m.StdAttrs):
     element_name = "hkern"
-    u1: Optional[Any] = None
-    g1: Optional[Any] = None
-    u2: Optional[Any] = None
-    g2: Optional[Any] = None
+    u1: Optional[str] = None
+    g1: Optional[str] = None
+    u2: Optional[str] = None
+    g2: Optional[str] = None
     k: Optional[Any] = None
 
 
 @dataclass
 class VKern(Element, m.StdAttrs):
     element_name = "vkern"
-    u1: Optional[Any] = None
-    g1: Optional[Any] = None
-    u2: Optional[Any] = None
-    g2: Optional[Any] = None
+    u1: Optional[str] = None
+    g1: Optional[str] = None
+    u2: Optional[str] = None
+    g2: Optional[str] = None
     k: Optional[Any] = None
 
 
 @dataclass
 class FontFace(Element, m.StdAttrs):
     element_name = "font-face"
-    font_family: Optional[Any] = None
-    font_style: Optional[Any] = None
-    font_variant: Optional[Any] = None
-    font_weight: Optional[Any] = None
-    font_stretch: Optional[Any] = None
+    font_family: Optional[values.FontFamily] = None
+    font_style: Optional[str] = None
+    font_variant: Optional[str] = None
+    font_weight: Optional[str] = None
+    font_stretch: Optional[str] = None
     font_size: Optional[Any] = None
-    unicode_range: Optional[Any] = None
+    unicode_range: Optional[str] = None
     units_per_em: Optional[Any] = None
-    panose_1: Optional[Any] = None
+    panose_1: Optional[str] = None
     stemv: Optional[Any] = None
     stemh: Optional[Any] = None
     slope: Optional[Any] = None
@@ -624,8 +624,8 @@ class FontFace(Element, m.StdAttrs):
     accent_height: Optional[Any] = None
     ascent: Optional[Any] = None
     descent: Optional[Any] = None
-    widths: Optional[Any] = None
-    bbox: Optional[Any] = None
+    widths: Optional[str] = None
+    bbox: Optional[str] = None
     ideographic: Optional[Any] = None
     baseline: Optional[Any] = None
     centerline: Optional[Any] = None
@@ -655,13 +655,13 @@ class FontFaceURI(Element, m.StdAttrs):
 @dataclass
 class FontFaceFormat(Element, m.StdAttrs):
     element_name = "font-face-format"
-    string: Optional[Any] = None
+    string: Optional[str] = None
 
 
 @dataclass
 class FontFaceName(Element, m.StdAttrs):
     element_name = "font-face-name"
-    name: Optional[Any] = None
+    name: Optional[str] = None
 
 
 @dataclass
@@ -683,8 +683,8 @@ class ForeignObject(Element, m.StdAttrs):
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
-    x: Optional[values.Coordinates] = None
-    y: Optional[values.Coordinates] = None
+    x: Optional[values.Coordinate] = None
+    y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
     content: Optional[str] = None
