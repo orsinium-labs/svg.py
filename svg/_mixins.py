@@ -8,7 +8,7 @@ class AttrsMixin:
 
 
 @dataclass
-class STDAttrs(AttrsMixin):
+class StdAttrs(AttrsMixin):
     id: Optional[str] = None
 
 

@@ -253,3 +253,9 @@ class ComponentTransferType(Enum):
     DISCRETE = "discrete"
     LINEAR = "linear"
     GAMMA = "gamma"
+
+
+class ZoomAndPan(Enum):
+    DISABLE = "disable"
+    MAGNIFY = "magnify"
+    ZOOM = "zoom"

@@ -70,29 +70,30 @@ StyleSheet = str
 SVGColor = str
 
 # alias
-Coordinate = Length
 NumberOrPercentage = Number
 StrokeMiterLimit = Number
-StrokeWidth = Length
 
 # union
-ClipPath = Union[URI, AUTO, INHERIT, NONE]
-Filter = Union[URI, INHERIT, NONE]
-Cursor = Union[URI, enums.CursorValue]
-EnableBackground = Union[URI, enums.EnableBackgroundValue]
-FontSizeAdjust = Union[Number, NONE, INHERIT]
+Coordinate = Union[Number, Length]
 FontSize = Union[Length, INHERIT]
+FontSizeAdjust = Union[Number, NONE, INHERIT]
 GlyphOrientationHorizontal = Union[Angle, INHERIT]
 GlyphOrientationVertical = Union[Angle, INHERIT, AUTO]
 Kerning = Union[Length, AUTO, INHERIT]
-Marker = Union[URI, NONE, INHERIT]
-Mask = Union[URI, NONE, INHERIT]
 NumberOptionalNumber = Union[Number, Tuple[Number, Number]]
 Opacity = Union[Number, INHERIT]
+Spacing = Union[Length, AUTO, Literal["exact"]]
 StrokeDashArray = Union[str, List[Number]]
 StrokeDashOffset = Union[NONE, Length]
-Spacing = Union[Length, AUTO, Literal["exact"]]
+StrokeWidth = Union[Number, Length]
 
+# str union
+ClipPath = Union[URI, AUTO, INHERIT, NONE]
+Cursor = Union[URI, enums.CursorValue]
+EnableBackground = Union[URI, enums.EnableBackgroundValue]
+Filter = Union[URI, INHERIT, NONE]
+Marker = Union[URI, NONE, INHERIT]
+Mask = Union[URI, NONE, INHERIT]
 
 # list of strings
 Classes = List[str]
