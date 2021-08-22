@@ -11,6 +11,8 @@ class Element:
     def _as_str(cls, val: Any) -> str:
         if val is None:
             return ''
+        if isinstance(val, Element):
+            return str(val)
         if isinstance(val, Enum):
             return val.value
         if isinstance(val, (list, tuple)):
@@ -34,7 +36,7 @@ class Element:
         elements: Optional[List[Element]]
         elements = getattr(self, 'elements', None)
         if elements:
-            content = ''.join(str(e) for e in elements)
+            content = ''.join(self._as_str(e) for e in elements)
             return f'<{self.element_name} {props}>{content}</{self.element_name}>'
         return f'<{self.element_name} {props}/>'
 
@@ -56,7 +58,6 @@ class SVG(
     viewBox: Optional[values.ViewBoxSpec] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
     zoomAndPan: Optional[enums.ZoomAndPan] = None
-
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
@@ -67,480 +68,500 @@ class SVG(
 
 
 @dataclass
-class G(Element):
+class G(
+    Element,
+    m.StdAttrs,
+    m.Presentation,
+    m.GraphicsElementEvents,
+):
     element_name = "g"
-    pass
+    elements: Optional[List[Element]] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    transform: Optional[values.Transforms] = None
 
 
 @dataclass
-class Defs(Element):
+class Defs(
+    Element,
+    m.StdAttrs,
+    m.Presentation,
+    m.GraphicsElementEvents,
+):
     element_name = "defs"
-    pass
+    elements: Optional[List[Element]] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    transform: Optional[values.Transforms] = None
 
 
 @dataclass
-class Desc(Element):
+class Desc(Element, m.StdAttrs):
     element_name = "desc"
-    pass
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    content: Optional[str] = None
 
 
 @dataclass
-class Title(Element):
+class Title(Element, m.StdAttrs):
     element_name = "title"
-    pass
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    content: Optional[str] = None
 
 
 @dataclass
-class Symbol(Element):
+class Symbol(Element, m.StdAttrs):
     element_name = "symbol"
     pass
 
 
 @dataclass
-class Use(Element):
+class Use(Element, m.StdAttrs):
     element_name = "use"
     pass
 
 
 @dataclass
-class Image(Element):
+class Image(Element, m.StdAttrs):
     element_name = "image"
     pass
 
 
 @dataclass
-class Switch(Element):
+class Switch(Element, m.StdAttrs):
     element_name = "switch"
     pass
 
 
 @dataclass
-class Style(Element):
+class Style(Element, m.StdAttrs):
     element_name = "style"
     pass
 
 
 @dataclass
-class Path(Element):
+class Path(Element, m.StdAttrs):
     element_name = "path"
     pass
 
 
 @dataclass
-class Rect(Element):
+class Rect(Element, m.StdAttrs):
     element_name = "rect"
     pass
 
 
 @dataclass
-class Circle(Element):
+class Circle(Element, m.StdAttrs):
     element_name = "circle"
     pass
 
 
 @dataclass
-class Ellipse(Element):
+class Ellipse(Element, m.StdAttrs):
     element_name = "ellipse"
     pass
 
 
 @dataclass
-class Line(Element):
+class Line(Element, m.StdAttrs):
     element_name = "line"
     pass
 
 
 @dataclass
-class Polyline(Element):
+class Polyline(Element, m.StdAttrs):
     element_name = "polyline"
     pass
 
 
 @dataclass
-class Polygon(Element):
+class Polygon(Element, m.StdAttrs):
     element_name = "polygon"
     pass
 
 
 @dataclass
-class Text(Element):
+class Text(Element, m.StdAttrs):
     element_name = "text"
     pass
 
 
 @dataclass
-class Tspan(Element):
+class Tspan(Element, m.StdAttrs):
     element_name = "tspan"
     pass
 
 
 @dataclass
-class Tref(Element):
+class Tref(Element, m.StdAttrs):
     element_name = "tref"
     pass
 
 
 @dataclass
-class TextPath(Element):
+class TextPath(Element, m.StdAttrs):
     element_name = "textPath"
     pass
 
 
 @dataclass
-class AltGlyph(Element):
+class AltGlyph(Element, m.StdAttrs):
     element_name = "altGlyph"
     pass
 
 
 @dataclass
-class AltGlyphDef(Element):
+class AltGlyphDef(Element, m.StdAttrs):
     element_name = "altGlyphDef"
     pass
 
 
 @dataclass
-class AltGlyphItem(Element):
+class AltGlyphItem(Element, m.StdAttrs):
     element_name = "altGlyphItem"
     pass
 
 
 @dataclass
-class GlyphRef(Element):
+class GlyphRef(Element, m.StdAttrs):
     element_name = "glyphRef"
     pass
 
 
 @dataclass
-class Marker(Element):
+class Marker(Element, m.StdAttrs):
     element_name = "marker"
     pass
 
 
 @dataclass
-class ColorProfile(Element):
+class ColorProfile(Element, m.StdAttrs):
     element_name = "color-profile"
     pass
 
 
 @dataclass
-class LinearGradient(Element):
+class LinearGradient(Element, m.StdAttrs):
     element_name = "linearGradient"
     pass
 
 
 @dataclass
-class RadialGradient(Element):
+class RadialGradient(Element, m.StdAttrs):
     element_name = "radialGradient"
     pass
 
 
 @dataclass
-class Stop(Element):
+class Stop(Element, m.StdAttrs):
     element_name = "stop"
     pass
 
 
 @dataclass
-class Pattern(Element):
+class Pattern(Element, m.StdAttrs):
     element_name = "pattern"
     pass
 
 
 @dataclass
-class ClipPath(Element):
+class ClipPath(Element, m.StdAttrs):
     element_name = "clipPath"
     pass
 
 
 @dataclass
-class Mask(Element):
+class Mask(Element, m.StdAttrs):
     element_name = "mask"
     pass
 
 
 @dataclass
-class Filter(Element):
+class Filter(Element, m.StdAttrs):
     element_name = "filter"
     pass
 
 
 @dataclass
-class FeDistantLight(Element):
+class FeDistantLight(Element, m.StdAttrs):
     element_name = "feDistantLight"
     pass
 
 
 @dataclass
-class FePointLight(Element):
+class FePointLight(Element, m.StdAttrs):
     element_name = "fePointLight"
     pass
 
 
 @dataclass
-class FeSpotLight(Element):
+class FeSpotLight(Element, m.StdAttrs):
     element_name = "feSpotLight"
     pass
 
 
 @dataclass
-class FeBlend(Element):
+class FeBlend(Element, m.StdAttrs):
     element_name = "feBlend"
     pass
 
 
 @dataclass
-class FeColorMatrix(Element):
+class FeColorMatrix(Element, m.StdAttrs):
     element_name = "feColorMatrix"
     pass
 
 
 @dataclass
-class FeComponentTransfer(Element):
+class FeComponentTransfer(Element, m.StdAttrs):
     element_name = "feComponentTransfer"
     pass
 
 
 @dataclass
-class FeFuncR(Element):
+class FeFuncR(Element, m.StdAttrs):
     element_name = "feFuncR"
     pass
 
 
 @dataclass
-class FeFuncG(Element):
+class FeFuncG(Element, m.StdAttrs):
     element_name = "feFuncG"
     pass
 
 
 @dataclass
-class FeFuncB(Element):
+class FeFuncB(Element, m.StdAttrs):
     element_name = "feFuncB"
     pass
 
 
 @dataclass
-class FeFuncA(Element):
+class FeFuncA(Element, m.StdAttrs):
     element_name = "feFuncA"
     pass
 
 
 @dataclass
-class FeComposite(Element):
+class FeComposite(Element, m.StdAttrs):
     element_name = "feComposite"
     pass
 
 
 @dataclass
-class FeConvolveMatrix(Element):
+class FeConvolveMatrix(Element, m.StdAttrs):
     element_name = "feConvolveMatrix"
     pass
 
 
 @dataclass
-class FeDiffuseLighting(Element):
+class FeDiffuseLighting(Element, m.StdAttrs):
     element_name = "feDiffuseLighting"
     pass
 
 
 @dataclass
-class FeDisplacementMap(Element):
+class FeDisplacementMap(Element, m.StdAttrs):
     element_name = "feDisplacementMap"
     pass
 
 
 @dataclass
-class FeFlood(Element):
+class FeFlood(Element, m.StdAttrs):
     element_name = "feFlood"
     pass
 
 
 @dataclass
-class FeGaussianBlur(Element):
+class FeGaussianBlur(Element, m.StdAttrs):
     element_name = "feGaussianBlur"
     pass
 
 
 @dataclass
-class FeImage(Element):
+class FeImage(Element, m.StdAttrs):
     element_name = "feImage"
     pass
 
 
 @dataclass
-class FeMerge(Element):
+class FeMerge(Element, m.StdAttrs):
     element_name = "feMerge"
     pass
 
 
 @dataclass
-class FeMergeNode(Element):
+class FeMergeNode(Element, m.StdAttrs):
     element_name = "feMergeNode"
     pass
 
 
 @dataclass
-class FeMorphology(Element):
+class FeMorphology(Element, m.StdAttrs):
     element_name = "feMorphology"
     pass
 
 
 @dataclass
-class FeOffset(Element):
+class FeOffset(Element, m.StdAttrs):
     element_name = "feOffset"
     pass
 
 
 @dataclass
-class FeSpecularLighting(Element):
+class FeSpecularLighting(Element, m.StdAttrs):
     element_name = "feSpecularLighting"
     pass
 
 
 @dataclass
-class FeTile(Element):
+class FeTile(Element, m.StdAttrs):
     element_name = "feTile"
     pass
 
 
 @dataclass
-class FeTurbulence(Element):
+class FeTurbulence(Element, m.StdAttrs):
     element_name = "feTurbulence"
     pass
 
 
 @dataclass
-class Cursor(Element):
+class Cursor(Element, m.StdAttrs):
     element_name = "cursor"
     pass
 
 
 @dataclass
-class A(Element):
+class A(Element, m.StdAttrs):
     element_name = "a"
     pass
 
 
 @dataclass
-class View(Element):
+class View(Element, m.StdAttrs):
     element_name = "view"
     pass
 
 
 @dataclass
-class Script(Element):
+class Script(Element, m.StdAttrs):
     element_name = "script"
     pass
 
 
 @dataclass
-class Animate(Element):
+class Animate(Element, m.StdAttrs):
     element_name = "animate"
     pass
 
 
 @dataclass
-class Set(Element):
+class Set(Element, m.StdAttrs):
     element_name = "set"
     pass
 
 
 @dataclass
-class AnimateMotion(Element):
+class AnimateMotion(Element, m.StdAttrs):
     element_name = "animateMotion"
     pass
 
 
 @dataclass
-class MPath(Element):
+class MPath(Element, m.StdAttrs):
     element_name = "mpath"
     pass
 
 
 @dataclass
-class AnimateColor(Element):
+class AnimateColor(Element, m.StdAttrs):
     element_name = "animateColor"
     pass
 
 
 @dataclass
-class AnimateTransform(Element):
+class AnimateTransform(Element, m.StdAttrs):
     element_name = "animateTransform"
     pass
 
 
 @dataclass
-class Font(Element):
+class Font(Element, m.StdAttrs):
     element_name = "font"
     pass
 
 
 @dataclass
-class Glyph(Element):
+class Glyph(Element, m.StdAttrs):
     element_name = "glyph"
     pass
 
 
 @dataclass
-class MissingGlyph(Element):
+class MissingGlyph(Element, m.StdAttrs):
     element_name = "missing-glyph"
     pass
 
 
 @dataclass
-class HKern(Element):
+class HKern(Element, m.StdAttrs):
     element_name = "hkern"
     pass
 
 
 @dataclass
-class VKern(Element):
+class VKern(Element, m.StdAttrs):
     element_name = "vkern"
     pass
 
 
 @dataclass
-class FontFace(Element):
+class FontFace(Element, m.StdAttrs):
     element_name = "font-face"
     pass
 
 
 @dataclass
-class FontFaceSrc(Element):
+class FontFaceSrc(Element, m.StdAttrs):
     element_name = "font-face-src"
     pass
 
 
 @dataclass
-class FontFaceURI(Element):
+class FontFaceURI(Element, m.StdAttrs):
     element_name = "font-face-uri"
     pass
 
 
 @dataclass
-class FontFaceFormat(Element):
+class FontFaceFormat(Element, m.StdAttrs):
     element_name = "font-face-format"
     pass
 
 
 @dataclass
-class FontFaceName(Element):
+class FontFaceName(Element, m.StdAttrs):
     element_name = "font-face-name"
     pass
 
 
 @dataclass
-class DefinitionSrc(Element):
+class DefinitionSrc(Element, m.StdAttrs):
     element_name = "definition-src"
     pass
 
 
 @dataclass
-class Metadata(Element):
+class Metadata(Element, m.StdAttrs):
     element_name = "metadata"
     pass
 
 
 @dataclass
-class ForeignObject(Element):
+class ForeignObject(Element, m.StdAttrs):
     element_name = "foreignObject"
     pass
