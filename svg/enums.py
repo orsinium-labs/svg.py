@@ -259,3 +259,11 @@ class ZoomAndPan(Enum):
     DISABLE = "disable"
     MAGNIFY = "magnify"
     ZOOM = "zoom"
+
+
+class TransformType(Enum):
+    TRANSLATE = "translate"
+    SCALE = "scale"
+    ROTATE = "rotate"
+    SKEWX = "skewX"
+    SKEWY = "skewY"

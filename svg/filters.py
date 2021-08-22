@@ -1,12 +1,19 @@
 from dataclasses import dataclass
-from typing import Any, Optional
-from . import _mixins as m, values
+from typing import Any, List, Optional, Union
+from . import _mixins as m, values, elements as e
 from .elements import Element
 
 
 @dataclass
 class Filter(Element, m.StdAttrs):
     element_name = "filter"
+    elements: Optional[List[Union[
+        'FeBlend', 'FeFlood', 'FeColorMatrix', 'FeComponentTransfer', 'FeComposite',
+        'FeConvolveMatrix', 'FeDiffuseLighting',
+        'FeDisplacementMap', 'FeGaussianBlur', 'FeImage', 'FeMerge',
+        'FeMorphology', 'FeOffset', 'FeSpecularLighting',
+        'FeTile', 'FeTurbulence', e.Animate, e.Set,
+    ]]] = None
     externalResourcesRequired: Optional[Any] = None
     class_: Optional[Any] = None
     style: Optional[Any] = None
@@ -119,6 +126,7 @@ class FeConvolveMatrix(Element, m.StdAttrs):
 @dataclass
 class FeDiffuseLighting(Element, m.StdAttrs):
     element_name = "feDiffuseLighting"
+    elements: Optional[List[Union[e.Animate, e.Set, e.AnimateColor]]] = None
     class_: Optional[Any] = None
     style: Optional[Any] = None
     surfaceScale: Optional[Any] = None
@@ -185,6 +193,7 @@ class FeOffset(Element, m.StdAttrs):
 @dataclass
 class FeSpecularLighting(Element, m.StdAttrs):
     element_name = "feSpecularLighting"
+    elements: Optional[List[Union[e.Animate, e.Set, e.AnimateColor]]] = None
     class_: Optional[Any] = None
     style: Optional[Any] = None
     surfaceScale: Optional[Any] = None

@@ -186,18 +186,25 @@ class Style(Element, m.StdAttrs):
 
 
 @dataclass
-class Path(Element, m.StdAttrs):
+class _FigElements:
+    elements: Optional[List[Union[
+        'Animate', 'Set', 'AnimateMotion', 'AnimateColor', 'AnimateTransform',
+    ]]] = None
+
+
+@dataclass
+class Path(Element, m.StdAttrs, _FigElements):
     element_name = "path"
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
-    d: Optional[Any] = None
+    d: Optional[List[values.PathData]] = None
     pathLength: Optional[float] = None
 
 
 @dataclass
-class Rect(Element, m.StdAttrs):
+class Rect(Element, m.StdAttrs, _FigElements):
     element_name = "rect"
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
@@ -212,7 +219,7 @@ class Rect(Element, m.StdAttrs):
 
 
 @dataclass
-class Circle(Element, m.StdAttrs):
+class Circle(Element, m.StdAttrs, _FigElements):
     element_name = "circle"
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
@@ -224,7 +231,7 @@ class Circle(Element, m.StdAttrs):
 
 
 @dataclass
-class Ellipse(Element, m.StdAttrs):
+class Ellipse(Element, m.StdAttrs, _FigElements):
     element_name = "ellipse"
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
@@ -237,7 +244,7 @@ class Ellipse(Element, m.StdAttrs):
 
 
 @dataclass
-class Line(Element, m.StdAttrs):
+class Line(Element, m.StdAttrs, _FigElements):
     element_name = "line"
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
@@ -250,7 +257,7 @@ class Line(Element, m.StdAttrs):
 
 
 @dataclass
-class Polyline(Element, m.StdAttrs):
+class Polyline(Element, m.StdAttrs, _FigElements):
     element_name = "polyline"
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
@@ -260,7 +267,7 @@ class Polyline(Element, m.StdAttrs):
 
 
 @dataclass
-class Polygon(Element, m.StdAttrs):
+class Polygon(Element, m.StdAttrs, _FigElements):
     element_name = "polygon"
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
@@ -390,32 +397,33 @@ class ColorProfile(Element, m.StdAttrs):
 
 
 @dataclass
-class LinearGradient(Element, m.StdAttrs):
-    element_name = "linearGradient"
+class _Gradient:
+    elements: Optional[List[Union['Stop', 'Animate', 'Set', 'AnimateTransform']]] = None
     externalResourcesRequired: Optional[bool] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     gradientUnits: Optional[Any] = None
     gradientTransform: Optional[Any] = None
-    x1: Optional[Any] = None
-    y1: Optional[Any] = None
-    x2: Optional[Any] = None
-    y2: Optional[Any] = None
     spreadMethod: Optional[Any] = None
 
 
 @dataclass
-class RadialGradient(Element, m.StdAttrs):
+class LinearGradient(Element, m.StdAttrs, _Gradient):
+    element_name = "linearGradient"
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    x1: Optional[Any] = None
+    y1: Optional[Any] = None
+    x2: Optional[Any] = None
+    y2: Optional[Any] = None
+
+
+@dataclass
+class RadialGradient(Element, m.StdAttrs, _Gradient):
     element_name = "radialGradient"
-    externalResourcesRequired: Optional[bool] = None
-    gradientUnits: Optional[Any] = None
-    gradientTransform: Optional[Any] = None
     cx: Optional[Any] = None
     cy: Optional[Any] = None
     r: Optional[Any] = None
     fx: Optional[Any] = None
     fy: Optional[Any] = None
-    spreadMethod: Optional[Any] = None
 
 
 @dataclass
@@ -445,6 +453,11 @@ class Pattern(Element, m.StdAttrs):
 @dataclass
 class ClipPath(Element, m.StdAttrs):
     element_name = "clipPath"
+    elements: Optional[List[Union[
+        'Path', 'Text', 'Rect', 'Circle', 'Ellipse', 'Line',
+        'Polyline', 'Polygon', 'Use', 'Animate', 'Set',
+        'AnimateMotion', 'AnimateColor', 'AnimateTransform',
+    ]]] = None
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
@@ -455,6 +468,7 @@ class ClipPath(Element, m.StdAttrs):
 @dataclass
 class Mask(Element, m.StdAttrs):
     element_name = "mask"
+    elements: Optional[List[Element]] = None
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
@@ -542,12 +556,13 @@ class AnimateColor(Element, m.StdAttrs):
 class AnimateTransform(Element, m.StdAttrs):
     element_name = "animateTransform"
     externalResourcesRequired: Optional[bool] = None
-    type: Optional[Any] = None
+    type: Optional[enums.TransformType] = None
 
 
 @dataclass
 class Font(Element, m.StdAttrs):
     element_name = "font"
+    elements: Optional[List[Union['Glyph', 'HKern', 'VKern']]] = None
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
@@ -566,7 +581,7 @@ class Glyph(Element, m.StdAttrs):
     style: Optional[values.StyleSheet] = None
     unicode: Optional[str] = None
     glyph_name: Optional[str] = None
-    d: Optional[Any] = None
+    d: Optional[List[values.PathData]] = None
     vert_text_orient: Optional[str] = None
     arabic: Optional[str] = None
     han: Optional[str] = None
@@ -579,7 +594,7 @@ class MissingGlyph(Element, m.StdAttrs):
     element_name = "missing-glyph"
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
-    d: Optional[Any] = None
+    d: Optional[List[values.PathData]] = None
     horiz_adv_x: Optional[float] = None
     vert_adv_y: Optional[float] = None
 
