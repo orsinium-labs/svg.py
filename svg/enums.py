@@ -245,3 +245,11 @@ class Overflow(Enum):
     SCROLL = "scroll"
     AUTO = "auto"
     INHERIT = "inherit"
+
+
+class ComponentTransferType(Enum):
+    IDENTITY = "identity"
+    TABLE = "table"
+    DISCRETE = "discrete"
+    LINEAR = "linear"
+    GAMMA = "gamma"

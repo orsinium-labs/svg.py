@@ -14,97 +14,97 @@ class STDAttrs(AttrsMixin):
 
 @dataclass
 class GraphicsElementEvents(AttrsMixin):
-    onfocusin: str
-    onfocusout: str
-    onactivate: str
-    onclick: str
-    onmousedown: str
-    onmouseup: str
-    onmouseover: str
-    onmousemove: str
-    onmouseout: str
-    onload: str
+    onfocusin: Optional[str] = None
+    onfocusout: Optional[str] = None
+    onactivate: Optional[str] = None
+    onclick: Optional[str] = None
+    onmousedown: Optional[str] = None
+    onmouseup: Optional[str] = None
+    onmouseover: Optional[str] = None
+    onmousemove: Optional[str] = None
+    onmouseout: Optional[str] = None
+    onload: Optional[str] = None
 
 
 @dataclass
 class DocumentEvents(AttrsMixin):
-    onunload: str
-    onabort: str
-    onerror: str
-    onresize: str
-    onscroll: str
-    onzoom: str
+    onunload: Optional[str] = None
+    onabort: Optional[str] = None
+    onerror: Optional[str] = None
+    onresize: Optional[str] = None
+    onscroll: Optional[str] = None
+    onzoom: Optional[str] = None
 
 
 @dataclass
 class Color(AttrsMixin):
-    color: str
-    color_interpolation: enums.ColorInterpolation
-    color_rendering: enums.Rendering
+    color: Optional[str] = None
+    color_interpolation: Optional[enums.ColorInterpolation] = None
+    color_rendering: Optional[enums.Rendering] = None
 
 
 @dataclass
 class Containers(AttrsMixin):
-    enable_background: values.EnableBackground
+    enable_background: Optional[values.EnableBackground] = None
 
 
 @dataclass
 class FeFlood(AttrsMixin):
-    flood_color: str
-    flood_opacity: values.Opacity
+    flood_color: Optional[str] = None
+    flood_opacity: Optional[values.Opacity] = None
 
 
 @dataclass
 class FilterPrimitives(AttrsMixin):
-    color_interpolation_filters: enums.ColorInterpolation
+    color_interpolation_filters: Optional[enums.ColorInterpolation] = None
 
 
 @dataclass
 class FillStroke(AttrsMixin):
-    fill: str
-    fill_opacity: values.Opacity
-    fill_rule: enums.ClipFillRule
-    stroke: str
-    stroke_dasharray: values.StrokeDashArray
-    stroke_dashoffset: values.StrokeDashOffset
-    stroke_linecap: enums.LineCap
-    stroke_linejoin: enums.LineJoin
-    stroke_miterlimit: values.StrokeMiterLimit
-    stroke_opacity: values.Opacity
-    stroke_width: values.StrokeWidth
+    fill: Optional[str] = None
+    fill_opacity: Optional[values.Opacity] = None
+    fill_rule: Optional[enums.ClipFillRule] = None
+    stroke: Optional[str] = None
+    stroke_dasharray: Optional[values.StrokeDashArray] = None
+    stroke_dashoffset: Optional[values.StrokeDashOffset] = None
+    stroke_linecap: Optional[enums.LineCap] = None
+    stroke_linejoin: Optional[enums.LineJoin] = None
+    stroke_miterlimit: Optional[values.StrokeMiterLimit] = None
+    stroke_opacity: Optional[values.Opacity] = None
+    stroke_width: Optional[values.StrokeWidth] = None
 
 
 @dataclass
 class FontSpecification(AttrsMixin):
-    font_family: values.FontFamily
-    font_size: values.FontSize
-    font_size_adjust: values.FontSizeAdjust
-    font_stretch: enums.FontStretch
+    font_family: Optional[values.FontFamily] = None
+    font_size: Optional[values.FontSize] = None
+    font_size_adjust: Optional[values.FontSizeAdjust] = None
+    font_stretch: Optional[enums.FontStretch] = None
     font_style = enums.FontStyle
-    font_variant: enums.FontValiant
-    font_weight: enums.FontWeight
+    font_variant: Optional[enums.FontValiant] = None
+    font_weight: Optional[enums.FontWeight] = None
 
 
 @dataclass
 class Gradients(AttrsMixin):
-    stop_color: values.SVGColor
-    stop_opacity: values.Opacity
+    stop_color: Optional[values.SVGColor] = None
+    stop_opacity: Optional[values.Opacity] = None
 
 
 @dataclass
 class Graphics(AttrsMixin):
-    clip_path: values.ClipPath
-    clip_rule: enums.ClipFillRule
-    cursor: enums.CursorValue
-    display: str  # TODO
-    filter: values.Filter
-    image_rendering: enums.Rendering
-    mask: values.Mask
-    opacity: values.Opacity
-    pointer_events: str     # TODO
-    shape_rendering: str    # TODO
-    text_rendering: str     # TODO
-    visibility: enums.Visibility
+    clip_path: Optional[values.ClipPath] = None
+    clip_rule: Optional[enums.ClipFillRule] = None
+    cursor: Optional[enums.CursorValue] = None
+    display: Optional[str] = None  # TODO
+    filter: Optional[values.Filter] = None
+    image_rendering: Optional[enums.Rendering] = None
+    mask: Optional[values.Mask] = None
+    opacity: Optional[values.Opacity] = None
+    pointer_events: Optional[str] = None     # TODO
+    shape_rendering: Optional[str] = None    # TODO
+    text_rendering: Optional[str] = None     # TODO
+    visibility: Optional[enums.Visibility] = None
 
 
 class Images:
@@ -113,40 +113,40 @@ class Images:
 
 @dataclass
 class LightingEffects(AttrsMixin):
-    lighting_color: values.SVGColor
+    lighting_color: Optional[values.SVGColor] = None
 
 
 @dataclass
 class Markers(AttrsMixin):
-    marker_start: values.Marker
-    marker_mid: values.Marker
-    marker_end: values.Marker
+    marker_start: Optional[values.Marker] = None
+    marker_mid: Optional[values.Marker] = None
+    marker_end: Optional[values.Marker] = None
 
 
 @dataclass
 class TextContentElements(AttrsMixin):
-    alignment_baseline: enums.TextAlignment
-    baseline_shift: enums.BaselineShift
-    direction: enums.TextDirection
-    dominant_baseline: enums.DominantBaseline
-    glyph_orientation_horizontal: values.GlyphOrientationHorizontal
-    glyph_orientation_vertical: values.GlyphOrientationVertical
-    letter_spacing: values.Spacing
-    text_anchor: enums.TextAnchor
-    text_decoration: enums.TextDecoration
-    unicode_bidi: str  # TODO
-    word_spacing: values.Spacing
+    alignment_baseline: Optional[enums.TextAlignment] = None
+    baseline_shift: Optional[enums.BaselineShift] = None
+    direction: Optional[enums.TextDirection] = None
+    dominant_baseline: Optional[enums.DominantBaseline] = None
+    glyph_orientation_horizontal: Optional[values.GlyphOrientationHorizontal] = None
+    glyph_orientation_vertical: Optional[values.GlyphOrientationVertical] = None
+    letter_spacing: Optional[values.Spacing] = None
+    text_anchor: Optional[enums.TextAnchor] = None
+    text_decoration: Optional[enums.TextDecoration] = None
+    unicode_bidi: Optional[str] = None  # TODO
+    word_spacing: Optional[values.Spacing] = None
 
 
 @dataclass
 class TextElements(AttrsMixin):
-    writing_mode: str  # TODO
+    writing_mode: Optional[str] = None  # TODO
 
 
 @dataclass
 class Viewports(AttrsMixin):
-    clip: values.Clip
-    overflow: enums.Overflow
+    clip: Optional[values.Clip] = None
+    overflow: Optional[enums.Overflow] = None
 
 
 class Presentation(
@@ -170,9 +170,24 @@ class Presentation(
 
 @dataclass
 class FilterPrimitive(AttrsMixin):
-    x: values.Coordinate
-    y: values.Coordinate
-    width: values.Length
-    height: values.Length
-    result: str
-    in_: str
+    x: Optional[values.Coordinate] = None
+    y: Optional[values.Coordinate] = None
+    width: Optional[values.Length] = None
+    height: Optional[values.Length] = None
+    result: Optional[str] = None
+    in_: Optional[str] = None
+
+
+@dataclass
+class ComponentTransferFunction(AttrsMixin):
+    type: enums.ComponentTransferType
+    tableValues: Optional[str] = None
+    slope: Optional[float] = None
+    intercept: Optional[float] = None
+    amplitude: Optional[float] = None
+    exponent: Optional[float] = None
+    offset: Optional[float] = None
+
+
+# TODO: anim*Attrs
+# TODO: descTitleMetadata
