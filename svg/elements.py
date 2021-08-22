@@ -171,10 +171,10 @@ class Image(
 @dataclass
 class Switch(Element, m.StdAttrs):
     element_name = "switch"
-    externalResourcesRequired: Optional[Any] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
-    transform: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    transform: Optional[values.Transforms] = None
 
 
 @dataclass
@@ -188,10 +188,10 @@ class Style(Element, m.StdAttrs):
 @dataclass
 class Path(Element, m.StdAttrs):
     element_name = "path"
-    externalResourcesRequired: Optional[Any] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
-    transform: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    transform: Optional[values.Transforms] = None
     d: Optional[Any] = None
     pathLength: Optional[Any] = None
 
@@ -199,14 +199,14 @@ class Path(Element, m.StdAttrs):
 @dataclass
 class Rect(Element, m.StdAttrs):
     element_name = "rect"
-    externalResourcesRequired: Optional[Any] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
-    transform: Optional[Any] = None
-    x: Optional[Any] = None
-    y: Optional[Any] = None
-    width: Optional[Any] = None
-    height: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    transform: Optional[values.Transforms] = None
+    x: Optional[values.Coordinates] = None
+    y: Optional[values.Coordinates] = None
+    width: Optional[values.Length] = None
+    height: Optional[values.Length] = None
     rx: Optional[Any] = None
     ry: Optional[Any] = None
 
@@ -214,10 +214,10 @@ class Rect(Element, m.StdAttrs):
 @dataclass
 class Circle(Element, m.StdAttrs):
     element_name = "circle"
-    externalResourcesRequired: Optional[Any] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
-    transform: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    transform: Optional[values.Transforms] = None
     cx: Optional[Any] = None
     cy: Optional[Any] = None
     r: Optional[Any] = None
@@ -226,10 +226,10 @@ class Circle(Element, m.StdAttrs):
 @dataclass
 class Ellipse(Element, m.StdAttrs):
     element_name = "ellipse"
-    externalResourcesRequired: Optional[Any] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
-    transform: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    transform: Optional[values.Transforms] = None
     cx: Optional[Any] = None
     cy: Optional[Any] = None
     rx: Optional[Any] = None
@@ -239,10 +239,10 @@ class Ellipse(Element, m.StdAttrs):
 @dataclass
 class Line(Element, m.StdAttrs):
     element_name = "line"
-    externalResourcesRequired: Optional[Any] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
-    transform: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    transform: Optional[values.Transforms] = None
     x1: Optional[Any] = None
     y1: Optional[Any] = None
     x2: Optional[Any] = None
@@ -252,32 +252,32 @@ class Line(Element, m.StdAttrs):
 @dataclass
 class Polyline(Element, m.StdAttrs):
     element_name = "polyline"
-    externalResourcesRequired: Optional[Any] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
-    transform: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    transform: Optional[values.Transforms] = None
     points: Optional[Any] = None
 
 
 @dataclass
 class Polygon(Element, m.StdAttrs):
     element_name = "polygon"
-    externalResourcesRequired: Optional[Any] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
-    transform: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    transform: Optional[values.Transforms] = None
     points: Optional[Any] = None
 
 
 @dataclass
 class Text(Element, m.StdAttrs):
     element_name = "text"
-    externalResourcesRequired: Optional[Any] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
-    transform: Optional[Any] = None
-    x: Optional[Any] = None
-    y: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    transform: Optional[values.Transforms] = None
+    x: Optional[values.Coordinates] = None
+    y: Optional[values.Coordinates] = None
     textLength: Optional[Any] = None
     lengthAdjust: Optional[Any] = None
 
@@ -285,11 +285,11 @@ class Text(Element, m.StdAttrs):
 @dataclass
 class TSpan(Element, m.StdAttrs):
     element_name = "tspan"
-    externalResourcesRequired: Optional[Any] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
-    x: Optional[Any] = None
-    y: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    x: Optional[values.Coordinates] = None
+    y: Optional[values.Coordinates] = None
     dx: Optional[Any] = None
     dy: Optional[Any] = None
     rotate: Optional[Any] = None
@@ -300,11 +300,11 @@ class TSpan(Element, m.StdAttrs):
 @dataclass
 class TRef(Element, m.StdAttrs):
     element_name = "tref"
-    externalResourcesRequired: Optional[Any] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
-    x: Optional[Any] = None
-    y: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    x: Optional[values.Coordinates] = None
+    y: Optional[values.Coordinates] = None
     dx: Optional[Any] = None
     dy: Optional[Any] = None
     rotate: Optional[Any] = None
@@ -315,9 +315,9 @@ class TRef(Element, m.StdAttrs):
 @dataclass
 class TextPath(Element, m.StdAttrs):
     element_name = "textPath"
-    externalResourcesRequired: Optional[Any] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
     startOffset: Optional[Any] = None
     textLength: Optional[Any] = None
     lengthAdjust: Optional[Any] = None
@@ -330,11 +330,11 @@ class AltGlyph(Element, m.StdAttrs):
     element_name = "altGlyph"
     glyphRef: Optional[Any] = None
     format: Optional[Any] = None
-    externalResourcesRequired: Optional[Any] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
-    x: Optional[Any] = None
-    y: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    x: Optional[values.Coordinates] = None
+    y: Optional[values.Coordinates] = None
     dx: Optional[Any] = None
     dy: Optional[Any] = None
     rotate: Optional[Any] = None
@@ -355,12 +355,12 @@ class AltGlyphItem(Element, m.StdAttrs):
 @dataclass
 class GlyphRef(Element, m.StdAttrs):
     element_name = "glyphRef"
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
     glyphRef: Optional[Any] = None
     format: Optional[Any] = None
-    x: Optional[Any] = None
-    y: Optional[Any] = None
+    x: Optional[values.Coordinates] = None
+    y: Optional[values.Coordinates] = None
     dx: Optional[Any] = None
     dy: Optional[Any] = None
 
@@ -368,9 +368,9 @@ class GlyphRef(Element, m.StdAttrs):
 @dataclass
 class Marker(Element, m.StdAttrs):
     element_name = "marker"
-    externalResourcesRequired: Optional[Any] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
     viewBox: Optional[Any] = None
     preserveAspectRatio: Optional[Any] = None
     refX: Optional[Any] = None
@@ -392,9 +392,9 @@ class ColorProfile(Element, m.StdAttrs):
 @dataclass
 class LinearGradient(Element, m.StdAttrs):
     element_name = "linearGradient"
-    externalResourcesRequired: Optional[Any] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
     gradientUnits: Optional[Any] = None
     gradientTransform: Optional[Any] = None
     x1: Optional[Any] = None
@@ -407,7 +407,7 @@ class LinearGradient(Element, m.StdAttrs):
 @dataclass
 class RadialGradient(Element, m.StdAttrs):
     element_name = "radialGradient"
-    externalResourcesRequired: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
     gradientUnits: Optional[Any] = None
     gradientTransform: Optional[Any] = None
     cx: Optional[Any] = None
@@ -421,73 +421,73 @@ class RadialGradient(Element, m.StdAttrs):
 @dataclass
 class Stop(Element, m.StdAttrs):
     element_name = "stop"
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
     offset: Optional[Any] = None
 
 
 @dataclass
 class Pattern(Element, m.StdAttrs):
     element_name = "pattern"
-    externalResourcesRequired: Optional[Any] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
     viewBox: Optional[Any] = None
     preserveAspectRatio: Optional[Any] = None
     patternUnits: Optional[Any] = None
     patternTransform: Optional[Any] = None
-    x: Optional[Any] = None
-    y: Optional[Any] = None
-    width: Optional[Any] = None
-    height: Optional[Any] = None
+    x: Optional[values.Coordinates] = None
+    y: Optional[values.Coordinates] = None
+    width: Optional[values.Length] = None
+    height: Optional[values.Length] = None
 
 
 @dataclass
 class ClipPath(Element, m.StdAttrs):
     element_name = "clipPath"
-    externalResourcesRequired: Optional[Any] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
-    transform: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    transform: Optional[values.Transforms] = None
     clipPathUnits: Optional[Any] = None
 
 
 @dataclass
 class Mask(Element, m.StdAttrs):
     element_name = "mask"
-    externalResourcesRequired: Optional[Any] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
-    transform: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    transform: Optional[values.Transforms] = None
     maskUnits: Optional[Any] = None
-    x: Optional[Any] = None
-    y: Optional[Any] = None
-    width: Optional[Any] = None
-    height: Optional[Any] = None
+    x: Optional[values.Coordinates] = None
+    y: Optional[values.Coordinates] = None
+    width: Optional[values.Length] = None
+    height: Optional[values.Length] = None
 
 
 @dataclass
 class Cursor(Element, m.StdAttrs):
     element_name = "cursor"
-    externalResourcesRequired: Optional[Any] = None
-    x: Optional[Any] = None
-    y: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
+    x: Optional[values.Coordinates] = None
+    y: Optional[values.Coordinates] = None
 
 
 @dataclass
 class A(Element, m.StdAttrs):
     element_name = "a"
-    externalResourcesRequired: Optional[Any] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
-    transform: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    transform: Optional[values.Transforms] = None
     target: Optional[Any] = None
 
 
 @dataclass
 class View(Element, m.StdAttrs):
     element_name = "view"
-    externalResourcesRequired: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
     viewBox: Optional[Any] = None
     preserveAspectRatio: Optional[Any] = None
     zoomAndPan: Optional[Any] = None
@@ -497,27 +497,27 @@ class View(Element, m.StdAttrs):
 @dataclass
 class Script(Element, m.StdAttrs):
     element_name = "script"
-    externalResourcesRequired: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
     type: Optional[Any] = None
 
 
 @dataclass
 class Animate(Element, m.StdAttrs):
     element_name = "animate"
-    externalResourcesRequired: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
 
 
 @dataclass
 class Set(Element, m.StdAttrs):
     element_name = "set"
-    externalResourcesRequired: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
     to: Optional[Any] = None
 
 
 @dataclass
 class AnimateMotion(Element, m.StdAttrs):
     element_name = "animateMotion"
-    externalResourcesRequired: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
     path: Optional[Any] = None
     keyPoints: Optional[Any] = None
     rotate: Optional[Any] = None
@@ -527,30 +527,30 @@ class AnimateMotion(Element, m.StdAttrs):
 @dataclass
 class MPath(Element, m.StdAttrs):
     element_name = "mpath"
-    externalResourcesRequired: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
     pass
 
 
 @dataclass
 class AnimateColor(Element, m.StdAttrs):
     element_name = "animateColor"
-    externalResourcesRequired: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
     pass
 
 
 @dataclass
 class AnimateTransform(Element, m.StdAttrs):
     element_name = "animateTransform"
-    externalResourcesRequired: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
     type: Optional[Any] = None
 
 
 @dataclass
 class Font(Element, m.StdAttrs):
     element_name = "font"
-    externalResourcesRequired: Optional[Any] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
     horiz_origin_x: Optional[Any] = None
     horiz_origin_y: Optional[Any] = None
     horiz_adv_x: Optional[Any] = None
@@ -562,8 +562,8 @@ class Font(Element, m.StdAttrs):
 @dataclass
 class Glyph(Element, m.StdAttrs):
     element_name = "glyph"
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
     unicode: Optional[Any] = None
     glyph_name: Optional[Any] = None
     d: Optional[Any] = None
@@ -577,8 +577,8 @@ class Glyph(Element, m.StdAttrs):
 @dataclass
 class MissingGlyph(Element, m.StdAttrs):
     element_name = "missing-glyph"
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
     d: Optional[Any] = None
     horiz_adv_x: Optional[Any] = None
     vert_adv_y: Optional[Any] = None
@@ -679,12 +679,12 @@ class Metadata(Element, m.StdAttrs):
 @dataclass
 class ForeignObject(Element, m.StdAttrs):
     element_name = "foreignObject"
-    externalResourcesRequired: Optional[Any] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
-    transform: Optional[Any] = None
-    x: Optional[Any] = None
-    y: Optional[Any] = None
-    width: Optional[Any] = None
-    height: Optional[Any] = None
-    content: Optional[Any] = None
+    externalResourcesRequired: Optional[bool] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    transform: Optional[values.Transforms] = None
+    x: Optional[values.Coordinates] = None
+    y: Optional[values.Coordinates] = None
+    width: Optional[values.Length] = None
+    height: Optional[values.Length] = None
+    content: Optional[str] = None

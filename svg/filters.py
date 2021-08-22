@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import Any, Optional
-from . import _mixins as m
+from . import _mixins as m, values
 from .elements import Element
 
 
@@ -12,10 +12,10 @@ class Filter(Element, m.StdAttrs):
     style: Optional[Any] = None
     filterUnits: Optional[Any] = None
     primitiveUnits: Optional[Any] = None
-    x: Optional[Any] = None
-    y: Optional[Any] = None
-    width: Optional[Any] = None
-    height: Optional[Any] = None
+    x: Optional[values.Coordinate] = None
+    y: Optional[values.Coordinate] = None
+    width: Optional[values.Length] = None
+    height: Optional[values.Length] = None
     filterRes: Optional[Any] = None
 
 
@@ -29,16 +29,16 @@ class FeDistantLight(Element, m.StdAttrs):
 @dataclass
 class FePointLight(Element, m.StdAttrs):
     element_name = "fePointLight"
-    x: Optional[Any] = None
-    y: Optional[Any] = None
+    x: Optional[values.Coordinate] = None
+    y: Optional[values.Coordinate] = None
     z: Optional[Any] = None
 
 
 @dataclass
 class FeSpotLight(Element, m.StdAttrs):
     element_name = "feSpotLight"
-    x: Optional[Any] = None
-    y: Optional[Any] = None
+    x: Optional[values.Coordinate] = None
+    y: Optional[values.Coordinate] = None
     z: Optional[Any] = None
     pointsAtX: Optional[Any] = None
     pointsAtY: Optional[Any] = None
