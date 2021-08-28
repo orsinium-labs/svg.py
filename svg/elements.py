@@ -161,7 +161,7 @@ class Style(Element):
 @dataclass
 class _FigElements:
     elements: Optional[List[Union[
-        'Animate', 'Set', 'AnimateMotion', 'AnimateColor', 'AnimateTransform',
+        'Animate', 'Set', 'AnimateMotion', 'AnimateTransform',
     ]]] = None
     pathLength: Optional[float] = None
 
@@ -266,8 +266,8 @@ class TSpan(Element):
 class TextPath(Element):
     element_name = "textPath"
     elements: Optional[List[Union[
-        'Desc', 'Title', 'Metadata', 'TSpan', 'AltGlyph',
-        'A', 'Animate', 'Set', 'AnimateColor',
+        'Desc', 'Title', 'Metadata', 'TSpan',
+        'A', 'Animate', 'Set',
     ]]] = None
     externalResourcesRequired: Optional[bool] = None
     startOffset: Optional[str] = None
@@ -278,29 +278,6 @@ class TextPath(Element):
     href: Optional[str] = None
     path: Optional[str] = None
     side: Optional[values.Side] = None
-
-
-@dataclass
-class AltGlyph(Element):
-    element_name = "altGlyph"
-    externalResourcesRequired: Optional[bool] = None
-    x: Optional[values.Coordinate] = None
-    y: Optional[values.Coordinate] = None
-    dx: Optional[values.Coordinate] = None
-    dy: Optional[values.Coordinate] = None
-    rotate: Optional[str] = None
-
-
-@dataclass
-class AltGlyphDef(Element):
-    element_name = "altGlyphDef"
-    pass
-
-
-@dataclass
-class AltGlyphItem(Element):
-    element_name = "altGlyphItem"
-    pass
 
 
 @dataclass
@@ -393,7 +370,7 @@ class ClipPath(Element):
     elements: Optional[List[Union[
         'Path', 'Text', 'Rect', 'Circle', 'Ellipse', 'Line',
         'Polyline', 'Polygon', 'Animate', 'Set',
-        'AnimateMotion', 'AnimateColor', 'AnimateTransform',
+        'AnimateMotion', 'AnimateTransform',
     ]]] = None
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
@@ -467,12 +444,6 @@ class MPath(Element):
     element_name = "mpath"
     externalResourcesRequired: Optional[bool] = None
     pass
-
-
-@dataclass
-class AnimateColor(Element, m.AnimValue):
-    element_name = "animateColor"
-    externalResourcesRequired: Optional[bool] = None
 
 
 @dataclass
