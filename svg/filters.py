@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from typing import Any, List, Optional, Union
-from . import _mixins as m, values, elements as e
+from . import values, elements as e
 from .elements import Element
 
 
 @dataclass
-class Filter(Element, m.StdAttrs):
+class Filter(Element):
     element_name = "filter"
     elements: Optional[List[Union[
         'FeBlend', 'FeFlood', 'FeColorMatrix', 'FeComponentTransfer', 'FeComposite',
@@ -27,14 +27,14 @@ class Filter(Element, m.StdAttrs):
 
 
 @dataclass
-class FeDistantLight(Element, m.StdAttrs):
+class FeDistantLight(Element):
     element_name = "feDistantLight"
     azimuth: Optional[Any] = None
     elevation: Optional[Any] = None
 
 
 @dataclass
-class FePointLight(Element, m.StdAttrs):
+class FePointLight(Element):
     element_name = "fePointLight"
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
@@ -42,7 +42,7 @@ class FePointLight(Element, m.StdAttrs):
 
 
 @dataclass
-class FeSpotLight(Element, m.StdAttrs):
+class FeSpotLight(Element):
     element_name = "feSpotLight"
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
@@ -55,51 +55,51 @@ class FeSpotLight(Element, m.StdAttrs):
 
 
 @dataclass
-class FeBlend(Element, m.StdAttrs):
+class FeBlend(Element):
     element_name = "feBlend"
     in2: Optional[str] = None
     mode: Optional[Any] = None
 
 
 @dataclass
-class FeColorMatrix(Element, m.StdAttrs):
+class FeColorMatrix(Element):
     element_name = "feColorMatrix"
     type: Optional[Any] = None
     values: Optional[str] = None
 
 
 @dataclass
-class FeComponentTransfer(Element, m.StdAttrs):
+class FeComponentTransfer(Element):
     element_name = "feComponentTransfer"
     pass
 
 
 @dataclass
-class FeFuncR(Element, m.StdAttrs):
+class FeFuncR(Element):
     element_name = "feFuncR"
     type2: Optional[Any] = None
 
 
 @dataclass
-class FeFuncG(Element, m.StdAttrs):
+class FeFuncG(Element):
     element_name = "feFuncG"
     type2: Optional[Any] = None
 
 
 @dataclass
-class FeFuncB(Element, m.StdAttrs):
+class FeFuncB(Element):
     element_name = "feFuncB"
     type2: Optional[Any] = None
 
 
 @dataclass
-class FeFuncA(Element, m.StdAttrs):
+class FeFuncA(Element):
     element_name = "feFuncA"
     type3: Optional[Any] = None
 
 
 @dataclass
-class FeComposite(Element, m.StdAttrs):
+class FeComposite(Element):
     element_name = "feComposite"
     in2: Optional[str] = None
     operator: Optional[Any] = None
@@ -110,7 +110,7 @@ class FeComposite(Element, m.StdAttrs):
 
 
 @dataclass
-class FeConvolveMatrix(Element, m.StdAttrs):
+class FeConvolveMatrix(Element):
     element_name = "feConvolveMatrix"
     order: Optional[Any] = None
     kernelMatrix: Optional[str] = None
@@ -124,7 +124,7 @@ class FeConvolveMatrix(Element, m.StdAttrs):
 
 
 @dataclass
-class FeDiffuseLighting(Element, m.StdAttrs):
+class FeDiffuseLighting(Element):
     element_name = "feDiffuseLighting"
     elements: Optional[List[Union[e.Animate, e.Set, e.AnimateColor]]] = None
     class_: Optional[Any] = None
@@ -134,7 +134,7 @@ class FeDiffuseLighting(Element, m.StdAttrs):
 
 
 @dataclass
-class FeDisplacementMap(Element, m.StdAttrs):
+class FeDisplacementMap(Element):
     element_name = "feDisplacementMap"
     in2: Optional[str] = None
     scale: Optional[Any] = None
@@ -143,20 +143,20 @@ class FeDisplacementMap(Element, m.StdAttrs):
 
 
 @dataclass
-class FeFlood(Element, m.StdAttrs):
+class FeFlood(Element):
     element_name = "feFlood"
     class_: Optional[Any] = None
     style: Optional[Any] = None
 
 
 @dataclass
-class FeGaussianBlur(Element, m.StdAttrs):
+class FeGaussianBlur(Element):
     element_name = "feGaussianBlur"
     stdDeviation: Optional[Any] = None
 
 
 @dataclass
-class FeImage(Element, m.StdAttrs):
+class FeImage(Element):
     element_name = "feImage"
     externalResourcesRequired: Optional[Any] = None
     class_: Optional[Any] = None
@@ -165,33 +165,33 @@ class FeImage(Element, m.StdAttrs):
 
 
 @dataclass
-class FeMerge(Element, m.StdAttrs):
+class FeMerge(Element):
     element_name = "feMerge"
     pass
 
 
 @dataclass
-class FeMergeNode(Element, m.StdAttrs):
+class FeMergeNode(Element):
     element_name = "feMergeNode"
     in_: Optional[str] = None
 
 
 @dataclass
-class FeMorphology(Element, m.StdAttrs):
+class FeMorphology(Element):
     element_name = "feMorphology"
     operator: Optional[Any] = None
     radius: Optional[Any] = None
 
 
 @dataclass
-class FeOffset(Element, m.StdAttrs):
+class FeOffset(Element):
     element_name = "feOffset"
     dx: Optional[Any] = None
     dy: Optional[Any] = None
 
 
 @dataclass
-class FeSpecularLighting(Element, m.StdAttrs):
+class FeSpecularLighting(Element):
     element_name = "feSpecularLighting"
     elements: Optional[List[Union[e.Animate, e.Set, e.AnimateColor]]] = None
     class_: Optional[Any] = None
@@ -202,13 +202,13 @@ class FeSpecularLighting(Element, m.StdAttrs):
 
 
 @dataclass
-class FeTile(Element, m.StdAttrs):
+class FeTile(Element):
     element_name = "feTile"
     pass
 
 
 @dataclass
-class FeTurbulence(Element, m.StdAttrs):
+class FeTurbulence(Element):
     element_name = "feTurbulence"
     baseFrequency: Optional[str] = None
     numOctaves: Optional[Any] = None

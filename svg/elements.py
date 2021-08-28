@@ -7,6 +7,11 @@ from . import _mixins as m, values, enums
 class Element:
     element_name: str
 
+    id: Optional[str] = None
+    tabindex: Optional[int] = None
+    xml__base: Optional[str] = None
+    xml__lang: Optional[str] = None
+
     @classmethod
     def _as_str(cls, val: Any) -> str:
         if val is None:
@@ -48,7 +53,6 @@ class Element:
 @dataclass
 class SVG(
     Element,
-    m.StdAttrs,
     m.Presentation,
     m.GraphicsElementEvents,
     m.DocumentEvents,
@@ -71,7 +75,6 @@ class SVG(
 @dataclass
 class G(
     Element,
-    m.StdAttrs,
     m.Presentation,
     m.GraphicsElementEvents,
 ):
@@ -85,7 +88,6 @@ class G(
 @dataclass
 class Defs(
     Element,
-    m.StdAttrs,
     m.Presentation,
     m.GraphicsElementEvents,
 ):
@@ -97,7 +99,7 @@ class Defs(
 
 
 @dataclass
-class Desc(Element, m.StdAttrs):
+class Desc(Element):
     element_name = "desc"
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
@@ -105,7 +107,7 @@ class Desc(Element, m.StdAttrs):
 
 
 @dataclass
-class Title(Element, m.StdAttrs):
+class Title(Element):
     element_name = "title"
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
@@ -115,7 +117,6 @@ class Title(Element, m.StdAttrs):
 @dataclass
 class Symbol(
     Element,
-    m.StdAttrs,
     m.Presentation,
     m.GraphicsElementEvents,
 ):
@@ -130,7 +131,6 @@ class Symbol(
 @dataclass
 class Image(
     Element,
-    m.StdAttrs,
     m.Color,
     m.Graphics,
     m.Viewports,
@@ -148,7 +148,7 @@ class Image(
 
 
 @dataclass
-class Switch(Element, m.StdAttrs):
+class Switch(Element):
     element_name = "switch"
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
@@ -157,7 +157,7 @@ class Switch(Element, m.StdAttrs):
 
 
 @dataclass
-class Style(Element, m.StdAttrs):
+class Style(Element):
     element_name = "style"
     type: Optional[values.ContentType] = None
     media: Optional[values.MediaDesc] = None
@@ -172,7 +172,7 @@ class _FigElements:
 
 
 @dataclass
-class Path(Element, m.StdAttrs, _FigElements):
+class Path(Element, _FigElements):
     element_name = "path"
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
@@ -183,7 +183,7 @@ class Path(Element, m.StdAttrs, _FigElements):
 
 
 @dataclass
-class Rect(Element, m.StdAttrs, _FigElements):
+class Rect(Element, _FigElements):
     element_name = "rect"
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
@@ -198,7 +198,7 @@ class Rect(Element, m.StdAttrs, _FigElements):
 
 
 @dataclass
-class Circle(Element, m.StdAttrs, _FigElements):
+class Circle(Element, _FigElements):
     element_name = "circle"
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
@@ -210,7 +210,7 @@ class Circle(Element, m.StdAttrs, _FigElements):
 
 
 @dataclass
-class Ellipse(Element, m.StdAttrs, _FigElements):
+class Ellipse(Element, _FigElements):
     element_name = "ellipse"
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
@@ -223,7 +223,7 @@ class Ellipse(Element, m.StdAttrs, _FigElements):
 
 
 @dataclass
-class Line(Element, m.StdAttrs, _FigElements):
+class Line(Element, _FigElements):
     element_name = "line"
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
@@ -236,7 +236,7 @@ class Line(Element, m.StdAttrs, _FigElements):
 
 
 @dataclass
-class Polyline(Element, m.StdAttrs, _FigElements):
+class Polyline(Element, _FigElements):
     element_name = "polyline"
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
@@ -246,7 +246,7 @@ class Polyline(Element, m.StdAttrs, _FigElements):
 
 
 @dataclass
-class Polygon(Element, m.StdAttrs, _FigElements):
+class Polygon(Element, _FigElements):
     element_name = "polygon"
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
@@ -256,7 +256,7 @@ class Polygon(Element, m.StdAttrs, _FigElements):
 
 
 @dataclass
-class Text(Element, m.StdAttrs):
+class Text(Element):
     element_name = "text"
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
@@ -269,7 +269,7 @@ class Text(Element, m.StdAttrs):
 
 
 @dataclass
-class TSpan(Element, m.StdAttrs):
+class TSpan(Element):
     element_name = "tspan"
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
@@ -284,7 +284,7 @@ class TSpan(Element, m.StdAttrs):
 
 
 @dataclass
-class TextPath(Element, m.StdAttrs):
+class TextPath(Element):
     element_name = "textPath"
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
@@ -297,7 +297,7 @@ class TextPath(Element, m.StdAttrs):
 
 
 @dataclass
-class AltGlyph(Element, m.StdAttrs):
+class AltGlyph(Element):
     element_name = "altGlyph"
     glyphRef: Optional[str] = None
     externalResourcesRequired: Optional[bool] = None
@@ -311,19 +311,19 @@ class AltGlyph(Element, m.StdAttrs):
 
 
 @dataclass
-class AltGlyphDef(Element, m.StdAttrs):
+class AltGlyphDef(Element):
     element_name = "altGlyphDef"
     pass
 
 
 @dataclass
-class AltGlyphItem(Element, m.StdAttrs):
+class AltGlyphItem(Element):
     element_name = "altGlyphItem"
     pass
 
 
 @dataclass
-class GlyphRef(Element, m.StdAttrs):
+class GlyphRef(Element):
     element_name = "glyphRef"
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
@@ -335,7 +335,7 @@ class GlyphRef(Element, m.StdAttrs):
 
 
 @dataclass
-class Marker(Element, m.StdAttrs):
+class Marker(Element):
     element_name = "marker"
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
@@ -351,7 +351,7 @@ class Marker(Element, m.StdAttrs):
 
 
 @dataclass
-class ColorProfile(Element, m.StdAttrs):
+class ColorProfile(Element):
     element_name = "color-profile"
     local: Optional[str] = None
     rendering_intent: Optional[Any] = None
@@ -367,7 +367,7 @@ class _Gradient:
 
 
 @dataclass
-class LinearGradient(Element, m.StdAttrs, _Gradient):
+class LinearGradient(Element, _Gradient):
     element_name = "linearGradient"
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
@@ -378,7 +378,7 @@ class LinearGradient(Element, m.StdAttrs, _Gradient):
 
 
 @dataclass
-class RadialGradient(Element, m.StdAttrs, _Gradient):
+class RadialGradient(Element, _Gradient):
     element_name = "radialGradient"
     cx: Optional[values.Length] = None
     cy: Optional[values.Length] = None
@@ -388,7 +388,7 @@ class RadialGradient(Element, m.StdAttrs, _Gradient):
 
 
 @dataclass
-class Stop(Element, m.StdAttrs):
+class Stop(Element):
     element_name = "stop"
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
@@ -396,7 +396,7 @@ class Stop(Element, m.StdAttrs):
 
 
 @dataclass
-class Pattern(Element, m.StdAttrs):
+class Pattern(Element):
     element_name = "pattern"
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
@@ -412,7 +412,7 @@ class Pattern(Element, m.StdAttrs):
 
 
 @dataclass
-class ClipPath(Element, m.StdAttrs):
+class ClipPath(Element):
     element_name = "clipPath"
     elements: Optional[List[Union[
         'Path', 'Text', 'Rect', 'Circle', 'Ellipse', 'Line',
@@ -427,7 +427,7 @@ class ClipPath(Element, m.StdAttrs):
 
 
 @dataclass
-class Mask(Element, m.StdAttrs):
+class Mask(Element):
     element_name = "mask"
     elements: Optional[List[Element]] = None
     externalResourcesRequired: Optional[bool] = None
@@ -442,7 +442,7 @@ class Mask(Element, m.StdAttrs):
 
 
 @dataclass
-class A(Element, m.StdAttrs):
+class A(Element):
     element_name = "a"
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
@@ -452,7 +452,7 @@ class A(Element, m.StdAttrs):
 
 
 @dataclass
-class View(Element, m.StdAttrs):
+class View(Element):
     element_name = "view"
     externalResourcesRequired: Optional[bool] = None
     viewBox: Optional[Any] = None
@@ -462,27 +462,27 @@ class View(Element, m.StdAttrs):
 
 
 @dataclass
-class Script(Element, m.StdAttrs):
+class Script(Element):
     element_name = "script"
     externalResourcesRequired: Optional[bool] = None
     type: Optional[Any] = None
 
 
 @dataclass
-class Animate(Element, m.StdAttrs):
+class Animate(Element):
     element_name = "animate"
     externalResourcesRequired: Optional[bool] = None
 
 
 @dataclass
-class Set(Element, m.StdAttrs):
+class Set(Element):
     element_name = "set"
     externalResourcesRequired: Optional[bool] = None
     to: Optional[str] = None
 
 
 @dataclass
-class AnimateMotion(Element, m.StdAttrs):
+class AnimateMotion(Element):
     element_name = "animateMotion"
     externalResourcesRequired: Optional[bool] = None
     path: Optional[str] = None
@@ -492,40 +492,40 @@ class AnimateMotion(Element, m.StdAttrs):
 
 
 @dataclass
-class MPath(Element, m.StdAttrs):
+class MPath(Element):
     element_name = "mpath"
     externalResourcesRequired: Optional[bool] = None
     pass
 
 
 @dataclass
-class AnimateColor(Element, m.StdAttrs):
+class AnimateColor(Element):
     element_name = "animateColor"
     externalResourcesRequired: Optional[bool] = None
     pass
 
 
 @dataclass
-class AnimateTransform(Element, m.StdAttrs):
+class AnimateTransform(Element):
     element_name = "animateTransform"
     externalResourcesRequired: Optional[bool] = None
     type: Optional[enums.TransformType] = None
 
 
 @dataclass
-class DefinitionSrc(Element, m.StdAttrs):
+class DefinitionSrc(Element):
     element_name = "definition-src"
     pass
 
 
 @dataclass
-class Metadata(Element, m.StdAttrs):
+class Metadata(Element):
     element_name = "metadata"
     pass
 
 
 @dataclass
-class ForeignObject(Element, m.StdAttrs):
+class ForeignObject(Element):
     element_name = "foreignObject"
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None

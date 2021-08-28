@@ -8,11 +8,6 @@ class AttrsMixin:
 
 
 @dataclass
-class StdAttrs(AttrsMixin):
-    id: Optional[str] = None
-
-
-@dataclass
 class GraphicsElementEvents(AttrsMixin):
     onfocusin: Optional[str] = None
     onfocusout: Optional[str] = None
