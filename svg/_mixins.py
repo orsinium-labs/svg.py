@@ -69,16 +69,41 @@ class FontSpecification(AttrsMixin):
     font_family: Optional[values.FontFamily] = None
     font_size: Optional[values.FontSize] = None
     font_size_adjust: Optional[values.FontSizeAdjust] = None
-    font_stretch: Optional[Literal[
-        "normal", "wider", "narrower", "ultra-condensed", "extra-condensed",
-        "semi-condensed", "semi-expanded", "expanded", "extra-expanded", "ultra-expanded", "inherit",
-    ]] = None
+    font_stretch: Optional[
+        Literal[
+            "normal",
+            "wider",
+            "narrower",
+            "ultra-condensed",
+            "extra-condensed",
+            "semi-condensed",
+            "semi-expanded",
+            "expanded",
+            "extra-expanded",
+            "ultra-expanded",
+            "inherit",
+        ]
+    ] = None
     font_style: Optional[Literal["normal", "italic", "oblique", "inherit"]] = None
     font_variant: Optional[Literal["normal", "small-caps", "inherit"]] = None
-    font_weight: Optional[Literal[
-        "normal", "bold", "bolder", "lighter", "inherit",
-        "100", "200", "300", "400", "500", "600", "700", "800", "900",
-    ]] = None
+    font_weight: Optional[
+        Literal[
+            "normal",
+            "bold",
+            "bolder",
+            "lighter",
+            "inherit",
+            "100",
+            "200",
+            "300",
+            "400",
+            "500",
+            "600",
+            "700",
+            "800",
+            "900",
+        ]
+    ] = None
 
 
 @dataclass
@@ -91,23 +116,47 @@ class Gradients(AttrsMixin):
 class Graphics(AttrsMixin):
     clip_path: Optional[values.ClipPath] = None
     clip_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
-    cursor: Optional[Literal[
-        "auto", "crosshair", "default", "pointer", "move",
-        "e-resize", "ne-resize", "nw-resize", "n-resize", "se-resize", "sw-resize", "s-resize", "w-resize",
-        "text", "wait", "help", "inherit",
-    ]] = None
+    cursor: Optional[
+        Literal[
+            "auto",
+            "crosshair",
+            "default",
+            "pointer",
+            "move",
+            "e-resize",
+            "ne-resize",
+            "nw-resize",
+            "n-resize",
+            "se-resize",
+            "sw-resize",
+            "s-resize",
+            "w-resize",
+            "text",
+            "wait",
+            "help",
+            "inherit",
+        ]
+    ] = None
     display: Optional[str] = None  # TODO
     filter: Optional[values.Filter] = None
-    image_rendering: Optional[Literal["auto", "optimizeSpeed", "optimizeQuality", "inherit"]] = None
+    image_rendering: Optional[
+        Literal["auto", "optimizeSpeed", "optimizeQuality", "inherit"]
+    ] = None
     mask: Optional[values.Mask] = None
     opacity: Optional[values.Opacity] = None
-    pointer_events: Optional[str] = None     # TODO
-    shape_rendering: Optional[str] = None    # TODO
-    text_rendering: Optional[str] = None     # TODO
+    pointer_events: Optional[str] = None  # TODO
+    shape_rendering: Optional[str] = None  # TODO
+    text_rendering: Optional[str] = None  # TODO
     visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
-    vector_effect: Optional[Literal[
-        "none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position",
-    ]] = None
+    vector_effect: Optional[
+        Literal[
+            "none",
+            "non-scaling-stroke",
+            "non-scaling-size",
+            "non-rotation",
+            "fixed-position",
+        ]
+    ] = None
 
 
 class Images:
@@ -128,18 +177,45 @@ class Markers(AttrsMixin):
 
 @dataclass
 class TextContentElements(AttrsMixin):
-    alignment_baseline: Optional[Literal[
-        "baseline", "top", "before-edge", "text-top", "text-before-edge", "middle", "bottom",
-        "after-edge", "text-bottom", "text-after-edge", "ideographic", "lower", "hanging",
-        "mathematical", "inherit",
-    ]] = None
+    alignment_baseline: Optional[
+        Literal[
+            "baseline",
+            "top",
+            "before-edge",
+            "text-top",
+            "text-before-edge",
+            "middle",
+            "bottom",
+            "after-edge",
+            "text-bottom",
+            "text-after-edge",
+            "ideographic",
+            "lower",
+            "hanging",
+            "mathematical",
+            "inherit",
+        ]
+    ] = None
     baseline_shift: Optional[Literal["baseline", "sub", "super", "inherit"]] = None
     direction: Optional[Literal["ltr", "rtl", "inherit"]] = None
-    dominant_baseline: Optional[Literal["auto", "autosense-script", "no-change",
-                                        "reset", "ideographic", "lower", "hanging", "mathematical", "inherit"]] = None
+    dominant_baseline: Optional[
+        Literal[
+            "auto",
+            "autosense-script",
+            "no-change",
+            "reset",
+            "ideographic",
+            "lower",
+            "hanging",
+            "mathematical",
+            "inherit",
+        ]
+    ] = None
     letter_spacing: Optional[Literal["auto", "exact"]] = None
     text_anchor: Optional[Literal["start", "middle", "end", "inherit"]] = None
-    text_decoration: Optional[Literal["none", "underline", "overline", "line-through"]] = None
+    text_decoration: Optional[
+        Literal["none", "underline", "overline", "line-through"]
+    ] = None
     unicode_bidi: Optional[str] = None  # TODO
     word_spacing: Optional[Literal["auto", "exact"]] = None
 
@@ -215,5 +291,6 @@ class Animation(AttrsMixin):
     min: Optional[str] = None
     max: Optional[str] = None
     restart: Optional[Literal["always", "never", "whenNotActive"]] = None
+
 
 # TODO: descTitleMetadata

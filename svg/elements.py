@@ -10,6 +10,7 @@ class Element:
     """
     https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/Core
     """
+
     element_name: ClassVar[str]
 
     id: Optional[str] = None
@@ -26,13 +27,13 @@ class Element:
     @classmethod
     def _as_str(cls, val: Any) -> str:
         if val is None:
-            return ''
+            return ""
         if isinstance(val, Element):
             return str(val)
         if isinstance(val, Enum):
             return val.value
         if isinstance(val, (list, tuple)):
-            return ','.join(cls._as_str(v) for v in val)
+            return ",".join(cls._as_str(v) for v in val)
         return str(val)
 
     def as_dict(self) -> Dict[str, str]:
@@ -40,22 +41,22 @@ class Element:
         for key, val in asdict(self).items():
             if val is None:
                 continue
-            if key == 'elements':
+            if key == "elements":
                 continue
-            key = key.rstrip('_')
-            key = key.replace('__', ':')
-            key = key.replace('_', '-')
+            key = key.rstrip("_")
+            key = key.replace("__", ":")
+            key = key.replace("_", "-")
             result[key] = self._as_str(val)
         return result
 
     def as_str(self) -> str:
-        props = ' '.join(f'{k}="{v}"' for k, v in self.as_dict().items())
+        props = " ".join(f'{k}="{v}"' for k, v in self.as_dict().items())
         elements: Optional[List[Element]]
-        elements = getattr(self, 'elements', None)
+        elements = getattr(self, "elements", None)
         if elements:
-            content = ''.join(self._as_str(e) for e in elements)
-            return f'<{self.element_name} {props}>{content}</{self.element_name}>'
-        return f'<{self.element_name} {props}/>'
+            content = "".join(self._as_str(e) for e in elements)
+            return f"<{self.element_name} {props}>{content}</{self.element_name}>"
+        return f"<{self.element_name} {props}/>"
 
     def __str__(self) -> str:
         return self.as_str()
@@ -68,7 +69,7 @@ class SVG(
     m.GraphicsElementEvents,
     m.DocumentEvents,
 ):
-    element_name = 'svg'
+    element_name = "svg"
     elements: Optional[List[Element]] = None
     viewBox: Optional[values.ViewBoxSpec] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
@@ -164,9 +165,16 @@ class Style(Element):
 
 @dataclass
 class _FigElements:
-    elements: Optional[List[Union[
-        'Animate', 'Set', 'AnimateMotion', 'AnimateTransform',
-    ]]] = None
+    elements: Optional[
+        List[
+            Union[
+                "Animate",
+                "Set",
+                "AnimateMotion",
+                "AnimateTransform",
+            ]
+        ]
+    ] = None
     pathLength: Optional[float] = None
     paint_order: Optional[Literal["normal", "fill", "stroke", "markers"]] = None
 
@@ -270,10 +278,19 @@ class TSpan(Element, m.FontSpecification):
 @dataclass
 class TextPath(Element, m.FontSpecification):
     element_name = "textPath"
-    elements: Optional[List[Union[
-        'Desc', 'Title', 'Metadata', 'TSpan',
-        'A', 'Animate', 'Set',
-    ]]] = None
+    elements: Optional[
+        List[
+            Union[
+                "Desc",
+                "Title",
+                "Metadata",
+                "TSpan",
+                "A",
+                "Animate",
+                "Set",
+            ]
+        ]
+    ] = None
     externalResourcesRequired: Optional[bool] = None
     startOffset: Optional[str] = None
     textLength: Optional[values.Length] = None
@@ -308,7 +325,7 @@ class ColorProfile(Element):
 
 @dataclass
 class _Gradient:
-    elements: Optional[List[Union['Stop', 'Animate', 'Set', 'AnimateTransform']]] = None
+    elements: Optional[List[Union["Stop", "Animate", "Set", "AnimateTransform"]]] = None
     externalResourcesRequired: Optional[bool] = None
     gradientUnits: Optional[Any] = None
     gradientTransform: Optional[Any] = None
@@ -363,11 +380,24 @@ class Pattern(Element):
 @dataclass
 class ClipPath(Element):
     element_name = "clipPath"
-    elements: Optional[List[Union[
-        'Path', 'Text', 'Rect', 'Circle', 'Ellipse', 'Line',
-        'Polyline', 'Polygon', 'Animate', 'Set',
-        'AnimateMotion', 'AnimateTransform',
-    ]]] = None
+    elements: Optional[
+        List[
+            Union[
+                "Path",
+                "Text",
+                "Rect",
+                "Circle",
+                "Ellipse",
+                "Line",
+                "Polyline",
+                "Polygon",
+                "Animate",
+                "Set",
+                "AnimateMotion",
+                "AnimateTransform",
+            ]
+        ]
+    ] = None
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
     clipPathUnits: Optional[Any] = None
@@ -480,9 +510,16 @@ class Use(
     m.GraphicsElementEvents,
 ):
     element_name = "use"
-    elements: Optional[List[Union[
-        'Set', 'Animate', 'AnimateMotion', 'AnimateTransform',
-    ]]] = None
+    elements: Optional[
+        List[
+            Union[
+                "Set",
+                "Animate",
+                "AnimateMotion",
+                "AnimateTransform",
+            ]
+        ]
+    ] = None
     href: Optional[str] = None
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None

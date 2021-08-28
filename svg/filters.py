@@ -8,13 +8,30 @@ from typing_extensions import Literal
 @dataclass
 class Filter(Element, m.FilterPrimitive):
     element_name = "filter"
-    elements: Optional[List[Union[
-        'FeBlend', 'FeFlood', 'FeColorMatrix', 'FeComponentTransfer', 'FeComposite',
-        'FeConvolveMatrix', 'FeDiffuseLighting',
-        'FeDisplacementMap', 'FeGaussianBlur', 'FeImage', 'FeMerge',
-        'FeMorphology', 'FeOffset', 'FeSpecularLighting',
-        'FeTile', 'FeTurbulence', e.Animate, e.Set,
-    ]]] = None
+    elements: Optional[
+        List[
+            Union[
+                "FeBlend",
+                "FeFlood",
+                "FeColorMatrix",
+                "FeComponentTransfer",
+                "FeComposite",
+                "FeConvolveMatrix",
+                "FeDiffuseLighting",
+                "FeDisplacementMap",
+                "FeGaussianBlur",
+                "FeImage",
+                "FeMerge",
+                "FeMorphology",
+                "FeOffset",
+                "FeSpecularLighting",
+                "FeTile",
+                "FeTurbulence",
+                e.Animate,
+                e.Set,
+            ]
+        ]
+    ] = None
     externalResourcesRequired: Optional[Any] = None
     filterUnits: Optional[Any] = None
     primitiveUnits: Optional[Any] = None
