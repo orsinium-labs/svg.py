@@ -23,7 +23,8 @@ def run() -> None:
     svg_ref_root = mdn_root / 'files' / 'en-us' / 'web' / 'svg'
     out_path = POJECT_ROOT / 'tests' / 'fixtures' / 'all_attrs.txt'
     with out_path.open('w') as out_stream:
-        for attr in get_attrs(svg_ref_root / 'attribute'):
+        attrs = sorted(set(get_attrs(svg_ref_root / 'attribute')))
+        for attr in attrs:
             print(attr, file=out_stream)
 
 
