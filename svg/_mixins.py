@@ -44,11 +44,6 @@ class Color(AttrsMixin):
 
 
 @dataclass
-class Containers(AttrsMixin):
-    enable_background: Optional[values.EnableBackground] = None
-
-
-@dataclass
 class FeFlood(AttrsMixin):
     flood_color: Optional[str] = None
     flood_opacity: Optional[values.Opacity] = None
@@ -129,8 +124,6 @@ class TextContentElements(AttrsMixin):
     baseline_shift: Optional[enums.BaselineShift] = None
     direction: Optional[enums.TextDirection] = None
     dominant_baseline: Optional[enums.DominantBaseline] = None
-    glyph_orientation_horizontal: Optional[values.GlyphOrientationHorizontal] = None
-    glyph_orientation_vertical: Optional[values.GlyphOrientationVertical] = None
     letter_spacing: Optional[enums.TextSpacing] = None
     text_anchor: Optional[enums.TextAnchor] = None
     text_decoration: Optional[enums.TextDecoration] = None
@@ -151,7 +144,6 @@ class Viewports(AttrsMixin):
 
 class Presentation(
     Color,
-    Containers,
     FeFlood,
     FillStroke,
     FilterPrimitives,
@@ -182,7 +174,6 @@ class FilterPrimitive(AttrsMixin):
 class ComponentTransferFunction(AttrsMixin):
     type: enums.ComponentTransferType
     tableValues: Optional[str] = None
-    slope: Optional[float] = None
     intercept: Optional[float] = None
     amplitude: Optional[float] = None
     exponent: Optional[float] = None

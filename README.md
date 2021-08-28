@@ -6,7 +6,8 @@ Features:
 
 + Compatible with all SVG standards: 1.1, 1.2, 2.0, Tiny.
 + 100% type safe.
-+ Pure Python
++ Pure Python.
 + No third-party runtime dependencies.
++ No deprecated attributes, only what actually works.
 
 Based on [svg-xsd-schema](https://github.com/dumistoklus/svg-xsd-schema/blob/master/svg.xsd).

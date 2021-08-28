@@ -633,7 +633,6 @@ class FontFace(Element, m.StdAttrs):
     panose_1: Optional[str] = None
     stemv: Optional[float] = None
     stemh: Optional[float] = None
-    slope: Optional[float] = None
     cap_height: Optional[float] = None
     x_height: Optional[float] = None
     accent_height: Optional[float] = None
