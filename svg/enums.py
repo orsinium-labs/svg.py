@@ -302,3 +302,12 @@ class CalcMode(Enum):
     LINEAR = 'linear'
     PACED = 'paced'
     SPLINE = 'spline'
+
+
+class EdgeMode(Enum):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/edgeMode
+    """
+    DUPLICATE = "duplicate"
+    WRAP = "wrap"
+    NONE = "none"

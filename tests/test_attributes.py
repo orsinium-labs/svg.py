@@ -22,6 +22,7 @@ def get_attrs(cls) -> Set[str]:
         key = key.rstrip('_')
         key = key.replace('__', ':')
         key = key.replace('_', '-')
+        key = key.lower()
         result.add(key)
     return result
 
@@ -52,7 +53,7 @@ def test_no_deprecated__elements(cls: svg.elements.Element, name: str):
 @pytest.mark.parametrize('name', ALL)
 def test_has_attr(name: str):
     el_name, attr_name = name.split('.')
-    if attr_name in DEPRECATED:
+    if attr_name.lower() in DEPRECATED:
         pytest.skip()
     element = get_element(el_name)
     attrs = get_attrs(element)

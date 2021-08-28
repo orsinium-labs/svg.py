@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from svg import enums
 from typing import Any, List, Optional, Union
 from . import _mixins as m, values, elements as e
 from .elements import Element
@@ -116,7 +117,7 @@ class FeConvolveMatrix(Element, m.FilterPrimitive):
     bias: Optional[Any] = None
     targetX: Optional[Any] = None
     targetY: Optional[Any] = None
-    edgeMode: Optional[Any] = None
+    edgeMode: Optional[enums.EdgeMode] = None
     kernelUnitLength: Optional[str] = None
     preserveAlpha: Optional[Any] = None
 
@@ -141,13 +142,15 @@ class FeDisplacementMap(Element, m.FilterPrimitive):
 @dataclass
 class FeFlood(Element, m.FilterPrimitive):
     element_name = "feFlood"
+    flood_opacity: Optional[values.Opacity] = None
+    flood_color: Optional[values.SVGColor] = None
 
 
 @dataclass
 class FeGaussianBlur(Element, m.FilterPrimitive):
     element_name = "feGaussianBlur"
     stdDeviation: Optional[values.NumberOptionalNumber] = None
-    edgeMode: Optional[Any] = None
+    edgeMode: Optional[enums.EdgeMode] = None
 
 
 @dataclass
@@ -155,6 +158,7 @@ class FeImage(Element, m.FilterPrimitive):
     element_name = "feImage"
     externalResourcesRequired: Optional[Any] = None
     transform: Optional[Any] = None
+    preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
 
 
 @dataclass
