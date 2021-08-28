@@ -149,7 +149,7 @@ class Image(
 
 
 @dataclass
-class Switch(Element):
+class Switch(Element, m.Color):
     element_name = "switch"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
@@ -180,7 +180,7 @@ class _FigElements:
 
 
 @dataclass
-class Path(Element, _FigElements):
+class Path(Element, _FigElements, m.Color):
     element_name = "path"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
@@ -188,7 +188,7 @@ class Path(Element, _FigElements):
 
 
 @dataclass
-class Rect(Element, _FigElements):
+class Rect(Element, _FigElements, m.Color):
     element_name = "rect"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
@@ -201,7 +201,7 @@ class Rect(Element, _FigElements):
 
 
 @dataclass
-class Circle(Element, _FigElements):
+class Circle(Element, _FigElements, m.Color):
     element_name = "circle"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
@@ -211,7 +211,7 @@ class Circle(Element, _FigElements):
 
 
 @dataclass
-class Ellipse(Element, _FigElements):
+class Ellipse(Element, _FigElements, m.Color):
     element_name = "ellipse"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
@@ -222,7 +222,7 @@ class Ellipse(Element, _FigElements):
 
 
 @dataclass
-class Line(Element, _FigElements):
+class Line(Element, _FigElements, m.Color):
     element_name = "line"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
@@ -233,7 +233,7 @@ class Line(Element, _FigElements):
 
 
 @dataclass
-class Polyline(Element, _FigElements):
+class Polyline(Element, _FigElements, m.Color):
     element_name = "polyline"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
@@ -241,7 +241,7 @@ class Polyline(Element, _FigElements):
 
 
 @dataclass
-class Polygon(Element, _FigElements):
+class Polygon(Element, _FigElements, m.Color):
     element_name = "polygon"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
@@ -249,7 +249,7 @@ class Polygon(Element, _FigElements):
 
 
 @dataclass
-class Text(Element, m.FontSpecification):
+class Text(Element, m.FontSpecification, m.TextContentElements, m.Color):
     element_name = "text"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
@@ -263,7 +263,7 @@ class Text(Element, m.FontSpecification):
 
 
 @dataclass
-class TSpan(Element, m.FontSpecification):
+class TSpan(Element, m.FontSpecification, m.TextContentElements, m.Color):
     element_name = "tspan"
     externalResourcesRequired: Optional[bool] = None
     x: Optional[values.Coordinate] = None
@@ -276,7 +276,7 @@ class TSpan(Element, m.FontSpecification):
 
 
 @dataclass
-class TextPath(Element, m.FontSpecification):
+class TextPath(Element, m.FontSpecification, m.TextContentElements, m.Color):
     element_name = "textPath"
     elements: Optional[
         List[
@@ -303,7 +303,7 @@ class TextPath(Element, m.FontSpecification):
 
 
 @dataclass
-class Marker(Element):
+class Marker(Element, m.Color):
     element_name = "marker"
     externalResourcesRequired: Optional[bool] = None
     viewBox: Optional[values.ViewBoxSpec] = None
@@ -334,7 +334,7 @@ class _Gradient:
 
 
 @dataclass
-class LinearGradient(Element, _Gradient):
+class LinearGradient(Element, _Gradient, m.Color):
     element_name = "linearGradient"
     x1: Optional[values.Coordinate] = None
     y1: Optional[values.Coordinate] = None
@@ -343,7 +343,7 @@ class LinearGradient(Element, _Gradient):
 
 
 @dataclass
-class RadialGradient(Element, _Gradient):
+class RadialGradient(Element, _Gradient, m.Color):
     element_name = "radialGradient"
     cx: Optional[values.Length] = None
     cy: Optional[values.Length] = None
@@ -362,7 +362,7 @@ class Stop(Element):
 
 
 @dataclass
-class Pattern(Element):
+class Pattern(Element, m.Color):
     element_name = "pattern"
     externalResourcesRequired: Optional[bool] = None
     viewBox: Optional[Any] = None
@@ -378,7 +378,7 @@ class Pattern(Element):
 
 
 @dataclass
-class ClipPath(Element):
+class ClipPath(Element, m.Color):
     element_name = "clipPath"
     elements: Optional[
         List[
@@ -404,7 +404,7 @@ class ClipPath(Element):
 
 
 @dataclass
-class Mask(Element):
+class Mask(Element, m.Color):
     element_name = "mask"
     elements: Optional[List[Element]] = None
     externalResourcesRequired: Optional[bool] = None
@@ -418,7 +418,7 @@ class Mask(Element):
 
 
 @dataclass
-class A(Element):
+class A(Element, m.Color):
     element_name = "a"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
@@ -443,7 +443,7 @@ class Script(Element):
 
 
 @dataclass
-class Animate(Element, m.Animation):
+class Animate(Element, m.Animation, m.Color):
     element_name = "animate"
     externalResourcesRequired: Optional[bool] = None
 
@@ -453,6 +453,7 @@ class Set(Element):
     element_name = "set"
     externalResourcesRequired: Optional[bool] = None
     to: Optional[str] = None
+    min: Optional[str] = None
 
 
 @dataclass
@@ -492,7 +493,7 @@ class Metadata(Element):
 
 
 @dataclass
-class ForeignObject(Element):
+class ForeignObject(Element, m.Color):
     element_name = "foreignObject"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None

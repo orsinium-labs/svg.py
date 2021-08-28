@@ -11,6 +11,7 @@ from svg._mixins import AttrsMixin
 FIXTURES = Path(__file__).parent / 'fixtures'
 REF_DEPRECATED = (FIXTURES / 'deprecated_attrs.txt').read_text().split()
 REF_BY_ELEMENT = (FIXTURES / 'attrs.txt').read_text().split()
+REF_ELEMENTS = (FIXTURES / 'elements.txt').read_text().split()
 REF_ALL = (FIXTURES / 'all_attrs.txt').read_text().split()
 
 REF_DEPRECATED.extend([
@@ -24,6 +25,7 @@ REF_DEPRECATED.extend([
 
     # not supported by any browser
     'crossorigin',
+    'systemLanguage',
 ])
 
 
@@ -76,6 +78,18 @@ def test_no_deprecated__elements(cls: svg.elements.Element, name: str):
 def test_element_has_attr(name: str):
     el_name, attr_name = name.split('.')
     if attr_name.lower() in REF_DEPRECATED:
+        pytest.skip()
+    element = get_element(el_name)
+    attrs = get_attrs(element)
+    assert attr_name in attrs
+
+
+@pytest.mark.parametrize('name', REF_ELEMENTS)
+def test_attr_is_in_elements(name: str):
+    attr_name, el_name = name.split('.')
+    if attr_name.lower() in REF_DEPRECATED:
+        pytest.skip()
+    if attr_name.replace(':', '_colon_') in REF_DEPRECATED:
         pytest.skip()
     element = get_element(el_name)
     attrs = get_attrs(element)
