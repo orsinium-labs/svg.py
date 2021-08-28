@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from typing import Optional
+from typing_extensions import Literal
 from . import enums, values
 
 
@@ -174,15 +175,27 @@ class ComponentTransferFunction(AttrsMixin):
 
 
 @dataclass
-class AnimValue(AttrsMixin):
+class Animation(AttrsMixin):
+    # Animation value attributes
     calcMode: Optional[enums.CalcMode] = None
     values: Optional[str] = None
     keyTimes: Optional[str] = None
     keySplines: Optional[str] = None
-    by: Optional[str] = None
     from_: Optional[str] = None
     to: Optional[str] = None
+    by: Optional[str] = None
 
+    # Animation target element attributes
+    href: Optional[str] = None
 
-# TODO: anim*Attrs
+    # Animation addition attributes
+    additive: Optional[Literal["replace", "sum"]] = None
+    accumulate: Optional[Literal["none", "sum"]] = None
+    begin: Optional[str] = None
+    dur: Optional[str] = None
+    end: Optional[str] = None
+    min: Optional[str] = None
+    max: Optional[str] = None
+    restart: Optional[Literal["always", "never", "whenNotActive"]] = None
+
 # TODO: descTitleMetadata

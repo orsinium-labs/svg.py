@@ -73,25 +73,25 @@ class FeComponentTransfer(Element, m.FilterPrimitive):
 
 
 @dataclass
-class FeFuncR(Element, m.FilterPrimitive):
+class FeFuncR(Element, m.FilterPrimitive, m.ComponentTransferFunction):
     element_name = "feFuncR"
     type2: Optional[Any] = None
 
 
 @dataclass
-class FeFuncG(Element, m.FilterPrimitive):
+class FeFuncG(Element, m.FilterPrimitive, m.ComponentTransferFunction):
     element_name = "feFuncG"
     type2: Optional[Any] = None
 
 
 @dataclass
-class FeFuncB(Element, m.FilterPrimitive):
+class FeFuncB(Element, m.FilterPrimitive, m.ComponentTransferFunction):
     element_name = "feFuncB"
     type2: Optional[Any] = None
 
 
 @dataclass
-class FeFuncA(Element, m.FilterPrimitive):
+class FeFuncA(Element, m.FilterPrimitive, m.ComponentTransferFunction):
     element_name = "feFuncA"
     type3: Optional[Any] = None
 

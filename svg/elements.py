@@ -13,6 +13,7 @@ class Element:
 
     id: Optional[str] = None
     tabindex: Optional[int] = None
+    lang: Optional[str] = None
     xml__lang: Optional[str] = None
 
     # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/Styling
@@ -408,7 +409,7 @@ class Script(Element):
 
 
 @dataclass
-class Animate(Element, m.AnimValue):
+class Animate(Element, m.Animation):
     element_name = "animate"
     externalResourcesRequired: Optional[bool] = None
 
@@ -421,7 +422,7 @@ class Set(Element):
 
 
 @dataclass
-class AnimateMotion(Element, m.AnimValue):
+class AnimateMotion(Element, m.Animation):
     element_name = "animateMotion"
     externalResourcesRequired: Optional[bool] = None
     path: Optional[str] = None
@@ -438,7 +439,7 @@ class MPath(Element):
 
 
 @dataclass
-class AnimateTransform(Element, m.AnimValue):
+class AnimateTransform(Element, m.Animation):
     element_name = "animateTransform"
     externalResourcesRequired: Optional[bool] = None
     type: Optional[enums.TransformType] = None
