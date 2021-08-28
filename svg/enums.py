@@ -305,3 +305,11 @@ class EdgeMode(Enum):
     DUPLICATE = "duplicate"
     WRAP = "wrap"
     NONE = "none"
+
+
+class VectorEffect(Enum):
+    NONE = "none"
+    NON_SCALING_STROKE = "non-scaling-stroke"
+    NON_SCALING_SIZE = "non-scaling-size"
+    NON_ROTATION = "non-rotation"
+    FIXED_POSITION = "fixed-position"

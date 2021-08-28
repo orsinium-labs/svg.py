@@ -13,6 +13,19 @@ REF_DEPRECATED = (FIXTURES / 'deprecated_attrs.txt').read_text().split()
 REF_BY_ELEMENT = (FIXTURES / 'attrs.txt').read_text().split()
 REF_ALL = (FIXTURES / 'all_attrs.txt').read_text().split()
 
+REF_DEPRECATED.extend([
+    # attributes of <font-face> which is deprecated
+    'underline-thickness',
+    'underline-position',
+    'overline-thickness',
+    'overline-position',
+    'strikethrough-thickness',
+    'strikethrough-position',
+
+    # not supported by any browser
+    'crossorigin',
+])
+
 
 def get_attrs(cls) -> Set[str]:
     result = set()

@@ -70,7 +70,7 @@ class FontSpecification(AttrsMixin):
     font_size: Optional[values.FontSize] = None
     font_size_adjust: Optional[values.FontSizeAdjust] = None
     font_stretch: Optional[enums.FontStretch] = None
-    font_style = enums.FontStyle
+    font_style: Optional[enums.FontStyle] = None
     font_variant: Optional[enums.FontValiant] = None
     font_weight: Optional[enums.FontWeight] = None
 
@@ -95,6 +95,7 @@ class Graphics(AttrsMixin):
     shape_rendering: Optional[str] = None    # TODO
     text_rendering: Optional[str] = None     # TODO
     visibility: Optional[enums.Visibility] = None
+    vector_effect: Optional[enums.VectorEffect] = None
 
 
 class Images:

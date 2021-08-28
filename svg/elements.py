@@ -1,6 +1,6 @@
 from dataclasses import dataclass, asdict
 from enum import Enum
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Literal, Optional, Union
 from . import _mixins as m, values, enums
 
 
@@ -15,6 +15,8 @@ class Element:
     tabindex: Optional[int] = None
     lang: Optional[str] = None
     xml__lang: Optional[str] = None
+
+    transform_origin: Optional[str] = None
 
     # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/Styling
     class_: Optional[values.Classes] = None
@@ -165,6 +167,7 @@ class _FigElements:
         'Animate', 'Set', 'AnimateMotion', 'AnimateTransform',
     ]]] = None
     pathLength: Optional[float] = None
+    paint_order: Optional[Literal["normal", "fill", "stroke", "markers"]] = None
 
 
 @dataclass
@@ -237,7 +240,7 @@ class Polygon(Element, _FigElements):
 
 
 @dataclass
-class Text(Element):
+class Text(Element, m.FontSpecification):
     element_name = "text"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
@@ -251,7 +254,7 @@ class Text(Element):
 
 
 @dataclass
-class TSpan(Element):
+class TSpan(Element, m.FontSpecification):
     element_name = "tspan"
     externalResourcesRequired: Optional[bool] = None
     x: Optional[values.Coordinate] = None
@@ -264,7 +267,7 @@ class TSpan(Element):
 
 
 @dataclass
-class TextPath(Element):
+class TextPath(Element, m.FontSpecification):
     element_name = "textPath"
     elements: Optional[List[Union[
         'Desc', 'Title', 'Metadata', 'TSpan',
