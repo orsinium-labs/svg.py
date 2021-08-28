@@ -173,5 +173,16 @@ class ComponentTransferFunction(AttrsMixin):
     offset: Optional[float] = None
 
 
+@dataclass
+class AnimValue(AttrsMixin):
+    calcMode: Optional[enums.CalcMode] = None
+    values: Optional[str] = None
+    keyTimes: Optional[str] = None
+    keySplines: Optional[str] = None
+    by: Optional[str] = None
+    from_: Optional[str] = None
+    to: Optional[str] = None
+
+
 # TODO: anim*Attrs
 # TODO: descTitleMetadata

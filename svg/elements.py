@@ -298,6 +298,10 @@ class TSpan(Element):
 @dataclass
 class TextPath(Element):
     element_name = "textPath"
+    elements: Optional[List[Union[
+        'Desc', 'Title', 'Metadata', 'TSpan', 'AltGlyph',
+        'A', 'Animate', 'Set', 'AnimateColor',
+    ]]] = None
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
@@ -306,6 +310,9 @@ class TextPath(Element):
     lengthAdjust: Optional[enums.LengthAdjust] = None
     method: Optional[enums.TextPathMethod] = None
     spacing: Optional[enums.TextSpacing] = None
+    href: Optional[str] = None
+    path: Optional[str] = None
+    side: Optional[values.Side] = None
 
 
 @dataclass
@@ -376,6 +383,7 @@ class _Gradient:
     gradientUnits: Optional[Any] = None
     gradientTransform: Optional[Any] = None
     spreadMethod: Optional[Any] = None
+    href: Optional[str] = None
 
 
 @dataclass
@@ -395,6 +403,7 @@ class RadialGradient(Element, _Gradient):
     cx: Optional[values.Length] = None
     cy: Optional[values.Length] = None
     r: Optional[values.Length] = None
+    fr: Optional[values.Length] = None
     fx: Optional[Any] = None
     fy: Optional[Any] = None
 
@@ -488,7 +497,7 @@ class Script(Element):
 
 
 @dataclass
-class Animate(Element):
+class Animate(Element, m.AnimValue):
     element_name = "animate"
     externalResourcesRequired: Optional[bool] = None
 
@@ -501,7 +510,7 @@ class Set(Element):
 
 
 @dataclass
-class AnimateMotion(Element):
+class AnimateMotion(Element, m.AnimValue):
     element_name = "animateMotion"
     externalResourcesRequired: Optional[bool] = None
     path: Optional[str] = None
@@ -518,14 +527,13 @@ class MPath(Element):
 
 
 @dataclass
-class AnimateColor(Element):
+class AnimateColor(Element, m.AnimValue):
     element_name = "animateColor"
     externalResourcesRequired: Optional[bool] = None
-    pass
 
 
 @dataclass
-class AnimateTransform(Element):
+class AnimateTransform(Element, m.AnimValue):
     element_name = "animateTransform"
     externalResourcesRequired: Optional[bool] = None
     type: Optional[enums.TransformType] = None

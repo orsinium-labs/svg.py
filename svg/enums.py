@@ -292,3 +292,13 @@ class ContentUnits(Enum):
     """
     USER_SPACE_ON_USE = "userSpaceOnUse"
     OBJECT_BOUNDING_BOX = "objectBoundingBox"
+
+
+class CalcMode(Enum):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/calcMode
+    """
+    DISCRETE = 'discrete'
+    LINEAR = 'linear'
+    PACED = 'paced'
+    SPLINE = 'spline'

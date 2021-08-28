@@ -51,6 +51,8 @@ def test_no_deprecated__elements(cls: svg.elements.Element, name: str):
 
 @pytest.mark.parametrize('name', ALL)
 def test_has_attr(name: str):
+    if name.startswith('fe'):
+        pytest.skip()
     el_name, attr_name = name.split('.')
     if attr_name in DEPRECATED:
         pytest.skip()
