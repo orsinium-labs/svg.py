@@ -40,7 +40,6 @@ class DocumentEvents(AttrsMixin):
 class Color(AttrsMixin):
     color: Optional[str] = None
     color_interpolation: Optional[enums.ColorInterpolation] = None
-    color_rendering: Optional[enums.Rendering] = None
 
 
 @dataclass
@@ -138,7 +137,6 @@ class TextElements(AttrsMixin):
 
 @dataclass
 class Viewports(AttrsMixin):
-    clip: Optional[values.Clip] = None
     overflow: Optional[enums.Overflow] = None
 
 

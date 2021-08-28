@@ -592,9 +592,6 @@ class FontFace(Element, m.StdAttrs):
     font_weight: Optional[str] = None
     font_stretch: Optional[str] = None
     font_size: Optional[Any] = None
-    accent_height: Optional[float] = None
-    ascent: Optional[float] = None
-    bbox: Optional[str] = None
     baseline: Optional[float] = None
     centerline: Optional[float] = None
     mathline: Optional[float] = None

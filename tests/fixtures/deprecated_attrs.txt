@@ -8,8 +8,10 @@ vert-adv-y
 cap-height
 xlink_colon_show
 g2
+color-rendering
 attributetype
 glyphref
+accent-height
 string
 g1
 xlink_colon_title
@@ -20,6 +22,7 @@ v-hanging
 xlink_colon_type
 slope
 unicode
+alphabetic
 u1
 xml_colon_space
 baseprofile
@@ -29,8 +32,13 @@ zoomandpan
 kernelunitlength
 xml_colon_base
 orientation
+ascent
+contentscripttype
+filterres
 stemv
 version
+bbox
+contentstyletype
 v-alphabetic
 horiz-origin-x
 vert-origin-y
@@ -47,6 +55,7 @@ name
 arabic-form
 units-per-em
 widths
+clip
 viewtarget
 x-height
 descent

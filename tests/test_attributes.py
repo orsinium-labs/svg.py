@@ -9,7 +9,7 @@ from svg._mixins import AttrsMixin
 
 
 FIXTURES = Path(__file__).parent / 'fixtures'
-DEPRECATED = (FIXTURES / 'deprecated.txt').read_text().split()
+DEPRECATED = (FIXTURES / 'deprecated_attrs.txt').read_text().split()
 
 
 def get_attrs(cls) -> Set[str]:
