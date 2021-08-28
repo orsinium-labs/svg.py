@@ -282,3 +282,13 @@ class TextPathMethod(Enum):
 class TextSpacing(Enum):
     AUTO = "auto"
     EXACT = "exact"
+
+
+class ContentUnits(Enum):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternContentUnits
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternUnits
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/maskContentUnits
+    """
+    USER_SPACE_ON_USE = "userSpaceOnUse"
+    OBJECT_BOUNDING_BOX = "objectBoundingBox"

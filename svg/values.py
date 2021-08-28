@@ -83,6 +83,7 @@ Opacity = Union[Number, INHERIT]
 StrokeDashArray = Union[str, List[Number]]
 StrokeDashOffset = Union[NONE, Length]
 StrokeWidth = Union[Number, Length]
+Rotation = Union[Number, AUTO, Literal["auto-reverse"]]
 
 # str union
 ClipPath = Union[URI, AUTO, INHERIT, NONE]

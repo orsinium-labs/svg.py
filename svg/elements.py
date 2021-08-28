@@ -5,6 +5,9 @@ from . import _mixins as m, values, enums
 
 
 class Element:
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/Core
+    """
     element_name: str
 
     id: Optional[str] = None
@@ -126,6 +129,12 @@ class Symbol(
     style: Optional[values.StyleSheet] = None
     viewBox: Optional[values.ViewBoxSpec] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
+    refX: Optional[values.Coordinate] = None
+    refY: Optional[values.Coordinate] = None
+    x: Optional[values.Coordinate] = None
+    y: Optional[values.Coordinate] = None
+    width: Optional[values.Length] = None
+    height: Optional[values.Length] = None
 
 
 @dataclass
@@ -169,6 +178,7 @@ class _FigElements:
     elements: Optional[List[Union[
         'Animate', 'Set', 'AnimateMotion', 'AnimateColor', 'AnimateTransform',
     ]]] = None
+    pathLength: Optional[float] = None
 
 
 @dataclass
@@ -179,7 +189,6 @@ class Path(Element, _FigElements):
     style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
     d: Optional[List[values.PathData]] = None
-    pathLength: Optional[float] = None
 
 
 @dataclass
@@ -264,6 +273,9 @@ class Text(Element):
     transform: Optional[values.Transforms] = None
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
+    dx: Optional[values.Coordinate] = None
+    dy: Optional[values.Coordinate] = None
+    rotate: Optional[values.Rotation] = None
     textLength: Optional[values.Length] = None
     lengthAdjust: Optional[enums.LengthAdjust] = None
 
@@ -403,12 +415,14 @@ class Pattern(Element):
     style: Optional[values.StyleSheet] = None
     viewBox: Optional[Any] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
-    patternUnits: Optional[Any] = None
+    patternUnits: Optional[enums.ContentUnits] = None
     patternTransform: Optional[Any] = None
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
+    patternContentUnits: Optional[enums.ContentUnits] = None
+    href: Optional[str] = None
 
 
 @dataclass
@@ -439,6 +453,7 @@ class Mask(Element):
     y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
+    maskContentUnits: Optional[enums.ContentUnits] = None
 
 
 @dataclass
@@ -449,6 +464,7 @@ class A(Element):
     style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
     target: Optional[Any] = None
+    href: Optional[str] = None
 
 
 @dataclass
@@ -466,6 +482,7 @@ class Script(Element):
     element_name = "script"
     externalResourcesRequired: Optional[bool] = None
     type: Optional[Any] = None
+    href: Optional[str] = None
 
 
 @dataclass
