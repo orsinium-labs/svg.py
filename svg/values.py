@@ -16,7 +16,7 @@ Number = Union[Decimal, float, int]
 @dataclass
 class Angle:
     value: Number
-    unit: Literal["deg", "grad", "rad"] = Literal["deg", "grad", "rad"].DEFAULT
+    unit: Literal["deg", "grad", "rad"]
 
     def __str__(self) -> str:
         return f"{self.value}{self.unit}"
@@ -25,9 +25,7 @@ class Angle:
 @dataclass
 class Length:
     value: Number
-    unit: Literal["em", "ex", "px", "pt", "pc", "cm", "mm", "in"] = Literal[
-        "em", "ex", "px", "pt", "pc", "cm", "mm", "in"
-    ].DEFAULT
+    unit: Literal["em", "ex", "px", "pt", "pc", "cm", "mm", "in"]
 
     def __str__(self) -> str:
         return f"{self.value}{self.unit}"
@@ -59,19 +57,8 @@ class PreserveAspectRatio:
         "xMinYMax",
         "xMidYMax",
         "xMaxYMax",
-    ] = Literal[
-        "none",
-        "xMinYMin",
-        "xMidYMin",
-        "xMaxYMin",
-        "xMinYMid",
-        "xMidYMid",
-        "xMaxYMid",
-        "xMinYMax",
-        "xMidYMax",
-        "xMaxYMax",
-    ].X_MID_Y_MID
-    scale_type: Literal["meet", "slice"] = Literal["meet", "slice"].MEET
+    ] = "xMidYMid"
+    scale_type: Literal["meet", "slice"] = "meet"
 
 
 @dataclass
