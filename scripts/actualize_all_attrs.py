@@ -11,7 +11,11 @@ def get_attrs(path: Path) -> Iterator[str]:
     assert path.is_file()
     content = path.read_text()
     for match in REX_ATTR.finditer(content):
-        yield match.group(1)
+        attr = match.group(1)
+        ref_path = path.parent / attr / 'index.html'
+        if not ref_path.is_file():
+            continue
+        yield attr
 
 
 def run() -> None:
