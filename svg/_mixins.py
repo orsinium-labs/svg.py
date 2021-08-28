@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 from typing import Optional
-from typing_extensions import Literal
 from . import enums, values
 
 
@@ -190,13 +189,13 @@ class Animation(AttrsMixin):
     href: Optional[str] = None
 
     # Animation addition attributes
-    additive: Optional[Literal["replace", "sum"]] = None
-    accumulate: Optional[Literal["none", "sum"]] = None
+    additive: Optional[enums.Additive] = None
+    accumulate: Optional[enums.Accumulate] = None
     begin: Optional[str] = None
     dur: Optional[str] = None
     end: Optional[str] = None
     min: Optional[str] = None
     max: Optional[str] = None
-    restart: Optional[Literal["always", "never", "whenNotActive"]] = None
+    restart: Optional[enums.Restart] = None
 
 # TODO: descTitleMetadata

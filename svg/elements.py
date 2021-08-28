@@ -1,6 +1,6 @@
 from dataclasses import dataclass, asdict
 from enum import Enum
-from typing import Any, ClassVar, Dict, List, Literal, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from . import _mixins as m, values, enums
 
 
@@ -167,7 +167,7 @@ class _FigElements:
         'Animate', 'Set', 'AnimateMotion', 'AnimateTransform',
     ]]] = None
     pathLength: Optional[float] = None
-    paint_order: Optional[Literal["normal", "fill", "stroke", "markers"]] = None
+    paint_order: Optional[enums.PaintOrder] = None
 
 
 @dataclass

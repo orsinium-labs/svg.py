@@ -313,3 +313,26 @@ class VectorEffect(Enum):
     NON_SCALING_SIZE = "non-scaling-size"
     NON_ROTATION = "non-rotation"
     FIXED_POSITION = "fixed-position"
+
+
+class PaintOrder(Enum):
+    NORMAL = "normal"
+    FILL = "fill"
+    STROKE = "stroke"
+    MARKERS = "markers"
+
+
+class Restart(Enum):
+    ALWAYS = "always"
+    NEVER = "never"
+    WHEN_NOT_ACTIVE = "whenNotActive"
+
+
+class Additive(Enum):
+    REPLACE = "replace"
+    SUM = "sum"
+
+
+class Accumulate(Enum):
+    NONE = "none"
+    SUM = "sum"
