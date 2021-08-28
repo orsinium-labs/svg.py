@@ -405,6 +405,8 @@ class Stop(Element):
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
     offset: Optional[values.Length] = None
+    stop_opacity: Optional[values.Opacity] = None
+    stop_color: Optional[values.SVGColor] = None
 
 
 @dataclass

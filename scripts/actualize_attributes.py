@@ -5,7 +5,7 @@ from typing import Iterator
 POJECT_ROOT = Path(__file__).parent.parent.absolute()
 
 
-REX_ATTR = re.compile(re.escape('<dt>{{SVGAttr("') + '(.+)' + re.escape('")}}</dt>'))
+REX_ATTR = re.compile(re.escape('>{{SVGAttr("') + '([a-zA-Z-]+)' + re.escape('")}}</'))
 
 
 def get_attrs(path: Path) -> Iterator[str]:
