@@ -53,6 +53,7 @@ class SVG(
     m.GraphicsElementEvents,
     m.DocumentEvents,
 ):
+    element_name = 'svg'
     elements: Optional[List[Element]] = None
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
@@ -124,27 +125,6 @@ class Symbol(
     style: Optional[values.StyleSheet] = None
     viewBox: Optional[values.ViewBoxSpec] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
-
-
-@dataclass
-class Use(
-    Element,
-    m.StdAttrs,
-    m.Presentation,
-    m.GraphicsElementEvents,
-):
-    element_name = "use"
-    elements: Optional[List[Union[
-        'Set', 'Animate', 'AnimateMotion', 'AnimateColor', 'AnimateTransform',
-    ]]] = None
-    href: Optional[str] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
-    transform: Optional[values.Transforms] = None
-    x: Optional[values.Coordinate] = None
-    y: Optional[values.Coordinate] = None
-    width: Optional[values.Length] = None
-    height: Optional[values.Length] = None
 
 
 @dataclass
@@ -304,21 +284,6 @@ class TSpan(Element, m.StdAttrs):
 
 
 @dataclass
-class TRef(Element, m.StdAttrs):
-    element_name = "tref"
-    externalResourcesRequired: Optional[bool] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
-    x: Optional[values.Coordinate] = None
-    y: Optional[values.Coordinate] = None
-    dx: Optional[values.Coordinate] = None
-    dy: Optional[values.Coordinate] = None
-    rotate: Optional[str] = None
-    textLength: Optional[values.Length] = None
-    lengthAdjust: Optional[enums.LengthAdjust] = None
-
-
-@dataclass
 class TextPath(Element, m.StdAttrs):
     element_name = "textPath"
     externalResourcesRequired: Optional[bool] = None
@@ -451,7 +416,7 @@ class ClipPath(Element, m.StdAttrs):
     element_name = "clipPath"
     elements: Optional[List[Union[
         'Path', 'Text', 'Rect', 'Circle', 'Ellipse', 'Line',
-        'Polyline', 'Polygon', 'Use', 'Animate', 'Set',
+        'Polyline', 'Polygon', 'Animate', 'Set',
         'AnimateMotion', 'AnimateColor', 'AnimateTransform',
     ]]] = None
     externalResourcesRequired: Optional[bool] = None
@@ -474,14 +439,6 @@ class Mask(Element, m.StdAttrs):
     y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
-
-
-@dataclass
-class Cursor(Element, m.StdAttrs):
-    element_name = "cursor"
-    externalResourcesRequired: Optional[bool] = None
-    x: Optional[values.Coordinate] = None
-    y: Optional[values.Coordinate] = None
 
 
 @dataclass
@@ -553,67 +510,6 @@ class AnimateTransform(Element, m.StdAttrs):
     element_name = "animateTransform"
     externalResourcesRequired: Optional[bool] = None
     type: Optional[enums.TransformType] = None
-
-
-@dataclass
-class Font(Element, m.StdAttrs):
-    element_name = "font"
-    elements: Optional[List['Glyph']] = None
-    externalResourcesRequired: Optional[bool] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
-
-
-@dataclass
-class Glyph(Element, m.StdAttrs):
-    element_name = "glyph"
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
-    d: Optional[List[values.PathData]] = None
-    vert_text_orient: Optional[str] = None
-    arabic: Optional[str] = None
-    han: Optional[str] = None
-
-
-@dataclass
-class MissingGlyph(Element, m.StdAttrs):
-    element_name = "missing-glyph"
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
-    d: Optional[List[values.PathData]] = None
-
-
-@dataclass
-class FontFace(Element, m.StdAttrs):
-    element_name = "font-face"
-    font_family: Optional[values.FontFamily] = None
-    font_style: Optional[str] = None
-    font_variant: Optional[str] = None
-    font_weight: Optional[str] = None
-    font_stretch: Optional[str] = None
-    font_size: Optional[Any] = None
-    baseline: Optional[float] = None
-    centerline: Optional[float] = None
-    mathline: Optional[float] = None
-    topline: Optional[float] = None
-    underline_position: Optional[float] = None
-    underline_thickness: Optional[float] = None
-    strikethrough_position: Optional[float] = None
-    strikethrough_thickness: Optional[float] = None
-    overline_position: Optional[float] = None
-    overline_thickness: Optional[float] = None
-
-
-@dataclass
-class FontFaceSrc(Element, m.StdAttrs):
-    element_name = "font-face-src"
-    pass
-
-
-@dataclass
-class FontFaceURI(Element, m.StdAttrs):
-    element_name = "font-face-uri"
-    pass
 
 
 @dataclass
