@@ -65,7 +65,6 @@ class SVG(
     height: Optional[values.Length] = None
     contentScriptType: Optional[str] = None
     contentStyleType: Optional[str] = None
-    version: Optional[str] = None
 
 
 @dataclass
@@ -336,7 +335,6 @@ class TextPath(Element, m.StdAttrs):
 class AltGlyph(Element, m.StdAttrs):
     element_name = "altGlyph"
     glyphRef: Optional[str] = None
-    format: Optional[str] = None
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
@@ -365,7 +363,6 @@ class GlyphRef(Element, m.StdAttrs):
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
     glyphRef: Optional[str] = None
-    format: Optional[str] = None
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
     dx: Optional[values.Coordinate] = None
@@ -392,7 +389,6 @@ class Marker(Element, m.StdAttrs):
 class ColorProfile(Element, m.StdAttrs):
     element_name = "color-profile"
     local: Optional[str] = None
-    name: Optional[str] = None
     rendering_intent: Optional[Any] = None
 
 
@@ -562,16 +558,10 @@ class AnimateTransform(Element, m.StdAttrs):
 @dataclass
 class Font(Element, m.StdAttrs):
     element_name = "font"
-    elements: Optional[List[Union['Glyph', 'HKern', 'VKern']]] = None
+    elements: Optional[List['Glyph']] = None
     externalResourcesRequired: Optional[bool] = None
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
-    horiz_origin_x: Optional[float] = None
-    horiz_origin_y: Optional[float] = None
-    horiz_adv_x: Optional[float] = None
-    vert_origin_x: Optional[float] = None
-    vert_origin_y: Optional[float] = None
-    vert_adv_y: Optional[float] = None
 
 
 @dataclass
@@ -579,14 +569,10 @@ class Glyph(Element, m.StdAttrs):
     element_name = "glyph"
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
-    unicode: Optional[str] = None
-    glyph_name: Optional[str] = None
     d: Optional[List[values.PathData]] = None
     vert_text_orient: Optional[str] = None
     arabic: Optional[str] = None
     han: Optional[str] = None
-    horiz_adv_x: Optional[float] = None
-    vert_adv_y: Optional[float] = None
 
 
 @dataclass
@@ -595,28 +581,6 @@ class MissingGlyph(Element, m.StdAttrs):
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
     d: Optional[List[values.PathData]] = None
-    horiz_adv_x: Optional[float] = None
-    vert_adv_y: Optional[float] = None
-
-
-@dataclass
-class HKern(Element, m.StdAttrs):
-    element_name = "hkern"
-    u1: Optional[str] = None
-    g1: Optional[str] = None
-    u2: Optional[str] = None
-    g2: Optional[str] = None
-    k: Optional[float] = None
-
-
-@dataclass
-class VKern(Element, m.StdAttrs):
-    element_name = "vkern"
-    u1: Optional[str] = None
-    g1: Optional[str] = None
-    u2: Optional[str] = None
-    g2: Optional[str] = None
-    k: Optional[float] = None
 
 
 @dataclass
@@ -628,23 +592,12 @@ class FontFace(Element, m.StdAttrs):
     font_weight: Optional[str] = None
     font_stretch: Optional[str] = None
     font_size: Optional[Any] = None
-    unicode_range: Optional[str] = None
-    units_per_em: Optional[float] = None
-    panose_1: Optional[str] = None
-    stemv: Optional[float] = None
-    stemh: Optional[float] = None
-    cap_height: Optional[float] = None
-    x_height: Optional[float] = None
     accent_height: Optional[float] = None
     ascent: Optional[float] = None
-    descent: Optional[float] = None
-    widths: Optional[str] = None
     bbox: Optional[str] = None
-    ideographic: Optional[float] = None
     baseline: Optional[float] = None
     centerline: Optional[float] = None
     mathline: Optional[float] = None
-    hanging: Optional[float] = None
     topline: Optional[float] = None
     underline_position: Optional[float] = None
     underline_thickness: Optional[float] = None
@@ -664,18 +617,6 @@ class FontFaceSrc(Element, m.StdAttrs):
 class FontFaceURI(Element, m.StdAttrs):
     element_name = "font-face-uri"
     pass
-
-
-@dataclass
-class FontFaceFormat(Element, m.StdAttrs):
-    element_name = "font-face-format"
-    string: Optional[str] = None
-
-
-@dataclass
-class FontFaceName(Element, m.StdAttrs):
-    element_name = "font-face-name"
-    name: Optional[str] = None
 
 
 @dataclass

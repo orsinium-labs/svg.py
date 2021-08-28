@@ -27,7 +27,15 @@ def get_attrs(cls) -> Set[str]:
 
 @pytest.mark.parametrize('cls', AttrsMixin.__subclasses__())
 @pytest.mark.parametrize('name', DEPRECATED)
-def test_no_deprecated_mixins(cls: AttrsMixin, name: str):
+def test_no_deprecated__mixins(cls: AttrsMixin, name: str):
     name = name.replace('_colon_', ':')
     attrs = get_attrs(cls)
     assert name not in attrs
+
+
+@pytest.mark.parametrize('cls', svg.elements.Element.__subclasses__())
+@pytest.mark.parametrize('name', DEPRECATED)
+def test_no_deprecated__elements(cls: svg.elements.Element, name: str):
+    name = name.replace('_colon_', ':')
+    attrs = get_attrs(cls)
+    assert name not in attrs, name.replace('-', '_')
