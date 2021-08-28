@@ -1,9 +1,6 @@
-cursor
 font-face-format
-radialgradient
 glyph
 glyphref
-lineargradient
 font-face-uri
 font-face-name
 font-face
@@ -13,7 +10,6 @@ altglyphitem
 font-face-src
 tref
 hkern
-use
 altglyphdef
 vkern
 font

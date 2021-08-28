@@ -8,9 +8,9 @@ def is_deprecated(path: Path) -> bool:
     if not path.is_file():
         return False
     content = path.read_text()
-    if '{{Deprecated_Header}}' in content:
+    if '{{Deprecated_Header}}</div>' in content:
         return True
-    if '{{deprecated_header}}' in content:
+    if '{{deprecated_header}}</div>' in content:
         return True
     return False
 

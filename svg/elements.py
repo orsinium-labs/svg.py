@@ -281,15 +281,6 @@ class TextPath(Element):
 
 
 @dataclass
-class GlyphRef(Element):
-    element_name = "glyphRef"
-    x: Optional[values.Coordinate] = None
-    y: Optional[values.Coordinate] = None
-    dx: Optional[values.Coordinate] = None
-    dy: Optional[values.Coordinate] = None
-
-
-@dataclass
 class Marker(Element):
     element_name = "marker"
     externalResourcesRequired: Optional[bool] = None
@@ -475,3 +466,31 @@ class ForeignObject(Element):
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
     content: Optional[str] = None
+
+
+@dataclass
+class Use(
+    Element,
+    m.Presentation,
+    m.GraphicsElementEvents,
+):
+    element_name = "use"
+    elements: Optional[List[Union[
+        'Set', 'Animate', 'AnimateMotion', 'AnimateTransform',
+    ]]] = None
+    href: Optional[str] = None
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
+    transform: Optional[values.Transforms] = None
+    x: Optional[values.Coordinate] = None
+    y: Optional[values.Coordinate] = None
+    width: Optional[values.Length] = None
+    height: Optional[values.Length] = None
+
+
+@dataclass
+class Cursor(Element):
+    element_name = "cursor"
+    externalResourcesRequired: Optional[bool] = None
+    x: Optional[values.Coordinate] = None
+    y: Optional[values.Coordinate] = None

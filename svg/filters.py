@@ -123,7 +123,7 @@ class FeConvolveMatrix(Element, m.FilterPrimitive):
 @dataclass
 class FeDiffuseLighting(Element, m.FilterPrimitive):
     element_name = "feDiffuseLighting"
-    elements: Optional[List[Union[e.Animate, e.Set, e.AnimateColor]]] = None
+    elements: Optional[List[Union[e.Animate, e.Set]]] = None
     surfaceScale: Optional[Any] = None
     diffuseConstant: Optional[Any] = None
 
@@ -188,7 +188,7 @@ class FeOffset(Element, m.FilterPrimitive):
 @dataclass
 class FeSpecularLighting(Element, m.FilterPrimitive):
     element_name = "feSpecularLighting"
-    elements: Optional[List[Union[e.Animate, e.Set, e.AnimateColor]]] = None
+    elements: Optional[List[Union[e.Animate, e.Set]]] = None
     surfaceScale: Optional[Any] = None
     specularConstant: Optional[Any] = None
     specularExponent: Optional[Any] = None
