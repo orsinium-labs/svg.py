@@ -255,12 +255,6 @@ class ComponentTransferType(Enum):
     GAMMA = "gamma"
 
 
-class ZoomAndPan(Enum):
-    DISABLE = "disable"
-    MAGNIFY = "magnify"
-    ZOOM = "zoom"
-
-
 class TransformType(Enum):
     TRANSLATE = "translate"
     SCALE = "scale"

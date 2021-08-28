@@ -68,13 +68,10 @@ class SVG(
     elements: Optional[List[Element]] = None
     viewBox: Optional[values.ViewBoxSpec] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
-    zoomAndPan: Optional[enums.ZoomAndPan] = None
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
-    contentScriptType: Optional[str] = None
-    contentStyleType: Optional[str] = None
 
 
 @dataclass
@@ -286,7 +283,6 @@ class TextPath(Element):
 @dataclass
 class AltGlyph(Element):
     element_name = "altGlyph"
-    glyphRef: Optional[str] = None
     externalResourcesRequired: Optional[bool] = None
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
@@ -310,7 +306,6 @@ class AltGlyphItem(Element):
 @dataclass
 class GlyphRef(Element):
     element_name = "glyphRef"
-    glyphRef: Optional[str] = None
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
     dx: Optional[values.Coordinate] = None
@@ -434,8 +429,6 @@ class View(Element):
     externalResourcesRequired: Optional[bool] = None
     viewBox: Optional[Any] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
-    zoomAndPan: Optional[Any] = None
-    viewTarget: Optional[str] = None
 
 
 @dataclass

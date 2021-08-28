@@ -22,7 +22,6 @@ class Filter(Element, m.FilterPrimitive):
     y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
-    filterRes: Optional[str] = None
 
 
 @dataclass
@@ -118,7 +117,6 @@ class FeConvolveMatrix(Element, m.FilterPrimitive):
     targetX: Optional[Any] = None
     targetY: Optional[Any] = None
     edgeMode: Optional[enums.EdgeMode] = None
-    kernelUnitLength: Optional[str] = None
     preserveAlpha: Optional[Any] = None
 
 

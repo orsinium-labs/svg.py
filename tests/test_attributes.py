@@ -22,7 +22,6 @@ def get_attrs(cls) -> Set[str]:
         key = key.rstrip('_')
         key = key.replace('__', ':')
         key = key.replace('_', '-')
-        key = key.lower()
         result.add(key)
     return result
 
@@ -40,6 +39,7 @@ def test_no_deprecated__mixins(cls: AttrsMixin, name: str):
     name = name.replace('_colon_', ':')
     attrs = get_attrs(cls)
     assert name not in attrs
+    assert name.lower() not in {attr.lower() for attr in attrs}
 
 
 @pytest.mark.parametrize('cls', svg.elements.Element.__subclasses__())
@@ -48,6 +48,7 @@ def test_no_deprecated__elements(cls: svg.elements.Element, name: str):
     name = name.replace('_colon_', ':')
     attrs = get_attrs(cls)
     assert name not in attrs, name.replace('-', '_')
+    assert name.lower() not in {attr.lower() for attr in attrs}
 
 
 @pytest.mark.parametrize('name', ALL)
