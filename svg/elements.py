@@ -1,7 +1,8 @@
 from dataclasses import dataclass, asdict
 from enum import Enum
 from typing import Any, ClassVar, Dict, List, Optional, Union
-from . import _mixins as m, values, enums
+from . import _mixins as m, values
+from typing_extensions import Literal
 
 
 @dataclass
@@ -167,7 +168,7 @@ class _FigElements:
         'Animate', 'Set', 'AnimateMotion', 'AnimateTransform',
     ]]] = None
     pathLength: Optional[float] = None
-    paint_order: Optional[enums.PaintOrder] = None
+    paint_order: Optional[Literal["normal", "fill", "stroke", "markers"]] = None
 
 
 @dataclass
@@ -250,7 +251,7 @@ class Text(Element, m.FontSpecification):
     dy: Optional[values.Coordinate] = None
     rotate: Optional[values.Rotation] = None
     textLength: Optional[values.Length] = None
-    lengthAdjust: Optional[enums.LengthAdjust] = None
+    lengthAdjust: Optional[Literal["spacing", "spacingAndGlyphs"]] = None
 
 
 @dataclass
@@ -263,7 +264,7 @@ class TSpan(Element, m.FontSpecification):
     dy: Optional[values.Coordinate] = None
     rotate: Optional[str] = None
     textLength: Optional[values.Length] = None
-    lengthAdjust: Optional[enums.LengthAdjust] = None
+    lengthAdjust: Optional[Literal["spacing", "spacingAndGlyphs"]] = None
 
 
 @dataclass
@@ -276,9 +277,9 @@ class TextPath(Element, m.FontSpecification):
     externalResourcesRequired: Optional[bool] = None
     startOffset: Optional[str] = None
     textLength: Optional[values.Length] = None
-    lengthAdjust: Optional[enums.LengthAdjust] = None
-    method: Optional[enums.TextPathMethod] = None
-    spacing: Optional[enums.TextSpacing] = None
+    lengthAdjust: Optional[Literal["spacing", "spacingAndGlyphs"]] = None
+    method: Optional[Literal["align", "stretch"]] = None
+    spacing: Optional[Literal["auto", "exact"]] = None
     href: Optional[str] = None
     path: Optional[str] = None
     side: Optional[values.Side] = None
@@ -349,13 +350,13 @@ class Pattern(Element):
     externalResourcesRequired: Optional[bool] = None
     viewBox: Optional[Any] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
-    patternUnits: Optional[enums.ContentUnits] = None
+    patternUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
     patternTransform: Optional[Any] = None
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
-    patternContentUnits: Optional[enums.ContentUnits] = None
+    patternContentUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
     href: Optional[str] = None
 
 
@@ -383,7 +384,7 @@ class Mask(Element):
     y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
-    maskContentUnits: Optional[enums.ContentUnits] = None
+    maskContentUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
 
 
 @dataclass
@@ -445,7 +446,7 @@ class MPath(Element):
 class AnimateTransform(Element, m.Animation):
     element_name = "animateTransform"
     externalResourcesRequired: Optional[bool] = None
-    type: Optional[enums.TransformType] = None
+    type: Optional[Literal["translate", "scale", "rotate", "skewX", "skewY"]] = None
 
 
 @dataclass

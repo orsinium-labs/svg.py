@@ -4,8 +4,6 @@ from dataclasses import dataclass
 
 from typing_extensions import Literal
 
-from . import enums
-
 
 INHERIT = Literal["inherit"]
 NONE = Literal["none"]
@@ -18,7 +16,7 @@ Number = Union[Decimal, float, int]
 @dataclass
 class Angle:
     value: Number
-    unit: enums.AngleUnit = enums.AngleUnit.DEFAULT
+    unit: Literal["deg", "grad", "rad"] = Literal["deg", "grad", "rad"].DEFAULT
 
     def __str__(self) -> str:
         return f'{self.value}{self.unit.value}'
@@ -27,7 +25,7 @@ class Angle:
 @dataclass
 class Length:
     value: Number
-    unit: enums.LengthUnit = enums.LengthUnit.DEFAULT
+    unit: Literal["em", "ex", "px", "pt", "pc", "cm", "mm", "in"] = Literal["em", "ex", "px", "pt", "pc", "cm", "mm", "in"].DEFAULT
 
     def __str__(self) -> str:
         return f'{self.value}{self.unit.value}'
@@ -35,7 +33,7 @@ class Length:
 
 @dataclass
 class PathData:
-    type: Union[enums.PathTypeAbs, enums.PathTypeRel]
+    type: Union[Literal["M", "L", "H", "V", "C", "S", "Q", "T", "A", "Z"], Literal["m", "l", "h", "v", "c", "s", "q", "t", "a", "z"]]
     points: List[Number]
 
     def __str__(self) -> str:
@@ -45,8 +43,9 @@ class PathData:
 
 @dataclass
 class PreserveAspectRatio:
-    alignment: enums.PreserveAspectRatioAlignment = enums.PreserveAspectRatioAlignment.X_MID_Y_MID
-    scale_type: enums.PreserveAspectRatioScaleType = enums.PreserveAspectRatioScaleType.MEET
+    alignment: Literal["none", "xMinYMin", "xMidYMin", "xMaxYMin", "xMinYMid", "xMidYMid", "xMaxYMid", "xMinYMax", "xMidYMax",
+                       "xMaxYMax"] = Literal["none", "xMinYMin", "xMidYMin", "xMaxYMin", "xMinYMid", "xMidYMid", "xMaxYMid", "xMinYMax", "xMidYMax", "xMaxYMax"].X_MID_Y_MID
+    scale_type: Literal["meet", "slice"] = Literal["meet", "slice"].MEET
 
 
 @dataclass
@@ -87,8 +86,9 @@ Rotation = Union[Number, AUTO, Literal["auto-reverse"]]
 
 # str union
 ClipPath = Union[URI, AUTO, INHERIT, NONE]
-Cursor = Union[URI, enums.CursorValue]
-EnableBackground = Union[URI, enums.EnableBackgroundValue]
+Cursor = Union[URI, Literal["auto", "crosshair", "default", "pointer", "move", "e-resize", "ne-resize",
+                            "nw-resize", "n-resize", "se-resize", "sw-resize", "s-resize", "w-resize", "text", "wait", "help", "inherit"]]
+EnableBackground = Union[URI, Literal["accumulate", "x", "y", "width", "height", "inherit", "new"]]
 Filter = Union[URI, INHERIT, NONE]
 Marker = Union[URI, NONE, INHERIT]
 Mask = Union[URI, NONE, INHERIT]

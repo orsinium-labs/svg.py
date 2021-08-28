@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional
-from . import enums, values
+from . import values
+from typing_extensions import Literal
 
 
 class AttrsMixin:
@@ -34,7 +35,7 @@ class DocumentEvents(AttrsMixin):
 @dataclass
 class Color(AttrsMixin):
     color: Optional[str] = None
-    color_interpolation: Optional[enums.ColorInterpolation] = None
+    color_interpolation: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
 
 
 @dataclass
@@ -45,19 +46,19 @@ class FeFlood(AttrsMixin):
 
 @dataclass
 class FilterPrimitives(AttrsMixin):
-    color_interpolation_filters: Optional[enums.ColorInterpolation] = None
+    color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
 
 
 @dataclass
 class FillStroke(AttrsMixin):
     fill: Optional[str] = None
     fill_opacity: Optional[values.Opacity] = None
-    fill_rule: Optional[enums.ClipFillRule] = None
+    fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
     stroke: Optional[str] = None
     stroke_dasharray: Optional[values.StrokeDashArray] = None
     stroke_dashoffset: Optional[values.StrokeDashOffset] = None
-    stroke_linecap: Optional[enums.LineCap] = None
-    stroke_linejoin: Optional[enums.LineJoin] = None
+    stroke_linecap: Optional[Literal["butt", "round", "square", "inherit"]] = None
+    stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
     stroke_miterlimit: Optional[values.StrokeMiterLimit] = None
     stroke_opacity: Optional[values.Opacity] = None
     stroke_width: Optional[values.StrokeWidth] = None
@@ -68,10 +69,16 @@ class FontSpecification(AttrsMixin):
     font_family: Optional[values.FontFamily] = None
     font_size: Optional[values.FontSize] = None
     font_size_adjust: Optional[values.FontSizeAdjust] = None
-    font_stretch: Optional[enums.FontStretch] = None
-    font_style: Optional[enums.FontStyle] = None
-    font_variant: Optional[enums.FontValiant] = None
-    font_weight: Optional[enums.FontWeight] = None
+    font_stretch: Optional[Literal[
+        "normal", "wider", "narrower", "ultra-condensed", "extra-condensed",
+        "semi-condensed", "semi-expanded", "expanded", "extra-expanded", "ultra-expanded", "inherit",
+    ]] = None
+    font_style: Optional[Literal["normal", "italic", "oblique", "inherit"]] = None
+    font_variant: Optional[Literal["normal", "small-caps", "inherit"]] = None
+    font_weight: Optional[Literal[
+        "normal", "bold", "bolder", "lighter", "inherit",
+        "100", "200", "300", "400", "500", "600", "700", "800", "900",
+    ]] = None
 
 
 @dataclass
@@ -83,18 +90,24 @@ class Gradients(AttrsMixin):
 @dataclass
 class Graphics(AttrsMixin):
     clip_path: Optional[values.ClipPath] = None
-    clip_rule: Optional[enums.ClipFillRule] = None
-    cursor: Optional[enums.CursorValue] = None
+    clip_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
+    cursor: Optional[Literal[
+        "auto", "crosshair", "default", "pointer", "move",
+        "e-resize", "ne-resize", "nw-resize", "n-resize", "se-resize", "sw-resize", "s-resize", "w-resize",
+        "text", "wait", "help", "inherit",
+    ]] = None
     display: Optional[str] = None  # TODO
     filter: Optional[values.Filter] = None
-    image_rendering: Optional[enums.Rendering] = None
+    image_rendering: Optional[Literal["auto", "optimizeSpeed", "optimizeQuality", "inherit"]] = None
     mask: Optional[values.Mask] = None
     opacity: Optional[values.Opacity] = None
     pointer_events: Optional[str] = None     # TODO
     shape_rendering: Optional[str] = None    # TODO
     text_rendering: Optional[str] = None     # TODO
-    visibility: Optional[enums.Visibility] = None
-    vector_effect: Optional[enums.VectorEffect] = None
+    visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
+    vector_effect: Optional[Literal[
+        "none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position",
+    ]] = None
 
 
 class Images:
@@ -115,15 +128,20 @@ class Markers(AttrsMixin):
 
 @dataclass
 class TextContentElements(AttrsMixin):
-    alignment_baseline: Optional[enums.TextAlignment] = None
-    baseline_shift: Optional[enums.BaselineShift] = None
-    direction: Optional[enums.TextDirection] = None
-    dominant_baseline: Optional[enums.DominantBaseline] = None
-    letter_spacing: Optional[enums.TextSpacing] = None
-    text_anchor: Optional[enums.TextAnchor] = None
-    text_decoration: Optional[enums.TextDecoration] = None
+    alignment_baseline: Optional[Literal[
+        "baseline", "top", "before-edge", "text-top", "text-before-edge", "middle", "bottom",
+        "after-edge", "text-bottom", "text-after-edge", "ideographic", "lower", "hanging",
+        "mathematical", "inherit",
+    ]] = None
+    baseline_shift: Optional[Literal["baseline", "sub", "super", "inherit"]] = None
+    direction: Optional[Literal["ltr", "rtl", "inherit"]] = None
+    dominant_baseline: Optional[Literal["auto", "autosense-script", "no-change",
+                                        "reset", "ideographic", "lower", "hanging", "mathematical", "inherit"]] = None
+    letter_spacing: Optional[Literal["auto", "exact"]] = None
+    text_anchor: Optional[Literal["start", "middle", "end", "inherit"]] = None
+    text_decoration: Optional[Literal["none", "underline", "overline", "line-through"]] = None
     unicode_bidi: Optional[str] = None  # TODO
-    word_spacing: Optional[enums.TextSpacing] = None
+    word_spacing: Optional[Literal["auto", "exact"]] = None
 
 
 @dataclass
@@ -133,7 +151,7 @@ class TextElements(AttrsMixin):
 
 @dataclass
 class Viewports(AttrsMixin):
-    overflow: Optional[enums.Overflow] = None
+    overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
 
 
 class Presentation(
@@ -166,7 +184,7 @@ class FilterPrimitive(AttrsMixin):
 
 @dataclass
 class ComponentTransferFunction(AttrsMixin):
-    type: enums.ComponentTransferType
+    type: Literal["identity", "table", "discrete", "linear", "gamma"]
     tableValues: Optional[str] = None
     intercept: Optional[float] = None
     amplitude: Optional[float] = None
@@ -177,7 +195,7 @@ class ComponentTransferFunction(AttrsMixin):
 @dataclass
 class Animation(AttrsMixin):
     # Animation value attributes
-    calcMode: Optional[enums.CalcMode] = None
+    calcMode: Optional[Literal["discrete", "linear", "paced", "spline"]] = None
     values: Optional[str] = None
     keyTimes: Optional[str] = None
     keySplines: Optional[str] = None
@@ -189,13 +207,13 @@ class Animation(AttrsMixin):
     href: Optional[str] = None
 
     # Animation addition attributes
-    additive: Optional[enums.Additive] = None
-    accumulate: Optional[enums.Accumulate] = None
+    additive: Optional[Literal["replace", "sum"]] = None
+    accumulate: Optional[Literal["none", "sum"]] = None
     begin: Optional[str] = None
     dur: Optional[str] = None
     end: Optional[str] = None
     min: Optional[str] = None
     max: Optional[str] = None
-    restart: Optional[enums.Restart] = None
+    restart: Optional[Literal["always", "never", "whenNotActive"]] = None
 
 # TODO: descTitleMetadata

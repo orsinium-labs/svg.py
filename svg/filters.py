@@ -1,8 +1,8 @@
 from dataclasses import dataclass
-from svg import enums
 from typing import Any, List, Optional, Union
 from . import _mixins as m, values, elements as e
 from .elements import Element
+from typing_extensions import Literal
 
 
 @dataclass
@@ -116,7 +116,7 @@ class FeConvolveMatrix(Element, m.FilterPrimitive):
     bias: Optional[Any] = None
     targetX: Optional[Any] = None
     targetY: Optional[Any] = None
-    edgeMode: Optional[enums.EdgeMode] = None
+    edgeMode: Optional[Literal["duplicate", "wrap", "none"]] = None
     preserveAlpha: Optional[Any] = None
 
 
@@ -148,7 +148,7 @@ class FeFlood(Element, m.FilterPrimitive):
 class FeGaussianBlur(Element, m.FilterPrimitive):
     element_name = "feGaussianBlur"
     stdDeviation: Optional[values.NumberOptionalNumber] = None
-    edgeMode: Optional[enums.EdgeMode] = None
+    edgeMode: Optional[Literal["duplicate", "wrap", "none"]] = None
 
 
 @dataclass
