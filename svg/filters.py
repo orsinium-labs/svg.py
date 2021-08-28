@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from typing import Any, List, Optional, Union
-from . import values, elements as e
+from . import _mixins as m, values, elements as e
 from .elements import Element
 
 
 @dataclass
-class Filter(Element):
+class Filter(Element, m.FilterPrimitive):
     element_name = "filter"
     elements: Optional[List[Union[
         'FeBlend', 'FeFlood', 'FeColorMatrix', 'FeComponentTransfer', 'FeComposite',
@@ -15,8 +15,6 @@ class Filter(Element):
         'FeTile', 'FeTurbulence', e.Animate, e.Set,
     ]]] = None
     externalResourcesRequired: Optional[Any] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
     filterUnits: Optional[Any] = None
     primitiveUnits: Optional[Any] = None
     x: Optional[values.Coordinate] = None
@@ -27,14 +25,14 @@ class Filter(Element):
 
 
 @dataclass
-class FeDistantLight(Element):
+class FeDistantLight(Element, m.FilterPrimitive):
     element_name = "feDistantLight"
     azimuth: Optional[Any] = None
     elevation: Optional[Any] = None
 
 
 @dataclass
-class FePointLight(Element):
+class FePointLight(Element, m.FilterPrimitive):
     element_name = "fePointLight"
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
@@ -42,7 +40,7 @@ class FePointLight(Element):
 
 
 @dataclass
-class FeSpotLight(Element):
+class FeSpotLight(Element, m.FilterPrimitive):
     element_name = "feSpotLight"
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
@@ -55,51 +53,51 @@ class FeSpotLight(Element):
 
 
 @dataclass
-class FeBlend(Element):
+class FeBlend(Element, m.FilterPrimitive):
     element_name = "feBlend"
     in2: Optional[str] = None
     mode: Optional[Any] = None
 
 
 @dataclass
-class FeColorMatrix(Element):
+class FeColorMatrix(Element, m.FilterPrimitive):
     element_name = "feColorMatrix"
     type: Optional[Any] = None
     values: Optional[str] = None
 
 
 @dataclass
-class FeComponentTransfer(Element):
+class FeComponentTransfer(Element, m.FilterPrimitive):
     element_name = "feComponentTransfer"
     pass
 
 
 @dataclass
-class FeFuncR(Element):
+class FeFuncR(Element, m.FilterPrimitive):
     element_name = "feFuncR"
     type2: Optional[Any] = None
 
 
 @dataclass
-class FeFuncG(Element):
+class FeFuncG(Element, m.FilterPrimitive):
     element_name = "feFuncG"
     type2: Optional[Any] = None
 
 
 @dataclass
-class FeFuncB(Element):
+class FeFuncB(Element, m.FilterPrimitive):
     element_name = "feFuncB"
     type2: Optional[Any] = None
 
 
 @dataclass
-class FeFuncA(Element):
+class FeFuncA(Element, m.FilterPrimitive):
     element_name = "feFuncA"
     type3: Optional[Any] = None
 
 
 @dataclass
-class FeComposite(Element):
+class FeComposite(Element, m.FilterPrimitive):
     element_name = "feComposite"
     in2: Optional[str] = None
     operator: Optional[Any] = None
@@ -110,7 +108,7 @@ class FeComposite(Element):
 
 
 @dataclass
-class FeConvolveMatrix(Element):
+class FeConvolveMatrix(Element, m.FilterPrimitive):
     element_name = "feConvolveMatrix"
     order: Optional[Any] = None
     kernelMatrix: Optional[str] = None
@@ -124,17 +122,15 @@ class FeConvolveMatrix(Element):
 
 
 @dataclass
-class FeDiffuseLighting(Element):
+class FeDiffuseLighting(Element, m.FilterPrimitive):
     element_name = "feDiffuseLighting"
     elements: Optional[List[Union[e.Animate, e.Set, e.AnimateColor]]] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
     surfaceScale: Optional[Any] = None
     diffuseConstant: Optional[Any] = None
 
 
 @dataclass
-class FeDisplacementMap(Element):
+class FeDisplacementMap(Element, m.FilterPrimitive):
     element_name = "feDisplacementMap"
     in2: Optional[str] = None
     scale: Optional[Any] = None
@@ -143,72 +139,67 @@ class FeDisplacementMap(Element):
 
 
 @dataclass
-class FeFlood(Element):
+class FeFlood(Element, m.FilterPrimitive):
     element_name = "feFlood"
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
 
 
 @dataclass
-class FeGaussianBlur(Element):
+class FeGaussianBlur(Element, m.FilterPrimitive):
     element_name = "feGaussianBlur"
-    stdDeviation: Optional[Any] = None
+    stdDeviation: Optional[values.NumberOptionalNumber] = None
+    edgeMode: Optional[Any] = None
 
 
 @dataclass
-class FeImage(Element):
+class FeImage(Element, m.FilterPrimitive):
     element_name = "feImage"
     externalResourcesRequired: Optional[Any] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
     transform: Optional[Any] = None
 
 
 @dataclass
-class FeMerge(Element):
+class FeMerge(Element, m.FilterPrimitive):
     element_name = "feMerge"
     pass
 
 
 @dataclass
-class FeMergeNode(Element):
+class FeMergeNode(Element, m.FilterPrimitive):
     element_name = "feMergeNode"
     in_: Optional[str] = None
 
 
 @dataclass
-class FeMorphology(Element):
+class FeMorphology(Element, m.FilterPrimitive):
     element_name = "feMorphology"
     operator: Optional[Any] = None
     radius: Optional[Any] = None
 
 
 @dataclass
-class FeOffset(Element):
+class FeOffset(Element, m.FilterPrimitive):
     element_name = "feOffset"
     dx: Optional[Any] = None
     dy: Optional[Any] = None
 
 
 @dataclass
-class FeSpecularLighting(Element):
+class FeSpecularLighting(Element, m.FilterPrimitive):
     element_name = "feSpecularLighting"
     elements: Optional[List[Union[e.Animate, e.Set, e.AnimateColor]]] = None
-    class_: Optional[Any] = None
-    style: Optional[Any] = None
     surfaceScale: Optional[Any] = None
     specularConstant: Optional[Any] = None
     specularExponent: Optional[Any] = None
 
 
 @dataclass
-class FeTile(Element):
+class FeTile(Element, m.FilterPrimitive):
     element_name = "feTile"
     pass
 
 
 @dataclass
-class FeTurbulence(Element):
+class FeTurbulence(Element, m.FilterPrimitive):
     element_name = "feTurbulence"
     baseFrequency: Optional[str] = None
     numOctaves: Optional[Any] = None

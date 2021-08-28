@@ -1,19 +1,23 @@
 from dataclasses import dataclass, asdict
 from enum import Enum
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from . import _mixins as m, values, enums
 
 
+@dataclass
 class Element:
     """
     https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/Core
     """
-    element_name: str
+    element_name: ClassVar[str]
 
     id: Optional[str] = None
     tabindex: Optional[int] = None
-    xml__base: Optional[str] = None
     xml__lang: Optional[str] = None
+
+    # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/Styling
+    class_: Optional[values.Classes] = None
+    style: Optional[values.StyleSheet] = None
 
     @classmethod
     def _as_str(cls, val: Any) -> str:
@@ -62,8 +66,6 @@ class SVG(
 ):
     element_name = 'svg'
     elements: Optional[List[Element]] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     viewBox: Optional[values.ViewBoxSpec] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
     zoomAndPan: Optional[enums.ZoomAndPan] = None
@@ -83,8 +85,6 @@ class G(
 ):
     element_name = "g"
     elements: Optional[List[Element]] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
 
 
@@ -96,24 +96,18 @@ class Defs(
 ):
     element_name = "defs"
     elements: Optional[List[Element]] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
 
 
 @dataclass
 class Desc(Element):
     element_name = "desc"
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     content: Optional[str] = None
 
 
 @dataclass
 class Title(Element):
     element_name = "title"
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     content: Optional[str] = None
 
 
@@ -125,8 +119,6 @@ class Symbol(
 ):
     element_name = "symbol"
     elements: Optional[List[Element]] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     viewBox: Optional[values.ViewBoxSpec] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
     refX: Optional[values.Coordinate] = None
@@ -147,8 +139,6 @@ class Image(
 ):
     element_name = "image"
     href: Optional[str] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
@@ -160,8 +150,6 @@ class Image(
 class Switch(Element):
     element_name = "switch"
     externalResourcesRequired: Optional[bool] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
 
 
@@ -185,8 +173,6 @@ class _FigElements:
 class Path(Element, _FigElements):
     element_name = "path"
     externalResourcesRequired: Optional[bool] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
     d: Optional[List[values.PathData]] = None
 
@@ -195,8 +181,6 @@ class Path(Element, _FigElements):
 class Rect(Element, _FigElements):
     element_name = "rect"
     externalResourcesRequired: Optional[bool] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
@@ -210,8 +194,6 @@ class Rect(Element, _FigElements):
 class Circle(Element, _FigElements):
     element_name = "circle"
     externalResourcesRequired: Optional[bool] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
     cx: Optional[values.Length] = None
     cy: Optional[values.Length] = None
@@ -222,8 +204,6 @@ class Circle(Element, _FigElements):
 class Ellipse(Element, _FigElements):
     element_name = "ellipse"
     externalResourcesRequired: Optional[bool] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
     cx: Optional[values.Length] = None
     cy: Optional[values.Length] = None
@@ -235,8 +215,6 @@ class Ellipse(Element, _FigElements):
 class Line(Element, _FigElements):
     element_name = "line"
     externalResourcesRequired: Optional[bool] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
     x1: Optional[values.Coordinate] = None
     y1: Optional[values.Coordinate] = None
@@ -248,8 +226,6 @@ class Line(Element, _FigElements):
 class Polyline(Element, _FigElements):
     element_name = "polyline"
     externalResourcesRequired: Optional[bool] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
     points: Optional[values.Points] = None
 
@@ -258,8 +234,6 @@ class Polyline(Element, _FigElements):
 class Polygon(Element, _FigElements):
     element_name = "polygon"
     externalResourcesRequired: Optional[bool] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
     points: Optional[values.Points] = None
 
@@ -268,8 +242,6 @@ class Polygon(Element, _FigElements):
 class Text(Element):
     element_name = "text"
     externalResourcesRequired: Optional[bool] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
@@ -284,8 +256,6 @@ class Text(Element):
 class TSpan(Element):
     element_name = "tspan"
     externalResourcesRequired: Optional[bool] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
     dx: Optional[values.Coordinate] = None
@@ -303,8 +273,6 @@ class TextPath(Element):
         'A', 'Animate', 'Set', 'AnimateColor',
     ]]] = None
     externalResourcesRequired: Optional[bool] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     startOffset: Optional[str] = None
     textLength: Optional[values.Length] = None
     lengthAdjust: Optional[enums.LengthAdjust] = None
@@ -320,8 +288,6 @@ class AltGlyph(Element):
     element_name = "altGlyph"
     glyphRef: Optional[str] = None
     externalResourcesRequired: Optional[bool] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
     dx: Optional[values.Coordinate] = None
@@ -344,8 +310,6 @@ class AltGlyphItem(Element):
 @dataclass
 class GlyphRef(Element):
     element_name = "glyphRef"
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     glyphRef: Optional[str] = None
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
@@ -357,8 +321,6 @@ class GlyphRef(Element):
 class Marker(Element):
     element_name = "marker"
     externalResourcesRequired: Optional[bool] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     viewBox: Optional[values.ViewBoxSpec] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
     refX: Optional[values.Coordinate] = None
@@ -389,8 +351,6 @@ class _Gradient:
 @dataclass
 class LinearGradient(Element, _Gradient):
     element_name = "linearGradient"
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     x1: Optional[values.Coordinate] = None
     y1: Optional[values.Coordinate] = None
     x2: Optional[values.Coordinate] = None
@@ -411,8 +371,6 @@ class RadialGradient(Element, _Gradient):
 @dataclass
 class Stop(Element):
     element_name = "stop"
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     offset: Optional[values.Length] = None
     stop_opacity: Optional[values.Opacity] = None
     stop_color: Optional[values.SVGColor] = None
@@ -422,8 +380,6 @@ class Stop(Element):
 class Pattern(Element):
     element_name = "pattern"
     externalResourcesRequired: Optional[bool] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     viewBox: Optional[Any] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
     patternUnits: Optional[enums.ContentUnits] = None
@@ -445,8 +401,6 @@ class ClipPath(Element):
         'AnimateMotion', 'AnimateColor', 'AnimateTransform',
     ]]] = None
     externalResourcesRequired: Optional[bool] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
     clipPathUnits: Optional[Any] = None
 
@@ -456,8 +410,6 @@ class Mask(Element):
     element_name = "mask"
     elements: Optional[List[Element]] = None
     externalResourcesRequired: Optional[bool] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
     maskUnits: Optional[Any] = None
     x: Optional[values.Coordinate] = None
@@ -471,8 +423,6 @@ class Mask(Element):
 class A(Element):
     element_name = "a"
     externalResourcesRequired: Optional[bool] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
     target: Optional[Any] = None
     href: Optional[str] = None
@@ -555,8 +505,6 @@ class Metadata(Element):
 class ForeignObject(Element):
     element_name = "foreignObject"
     externalResourcesRequired: Optional[bool] = None
-    class_: Optional[values.Classes] = None
-    style: Optional[values.StyleSheet] = None
     transform: Optional[values.Transforms] = None
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
