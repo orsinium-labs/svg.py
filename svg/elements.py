@@ -299,6 +299,8 @@ class TSpan(Element, _TextElement):
     textLength: Optional[values.Length] = None
     lengthAdjust: Optional[Literal["spacing", "spacingAndGlyphs"]] = None
     writing_mode: Optional[Literal["horizontal-tb", "vertical-rl", "vertical-lr"]] = None
+    alignment_baseline: Optional[values.AlignmentBaseline] = None
+    baseline_shift: Optional[Literal["baseline", "sub", "super", "inherit"]] = None
 
 
 @dataclass
@@ -327,6 +329,8 @@ class TextPath(Element, _TextElement):
     path: Optional[str] = None
     side: Optional[values.Side] = None
     writing_mode: Optional[Literal["horizontal-tb", "vertical-rl", "vertical-lr"]] = None
+    alignment_baseline: Optional[values.AlignmentBaseline] = None
+    baseline_shift: Optional[Literal["baseline", "sub", "super", "inherit"]] = None
 
 
 @dataclass

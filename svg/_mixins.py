@@ -174,26 +174,6 @@ class Markers(AttrsMixin):
 
 @dataclass
 class TextContentElements(AttrsMixin):
-    alignment_baseline: Optional[
-        Literal[
-            "baseline",
-            "top",
-            "before-edge",
-            "text-top",
-            "text-before-edge",
-            "middle",
-            "bottom",
-            "after-edge",
-            "text-bottom",
-            "text-after-edge",
-            "ideographic",
-            "lower",
-            "hanging",
-            "mathematical",
-            "inherit",
-        ]
-    ] = None
-    baseline_shift: Optional[Literal["baseline", "sub", "super", "inherit"]] = None
     direction: Optional[Literal["ltr", "rtl", "inherit"]] = None
     dominant_baseline: Optional[
         Literal[

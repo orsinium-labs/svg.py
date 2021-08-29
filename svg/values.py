@@ -142,3 +142,21 @@ LanguageCodes = List[LanguageCode]
 Lengths = List[Length]
 Numbers = List[Number]
 Points = List[Number]
+
+AlignmentBaseline = Literal[
+    "baseline",
+    "top",
+    "before-edge",
+    "text-top",
+    "text-before-edge",
+    "middle",
+    "bottom",
+    "after-edge",
+    "text-bottom",
+    "text-after-edge",
+    "ideographic",
+    "lower",
+    "hanging",
+    "mathematical",
+    "inherit",
+]
