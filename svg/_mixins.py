@@ -157,6 +157,7 @@ class Graphics(AttrsMixin):
             "fixed-position",
         ]
     ] = None
+    paint_order: Optional[Literal["normal", "fill", "stroke", "markers"]] = None
 
 
 class Images:
@@ -279,6 +280,9 @@ class Animation(AttrsMixin):
     # Animation addition attributes
     additive: Optional[Literal["replace", "sum"]] = None
     accumulate: Optional[Literal["none", "sum"]] = None
+
+    # Animation attribute target attributes
+    attributeName: Optional[str] = None
 
 
 @dataclass

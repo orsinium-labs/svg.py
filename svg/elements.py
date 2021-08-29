@@ -102,13 +102,13 @@ class Defs(
 
 
 @dataclass
-class Desc(Element):
+class Desc(Element, m.GraphicsElementEvents):
     element_name = "desc"
     content: Optional[str] = None
 
 
 @dataclass
-class Title(Element):
+class Title(Element, m.GraphicsElementEvents):
     element_name = "title"
     content: Optional[str] = None
 
@@ -153,10 +153,11 @@ class Switch(Element, m.Color, m.GraphicsElementEvents):
     element_name = "switch"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
+    opacity: Optional[values.Opacity] = None
 
 
 @dataclass
-class Style(Element):
+class Style(Element, m.GraphicsElementEvents):
     element_name = "style"
     type: Optional[values.ContentType] = None
     media: Optional[values.MediaDesc] = None
@@ -321,7 +322,7 @@ class TextPath(Element, _TextElement):
 
 
 @dataclass
-class Marker(Element, m.Color):
+class Marker(Element, m.Color, m.GraphicsElementEvents):
     element_name = "marker"
     externalResourcesRequired: Optional[bool] = None
     viewBox: Optional[values.ViewBoxSpec] = None
@@ -332,6 +333,7 @@ class Marker(Element, m.Color):
     markerWidth: Optional[values.Length] = None
     markerHeight: Optional[values.Length] = None
     orient: Optional[str] = None
+    opacity: Optional[values.Opacity] = None
 
 
 @dataclass
@@ -352,7 +354,7 @@ class _Gradient:
 
 
 @dataclass
-class LinearGradient(Element, _Gradient, m.Color):
+class LinearGradient(Element, _Gradient, m.Color, m.GraphicsElementEvents):
     element_name = "linearGradient"
     x1: Optional[values.Coordinate] = None
     y1: Optional[values.Coordinate] = None
@@ -361,7 +363,7 @@ class LinearGradient(Element, _Gradient, m.Color):
 
 
 @dataclass
-class RadialGradient(Element, _Gradient, m.Color):
+class RadialGradient(Element, _Gradient, m.Color, m.GraphicsElementEvents):
     element_name = "radialGradient"
     cx: Optional[values.Length] = None
     cy: Optional[values.Length] = None
@@ -372,7 +374,7 @@ class RadialGradient(Element, _Gradient, m.Color):
 
 
 @dataclass
-class Stop(Element):
+class Stop(Element, m.GraphicsElementEvents):
     element_name = "stop"
     offset: Optional[values.Length] = None
     stop_opacity: Optional[values.Opacity] = None
@@ -380,7 +382,7 @@ class Stop(Element):
 
 
 @dataclass
-class Pattern(Element, m.Color):
+class Pattern(Element, m.Color, m.GraphicsElementEvents):
     element_name = "pattern"
     externalResourcesRequired: Optional[bool] = None
     viewBox: Optional[Any] = None
@@ -445,7 +447,7 @@ class A(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
 
 
 @dataclass
-class View(Element):
+class View(Element, m.GraphicsElementEvents):
     element_name = "view"
     externalResourcesRequired: Optional[bool] = None
     viewBox: Optional[Any] = None
@@ -453,7 +455,7 @@ class View(Element):
 
 
 @dataclass
-class Script(Element):
+class Script(Element, m.GraphicsElementEvents):
     element_name = "script"
     externalResourcesRequired: Optional[bool] = None
     type: Optional[Any] = None
@@ -461,23 +463,25 @@ class Script(Element):
 
 
 @dataclass
-class Animate(Element, m.Animation, m.Color, m.AnimationTiming):
+class Animate(Element, m.Animation, m.Color, m.AnimationTiming, m.GraphicsElementEvents):
     element_name = "animate"
     externalResourcesRequired: Optional[bool] = None
     keyPoints: Optional[str] = None
 
 
 @dataclass
-class Set(Element, m.AnimationTiming):
+class Set(Element, m.AnimationTiming, m.GraphicsElementEvents):
     element_name = "set"
     externalResourcesRequired: Optional[bool] = None
     to: Optional[str] = None
     min: Optional[str] = None
     keyPoints: Optional[str] = None
+    attributeName: Optional[str] = None
+    href: Optional[str] = None
 
 
 @dataclass
-class AnimateMotion(Element, m.Animation, m.AnimationTiming):
+class AnimateMotion(Element, m.Animation, m.AnimationTiming, m.GraphicsElementEvents):
     element_name = "animateMotion"
     externalResourcesRequired: Optional[bool] = None
     path: Optional[str] = None
@@ -487,14 +491,14 @@ class AnimateMotion(Element, m.Animation, m.AnimationTiming):
 
 
 @dataclass
-class MPath(Element):
+class MPath(Element, m.GraphicsElementEvents):
     element_name = "mpath"
     externalResourcesRequired: Optional[bool] = None
-    pass
+    href: Optional[str] = None
 
 
 @dataclass
-class AnimateTransform(Element, m.Animation, m.AnimationTiming):
+class AnimateTransform(Element, m.Animation, m.AnimationTiming, m.GraphicsElementEvents):
     element_name = "animateTransform"
     externalResourcesRequired: Optional[bool] = None
     type: Optional[Literal["translate", "scale", "rotate", "skewX", "skewY"]] = None
@@ -508,7 +512,7 @@ class DefinitionSrc(Element):
 
 
 @dataclass
-class Metadata(Element):
+class Metadata(Element, m.GraphicsElementEvents):
     element_name = "metadata"
     pass
 

@@ -86,6 +86,8 @@ def test_element_has_attr(name: str):
 
 @pytest.mark.parametrize('name', REF_ELEMENTS)
 def test_attr_is_in_elements(name: str):
+    if name == 'filter.filter':
+        pytest.skip()
     attr_name, el_name = name.split('.')
     if attr_name.lower() in REF_DEPRECATED:
         pytest.skip()

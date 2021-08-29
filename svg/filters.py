@@ -5,8 +5,12 @@ from .elements import Element
 from typing_extensions import Literal
 
 
+class _FilterElement(m.FilterPrimitive, m.FilterPrimitives):
+    pass
+
+
 @dataclass
-class Filter(Element, m.FilterPrimitive):
+class Filter(Element, _FilterElement):
     element_name = "filter"
     elements: Optional[
         List[
@@ -42,14 +46,14 @@ class Filter(Element, m.FilterPrimitive):
 
 
 @dataclass
-class FeDistantLight(Element, m.FilterPrimitive):
+class FeDistantLight(Element, _FilterElement):
     element_name = "feDistantLight"
     azimuth: Optional[Any] = None
     elevation: Optional[Any] = None
 
 
 @dataclass
-class FePointLight(Element, m.FilterPrimitive):
+class FePointLight(Element, _FilterElement):
     element_name = "fePointLight"
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
@@ -57,7 +61,7 @@ class FePointLight(Element, m.FilterPrimitive):
 
 
 @dataclass
-class FeSpotLight(Element, m.FilterPrimitive):
+class FeSpotLight(Element, _FilterElement):
     element_name = "feSpotLight"
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
@@ -70,51 +74,51 @@ class FeSpotLight(Element, m.FilterPrimitive):
 
 
 @dataclass
-class FeBlend(Element, m.FilterPrimitive):
+class FeBlend(Element, _FilterElement):
     element_name = "feBlend"
     in2: Optional[str] = None
     mode: Optional[Any] = None
 
 
 @dataclass
-class FeColorMatrix(Element, m.FilterPrimitive):
+class FeColorMatrix(Element, _FilterElement):
     element_name = "feColorMatrix"
     type: Optional[Any] = None
     values: Optional[str] = None
 
 
 @dataclass
-class FeComponentTransfer(Element, m.FilterPrimitive):
+class FeComponentTransfer(Element, _FilterElement):
     element_name = "feComponentTransfer"
     pass
 
 
 @dataclass
-class FeFuncR(Element, m.FilterPrimitive, m.ComponentTransferFunction):
+class FeFuncR(Element, _FilterElement, m.ComponentTransferFunction):
     element_name = "feFuncR"
     type2: Optional[Any] = None
 
 
 @dataclass
-class FeFuncG(Element, m.FilterPrimitive, m.ComponentTransferFunction):
+class FeFuncG(Element, _FilterElement, m.ComponentTransferFunction):
     element_name = "feFuncG"
     type2: Optional[Any] = None
 
 
 @dataclass
-class FeFuncB(Element, m.FilterPrimitive, m.ComponentTransferFunction):
+class FeFuncB(Element, _FilterElement, m.ComponentTransferFunction):
     element_name = "feFuncB"
     type2: Optional[Any] = None
 
 
 @dataclass
-class FeFuncA(Element, m.FilterPrimitive, m.ComponentTransferFunction):
+class FeFuncA(Element, _FilterElement, m.ComponentTransferFunction):
     element_name = "feFuncA"
     type3: Optional[Any] = None
 
 
 @dataclass
-class FeComposite(Element, m.FilterPrimitive):
+class FeComposite(Element, _FilterElement):
     element_name = "feComposite"
     in2: Optional[str] = None
     operator: Optional[Any] = None
@@ -125,7 +129,7 @@ class FeComposite(Element, m.FilterPrimitive):
 
 
 @dataclass
-class FeConvolveMatrix(Element, m.FilterPrimitive):
+class FeConvolveMatrix(Element, _FilterElement):
     element_name = "feConvolveMatrix"
     order: Optional[Any] = None
     kernelMatrix: Optional[str] = None
@@ -138,7 +142,7 @@ class FeConvolveMatrix(Element, m.FilterPrimitive):
 
 
 @dataclass
-class FeDiffuseLighting(Element, m.FilterPrimitive):
+class FeDiffuseLighting(Element, _FilterElement, m.LightingEffects):
     element_name = "feDiffuseLighting"
     elements: Optional[List[Union[e.Animate, e.Set]]] = None
     surfaceScale: Optional[Any] = None
@@ -146,7 +150,7 @@ class FeDiffuseLighting(Element, m.FilterPrimitive):
 
 
 @dataclass
-class FeDisplacementMap(Element, m.FilterPrimitive):
+class FeDisplacementMap(Element, _FilterElement):
     element_name = "feDisplacementMap"
     in2: Optional[str] = None
     scale: Optional[Any] = None
@@ -155,54 +159,56 @@ class FeDisplacementMap(Element, m.FilterPrimitive):
 
 
 @dataclass
-class FeFlood(Element, m.FilterPrimitive):
+class FeFlood(Element, _FilterElement):
     element_name = "feFlood"
     flood_opacity: Optional[values.Opacity] = None
     flood_color: Optional[values.SVGColor] = None
 
 
 @dataclass
-class FeGaussianBlur(Element, m.FilterPrimitive):
+class FeGaussianBlur(Element, _FilterElement):
     element_name = "feGaussianBlur"
     stdDeviation: Optional[values.NumberOptionalNumber] = None
     edgeMode: Optional[Literal["duplicate", "wrap", "none"]] = None
 
 
 @dataclass
-class FeImage(Element, m.FilterPrimitive):
+class FeImage(Element, _FilterElement):
     element_name = "feImage"
     externalResourcesRequired: Optional[Any] = None
     transform: Optional[Any] = None
+    preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
+    href: Optional[str] = None
 
 
 @dataclass
-class FeMerge(Element, m.FilterPrimitive):
+class FeMerge(Element, _FilterElement):
     element_name = "feMerge"
     pass
 
 
 @dataclass
-class FeMergeNode(Element, m.FilterPrimitive):
+class FeMergeNode(Element, _FilterElement):
     element_name = "feMergeNode"
     in_: Optional[str] = None
 
 
 @dataclass
-class FeMorphology(Element, m.FilterPrimitive):
+class FeMorphology(Element, _FilterElement):
     element_name = "feMorphology"
     operator: Optional[Any] = None
     radius: Optional[Any] = None
 
 
 @dataclass
-class FeOffset(Element, m.FilterPrimitive):
+class FeOffset(Element, _FilterElement):
     element_name = "feOffset"
     dx: Optional[Any] = None
     dy: Optional[Any] = None
 
 
 @dataclass
-class FeSpecularLighting(Element, m.FilterPrimitive):
+class FeSpecularLighting(Element, _FilterElement, m.LightingEffects):
     element_name = "feSpecularLighting"
     elements: Optional[List[Union[e.Animate, e.Set]]] = None
     surfaceScale: Optional[Any] = None
@@ -211,13 +217,13 @@ class FeSpecularLighting(Element, m.FilterPrimitive):
 
 
 @dataclass
-class FeTile(Element, m.FilterPrimitive):
+class FeTile(Element, _FilterElement):
     element_name = "feTile"
     pass
 
 
 @dataclass
-class FeTurbulence(Element, m.FilterPrimitive):
+class FeTurbulence(Element, _FilterElement):
     element_name = "feTurbulence"
     baseFrequency: Optional[str] = None
     numOctaves: Optional[Any] = None
