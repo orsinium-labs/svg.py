@@ -558,11 +558,3 @@ class Use(Element, m.GraphicsElementEvents, m.Color, m.Graphics):
     y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
-
-
-@dataclass
-class Cursor(Element):
-    element_name = "cursor"
-    externalResourcesRequired: Optional[bool] = None
-    x: Optional[values.Coordinate] = None
-    y: Optional[values.Coordinate] = None
