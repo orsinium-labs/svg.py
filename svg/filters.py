@@ -5,8 +5,9 @@ from .elements import Element
 from typing_extensions import Literal
 
 
-class _FilterElement(m.FilterPrimitive, m.FilterPrimitives):
-    pass
+@dataclass
+class _FilterElement(m.FilterPrimitive):
+    color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
 
 
 @dataclass

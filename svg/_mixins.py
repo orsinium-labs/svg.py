@@ -45,11 +45,6 @@ class FeFlood(AttrsMixin):
 
 
 @dataclass
-class FilterPrimitives(AttrsMixin):
-    color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
-
-
-@dataclass
 class FillStroke(AttrsMixin):
     fill: Optional[str] = None
     fill_opacity: Optional[values.Opacity] = None
@@ -105,15 +100,9 @@ class Graphics(AttrsMixin):
     pointer_events: Optional[str] = None  # TODO
     shape_rendering: Optional[str] = None  # TODO
     visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
-    vector_effect: Optional[
-        Literal[
-            "none",
-            "non-scaling-stroke",
-            "non-scaling-size",
-            "non-rotation",
-            "fixed-position",
-        ]
-    ] = None
+    vector_effect: Optional[Literal[
+        "none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position",
+    ]] = None
 
 
 class Images:
