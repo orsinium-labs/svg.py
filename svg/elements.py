@@ -149,7 +149,7 @@ class Image(
 
 
 @dataclass
-class Switch(Element, m.Color):
+class Switch(Element, m.Color, m.GraphicsElementEvents):
     element_name = "switch"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
@@ -164,7 +164,12 @@ class Style(Element):
 
 
 @dataclass
-class _FigElements:
+class _FigureElement(
+    m.Color,
+    m.GraphicsElementEvents,
+    m.Markers,
+    m.Graphics,
+):
     elements: Optional[
         List[
             Union[
@@ -180,7 +185,7 @@ class _FigElements:
 
 
 @dataclass
-class Path(Element, _FigElements, m.Color):
+class Path(Element, _FigureElement):
     element_name = "path"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
@@ -188,7 +193,7 @@ class Path(Element, _FigElements, m.Color):
 
 
 @dataclass
-class Rect(Element, _FigElements, m.Color):
+class Rect(Element, _FigureElement):
     element_name = "rect"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
@@ -201,7 +206,7 @@ class Rect(Element, _FigElements, m.Color):
 
 
 @dataclass
-class Circle(Element, _FigElements, m.Color):
+class Circle(Element, _FigureElement):
     element_name = "circle"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
@@ -211,7 +216,7 @@ class Circle(Element, _FigElements, m.Color):
 
 
 @dataclass
-class Ellipse(Element, _FigElements, m.Color):
+class Ellipse(Element, _FigureElement):
     element_name = "ellipse"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
@@ -222,7 +227,7 @@ class Ellipse(Element, _FigElements, m.Color):
 
 
 @dataclass
-class Line(Element, _FigElements, m.Color):
+class Line(Element, _FigureElement):
     element_name = "line"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
@@ -233,7 +238,7 @@ class Line(Element, _FigElements, m.Color):
 
 
 @dataclass
-class Polyline(Element, _FigElements, m.Color):
+class Polyline(Element, _FigureElement):
     element_name = "polyline"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
@@ -241,15 +246,25 @@ class Polyline(Element, _FigElements, m.Color):
 
 
 @dataclass
-class Polygon(Element, _FigElements, m.Color):
+class Polygon(Element, _FigureElement):
     element_name = "polygon"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
     points: Optional[values.Points] = None
 
 
+class _TextElement(
+    m.FontSpecification,
+    m.TextContentElements,
+    m.Color,
+    m.GraphicsElementEvents,
+    m.Graphics,
+):
+    pass
+
+
 @dataclass
-class Text(Element, m.FontSpecification, m.TextContentElements, m.Color):
+class Text(Element, _TextElement):
     element_name = "text"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
@@ -260,10 +275,11 @@ class Text(Element, m.FontSpecification, m.TextContentElements, m.Color):
     rotate: Optional[values.Rotation] = None
     textLength: Optional[values.Length] = None
     lengthAdjust: Optional[Literal["spacing", "spacingAndGlyphs"]] = None
+    writing_mode: Optional[Literal["horizontal-tb", "vertical-rl", "vertical-lr"]] = None
 
 
 @dataclass
-class TSpan(Element, m.FontSpecification, m.TextContentElements, m.Color):
+class TSpan(Element, _TextElement):
     element_name = "tspan"
     externalResourcesRequired: Optional[bool] = None
     x: Optional[values.Coordinate] = None
@@ -273,10 +289,11 @@ class TSpan(Element, m.FontSpecification, m.TextContentElements, m.Color):
     rotate: Optional[str] = None
     textLength: Optional[values.Length] = None
     lengthAdjust: Optional[Literal["spacing", "spacingAndGlyphs"]] = None
+    writing_mode: Optional[Literal["horizontal-tb", "vertical-rl", "vertical-lr"]] = None
 
 
 @dataclass
-class TextPath(Element, m.FontSpecification, m.TextContentElements, m.Color):
+class TextPath(Element, _TextElement):
     element_name = "textPath"
     elements: Optional[
         List[
@@ -300,6 +317,7 @@ class TextPath(Element, m.FontSpecification, m.TextContentElements, m.Color):
     href: Optional[str] = None
     path: Optional[str] = None
     side: Optional[values.Side] = None
+    writing_mode: Optional[Literal["horizontal-tb", "vertical-rl", "vertical-lr"]] = None
 
 
 @dataclass
@@ -418,7 +436,7 @@ class Mask(Element, m.Color):
 
 
 @dataclass
-class A(Element, m.Color):
+class A(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     element_name = "a"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
@@ -443,14 +461,14 @@ class Script(Element):
 
 
 @dataclass
-class Animate(Element, m.Animation, m.Color):
+class Animate(Element, m.Animation, m.Color, m.AnimationTiming):
     element_name = "animate"
     externalResourcesRequired: Optional[bool] = None
     keyPoints: Optional[str] = None
 
 
 @dataclass
-class Set(Element):
+class Set(Element, m.AnimationTiming):
     element_name = "set"
     externalResourcesRequired: Optional[bool] = None
     to: Optional[str] = None
@@ -459,7 +477,7 @@ class Set(Element):
 
 
 @dataclass
-class AnimateMotion(Element, m.Animation):
+class AnimateMotion(Element, m.Animation, m.AnimationTiming):
     element_name = "animateMotion"
     externalResourcesRequired: Optional[bool] = None
     path: Optional[str] = None
@@ -476,7 +494,7 @@ class MPath(Element):
 
 
 @dataclass
-class AnimateTransform(Element, m.Animation):
+class AnimateTransform(Element, m.Animation, m.AnimationTiming):
     element_name = "animateTransform"
     externalResourcesRequired: Optional[bool] = None
     type: Optional[Literal["translate", "scale", "rotate", "skewX", "skewY"]] = None
@@ -496,7 +514,7 @@ class Metadata(Element):
 
 
 @dataclass
-class ForeignObject(Element, m.Color):
+class ForeignObject(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     element_name = "foreignObject"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None

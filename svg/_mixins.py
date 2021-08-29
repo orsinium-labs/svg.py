@@ -221,11 +221,6 @@ class TextContentElements(AttrsMixin):
 
 
 @dataclass
-class TextElements(AttrsMixin):
-    writing_mode: Optional[str] = None  # TODO
-
-
-@dataclass
 class Viewports(AttrsMixin):
     overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
 
@@ -242,7 +237,6 @@ class Presentation(
     LightingEffects,
     Markers,
     TextContentElements,
-    TextElements,
     Viewports,
 ):
     pass
@@ -285,12 +279,18 @@ class Animation(AttrsMixin):
     # Animation addition attributes
     additive: Optional[Literal["replace", "sum"]] = None
     accumulate: Optional[Literal["none", "sum"]] = None
+
+
+@dataclass
+class AnimationTiming(AttrsMixin):
     begin: Optional[str] = None
     dur: Optional[str] = None
     end: Optional[str] = None
     min: Optional[str] = None
     max: Optional[str] = None
     restart: Optional[Literal["always", "never", "whenNotActive"]] = None
-
+    repeatCount: Optional[str] = None
+    repeatDur: Optional[str] = None
+    fill: Optional[Literal["remove", "dtd"]] = None
 
 # TODO: descTitleMetadata
