@@ -65,9 +65,11 @@ class Element:
 @dataclass
 class SVG(
     Element,
-    m.Presentation,
     m.GraphicsElementEvents,
     m.DocumentEvents,
+    m.Color,
+    m.Graphics,
+    m.Viewports,
 ):
     element_name = "svg"
     elements: Optional[List[Element]] = None
@@ -82,8 +84,9 @@ class SVG(
 @dataclass
 class G(
     Element,
-    m.Presentation,
     m.GraphicsElementEvents,
+    m.Color,
+    m.Graphics,
 ):
     element_name = "g"
     elements: Optional[List[Element]] = None
@@ -93,7 +96,7 @@ class G(
 @dataclass
 class Defs(
     Element,
-    m.Presentation,
+    m.Color,
     m.GraphicsElementEvents,
 ):
     element_name = "defs"
@@ -116,8 +119,10 @@ class Title(Element, m.GraphicsElementEvents):
 @dataclass
 class Symbol(
     Element,
-    m.Presentation,
     m.GraphicsElementEvents,
+    m.Color,
+    m.Graphics,
+    m.Viewports,
 ):
     element_name = "symbol"
     elements: Optional[List[Element]] = None
@@ -531,11 +536,7 @@ class ForeignObject(Element, m.Color, m.GraphicsElementEvents, m.Graphics, m.Vie
 
 
 @dataclass
-class Use(
-    Element,
-    m.Presentation,
-    m.GraphicsElementEvents,
-):
+class Use(Element, m.GraphicsElementEvents, m.Color, m.Graphics):
     element_name = "use"
     elements: Optional[
         List[

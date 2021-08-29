@@ -226,23 +226,6 @@ class Viewports(AttrsMixin):
     overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
 
 
-class Presentation(
-    Color,
-    FeFlood,
-    FillStroke,
-    FilterPrimitives,
-    FontSpecification,
-    Gradients,
-    Graphics,
-    Images,
-    LightingEffects,
-    Markers,
-    TextContentElements,
-    Viewports,
-):
-    pass
-
-
 @dataclass
 class FilterPrimitive(AttrsMixin):
     x: Optional[values.Coordinate] = None
