@@ -446,6 +446,7 @@ class Script(Element):
 class Animate(Element, m.Animation, m.Color):
     element_name = "animate"
     externalResourcesRequired: Optional[bool] = None
+    keyPoints: Optional[str] = None
 
 
 @dataclass
@@ -454,6 +455,7 @@ class Set(Element):
     externalResourcesRequired: Optional[bool] = None
     to: Optional[str] = None
     min: Optional[str] = None
+    keyPoints: Optional[str] = None
 
 
 @dataclass
@@ -478,6 +480,7 @@ class AnimateTransform(Element, m.Animation):
     element_name = "animateTransform"
     externalResourcesRequired: Optional[bool] = None
     type: Optional[Literal["translate", "scale", "rotate", "skewX", "skewY"]] = None
+    keyPoints: Optional[str] = None
 
 
 @dataclass

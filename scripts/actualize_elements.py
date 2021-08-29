@@ -17,6 +17,7 @@ def get_elements(path: Path) -> Iterator[str]:
     match = REX_TITLE.search(content)
     assert match, f'title not found for {path}'
     title = match.group(1)
+    content = content.split('</ul>', maxsplit=1)[0]
     for match in REX_EL.finditer(content):
         el = match.group(1)
         yield f'{title}.{el}'

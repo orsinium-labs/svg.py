@@ -173,7 +173,6 @@ class FeImage(Element, m.FilterPrimitive):
     element_name = "feImage"
     externalResourcesRequired: Optional[Any] = None
     transform: Optional[Any] = None
-    preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
 
 
 @dataclass
