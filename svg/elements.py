@@ -175,7 +175,6 @@ class Style(Element, m.GraphicsElementEvents):
 class _FigureElement(
     m.Color,
     m.GraphicsElementEvents,
-    m.Markers,
     m.Graphics,
 ):
     elements: Optional[
@@ -198,6 +197,9 @@ class Path(Element, _FigureElement):
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
     d: Optional[List[values.PathData]] = None
+    marker_start: Optional[values.Marker] = None
+    marker_mid: Optional[values.Marker] = None
+    marker_end: Optional[values.Marker] = None
 
 
 @dataclass
@@ -211,6 +213,9 @@ class Rect(Element, _FigureElement):
     height: Optional[values.Length] = None
     rx: Optional[values.Length] = None
     ry: Optional[values.Length] = None
+    marker_start: Optional[values.Marker] = None
+    marker_mid: Optional[values.Marker] = None
+    marker_end: Optional[values.Marker] = None
 
 
 @dataclass
@@ -221,6 +226,8 @@ class Circle(Element, _FigureElement):
     cx: Optional[values.Length] = None
     cy: Optional[values.Length] = None
     r: Optional[values.Length] = None
+    marker_start: Optional[values.Marker] = None
+    marker_mid: Optional[values.Marker] = None
 
 
 @dataclass
@@ -232,6 +239,9 @@ class Ellipse(Element, _FigureElement):
     cy: Optional[values.Length] = None
     rx: Optional[values.Length] = None
     ry: Optional[values.Length] = None
+    marker_start: Optional[values.Marker] = None
+    marker_mid: Optional[values.Marker] = None
+    marker_end: Optional[values.Marker] = None
 
 
 @dataclass
@@ -243,6 +253,9 @@ class Line(Element, _FigureElement):
     y1: Optional[values.Coordinate] = None
     x2: Optional[values.Coordinate] = None
     y2: Optional[values.Coordinate] = None
+    marker_start: Optional[values.Marker] = None
+    marker_mid: Optional[values.Marker] = None
+    marker_end: Optional[values.Marker] = None
 
 
 @dataclass
@@ -251,6 +264,9 @@ class Polyline(Element, _FigureElement):
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
     points: Optional[values.Points] = None
+    marker_start: Optional[values.Marker] = None
+    marker_mid: Optional[values.Marker] = None
+    marker_end: Optional[values.Marker] = None
 
 
 @dataclass
@@ -259,8 +275,12 @@ class Polygon(Element, _FigureElement):
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
     points: Optional[values.Points] = None
+    marker_start: Optional[values.Marker] = None
+    marker_mid: Optional[values.Marker] = None
+    marker_end: Optional[values.Marker] = None
 
 
+@dataclass
 class _TextElement(
     m.FontSpecification,
     m.TextContentElements,
@@ -268,7 +288,7 @@ class _TextElement(
     m.GraphicsElementEvents,
     m.Graphics,
 ):
-    pass
+    paint_order: Optional[Literal["normal", "fill", "stroke", "markers"]] = None
 
 
 @dataclass
@@ -327,7 +347,7 @@ class TextPath(Element, _TextElement):
     spacing: Optional[Literal["auto", "exact"]] = None
     href: Optional[str] = None
     path: Optional[str] = None
-    side: Optional[values.Side] = None
+    side: Optional[Literal["left", "right"]] = None
     writing_mode: Optional[Literal["horizontal-tb", "vertical-rl", "vertical-lr"]] = None
     alignment_baseline: Optional[values.AlignmentBaseline] = None
     baseline_shift: Optional[Literal["baseline", "sub", "super", "inherit"]] = None

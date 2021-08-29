@@ -69,41 +69,18 @@ class FontSpecification(AttrsMixin):
     font_family: Optional[values.FontFamily] = None
     font_size: Optional[values.FontSize] = None
     font_size_adjust: Optional[values.FontSizeAdjust] = None
-    font_stretch: Optional[
-        Literal[
-            "normal",
-            "wider",
-            "narrower",
-            "ultra-condensed",
-            "extra-condensed",
-            "semi-condensed",
-            "semi-expanded",
-            "expanded",
-            "extra-expanded",
-            "ultra-expanded",
-            "inherit",
-        ]
-    ] = None
+    font_stretch: Optional[Literal[
+        "normal", "wider", "narrower",
+        "ultra-condensed", "extra-condensed", "semi-condensed",
+        "semi-expanded", "expanded", "extra-expanded", "ultra-expanded",
+        "inherit",
+    ]] = None
     font_style: Optional[Literal["normal", "italic", "oblique", "inherit"]] = None
     font_variant: Optional[Literal["normal", "small-caps", "inherit"]] = None
-    font_weight: Optional[
-        Literal[
-            "normal",
-            "bold",
-            "bolder",
-            "lighter",
-            "inherit",
-            "100",
-            "200",
-            "300",
-            "400",
-            "500",
-            "600",
-            "700",
-            "800",
-            "900",
-        ]
-    ] = None
+    font_weight: Optional[Literal[
+        "normal", "bold", "bolder", "lighter", "inherit",
+        "100", "200", "300", "400", "500", "600", "700", "800", "900",
+    ]] = None
 
 
 @dataclass
@@ -116,27 +93,11 @@ class Gradients(AttrsMixin):
 class Graphics(AttrsMixin):
     clip_path: Optional[values.ClipPath] = None
     clip_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
-    cursor: Optional[
-        Literal[
-            "auto",
-            "crosshair",
-            "default",
-            "pointer",
-            "move",
-            "e-resize",
-            "ne-resize",
-            "nw-resize",
-            "n-resize",
-            "se-resize",
-            "sw-resize",
-            "s-resize",
-            "w-resize",
-            "text",
-            "wait",
-            "help",
-            "inherit",
-        ]
-    ] = None
+    cursor: Optional[Literal[
+        "auto", "crosshair", "default", "pointer", "move",
+        "e-resize", "ne-resize", "nw-resize", "n-resize", "se-resize", "sw-resize", "s-resize", "w-resize",
+        "text", "wait", "help", "inherit",
+    ]] = None
     display: Optional[str] = None  # TODO
     filter: Optional[values.Filter] = None
     mask: Optional[values.Mask] = None
@@ -153,7 +114,6 @@ class Graphics(AttrsMixin):
             "fixed-position",
         ]
     ] = None
-    paint_order: Optional[Literal["normal", "fill", "stroke", "markers"]] = None
 
 
 class Images:
@@ -163,13 +123,6 @@ class Images:
 @dataclass
 class LightingEffects(AttrsMixin):
     lighting_color: Optional[values.SVGColor] = None
-
-
-@dataclass
-class Markers(AttrsMixin):
-    marker_start: Optional[values.Marker] = None
-    marker_mid: Optional[values.Marker] = None
-    marker_end: Optional[values.Marker] = None
 
 
 @dataclass

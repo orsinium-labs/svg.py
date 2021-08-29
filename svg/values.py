@@ -127,7 +127,6 @@ EnableBackground = Union[
 Filter = Union[URI, INHERIT, NONE]
 Marker = Union[URI, NONE, INHERIT]
 Mask = Union[URI, NONE, INHERIT]
-Side = Literal["left", "right"]
 
 # list of strings
 Classes = List[str]
