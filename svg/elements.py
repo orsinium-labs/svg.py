@@ -146,6 +146,7 @@ class Image(
     y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
+    preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
 
 
 @dataclass
@@ -265,7 +266,7 @@ class _TextElement(
 
 
 @dataclass
-class Text(Element, _TextElement):
+class Text(Element, _TextElement, m.Viewports):
     element_name = "text"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
@@ -322,7 +323,7 @@ class TextPath(Element, _TextElement):
 
 
 @dataclass
-class Marker(Element, m.Color, m.GraphicsElementEvents):
+class Marker(Element, m.Color, m.GraphicsElementEvents, m.Viewports):
     element_name = "marker"
     externalResourcesRequired: Optional[bool] = None
     viewBox: Optional[values.ViewBoxSpec] = None
@@ -382,7 +383,7 @@ class Stop(Element, m.GraphicsElementEvents):
 
 
 @dataclass
-class Pattern(Element, m.Color, m.GraphicsElementEvents):
+class Pattern(Element, m.Color, m.GraphicsElementEvents, m.Viewports):
     element_name = "pattern"
     externalResourcesRequired: Optional[bool] = None
     viewBox: Optional[Any] = None
@@ -518,7 +519,7 @@ class Metadata(Element, m.GraphicsElementEvents):
 
 
 @dataclass
-class ForeignObject(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
+class ForeignObject(Element, m.Color, m.GraphicsElementEvents, m.Graphics, m.Viewports):
     element_name = "foreignObject"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
