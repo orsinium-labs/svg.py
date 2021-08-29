@@ -78,6 +78,7 @@ class FeBlend(Element, _FilterElement):
     element_name = "feBlend"
     in2: Optional[str] = None
     mode: Optional[Any] = None
+    in_: Optional[str] = None
 
 
 @dataclass
@@ -85,12 +86,13 @@ class FeColorMatrix(Element, _FilterElement):
     element_name = "feColorMatrix"
     type: Optional[Any] = None
     values: Optional[str] = None
+    in_: Optional[str] = None
 
 
 @dataclass
 class FeComponentTransfer(Element, _FilterElement):
     element_name = "feComponentTransfer"
-    pass
+    in_: Optional[str] = None
 
 
 @dataclass
@@ -126,6 +128,7 @@ class FeComposite(Element, _FilterElement):
     k2: Optional[Any] = None
     k3: Optional[Any] = None
     k4: Optional[Any] = None
+    in_: Optional[str] = None
 
 
 @dataclass
@@ -139,6 +142,7 @@ class FeConvolveMatrix(Element, _FilterElement):
     targetY: Optional[Any] = None
     edgeMode: Optional[Literal["duplicate", "wrap", "none"]] = None
     preserveAlpha: Optional[Any] = None
+    in_: Optional[str] = None
 
 
 @dataclass
@@ -147,6 +151,7 @@ class FeDiffuseLighting(Element, _FilterElement, m.LightingEffects):
     elements: Optional[List[Union[e.Animate, e.Set]]] = None
     surfaceScale: Optional[Any] = None
     diffuseConstant: Optional[Any] = None
+    in_: Optional[str] = None
 
 
 @dataclass
@@ -156,6 +161,7 @@ class FeDisplacementMap(Element, _FilterElement):
     scale: Optional[Any] = None
     xChannelSelector: Optional[Any] = None
     yChannelSelector: Optional[Any] = None
+    in_: Optional[str] = None
 
 
 @dataclass
@@ -170,6 +176,7 @@ class FeGaussianBlur(Element, _FilterElement):
     element_name = "feGaussianBlur"
     stdDeviation: Optional[values.NumberOptionalNumber] = None
     edgeMode: Optional[Literal["duplicate", "wrap", "none"]] = None
+    in_: Optional[str] = None
 
 
 @dataclass
@@ -198,6 +205,7 @@ class FeMorphology(Element, _FilterElement):
     element_name = "feMorphology"
     operator: Optional[Any] = None
     radius: Optional[Any] = None
+    in_: Optional[str] = None
 
 
 @dataclass
@@ -205,6 +213,7 @@ class FeOffset(Element, _FilterElement):
     element_name = "feOffset"
     dx: Optional[Any] = None
     dy: Optional[Any] = None
+    in_: Optional[str] = None
 
 
 @dataclass
@@ -214,12 +223,13 @@ class FeSpecularLighting(Element, _FilterElement, m.LightingEffects):
     surfaceScale: Optional[Any] = None
     specularConstant: Optional[Any] = None
     specularExponent: Optional[Any] = None
+    in_: Optional[str] = None
 
 
 @dataclass
 class FeTile(Element, _FilterElement):
     element_name = "feTile"
-    pass
+    in_: Optional[str] = None
 
 
 @dataclass

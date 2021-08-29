@@ -284,6 +284,7 @@ class Text(Element, _TextElement, m.Viewports):
     textLength: Optional[values.Length] = None
     lengthAdjust: Optional[Literal["spacing", "spacingAndGlyphs"]] = None
     writing_mode: Optional[Literal["horizontal-tb", "vertical-rl", "vertical-lr"]] = None
+    text_rendering: Optional[Literal["auto", "optimizeSpeed", "optimizeLegibility", "geometricPrecision"]] = None
 
 
 @dataclass
