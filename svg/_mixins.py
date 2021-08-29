@@ -139,9 +139,6 @@ class Graphics(AttrsMixin):
     ] = None
     display: Optional[str] = None  # TODO
     filter: Optional[values.Filter] = None
-    image_rendering: Optional[
-        Literal["auto", "optimizeSpeed", "optimizeQuality", "inherit"]
-    ] = None
     mask: Optional[values.Mask] = None
     opacity: Optional[values.Opacity] = None
     pointer_events: Optional[str] = None  # TODO

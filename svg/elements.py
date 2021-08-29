@@ -152,6 +152,7 @@ class Image(
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
+    image_rendering: Optional[Literal["auto", "optimizeSpeed", "optimizeQuality"]] = None
 
 
 @dataclass
