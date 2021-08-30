@@ -98,7 +98,6 @@ class Graphics(AttrsMixin):
     mask: Optional[values.Mask] = None
     opacity: Optional[values.Opacity] = None
     pointer_events: Optional[str] = None  # TODO
-    visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
 
 
 class Images:

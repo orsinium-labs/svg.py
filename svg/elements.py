@@ -159,6 +159,7 @@ class Image(
     image_rendering: Optional[Literal["auto", "optimizeSpeed", "optimizeQuality"]] = None
     class_: Optional[values.Classes] = None
     vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
+    visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
 
 
 @dataclass
@@ -191,6 +192,7 @@ class _FigureElement(m.Color, m.GraphicsElementEvents, m.Graphics):
     shape_rendering: Optional[Literal["auto", "optimizeSpeed", "crispEdges", "geometricPrecision", "inherit"]] = None
     class_: Optional[values.Classes] = None
     vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
+    visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
 
 
 @dataclass
@@ -293,6 +295,7 @@ class _TextElement(
     paint_order: Optional[Literal["normal", "fill", "stroke", "markers"]] = None
     class_: Optional[values.Classes] = None
     vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
+    visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
 
 
 @dataclass
@@ -461,6 +464,7 @@ class A(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     target: Optional[Any] = None
     href: Optional[str] = None
     class_: Optional[values.Classes] = None
+    visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
 
 
 @dataclass
@@ -548,6 +552,7 @@ class ForeignObject(Element, m.Color, m.GraphicsElementEvents, m.Graphics, m.Vie
     content: Optional[str] = None
     class_: Optional[values.Classes] = None
     vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
+    visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
 
 
 @dataclass
