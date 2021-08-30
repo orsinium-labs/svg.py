@@ -6,7 +6,7 @@ import yaml
 from functools import cached_property
 
 
-REX_EL = re.compile(re.escape('li>{{SVGElement("') + '([a-zA-Z-]+)' + re.escape('")}}</'))
+REX_EL = re.compile(r'li>\{\{\s*SVGElement\("([a-zA-Z-]+)"\)\s*\}\}\.?</')
 DEPRECATED = [
     # attributes of <font-face> which is deprecated
     'underline-thickness',

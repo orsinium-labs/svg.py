@@ -13,6 +13,7 @@ class Element:
 
     element_name: ClassVar[str]
 
+    elements: Optional[List[Any]] = None
     id: Optional[str] = None
     tabindex: Optional[int] = None
     lang: Optional[str] = None
@@ -177,16 +178,12 @@ class _FigureElement(
     m.GraphicsElementEvents,
     m.Graphics,
 ):
-    elements: Optional[
-        List[
-            Union[
-                "Animate",
-                "Set",
-                "AnimateMotion",
-                "AnimateTransform",
-            ]
-        ]
-    ] = None
+    elements: Optional[List[Union[
+        "Animate",
+        "Set",
+        "AnimateMotion",
+        "AnimateTransform",
+    ]]] = None
     pathLength: Optional[float] = None
     paint_order: Optional[Literal["normal", "fill", "stroke", "markers"]] = None
 
@@ -300,7 +297,6 @@ class Text(Element, _TextElement, m.Viewports):
     y: Optional[values.Coordinate] = None
     dx: Optional[values.Coordinate] = None
     dy: Optional[values.Coordinate] = None
-    rotate: Optional[values.Rotation] = None
     textLength: Optional[values.Length] = None
     lengthAdjust: Optional[Literal["spacing", "spacingAndGlyphs"]] = None
     writing_mode: Optional[Literal["horizontal-tb", "vertical-rl", "vertical-lr"]] = None
@@ -315,7 +311,6 @@ class TSpan(Element, _TextElement):
     y: Optional[values.Coordinate] = None
     dx: Optional[values.Coordinate] = None
     dy: Optional[values.Coordinate] = None
-    rotate: Optional[str] = None
     textLength: Optional[values.Length] = None
     lengthAdjust: Optional[Literal["spacing", "spacingAndGlyphs"]] = None
     writing_mode: Optional[Literal["horizontal-tb", "vertical-rl", "vertical-lr"]] = None
@@ -326,19 +321,9 @@ class TSpan(Element, _TextElement):
 @dataclass
 class TextPath(Element, _TextElement):
     element_name = "textPath"
-    elements: Optional[
-        List[
-            Union[
-                "Desc",
-                "Title",
-                "Metadata",
-                "TSpan",
-                "A",
-                "Animate",
-                "Set",
-            ]
-        ]
-    ] = None
+    elements: Optional[List[Union[
+        "Desc", "Title", "Metadata", "TSpan", "A", "Animate", "Set",
+    ]]] = None
     externalResourcesRequired: Optional[bool] = None
     startOffset: Optional[str] = None
     textLength: Optional[values.Length] = None
@@ -417,7 +402,7 @@ class Stop(Element, m.GraphicsElementEvents):
 class Pattern(Element, m.Color, m.GraphicsElementEvents, m.Viewports):
     element_name = "pattern"
     externalResourcesRequired: Optional[bool] = None
-    viewBox: Optional[Any] = None
+    viewBox: Optional[values.ViewBoxSpec] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
     patternUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
     patternTransform: Optional[Any] = None
@@ -432,24 +417,10 @@ class Pattern(Element, m.Color, m.GraphicsElementEvents, m.Viewports):
 @dataclass
 class ClipPath(Element, m.Color):
     element_name = "clipPath"
-    elements: Optional[
-        List[
-            Union[
-                "Path",
-                "Text",
-                "Rect",
-                "Circle",
-                "Ellipse",
-                "Line",
-                "Polyline",
-                "Polygon",
-                "Animate",
-                "Set",
-                "AnimateMotion",
-                "AnimateTransform",
-            ]
-        ]
-    ] = None
+    elements: Optional[List[Union[
+        "Path", "Text", "Rect", "Circle", "Ellipse", "Line",
+        "Polyline", "Polygon", "Animate", "Set", "AnimateMotion", "AnimateTransform",
+    ]]] = None
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
     clipPathUnits: Optional[Any] = None
@@ -482,7 +453,7 @@ class A(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
 class View(Element, m.GraphicsElementEvents):
     element_name = "view"
     externalResourcesRequired: Optional[bool] = None
-    viewBox: Optional[Any] = None
+    viewBox: Optional[values.ViewBoxSpec] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
 
 
