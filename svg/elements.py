@@ -103,6 +103,7 @@ class Defs(
     elements: Optional[List[Element]] = None
     transform: Optional[values.Transforms] = None
     class_: Optional[values.Classes] = None
+    pointer_events: Optional[str] = None  # TODO
 
 
 @dataclass
@@ -169,6 +170,7 @@ class Switch(Element, m.Color, m.GraphicsElementEvents):
     transform: Optional[values.Transforms] = None
     opacity: Optional[values.Opacity] = None
     class_: Optional[values.Classes] = None
+    pointer_events: Optional[str] = None  # TODO
 
 
 @dataclass
@@ -180,7 +182,7 @@ class Style(Element, m.GraphicsElementEvents):
 
 
 @dataclass
-class _FigureElement(m.Color, m.GraphicsElementEvents, m.Graphics):
+class _FigureElement(m.Color, m.GraphicsElementEvents, m.Graphics, m.FillStroke):
     elements: Optional[List[Union[
         "Animate",
         "Set",
@@ -290,6 +292,7 @@ class _TextElement(
     m.Color,
     m.GraphicsElementEvents,
     m.Graphics,
+    m.FillStroke,
 ):
     paint_order: Optional[Literal["normal", "fill", "stroke", "markers"]] = None
     class_: Optional[values.Classes] = None
@@ -348,7 +351,7 @@ class TextPath(Element, _TextElement):
 
 
 @dataclass
-class Marker(Element, m.Color, m.GraphicsElementEvents, m.Viewports):
+class Marker(Element, m.Color, m.GraphicsElementEvents, m.Viewports, m.Graphics):
     element_name = "marker"
     externalResourcesRequired: Optional[bool] = None
     viewBox: Optional[values.ViewBoxSpec] = None
@@ -411,7 +414,7 @@ class Stop(Element, m.GraphicsElementEvents):
 
 
 @dataclass
-class Pattern(Element, m.Color, m.GraphicsElementEvents, m.Viewports):
+class Pattern(Element, m.Color, m.GraphicsElementEvents, m.Viewports, m.Graphics):
     element_name = "pattern"
     externalResourcesRequired: Optional[bool] = None
     viewBox: Optional[values.ViewBoxSpec] = None
@@ -428,7 +431,7 @@ class Pattern(Element, m.Color, m.GraphicsElementEvents, m.Viewports):
 
 
 @dataclass
-class ClipPath(Element, m.Color):
+class ClipPath(Element, m.Color, m.Graphics):
     element_name = "clipPath"
     elements: Optional[List[Union[
         "Path", "Text", "Rect", "Circle", "Ellipse", "Line",
@@ -441,7 +444,7 @@ class ClipPath(Element, m.Color):
 
 
 @dataclass
-class Mask(Element, m.Color):
+class Mask(Element, m.Color, m.Graphics):
     element_name = "mask"
     elements: Optional[List[Element]] = None
     externalResourcesRequired: Optional[bool] = None
