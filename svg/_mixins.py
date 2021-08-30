@@ -98,7 +98,6 @@ class Graphics(AttrsMixin):
     mask: Optional[values.Mask] = None
     opacity: Optional[values.Opacity] = None
     pointer_events: Optional[str] = None  # TODO
-    shape_rendering: Optional[str] = None  # TODO
     visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
     vector_effect: Optional[Literal[
         "none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position",
@@ -151,6 +150,7 @@ class FilterPrimitive(AttrsMixin):
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
     result: Optional[str] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass

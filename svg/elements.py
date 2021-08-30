@@ -20,9 +20,6 @@ class Element:
     xml__lang: Optional[str] = None
 
     transform_origin: Optional[str] = None
-
-    # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/Styling
-    class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
 
     @classmethod
@@ -80,6 +77,7 @@ class SVG(
     y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -92,6 +90,7 @@ class G(
     element_name = "g"
     elements: Optional[List[Element]] = None
     transform: Optional[values.Transforms] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -103,18 +102,21 @@ class Defs(
     element_name = "defs"
     elements: Optional[List[Element]] = None
     transform: Optional[values.Transforms] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
 class Desc(Element, m.GraphicsElementEvents):
     element_name = "desc"
     content: Optional[str] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
 class Title(Element, m.GraphicsElementEvents):
     element_name = "title"
     content: Optional[str] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -135,6 +137,7 @@ class Symbol(
     y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -154,6 +157,7 @@ class Image(
     height: Optional[values.Length] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
     image_rendering: Optional[Literal["auto", "optimizeSpeed", "optimizeQuality"]] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -162,6 +166,7 @@ class Switch(Element, m.Color, m.GraphicsElementEvents):
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
     opacity: Optional[values.Opacity] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -173,11 +178,7 @@ class Style(Element, m.GraphicsElementEvents):
 
 
 @dataclass
-class _FigureElement(
-    m.Color,
-    m.GraphicsElementEvents,
-    m.Graphics,
-):
+class _FigureElement(m.Color, m.GraphicsElementEvents, m.Graphics):
     elements: Optional[List[Union[
         "Animate",
         "Set",
@@ -186,6 +187,8 @@ class _FigureElement(
     ]]] = None
     pathLength: Optional[float] = None
     paint_order: Optional[Literal["normal", "fill", "stroke", "markers"]] = None
+    shape_rendering: Optional[Literal["auto", "optimizeSpeed", "crispEdges", "geometricPrecision", "inherit"]] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -301,6 +304,7 @@ class Text(Element, _TextElement, m.Viewports):
     lengthAdjust: Optional[Literal["spacing", "spacingAndGlyphs"]] = None
     writing_mode: Optional[Literal["horizontal-tb", "vertical-rl", "vertical-lr"]] = None
     text_rendering: Optional[Literal["auto", "optimizeSpeed", "optimizeLegibility", "geometricPrecision"]] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -316,6 +320,7 @@ class TSpan(Element, _TextElement):
     writing_mode: Optional[Literal["horizontal-tb", "vertical-rl", "vertical-lr"]] = None
     alignment_baseline: Optional[values.AlignmentBaseline] = None
     baseline_shift: Optional[Literal["baseline", "sub", "super", "inherit"]] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -336,6 +341,7 @@ class TextPath(Element, _TextElement):
     writing_mode: Optional[Literal["horizontal-tb", "vertical-rl", "vertical-lr"]] = None
     alignment_baseline: Optional[values.AlignmentBaseline] = None
     baseline_shift: Optional[Literal["baseline", "sub", "super", "inherit"]] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -351,6 +357,7 @@ class Marker(Element, m.Color, m.GraphicsElementEvents, m.Viewports):
     markerHeight: Optional[values.Length] = None
     orient: Optional[str] = None
     opacity: Optional[values.Opacity] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -368,6 +375,7 @@ class _Gradient:
     gradientTransform: Optional[Any] = None
     spreadMethod: Optional[Any] = None
     href: Optional[str] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -396,6 +404,7 @@ class Stop(Element, m.GraphicsElementEvents):
     offset: Optional[values.Length] = None
     stop_opacity: Optional[values.Opacity] = None
     stop_color: Optional[values.SVGColor] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -412,6 +421,7 @@ class Pattern(Element, m.Color, m.GraphicsElementEvents, m.Viewports):
     height: Optional[values.Length] = None
     patternContentUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
     href: Optional[str] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -424,6 +434,7 @@ class ClipPath(Element, m.Color):
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
     clipPathUnits: Optional[Any] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -438,6 +449,7 @@ class Mask(Element, m.Color):
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
     maskContentUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -447,6 +459,7 @@ class A(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     transform: Optional[values.Transforms] = None
     target: Optional[Any] = None
     href: Optional[str] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -530,6 +543,7 @@ class ForeignObject(Element, m.Color, m.GraphicsElementEvents, m.Graphics, m.Vie
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
     content: Optional[str] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
