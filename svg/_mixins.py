@@ -145,7 +145,6 @@ class FilterPrimitive(AttrsMixin):
     y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
-    result: Optional[str] = None
 
 
 @dataclass

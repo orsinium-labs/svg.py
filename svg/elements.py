@@ -230,7 +230,6 @@ class Circle(Element, _FigureElement):
     cx: Optional[values.Length] = None
     cy: Optional[values.Length] = None
     r: Optional[values.Length] = None
-    marker_start: Optional[values.Marker] = None
     marker_mid: Optional[values.Marker] = None
 
 
