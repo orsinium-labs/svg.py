@@ -39,10 +39,11 @@ class Filter(Element, m.FilterPrimitive):
     y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
-class FeDistantLight(Element, m.FilterPrimitive):
+class FeDistantLight(Element):
     element_name = "feDistantLight"
     azimuth: Optional[Any] = None
     elevation: Optional[Any] = None
@@ -77,15 +78,17 @@ class FeBlend(Element, m.FilterPrimitive):
     mode: Optional[Any] = None
     in_: Optional[str] = None
     color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
 class FeColorMatrix(Element, m.FilterPrimitive):
     element_name = "feColorMatrix"
     type: Optional[Any] = None
-    values: Optional[str] = None
     in_: Optional[str] = None
     color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
+    class_: Optional[values.Classes] = None
+    values: Optional[str] = None
 
 
 @dataclass
@@ -93,6 +96,7 @@ class FeComponentTransfer(Element, m.FilterPrimitive):
     element_name = "feComponentTransfer"
     in_: Optional[str] = None
     color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -130,6 +134,7 @@ class FeComposite(Element, m.FilterPrimitive):
     k4: Optional[Any] = None
     in_: Optional[str] = None
     color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -145,6 +150,7 @@ class FeConvolveMatrix(Element, m.FilterPrimitive):
     preserveAlpha: Optional[Any] = None
     in_: Optional[str] = None
     color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -155,6 +161,7 @@ class FeDiffuseLighting(Element, m.FilterPrimitive, m.LightingEffects):
     diffuseConstant: Optional[Any] = None
     in_: Optional[str] = None
     color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -166,6 +173,7 @@ class FeDisplacementMap(Element, m.FilterPrimitive):
     yChannelSelector: Optional[Any] = None
     in_: Optional[str] = None
     color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -174,6 +182,7 @@ class FeFlood(Element, m.FilterPrimitive):
     flood_opacity: Optional[values.Opacity] = None
     flood_color: Optional[values.SVGColor] = None
     color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -183,6 +192,7 @@ class FeGaussianBlur(Element, m.FilterPrimitive):
     edgeMode: Optional[Literal["duplicate", "wrap", "none"]] = None
     in_: Optional[str] = None
     color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -193,12 +203,14 @@ class FeImage(Element, m.FilterPrimitive):
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
     href: Optional[str] = None
     color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
 class FeMerge(Element, m.FilterPrimitive):
     element_name = "feMerge"
     color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -214,6 +226,7 @@ class FeMorphology(Element, m.FilterPrimitive):
     radius: Optional[Any] = None
     in_: Optional[str] = None
     color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -223,6 +236,7 @@ class FeOffset(Element, m.FilterPrimitive):
     dy: Optional[Any] = None
     in_: Optional[str] = None
     color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -234,6 +248,7 @@ class FeSpecularLighting(Element, m.FilterPrimitive, m.LightingEffects):
     specularExponent: Optional[Any] = None
     in_: Optional[str] = None
     color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -241,6 +256,7 @@ class FeTile(Element, m.FilterPrimitive):
     element_name = "feTile"
     in_: Optional[str] = None
     color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
+    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -252,3 +268,4 @@ class FeTurbulence(Element, m.FilterPrimitive):
     stitchTiles: Optional[Any] = None
     type: Optional[Any] = None
     color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
+    class_: Optional[values.Classes] = None

@@ -150,7 +150,6 @@ class FilterPrimitive(AttrsMixin):
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
     result: Optional[str] = None
-    class_: Optional[values.Classes] = None
 
 
 @dataclass
