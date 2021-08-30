@@ -158,6 +158,7 @@ class Image(
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
     image_rendering: Optional[Literal["auto", "optimizeSpeed", "optimizeQuality"]] = None
     class_: Optional[values.Classes] = None
+    vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
 
 
 @dataclass
@@ -189,6 +190,7 @@ class _FigureElement(m.Color, m.GraphicsElementEvents, m.Graphics):
     paint_order: Optional[Literal["normal", "fill", "stroke", "markers"]] = None
     shape_rendering: Optional[Literal["auto", "optimizeSpeed", "crispEdges", "geometricPrecision", "inherit"]] = None
     class_: Optional[values.Classes] = None
+    vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
 
 
 @dataclass
@@ -289,6 +291,8 @@ class _TextElement(
     m.Graphics,
 ):
     paint_order: Optional[Literal["normal", "fill", "stroke", "markers"]] = None
+    class_: Optional[values.Classes] = None
+    vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
 
 
 @dataclass
@@ -304,7 +308,6 @@ class Text(Element, _TextElement, m.Viewports):
     lengthAdjust: Optional[Literal["spacing", "spacingAndGlyphs"]] = None
     writing_mode: Optional[Literal["horizontal-tb", "vertical-rl", "vertical-lr"]] = None
     text_rendering: Optional[Literal["auto", "optimizeSpeed", "optimizeLegibility", "geometricPrecision"]] = None
-    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -320,7 +323,6 @@ class TSpan(Element, _TextElement):
     writing_mode: Optional[Literal["horizontal-tb", "vertical-rl", "vertical-lr"]] = None
     alignment_baseline: Optional[values.AlignmentBaseline] = None
     baseline_shift: Optional[Literal["baseline", "sub", "super", "inherit"]] = None
-    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -341,7 +343,6 @@ class TextPath(Element, _TextElement):
     writing_mode: Optional[Literal["horizontal-tb", "vertical-rl", "vertical-lr"]] = None
     alignment_baseline: Optional[values.AlignmentBaseline] = None
     baseline_shift: Optional[Literal["baseline", "sub", "super", "inherit"]] = None
-    class_: Optional[values.Classes] = None
 
 
 @dataclass
@@ -483,6 +484,7 @@ class Animate(Element, m.Animation, m.Color, m.AnimationTiming, m.GraphicsElemen
     element_name = "animate"
     externalResourcesRequired: Optional[bool] = None
     keyPoints: Optional[str] = None
+    attributeName: Optional[str] = None
 
 
 @dataclass
@@ -519,6 +521,7 @@ class AnimateTransform(Element, m.Animation, m.AnimationTiming, m.GraphicsElemen
     externalResourcesRequired: Optional[bool] = None
     type: Optional[Literal["translate", "scale", "rotate", "skewX", "skewY"]] = None
     keyPoints: Optional[str] = None
+    attributeName: Optional[str] = None
 
 
 @dataclass
@@ -544,21 +547,13 @@ class ForeignObject(Element, m.Color, m.GraphicsElementEvents, m.Graphics, m.Vie
     height: Optional[values.Length] = None
     content: Optional[str] = None
     class_: Optional[values.Classes] = None
+    vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
 
 
 @dataclass
 class Use(Element, m.GraphicsElementEvents, m.Color, m.Graphics):
     element_name = "use"
-    elements: Optional[
-        List[
-            Union[
-                "Set",
-                "Animate",
-                "AnimateMotion",
-                "AnimateTransform",
-            ]
-        ]
-    ] = None
+    elements: Optional[List[Union["Set", "Animate", "AnimateMotion", "AnimateTransform"]]] = None
     href: Optional[str] = None
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
@@ -567,3 +562,4 @@ class Use(Element, m.GraphicsElementEvents, m.Color, m.Graphics):
     y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
+    vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None

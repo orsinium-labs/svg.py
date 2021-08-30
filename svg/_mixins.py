@@ -99,9 +99,6 @@ class Graphics(AttrsMixin):
     opacity: Optional[values.Opacity] = None
     pointer_events: Optional[str] = None  # TODO
     visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
-    vector_effect: Optional[Literal[
-        "none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position",
-    ]] = None
 
 
 class Images:
@@ -179,9 +176,6 @@ class Animation(AttrsMixin):
     # Animation addition attributes
     additive: Optional[Literal["replace", "sum"]] = None
     accumulate: Optional[Literal["none", "sum"]] = None
-
-    # Animation attribute target attributes
-    attributeName: Optional[str] = None
 
 
 @dataclass
