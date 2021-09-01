@@ -52,9 +52,6 @@ class FillStroke(AttrsMixin):
     stroke: Optional[str] = None
     stroke_dasharray: Optional[values.StrokeDashArray] = None
     stroke_dashoffset: Optional[values.StrokeDashOffset] = None
-    stroke_linecap: Optional[Literal["butt", "round", "square", "inherit"]] = None
-    stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
-    stroke_miterlimit: Optional[values.StrokeMiterLimit] = None
     stroke_opacity: Optional[values.Opacity] = None
     stroke_width: Optional[values.StrokeWidth] = None
 
