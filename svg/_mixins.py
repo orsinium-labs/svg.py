@@ -46,9 +46,6 @@ class FeFlood(AttrsMixin):
 
 @dataclass
 class FillStroke(AttrsMixin):
-    fill: Optional[str] = None
-    fill_opacity: Optional[values.Opacity] = None
-    fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
     stroke: Optional[str] = None
     stroke_dasharray: Optional[values.StrokeDashArray] = None
     stroke_dashoffset: Optional[values.StrokeDashOffset] = None
@@ -181,6 +178,5 @@ class AnimationTiming(AttrsMixin):
     restart: Optional[Literal["always", "never", "whenNotActive"]] = None
     repeatCount: Optional[str] = None
     repeatDur: Optional[str] = None
-    fill: Optional[Literal["remove", "dtd"]] = None
 
 # TODO: descTitleMetadata

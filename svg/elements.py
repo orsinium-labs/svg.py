@@ -207,6 +207,9 @@ class Path(Element, _FigureElement):
     stroke_linecap: Optional[Literal["butt", "round", "square", "inherit"]] = None
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
     stroke_miterlimit: Optional[values.StrokeMiterLimit] = None
+    fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
+    fill_opacity: Optional[values.Opacity] = None
+    fill: Optional[str] = None
 
 
 @dataclass
@@ -225,6 +228,8 @@ class Rect(Element, _FigureElement):
     marker_end: Optional[values.Marker] = None
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
     stroke_miterlimit: Optional[values.StrokeMiterLimit] = None
+    fill_opacity: Optional[values.Opacity] = None
+    fill: Optional[str] = None
 
 
 @dataclass
@@ -236,6 +241,8 @@ class Circle(Element, _FigureElement):
     cy: Optional[values.Length] = None
     r: Optional[values.Length] = None
     marker_mid: Optional[values.Marker] = None
+    fill_opacity: Optional[values.Opacity] = None
+    fill: Optional[str] = None
 
 
 @dataclass
@@ -250,6 +257,8 @@ class Ellipse(Element, _FigureElement):
     marker_start: Optional[values.Marker] = None
     marker_mid: Optional[values.Marker] = None
     marker_end: Optional[values.Marker] = None
+    fill_opacity: Optional[values.Opacity] = None
+    fill: Optional[str] = None
 
 
 @dataclass
@@ -279,6 +288,9 @@ class Polyline(Element, _FigureElement):
     stroke_linecap: Optional[Literal["butt", "round", "square", "inherit"]] = None
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
     stroke_miterlimit: Optional[values.StrokeMiterLimit] = None
+    fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
+    fill_opacity: Optional[values.Opacity] = None
+    fill: Optional[str] = None
 
 
 @dataclass
@@ -292,6 +304,9 @@ class Polygon(Element, _FigureElement):
     marker_end: Optional[values.Marker] = None
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
     stroke_miterlimit: Optional[values.StrokeMiterLimit] = None
+    fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
+    fill_opacity: Optional[values.Opacity] = None
+    fill: Optional[str] = None
 
 
 @dataclass
@@ -307,6 +322,8 @@ class _TextElement(
     class_: Optional[values.Classes] = None
     vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
     visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
+    fill_opacity: Optional[values.Opacity] = None
+    fill: Optional[str] = None
 
 
 @dataclass
@@ -325,6 +342,7 @@ class Text(Element, _TextElement, m.Viewports):
     stroke_linecap: Optional[Literal["butt", "round", "square", "inherit"]] = None
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
     stroke_miterlimit: Optional[values.StrokeMiterLimit] = None
+    fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
 
 
 @dataclass
@@ -343,6 +361,7 @@ class TSpan(Element, _TextElement):
     stroke_linecap: Optional[Literal["butt", "round", "square", "inherit"]] = None
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
     stroke_miterlimit: Optional[values.StrokeMiterLimit] = None
+    fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
 
 
 @dataclass
@@ -366,6 +385,7 @@ class TextPath(Element, _TextElement):
     stroke_linecap: Optional[Literal["butt", "round", "square", "inherit"]] = None
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
     stroke_miterlimit: Optional[values.StrokeMiterLimit] = None
+    fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
 
 
 @dataclass
