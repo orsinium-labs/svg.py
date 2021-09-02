@@ -3,6 +3,7 @@ from typing import Any, List, Optional, Union
 from . import _mixins as m, values, elements as e
 from .elements import Element
 from typing_extensions import Literal
+from .transforms import Transform
 
 
 @dataclass
@@ -223,7 +224,7 @@ class FeGaussianBlur(Element, m.FilterPrimitive):
 class FeImage(Element, m.FilterPrimitive):
     element_name = "feImage"
     externalResourcesRequired: Optional[Any] = None
-    transform: Optional[Any] = None
+    transform: Optional[List[Transform]] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
     href: Optional[str] = None
     color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None

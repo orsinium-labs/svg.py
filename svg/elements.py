@@ -2,6 +2,7 @@ from dataclasses import dataclass, asdict
 from enum import Enum
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from . import _mixins as m, values
+from .transforms import Transform
 from typing_extensions import Literal
 
 
@@ -98,7 +99,7 @@ class G(
 ):
     element_name = "g"
     elements: Optional[List[Element]] = None
-    transform: Optional[values.Transforms] = None
+    transform: Optional[List[Transform]] = None
     class_: Optional[values.Classes] = None
     mask: Optional[values.Mask] = None
     opacity: Optional[values.Opacity] = None
@@ -113,7 +114,7 @@ class Defs(
 ):
     element_name = "defs"
     elements: Optional[List[Element]] = None
-    transform: Optional[values.Transforms] = None
+    transform: Optional[List[Transform]] = None
     class_: Optional[values.Classes] = None
     pointer_events: Optional[str] = None  # TODO
 
@@ -163,7 +164,7 @@ class Image(
 ):
     element_name = "image"
     href: Optional[str] = None
-    transform: Optional[values.Transforms] = None
+    transform: Optional[List[Transform]] = None
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
@@ -183,7 +184,7 @@ class Image(
 class Switch(Element, m.Color, m.GraphicsElementEvents):
     element_name = "switch"
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[values.Transforms] = None
+    transform: Optional[List[Transform]] = None
     opacity: Optional[values.Opacity] = None
     class_: Optional[values.Classes] = None
     pointer_events: Optional[str] = None  # TODO
@@ -220,7 +221,7 @@ class _FigureElement(m.Color, m.GraphicsElementEvents, m.Graphics, m.FillStroke)
 class Path(Element, _FigureElement):
     element_name = "path"
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[values.Transforms] = None
+    transform: Optional[List[Transform]] = None
     d: Optional[List[values.PathData]] = None
     marker_start: Optional[values.Marker] = None
     marker_mid: Optional[values.Marker] = None
@@ -237,7 +238,7 @@ class Path(Element, _FigureElement):
 class Rect(Element, _FigureElement):
     element_name = "rect"
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[values.Transforms] = None
+    transform: Optional[List[Transform]] = None
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
@@ -257,7 +258,7 @@ class Rect(Element, _FigureElement):
 class Circle(Element, _FigureElement):
     element_name = "circle"
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[values.Transforms] = None
+    transform: Optional[List[Transform]] = None
     cx: Optional[values.Length] = None
     cy: Optional[values.Length] = None
     r: Optional[values.Length] = None
@@ -270,7 +271,7 @@ class Circle(Element, _FigureElement):
 class Ellipse(Element, _FigureElement):
     element_name = "ellipse"
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[values.Transforms] = None
+    transform: Optional[List[Transform]] = None
     cx: Optional[values.Length] = None
     cy: Optional[values.Length] = None
     rx: Optional[values.Length] = None
@@ -286,7 +287,7 @@ class Ellipse(Element, _FigureElement):
 class Line(Element, _FigureElement):
     element_name = "line"
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[values.Transforms] = None
+    transform: Optional[List[Transform]] = None
     x1: Optional[values.Coordinate] = None
     y1: Optional[values.Coordinate] = None
     x2: Optional[values.Coordinate] = None
@@ -301,7 +302,7 @@ class Line(Element, _FigureElement):
 class Polyline(Element, _FigureElement):
     element_name = "polyline"
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[values.Transforms] = None
+    transform: Optional[List[Transform]] = None
     points: Optional[values.Points] = None
     marker_start: Optional[values.Marker] = None
     marker_mid: Optional[values.Marker] = None
@@ -318,7 +319,7 @@ class Polyline(Element, _FigureElement):
 class Polygon(Element, _FigureElement):
     element_name = "polygon"
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[values.Transforms] = None
+    transform: Optional[List[Transform]] = None
     points: Optional[values.Points] = None
     marker_start: Optional[values.Marker] = None
     marker_mid: Optional[values.Marker] = None
@@ -351,7 +352,7 @@ class _TextElement(
 class Text(Element, _TextElement):
     element_name = "text"
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[values.Transforms] = None
+    transform: Optional[List[Transform]] = None
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
     dx: Optional[values.Coordinate] = None
@@ -446,7 +447,7 @@ class _Gradient:
     elements: Optional[List[Union["Stop", "Animate", "Set", "AnimateTransform"]]] = None
     externalResourcesRequired: Optional[bool] = None
     gradientUnits: Optional[Any] = None
-    gradientTransform: Optional[Any] = None
+    gradientTransform: Optional[List[Transform]] = None
     spreadMethod: Optional[Any] = None
     href: Optional[str] = None
     class_: Optional[values.Classes] = None
@@ -488,7 +489,7 @@ class Pattern(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     viewBox: Optional[values.ViewBoxSpec] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
     patternUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
-    patternTransform: Optional[Any] = None
+    patternTransform: Optional[List[Transform]] = None
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
@@ -509,7 +510,7 @@ class ClipPath(Element, m.Color, m.Graphics):
         "Polyline", "Polygon", "Animate", "Set", "AnimateMotion", "AnimateTransform",
     ]]] = None
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[values.Transforms] = None
+    transform: Optional[List[Transform]] = None
     clipPathUnits: Optional[Any] = None
     class_: Optional[values.Classes] = None
     mask: Optional[values.Mask] = None
@@ -521,7 +522,7 @@ class Mask(Element, m.Color, m.Graphics):
     element_name = "mask"
     elements: Optional[List[Element]] = None
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[values.Transforms] = None
+    transform: Optional[List[Transform]] = None
     maskUnits: Optional[Any] = None
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
@@ -537,7 +538,7 @@ class Mask(Element, m.Color, m.Graphics):
 class A(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     element_name = "a"
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[values.Transforms] = None
+    transform: Optional[List[Transform]] = None
     target: Optional[Any] = None
     href: Optional[str] = None
     class_: Optional[values.Classes] = None
@@ -624,7 +625,7 @@ class Metadata(Element, m.GraphicsElementEvents):
 class ForeignObject(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     element_name = "foreignObject"
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[values.Transforms] = None
+    transform: Optional[List[Transform]] = None
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
@@ -644,7 +645,7 @@ class Use(Element, m.GraphicsElementEvents, m.Color, m.Graphics):
     href: Optional[str] = None
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
-    transform: Optional[values.Transforms] = None
+    transform: Optional[List[Transform]] = None
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
     width: Optional[values.Length] = None
