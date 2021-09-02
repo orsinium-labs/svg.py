@@ -64,10 +64,8 @@ class Element:
 class SVG(
     Element,
     m.GraphicsElementEvents,
-    m.DocumentEvents,
     m.Color,
     m.Graphics,
-    m.Viewports,
 ):
     element_name = "svg"
     elements: Optional[List[Element]] = None
@@ -81,6 +79,14 @@ class SVG(
     mask: Optional[values.Mask] = None
     opacity: Optional[values.Opacity] = None
     clip_path: Optional[values.ClipPath] = None
+    overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
+
+    onunload: Optional[str] = None
+    onabort: Optional[str] = None
+    onerror: Optional[str] = None
+    onresize: Optional[str] = None
+    onscroll: Optional[str] = None
+    onzoom: Optional[str] = None
 
 
 @dataclass
@@ -132,7 +138,6 @@ class Symbol(
     m.GraphicsElementEvents,
     m.Color,
     m.Graphics,
-    m.Viewports,
 ):
     element_name = "symbol"
     elements: Optional[List[Element]] = None
@@ -146,6 +151,7 @@ class Symbol(
     mask: Optional[values.Mask] = None
     opacity: Optional[values.Opacity] = None
     clip_path: Optional[values.ClipPath] = None
+    overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
 
 
 @dataclass
@@ -153,7 +159,6 @@ class Image(
     Element,
     m.Color,
     m.Graphics,
-    m.Viewports,
     m.GraphicsElementEvents,
 ):
     element_name = "image"
@@ -171,6 +176,7 @@ class Image(
     mask: Optional[values.Mask] = None
     opacity: Optional[values.Opacity] = None
     clip_path: Optional[values.ClipPath] = None
+    overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
 
 
 @dataclass
@@ -342,7 +348,7 @@ class _TextElement(
 
 
 @dataclass
-class Text(Element, _TextElement, m.Viewports):
+class Text(Element, _TextElement):
     element_name = "text"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
@@ -361,6 +367,7 @@ class Text(Element, _TextElement, m.Viewports):
     mask: Optional[values.Mask] = None
     opacity: Optional[values.Opacity] = None
     clip_path: Optional[values.ClipPath] = None
+    overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
 
 
 @dataclass
@@ -409,7 +416,7 @@ class TextPath(Element, _TextElement):
 
 
 @dataclass
-class Marker(Element, m.Color, m.GraphicsElementEvents, m.Viewports, m.Graphics):
+class Marker(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     element_name = "marker"
     externalResourcesRequired: Optional[bool] = None
     viewBox: Optional[values.ViewBoxSpec] = None
@@ -424,6 +431,7 @@ class Marker(Element, m.Color, m.GraphicsElementEvents, m.Viewports, m.Graphics)
     clip_path: Optional[values.ClipPath] = None
     class_: Optional[values.Classes] = None
     mask: Optional[values.Mask] = None
+    overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
 
 
 @dataclass
@@ -474,7 +482,7 @@ class Stop(Element, m.GraphicsElementEvents):
 
 
 @dataclass
-class Pattern(Element, m.Color, m.GraphicsElementEvents, m.Viewports, m.Graphics):
+class Pattern(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     element_name = "pattern"
     externalResourcesRequired: Optional[bool] = None
     viewBox: Optional[values.ViewBoxSpec] = None
@@ -490,6 +498,7 @@ class Pattern(Element, m.Color, m.GraphicsElementEvents, m.Viewports, m.Graphics
     class_: Optional[values.Classes] = None
     mask: Optional[values.Mask] = None
     clip_path: Optional[values.ClipPath] = None
+    overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
 
 
 @dataclass
@@ -612,7 +621,7 @@ class Metadata(Element, m.GraphicsElementEvents):
 
 
 @dataclass
-class ForeignObject(Element, m.Color, m.GraphicsElementEvents, m.Graphics, m.Viewports):
+class ForeignObject(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     element_name = "foreignObject"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[values.Transforms] = None
@@ -625,6 +634,7 @@ class ForeignObject(Element, m.Color, m.GraphicsElementEvents, m.Graphics, m.Vie
     vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
     visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
     opacity: Optional[values.Opacity] = None
+    overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
 
 
 @dataclass

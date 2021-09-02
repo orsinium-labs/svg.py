@@ -23,25 +23,9 @@ class GraphicsElementEvents(AttrsMixin):
 
 
 @dataclass
-class DocumentEvents(AttrsMixin):
-    onunload: Optional[str] = None
-    onabort: Optional[str] = None
-    onerror: Optional[str] = None
-    onresize: Optional[str] = None
-    onscroll: Optional[str] = None
-    onzoom: Optional[str] = None
-
-
-@dataclass
 class Color(AttrsMixin):
     color: Optional[str] = None
     color_interpolation: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
-
-
-@dataclass
-class FeFlood(AttrsMixin):
-    flood_color: Optional[str] = None
-    flood_opacity: Optional[values.Opacity] = None
 
 
 @dataclass
@@ -73,12 +57,6 @@ class FontSpecification(AttrsMixin):
 
 
 @dataclass
-class Gradients(AttrsMixin):
-    stop_color: Optional[values.SVGColor] = None
-    stop_opacity: Optional[values.Opacity] = None
-
-
-@dataclass
 class Graphics(AttrsMixin):
     clip_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
     cursor: Optional[Literal[
@@ -89,15 +67,6 @@ class Graphics(AttrsMixin):
     display: Optional[str] = None  # TODO
     filter: Optional[values.Filter] = None
     pointer_events: Optional[str] = None  # TODO
-
-
-class Images:
-    pass  # TODO: no attrs, drop me
-
-
-@dataclass
-class LightingEffects(AttrsMixin):
-    lighting_color: Optional[values.SVGColor] = None
 
 
 @dataclass
@@ -123,11 +92,6 @@ class TextContentElements(AttrsMixin):
     ] = None
     unicode_bidi: Optional[str] = None  # TODO
     word_spacing: Optional[Literal["auto", "exact"]] = None
-
-
-@dataclass
-class Viewports(AttrsMixin):
-    overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
 
 
 @dataclass
