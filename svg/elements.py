@@ -136,8 +136,6 @@ class Symbol(
     refY: Optional[values.Coordinate] = None
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
-    width: Optional[values.Length] = None
-    height: Optional[values.Length] = None
     class_: Optional[values.Classes] = None
 
 

@@ -140,8 +140,6 @@ class Viewports(AttrsMixin):
 class FilterPrimitive(AttrsMixin):
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
-    width: Optional[values.Length] = None
-    height: Optional[values.Length] = None
 
 
 @dataclass
