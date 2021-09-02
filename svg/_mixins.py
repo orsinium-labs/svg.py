@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Optional
+from typing import Optional, Union
 from . import values
 from typing_extensions import Literal
 
@@ -32,14 +32,14 @@ class Color(AttrsMixin):
 class FillStroke(AttrsMixin):
     stroke: Optional[str] = None
     stroke_dasharray: Optional[values.StrokeDashArray] = None
-    stroke_dashoffset: Optional[values.StrokeDashOffset] = None
+    stroke_dashoffset: Optional[Union[Literal["none"], values.Length]] = None
     stroke_opacity: Optional[values.Opacity] = None
-    stroke_width: Optional[values.StrokeWidth] = None
+    stroke_width: Optional[values.Length] = None
 
 
 @dataclass
 class FontSpecification(AttrsMixin):
-    font_family: Optional[values.FontFamily] = None
+    font_family: Optional[str] = None
     font_size: Optional[values.FontSize] = None
     font_size_adjust: Optional[values.FontSizeAdjust] = None
     font_stretch: Optional[Literal[
@@ -65,7 +65,7 @@ class Graphics(AttrsMixin):
         "text", "wait", "help", "inherit",
     ]] = None
     display: Optional[str] = None  # TODO
-    filter: Optional[values.Filter] = None
+    filter: Optional[str] = None
     pointer_events: Optional[str] = None  # TODO
 
 

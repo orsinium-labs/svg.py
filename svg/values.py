@@ -7,7 +7,6 @@ from typing_extensions import Literal
 
 INHERIT = Literal["inherit"]
 NONE = Literal["none"]
-AUTO = Literal["auto"]
 
 
 Number = Union[Decimal, float, int]
@@ -70,35 +69,20 @@ class ViewBoxSpec:
 
 
 # str
-Clip = str
 URI = str
 ContentType = str
-Color = str
-FontFamily = str
-LanguageCode = str
-Paint = str
-Script = str
 StyleSheet = str
-SVGColor = str
-
-# alias
-NumberOrPercentage = Number
-StrokeMiterLimit = Number
 
 # union
 Coordinate = Union[Number, Length]
 FontSize = Union[Length, INHERIT]
 FontSizeAdjust = Union[Number, NONE, INHERIT]
-Kerning = Union[Length, AUTO, INHERIT]
 NumberOptionalNumber = Union[Number, Tuple[Number, Number]]
 Opacity = Union[Number, INHERIT]
 StrokeDashArray = Union[str, List[Number]]
-StrokeDashOffset = Union[NONE, Length]
-StrokeWidth = Union[Number, Length]
-Rotation = Union[Number, AUTO, Literal["auto-reverse"]]
 
 # str union
-ClipPath = Union[URI, AUTO, INHERIT, NONE]
+ClipPath = Union[URI, Literal["auto"], INHERIT, NONE]
 Cursor = Union[
     URI,
     Literal[
@@ -124,20 +108,14 @@ Cursor = Union[
 EnableBackground = Union[
     URI, Literal["accumulate", "x", "y", "width", "height", "inherit", "new"]
 ]
-Filter = Union[URI, INHERIT, NONE]
 Marker = Union[URI, NONE, INHERIT]
 Mask = Union[URI, NONE, INHERIT]
 
 # list of strings
 Classes = List[str]
-Extensions = List[str]
-Features = List[str]
-MediaDesc = List[str]
-Transforms = List[str]
 
 # lists
 Coordinates = List[Coordinate]
-LanguageCodes = List[LanguageCode]
 Lengths = List[Length]
 Numbers = List[Number]
 Points = List[Number]

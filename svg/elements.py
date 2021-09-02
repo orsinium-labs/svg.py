@@ -194,7 +194,7 @@ class Switch(Element, m.Color, m.GraphicsElementEvents):
 class Style(Element, m.GraphicsElementEvents):
     element_name = "style"
     type: Optional[values.ContentType] = None
-    media: Optional[values.MediaDesc] = None
+    media: Optional[List[str]] = None
     title: Optional[str] = None
 
 
@@ -228,7 +228,7 @@ class Path(Element, _FigureElement):
     marker_end: Optional[values.Marker] = None
     stroke_linecap: Optional[Literal["butt", "round", "square", "inherit"]] = None
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
-    stroke_miterlimit: Optional[values.StrokeMiterLimit] = None
+    stroke_miterlimit: Optional[values.Number] = None
     fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
     fill_opacity: Optional[values.Opacity] = None
     fill: Optional[str] = None
@@ -249,7 +249,7 @@ class Rect(Element, _FigureElement):
     marker_mid: Optional[values.Marker] = None
     marker_end: Optional[values.Marker] = None
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
-    stroke_miterlimit: Optional[values.StrokeMiterLimit] = None
+    stroke_miterlimit: Optional[values.Number] = None
     fill_opacity: Optional[values.Opacity] = None
     fill: Optional[str] = None
 
@@ -309,7 +309,7 @@ class Polyline(Element, _FigureElement):
     marker_end: Optional[values.Marker] = None
     stroke_linecap: Optional[Literal["butt", "round", "square", "inherit"]] = None
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
-    stroke_miterlimit: Optional[values.StrokeMiterLimit] = None
+    stroke_miterlimit: Optional[values.Number] = None
     fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
     fill_opacity: Optional[values.Opacity] = None
     fill: Optional[str] = None
@@ -325,7 +325,7 @@ class Polygon(Element, _FigureElement):
     marker_mid: Optional[values.Marker] = None
     marker_end: Optional[values.Marker] = None
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
-    stroke_miterlimit: Optional[values.StrokeMiterLimit] = None
+    stroke_miterlimit: Optional[values.Number] = None
     fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
     fill_opacity: Optional[values.Opacity] = None
     fill: Optional[str] = None
@@ -363,7 +363,7 @@ class Text(Element, _TextElement):
     text_rendering: Optional[Literal["auto", "optimizeSpeed", "optimizeLegibility", "geometricPrecision"]] = None
     stroke_linecap: Optional[Literal["butt", "round", "square", "inherit"]] = None
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
-    stroke_miterlimit: Optional[values.StrokeMiterLimit] = None
+    stroke_miterlimit: Optional[values.Number] = None
     fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
     mask: Optional[values.Mask] = None
     opacity: Optional[values.Opacity] = None
@@ -386,7 +386,7 @@ class TSpan(Element, _TextElement):
     baseline_shift: Optional[Literal["baseline", "sub", "super", "inherit"]] = None
     stroke_linecap: Optional[Literal["butt", "round", "square", "inherit"]] = None
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
-    stroke_miterlimit: Optional[values.StrokeMiterLimit] = None
+    stroke_miterlimit: Optional[values.Number] = None
     fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
     opacity: Optional[values.Opacity] = None
 
@@ -411,7 +411,7 @@ class TextPath(Element, _TextElement):
     baseline_shift: Optional[Literal["baseline", "sub", "super", "inherit"]] = None
     stroke_linecap: Optional[Literal["butt", "round", "square", "inherit"]] = None
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
-    stroke_miterlimit: Optional[values.StrokeMiterLimit] = None
+    stroke_miterlimit: Optional[values.Number] = None
     fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
     opacity: Optional[values.Opacity] = None
 
@@ -478,7 +478,7 @@ class Stop(Element, m.GraphicsElementEvents):
     element_name = "stop"
     offset: Optional[values.Length] = None
     stop_opacity: Optional[values.Opacity] = None
-    stop_color: Optional[values.SVGColor] = None
+    stop_color: Optional[str] = None
     class_: Optional[values.Classes] = None
 
 

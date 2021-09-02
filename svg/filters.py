@@ -177,7 +177,7 @@ class FeDiffuseLighting(Element, m.FilterPrimitive):
     class_: Optional[values.Classes] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
-    lighting_color: Optional[values.SVGColor] = None
+    lighting_color: Optional[str] = None
 
 
 @dataclass
@@ -199,7 +199,7 @@ class FeDisplacementMap(Element, m.FilterPrimitive):
 class FeFlood(Element, m.FilterPrimitive):
     element_name = "feFlood"
     flood_opacity: Optional[values.Opacity] = None
-    flood_color: Optional[values.SVGColor] = None
+    flood_color: Optional[str] = None
     color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
     result: Optional[str] = None
     class_: Optional[values.Classes] = None
@@ -289,7 +289,7 @@ class FeSpecularLighting(Element, m.FilterPrimitive):
     class_: Optional[values.Classes] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
-    lighting_color: Optional[values.SVGColor] = None
+    lighting_color: Optional[str] = None
 
 
 @dataclass
