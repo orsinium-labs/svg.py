@@ -78,6 +78,7 @@ class SVG(
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
     class_: Optional[values.Classes] = None
+    mask: Optional[values.Mask] = None
 
 
 @dataclass
@@ -91,6 +92,7 @@ class G(
     elements: Optional[List[Element]] = None
     transform: Optional[values.Transforms] = None
     class_: Optional[values.Classes] = None
+    mask: Optional[values.Mask] = None
 
 
 @dataclass
@@ -137,6 +139,7 @@ class Symbol(
     x: Optional[values.Coordinate] = None
     y: Optional[values.Coordinate] = None
     class_: Optional[values.Classes] = None
+    mask: Optional[values.Mask] = None
 
 
 @dataclass
@@ -159,6 +162,7 @@ class Image(
     class_: Optional[values.Classes] = None
     vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
     visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
+    mask: Optional[values.Mask] = None
 
 
 @dataclass
@@ -193,6 +197,7 @@ class _FigureElement(m.Color, m.GraphicsElementEvents, m.Graphics, m.FillStroke)
     class_: Optional[values.Classes] = None
     vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
     visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
+    mask: Optional[values.Mask] = None
 
 
 @dataclass
@@ -343,6 +348,7 @@ class Text(Element, _TextElement, m.Viewports):
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
     stroke_miterlimit: Optional[values.StrokeMiterLimit] = None
     fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
+    mask: Optional[values.Mask] = None
 
 
 @dataclass
@@ -402,6 +408,7 @@ class Marker(Element, m.Color, m.GraphicsElementEvents, m.Viewports, m.Graphics)
     orient: Optional[str] = None
     opacity: Optional[values.Opacity] = None
     class_: Optional[values.Classes] = None
+    mask: Optional[values.Mask] = None
 
 
 @dataclass
@@ -466,6 +473,7 @@ class Pattern(Element, m.Color, m.GraphicsElementEvents, m.Viewports, m.Graphics
     patternContentUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
     href: Optional[str] = None
     class_: Optional[values.Classes] = None
+    mask: Optional[values.Mask] = None
 
 
 @dataclass
@@ -479,6 +487,7 @@ class ClipPath(Element, m.Color, m.Graphics):
     transform: Optional[values.Transforms] = None
     clipPathUnits: Optional[Any] = None
     class_: Optional[values.Classes] = None
+    mask: Optional[values.Mask] = None
 
 
 @dataclass
@@ -494,6 +503,7 @@ class Mask(Element, m.Color, m.Graphics):
     height: Optional[values.Length] = None
     maskContentUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
     class_: Optional[values.Classes] = None
+    mask: Optional[values.Mask] = None
 
 
 @dataclass
@@ -505,6 +515,7 @@ class A(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     href: Optional[str] = None
     class_: Optional[values.Classes] = None
     visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
+    mask: Optional[values.Mask] = None
 
 
 @dataclass
@@ -608,3 +619,4 @@ class Use(Element, m.GraphicsElementEvents, m.Color, m.Graphics):
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
     vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
+    mask: Optional[values.Mask] = None
