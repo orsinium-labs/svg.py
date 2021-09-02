@@ -79,6 +79,8 @@ class SVG(
     height: Optional[values.Length] = None
     class_: Optional[values.Classes] = None
     mask: Optional[values.Mask] = None
+    opacity: Optional[values.Opacity] = None
+    clip_path: Optional[values.ClipPath] = None
 
 
 @dataclass
@@ -93,6 +95,8 @@ class G(
     transform: Optional[values.Transforms] = None
     class_: Optional[values.Classes] = None
     mask: Optional[values.Mask] = None
+    opacity: Optional[values.Opacity] = None
+    clip_path: Optional[values.ClipPath] = None
 
 
 @dataclass
@@ -140,6 +144,8 @@ class Symbol(
     y: Optional[values.Coordinate] = None
     class_: Optional[values.Classes] = None
     mask: Optional[values.Mask] = None
+    opacity: Optional[values.Opacity] = None
+    clip_path: Optional[values.ClipPath] = None
 
 
 @dataclass
@@ -163,6 +169,8 @@ class Image(
     vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
     visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
     mask: Optional[values.Mask] = None
+    opacity: Optional[values.Opacity] = None
+    clip_path: Optional[values.ClipPath] = None
 
 
 @dataclass
@@ -198,6 +206,8 @@ class _FigureElement(m.Color, m.GraphicsElementEvents, m.Graphics, m.FillStroke)
     vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
     visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
     mask: Optional[values.Mask] = None
+    opacity: Optional[values.Opacity] = None
+    clip_path: Optional[values.ClipPath] = None
 
 
 @dataclass
@@ -349,6 +359,8 @@ class Text(Element, _TextElement, m.Viewports):
     stroke_miterlimit: Optional[values.StrokeMiterLimit] = None
     fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
     mask: Optional[values.Mask] = None
+    opacity: Optional[values.Opacity] = None
+    clip_path: Optional[values.ClipPath] = None
 
 
 @dataclass
@@ -368,6 +380,7 @@ class TSpan(Element, _TextElement):
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
     stroke_miterlimit: Optional[values.StrokeMiterLimit] = None
     fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
+    opacity: Optional[values.Opacity] = None
 
 
 @dataclass
@@ -392,6 +405,7 @@ class TextPath(Element, _TextElement):
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
     stroke_miterlimit: Optional[values.StrokeMiterLimit] = None
     fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
+    opacity: Optional[values.Opacity] = None
 
 
 @dataclass
@@ -402,11 +416,12 @@ class Marker(Element, m.Color, m.GraphicsElementEvents, m.Viewports, m.Graphics)
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
     refX: Optional[values.Coordinate] = None
     refY: Optional[values.Coordinate] = None
-    markerUnits: Optional[Any] = None
+    markerUnits: Optional[Literal["strokeWidth", "userSpaceOnUse", "userSpace"]] = None
     markerWidth: Optional[values.Length] = None
     markerHeight: Optional[values.Length] = None
     orient: Optional[str] = None
     opacity: Optional[values.Opacity] = None
+    clip_path: Optional[values.ClipPath] = None
     class_: Optional[values.Classes] = None
     mask: Optional[values.Mask] = None
 
@@ -474,6 +489,7 @@ class Pattern(Element, m.Color, m.GraphicsElementEvents, m.Viewports, m.Graphics
     href: Optional[str] = None
     class_: Optional[values.Classes] = None
     mask: Optional[values.Mask] = None
+    clip_path: Optional[values.ClipPath] = None
 
 
 @dataclass
@@ -488,6 +504,7 @@ class ClipPath(Element, m.Color, m.Graphics):
     clipPathUnits: Optional[Any] = None
     class_: Optional[values.Classes] = None
     mask: Optional[values.Mask] = None
+    clip_path: Optional[values.ClipPath] = None
 
 
 @dataclass
@@ -504,6 +521,7 @@ class Mask(Element, m.Color, m.Graphics):
     maskContentUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
     class_: Optional[values.Classes] = None
     mask: Optional[values.Mask] = None
+    clip_path: Optional[values.ClipPath] = None
 
 
 @dataclass
@@ -516,6 +534,8 @@ class A(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     class_: Optional[values.Classes] = None
     visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
     mask: Optional[values.Mask] = None
+    opacity: Optional[values.Opacity] = None
+    clip_path: Optional[values.ClipPath] = None
 
 
 @dataclass
@@ -604,6 +624,7 @@ class ForeignObject(Element, m.Color, m.GraphicsElementEvents, m.Graphics, m.Vie
     class_: Optional[values.Classes] = None
     vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
     visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
+    opacity: Optional[values.Opacity] = None
 
 
 @dataclass
@@ -619,4 +640,6 @@ class Use(Element, m.GraphicsElementEvents, m.Color, m.Graphics):
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
     vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
+    opacity: Optional[values.Opacity] = None
+    clip_path: Optional[values.ClipPath] = None
     mask: Optional[values.Mask] = None

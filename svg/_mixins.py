@@ -80,7 +80,6 @@ class Gradients(AttrsMixin):
 
 @dataclass
 class Graphics(AttrsMixin):
-    clip_path: Optional[values.ClipPath] = None
     clip_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
     cursor: Optional[Literal[
         "auto", "crosshair", "default", "pointer", "move",
@@ -89,7 +88,6 @@ class Graphics(AttrsMixin):
     ]] = None
     display: Optional[str] = None  # TODO
     filter: Optional[values.Filter] = None
-    opacity: Optional[values.Opacity] = None
     pointer_events: Optional[str] = None  # TODO
 
 
