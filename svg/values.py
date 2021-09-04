@@ -1,6 +1,6 @@
+from dataclasses import dataclass
 from decimal import Decimal
 from typing import List, Tuple, Union
-from dataclasses import dataclass
 
 from typing_extensions import Literal
 

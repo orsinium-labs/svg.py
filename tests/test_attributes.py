@@ -1,6 +1,9 @@
 from pathlib import Path
+
 import pytest
+
 import reflect
+
 
 LIB_ELEMENTS = reflect.LibElement.parse_all()
 MDN_ROOT = Path(__file__).parent.parent.parent / 'mdn-source' / 'files' / 'en-us' / 'web' / 'svg'

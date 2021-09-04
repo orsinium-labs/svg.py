@@ -1,7 +1,8 @@
 from dataclasses import dataclass, fields
-from typing import List, Set
-import svg
 from functools import cached_property
+from typing import List, Set
+
+import svg
 
 
 @dataclass

@@ -1,7 +1,9 @@
 from dataclasses import dataclass
 from typing import Optional, Union
-from . import values
+
 from typing_extensions import Literal
+
+from . import values
 
 
 class AttrsMixin:

@@ -1,5 +1,6 @@
 from pathlib import Path
 
+
 POJECT_ROOT = Path(__file__).parent.parent.absolute()
 
 

@@ -1,9 +1,11 @@
-from dataclasses import dataclass, asdict
+from dataclasses import asdict, dataclass
 from enum import Enum
 from typing import Any, ClassVar, Dict, List, Optional, Union
+
+from typing_extensions import Literal
+
 from . import _mixins as m, values
 from .transforms import Transform
-from typing_extensions import Literal
 
 
 @dataclass

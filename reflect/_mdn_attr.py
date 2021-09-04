@@ -1,9 +1,10 @@
-from dataclasses import dataclass
-from typing import List, Optional, Set
-from pathlib import Path
 import re
-import yaml
+from dataclasses import dataclass
 from functools import cached_property
+from pathlib import Path
+from typing import List, Optional, Set
+
+import yaml
 
 
 REX_EL = re.compile(r'li>\{\{\s*SVGElement\(["\']([a-zA-Z-]+)["\']\)\s*\}\}\.?</')
