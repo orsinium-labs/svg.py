@@ -12,7 +12,7 @@ class LibElement:
     @classmethod
     def parse_all(cls) -> List['LibElement']:
         result = []
-        for el in svg.elements.Element.__subclasses__():
+        for el in svg.Element.__subclasses__():
             result.append(cls(
                 title=el.element_name,
                 fields=[f.name for f in fields(el)]
