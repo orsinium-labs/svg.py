@@ -33,6 +33,8 @@ class Element:
             return str(val)
         if isinstance(val, Enum):
             return val.value
+        if isinstance(val, bool):
+            return str(val).lower()
         if isinstance(val, (list, tuple)):
             return ",".join(cls._as_str(v) for v in val)
         return str(val)
@@ -522,7 +524,7 @@ class ClipPath(Element, m.Color, m.Graphics):
     ]]] = None
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[List[Transform]] = None
-    clipPathUnits: Optional[Any] = None
+    clipPathUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
     class_: Optional[values.Classes] = None
     mask: Optional[values.Mask] = None
     clip_path: Optional[values.ClipPath] = None
@@ -534,7 +536,7 @@ class Mask(Element, m.Color, m.Graphics):
     elements: Optional[List[Element]] = None
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[List[Transform]] = None
-    maskUnits: Optional[Any] = None
+    maskUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
     x: Optional[values.Length] = None
     y: Optional[values.Length] = None
     width: Optional[values.Length] = None
@@ -550,7 +552,7 @@ class A(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     element_name = "a"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[List[Transform]] = None
-    target: Optional[Any] = None
+    target: Optional[Literal["_self", "_parent", "_top", "_blank"]] = None
     href: Optional[str] = None
     class_: Optional[values.Classes] = None
     visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
@@ -571,7 +573,7 @@ class View(Element, m.GraphicsElementEvents):
 class Script(Element, m.GraphicsElementEvents):
     element_name = "script"
     externalResourcesRequired: Optional[bool] = None
-    type: Optional[Any] = None
+    type: Optional[str] = None
     href: Optional[str] = None
 
 
