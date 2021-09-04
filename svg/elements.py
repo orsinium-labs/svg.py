@@ -74,8 +74,8 @@ class SVG(
     elements: Optional[List[Element]] = None
     viewBox: Optional[values.ViewBoxSpec] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
-    x: Optional[values.Coordinate] = None
-    y: Optional[values.Coordinate] = None
+    x: Optional[values.Length] = None
+    y: Optional[values.Length] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
     class_: Optional[values.Classes] = None
@@ -146,10 +146,10 @@ class Symbol(
     elements: Optional[List[Element]] = None
     viewBox: Optional[values.ViewBoxSpec] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
-    refX: Optional[values.Coordinate] = None
-    refY: Optional[values.Coordinate] = None
-    x: Optional[values.Coordinate] = None
-    y: Optional[values.Coordinate] = None
+    refX: Optional[values.Length] = None
+    refY: Optional[values.Length] = None
+    x: Optional[values.Length] = None
+    y: Optional[values.Length] = None
     class_: Optional[values.Classes] = None
     mask: Optional[values.Mask] = None
     opacity: Optional[values.Opacity] = None
@@ -167,8 +167,8 @@ class Image(
     element_name = "image"
     href: Optional[str] = None
     transform: Optional[List[Transform]] = None
-    x: Optional[values.Coordinate] = None
-    y: Optional[values.Coordinate] = None
+    x: Optional[values.Length] = None
+    y: Optional[values.Length] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
@@ -241,8 +241,8 @@ class Rect(Element, _FigureElement):
     element_name = "rect"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[List[Transform]] = None
-    x: Optional[values.Coordinate] = None
-    y: Optional[values.Coordinate] = None
+    x: Optional[values.Length] = None
+    y: Optional[values.Length] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
     rx: Optional[values.Length] = None
@@ -290,10 +290,10 @@ class Line(Element, _FigureElement):
     element_name = "line"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[List[Transform]] = None
-    x1: Optional[values.Coordinate] = None
-    y1: Optional[values.Coordinate] = None
-    x2: Optional[values.Coordinate] = None
-    y2: Optional[values.Coordinate] = None
+    x1: Optional[values.Length] = None
+    y1: Optional[values.Length] = None
+    x2: Optional[values.Length] = None
+    y2: Optional[values.Length] = None
     marker_start: Optional[values.Marker] = None
     marker_mid: Optional[values.Marker] = None
     marker_end: Optional[values.Marker] = None
@@ -305,7 +305,7 @@ class Polyline(Element, _FigureElement):
     element_name = "polyline"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[List[Transform]] = None
-    points: Optional[values.Points] = None
+    points: Optional[List[values.Number]] = None
     marker_start: Optional[values.Marker] = None
     marker_mid: Optional[values.Marker] = None
     marker_end: Optional[values.Marker] = None
@@ -322,7 +322,7 @@ class Polygon(Element, _FigureElement):
     element_name = "polygon"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[List[Transform]] = None
-    points: Optional[values.Points] = None
+    points: Optional[List[values.Number]] = None
     marker_start: Optional[values.Marker] = None
     marker_mid: Optional[values.Marker] = None
     marker_end: Optional[values.Marker] = None
@@ -355,10 +355,10 @@ class Text(Element, _TextElement):
     element_name = "text"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[List[Transform]] = None
-    x: Optional[values.Coordinate] = None
-    y: Optional[values.Coordinate] = None
-    dx: Optional[values.Coordinate] = None
-    dy: Optional[values.Coordinate] = None
+    x: Optional[values.Length] = None
+    y: Optional[values.Length] = None
+    dx: Optional[values.Length] = None
+    dy: Optional[values.Length] = None
     textLength: Optional[values.Length] = None
     lengthAdjust: Optional[Literal["spacing", "spacingAndGlyphs"]] = None
     writing_mode: Optional[Literal["horizontal-tb", "vertical-rl", "vertical-lr"]] = None
@@ -377,14 +377,19 @@ class Text(Element, _TextElement):
 class TSpan(Element, _TextElement):
     element_name = "tspan"
     externalResourcesRequired: Optional[bool] = None
-    x: Optional[values.Coordinate] = None
-    y: Optional[values.Coordinate] = None
-    dx: Optional[values.Coordinate] = None
-    dy: Optional[values.Coordinate] = None
+    x: Optional[values.Length] = None
+    y: Optional[values.Length] = None
+    dx: Optional[values.Length] = None
+    dy: Optional[values.Length] = None
     textLength: Optional[values.Length] = None
     lengthAdjust: Optional[Literal["spacing", "spacingAndGlyphs"]] = None
     writing_mode: Optional[Literal["horizontal-tb", "vertical-rl", "vertical-lr"]] = None
-    alignment_baseline: Optional[values.AlignmentBaseline] = None
+    alignment_baseline: Optional[Literal[
+        "baseline", "top", "before-edge", "text-top",
+        "text-before-edge", "middle", "bottom",
+        "after-edge", "text-bottom", "text-after-edge", "ideographic",
+        "lower", "hanging", "mathematical", "inherit",
+    ]] = None
     baseline_shift: Optional[Literal["baseline", "sub", "super", "inherit"]] = None
     stroke_linecap: Optional[Literal["butt", "round", "square", "inherit"]] = None
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
@@ -409,7 +414,12 @@ class TextPath(Element, _TextElement):
     path: Optional[str] = None
     side: Optional[Literal["left", "right"]] = None
     writing_mode: Optional[Literal["horizontal-tb", "vertical-rl", "vertical-lr"]] = None
-    alignment_baseline: Optional[values.AlignmentBaseline] = None
+    alignment_baseline: Optional[Literal[
+        "baseline", "top", "before-edge", "text-top",
+        "text-before-edge", "middle", "bottom",
+        "after-edge", "text-bottom", "text-after-edge", "ideographic",
+        "lower", "hanging", "mathematical", "inherit",
+    ]] = None
     baseline_shift: Optional[Literal["baseline", "sub", "super", "inherit"]] = None
     stroke_linecap: Optional[Literal["butt", "round", "square", "inherit"]] = None
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
@@ -424,8 +434,8 @@ class Marker(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     externalResourcesRequired: Optional[bool] = None
     viewBox: Optional[values.ViewBoxSpec] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
-    refX: Optional[values.Coordinate] = None
-    refY: Optional[values.Coordinate] = None
+    refX: Optional[values.Length] = None
+    refY: Optional[values.Length] = None
     markerUnits: Optional[Literal["strokeWidth", "userSpaceOnUse", "userSpace"]] = None
     markerWidth: Optional[values.Length] = None
     markerHeight: Optional[values.Length] = None
@@ -441,16 +451,15 @@ class Marker(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
 class ColorProfile(Element):
     element_name = "color-profile"
     local: Optional[str] = None
-    rendering_intent: Optional[Any] = None
 
 
 @dataclass
 class _Gradient:
     elements: Optional[List[Union["Stop", "Animate", "Set", "AnimateTransform"]]] = None
     externalResourcesRequired: Optional[bool] = None
-    gradientUnits: Optional[Any] = None
+    gradientUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
     gradientTransform: Optional[List[Transform]] = None
-    spreadMethod: Optional[Any] = None
+    spreadMethod: Optional[Literal["pad", "reflect", "repeat"]] = None
     href: Optional[str] = None
     class_: Optional[values.Classes] = None
 
@@ -458,10 +467,10 @@ class _Gradient:
 @dataclass
 class LinearGradient(Element, _Gradient, m.Color, m.GraphicsElementEvents):
     element_name = "linearGradient"
-    x1: Optional[values.Coordinate] = None
-    y1: Optional[values.Coordinate] = None
-    x2: Optional[values.Coordinate] = None
-    y2: Optional[values.Coordinate] = None
+    x1: Optional[values.Length] = None
+    y1: Optional[values.Length] = None
+    x2: Optional[values.Length] = None
+    y2: Optional[values.Length] = None
 
 
 @dataclass
@@ -471,8 +480,8 @@ class RadialGradient(Element, _Gradient, m.Color, m.GraphicsElementEvents):
     cy: Optional[values.Length] = None
     r: Optional[values.Length] = None
     fr: Optional[values.Length] = None
-    fx: Optional[Any] = None
-    fy: Optional[Any] = None
+    fx: Optional[values.Length] = None
+    fy: Optional[values.Length] = None
 
 
 @dataclass
@@ -492,8 +501,8 @@ class Pattern(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
     patternUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
     patternTransform: Optional[List[Transform]] = None
-    x: Optional[values.Coordinate] = None
-    y: Optional[values.Coordinate] = None
+    x: Optional[values.Length] = None
+    y: Optional[values.Length] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
     patternContentUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
@@ -526,8 +535,8 @@ class Mask(Element, m.Color, m.Graphics):
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[List[Transform]] = None
     maskUnits: Optional[Any] = None
-    x: Optional[values.Coordinate] = None
-    y: Optional[values.Coordinate] = None
+    x: Optional[values.Length] = None
+    y: Optional[values.Length] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
     maskContentUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
@@ -628,8 +637,8 @@ class ForeignObject(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     element_name = "foreignObject"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[List[Transform]] = None
-    x: Optional[values.Coordinate] = None
-    y: Optional[values.Coordinate] = None
+    x: Optional[values.Length] = None
+    y: Optional[values.Length] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
     content: Optional[str] = None
@@ -648,8 +657,8 @@ class Use(Element, m.GraphicsElementEvents, m.Color, m.Graphics):
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
     transform: Optional[List[Transform]] = None
-    x: Optional[values.Coordinate] = None
-    y: Optional[values.Coordinate] = None
+    x: Optional[values.Length] = None
+    y: Optional[values.Length] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
     vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None

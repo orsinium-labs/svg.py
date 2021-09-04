@@ -59,6 +59,9 @@ class PreserveAspectRatio:
     ] = "xMidYMid"
     scale_type: Literal["meet", "slice"] = "meet"
 
+    def __str__(self) -> str:
+        return f"{self.alignment} {self.scale_type}"
+
 
 @dataclass
 class ViewBoxSpec:
@@ -67,6 +70,9 @@ class ViewBoxSpec:
     width: int
     height: int
 
+    def __str__(self) -> str:
+        return f"{self.min_x} {self.min_y} {self.width} {self.height}"
+
 
 # str
 URI = str
@@ -74,7 +80,6 @@ ContentType = str
 StyleSheet = str
 
 # union
-Coordinate = Union[Number, Length]
 FontSize = Union[Length, INHERIT]
 FontSizeAdjust = Union[Number, NONE, INHERIT]
 NumberOptionalNumber = Union[Number, Tuple[Number, Number]]
@@ -86,23 +91,10 @@ ClipPath = Union[URI, Literal["auto"], INHERIT, NONE]
 Cursor = Union[
     URI,
     Literal[
-        "auto",
-        "crosshair",
-        "default",
-        "pointer",
-        "move",
-        "e-resize",
-        "ne-resize",
-        "nw-resize",
-        "n-resize",
-        "se-resize",
-        "sw-resize",
-        "s-resize",
-        "w-resize",
-        "text",
-        "wait",
-        "help",
-        "inherit",
+        "auto", "crosshair", "default", "pointer", "move",
+        "e-resize", "ne-resize", "nw-resize", "n-resize", "se-resize",
+        "sw-resize", "s-resize", "w-resize",
+        "text", "wait", "help", "inherit",
     ],
 ]
 EnableBackground = Union[
@@ -113,27 +105,3 @@ Mask = Union[URI, NONE, INHERIT]
 
 # list of strings
 Classes = List[str]
-
-# lists
-Coordinates = List[Coordinate]
-Lengths = List[Length]
-Numbers = List[Number]
-Points = List[Number]
-
-AlignmentBaseline = Literal[
-    "baseline",
-    "top",
-    "before-edge",
-    "text-top",
-    "text-before-edge",
-    "middle",
-    "bottom",
-    "after-edge",
-    "text-bottom",
-    "text-after-edge",
-    "ideographic",
-    "lower",
-    "hanging",
-    "mathematical",
-    "inherit",
-]

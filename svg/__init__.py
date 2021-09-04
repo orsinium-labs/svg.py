@@ -6,7 +6,7 @@ from .elements import (
     ColorProfile, DefinitionSrc, Defs, Desc, Element, Ellipse, ForeignObject,
     G, Image, Line, LinearGradient, Marker, Mask, Metadata, MPath, Path,
     Pattern, Polygon, Polyline, RadialGradient, Rect, Script, Set, Stop, Style,
-    Switch, Symbol, Text, TextPath, Title, Transform, TSpan, Use, View,
+    Switch, Symbol, Text, TextPath, Title, TSpan, Use, View,
 )
 from .filters import (
     FeBlend, FeColorMatrix, FeComponentTransfer, FeComposite, FeConvolveMatrix,
@@ -15,11 +15,16 @@ from .filters import (
     FeMorphology, FeOffset, FePointLight, FeSpecularLighting, FeSpotLight,
     FeTile, FeTurbulence, Filter,
 )
+from .transforms import (
+    Matrix, Rotate, Scale, SkewX, SkewY, Transform, Translate,
+)
 
 
 __version__ = '0.1.0'
 __all__ = [
     'values',
+
+    # elements
     'Element',
     'A',
     'Animate',
@@ -58,11 +63,11 @@ __all__ = [
     'Text',
     'TextPath',
     'Title',
-    'Transform',
     'TSpan',
     'Use',
     'View',
 
+    # filters
     'Filter',
     'FeBlend',
     'FeColorMatrix',
@@ -88,4 +93,13 @@ __all__ = [
     'FeSpotLight',
     'FeTile',
     'FeTurbulence',
+
+    # transforms
+    'Transform',
+    'Matrix',
+    'Translate',
+    'Scale',
+    'Rotate',
+    'SkewX',
+    'SkewY',
 ]

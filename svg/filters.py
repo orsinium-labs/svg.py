@@ -34,8 +34,8 @@ class Filter(Element, m.FilterPrimitive):
     externalResourcesRequired: Optional[Any] = None
     filterUnits: Optional[Any] = None
     primitiveUnits: Optional[Any] = None
-    x: Optional[values.Coordinate] = None
-    y: Optional[values.Coordinate] = None
+    x: Optional[values.Length] = None
+    y: Optional[values.Length] = None
     width: Optional[values.Length] = None
     height: Optional[values.Length] = None
     class_: Optional[values.Classes] = None
@@ -51,16 +51,16 @@ class FeDistantLight(Element):
 @dataclass
 class FePointLight(Element, m.FilterPrimitive):
     element_name = "fePointLight"
-    x: Optional[values.Coordinate] = None
-    y: Optional[values.Coordinate] = None
+    x: Optional[values.Length] = None
+    y: Optional[values.Length] = None
     z: Optional[Any] = None
 
 
 @dataclass
 class FeSpotLight(Element, m.FilterPrimitive):
     element_name = "feSpotLight"
-    x: Optional[values.Coordinate] = None
-    y: Optional[values.Coordinate] = None
+    x: Optional[values.Length] = None
+    y: Optional[values.Length] = None
     z: Optional[Any] = None
     pointsAtX: Optional[Any] = None
     pointsAtY: Optional[Any] = None

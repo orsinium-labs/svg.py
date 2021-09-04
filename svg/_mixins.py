@@ -66,40 +66,32 @@ class Graphics(AttrsMixin):
         "e-resize", "ne-resize", "nw-resize", "n-resize", "se-resize", "sw-resize", "s-resize", "w-resize",
         "text", "wait", "help", "inherit",
     ]] = None
-    display: Optional[str] = None  # TODO
+    display: Optional[str] = None
     filter: Optional[str] = None
-    pointer_events: Optional[str] = None  # TODO
+    pointer_events: Optional[Literal[
+        "bounding-box", "visiblePainted", "visibleFill", "visibleStroke",
+        "visible", "painted", "fill", "stroke", "all", "none",
+    ]] = None
 
 
 @dataclass
 class TextContentElements(AttrsMixin):
     direction: Optional[Literal["ltr", "rtl", "inherit"]] = None
-    dominant_baseline: Optional[
-        Literal[
-            "auto",
-            "autosense-script",
-            "no-change",
-            "reset",
-            "ideographic",
-            "lower",
-            "hanging",
-            "mathematical",
-            "inherit",
-        ]
-    ] = None
+    dominant_baseline: Optional[Literal[
+        "auto", "autosense-script", "no-change", "reset", "ideographic",
+        "lower", "hanging", "mathematical", "inherit",
+    ]] = None
     letter_spacing: Optional[Literal["auto", "exact"]] = None
     text_anchor: Optional[Literal["start", "middle", "end", "inherit"]] = None
-    text_decoration: Optional[
-        Literal["none", "underline", "overline", "line-through"]
-    ] = None
-    unicode_bidi: Optional[str] = None  # TODO
+    text_decoration: Optional[Literal["none", "underline", "overline", "line-through"]] = None
+    unicode_bidi: Optional[Literal["normal", "embed", "isolate", "bidi-override", "isolate-override", "plaintext"]] = None
     word_spacing: Optional[Literal["auto", "exact"]] = None
 
 
 @dataclass
 class FilterPrimitive(AttrsMixin):
-    x: Optional[values.Coordinate] = None
-    y: Optional[values.Coordinate] = None
+    x: Optional[values.Length] = None
+    y: Optional[values.Length] = None
 
 
 @dataclass
@@ -141,5 +133,3 @@ class AnimationTiming(AttrsMixin):
     restart: Optional[Literal["always", "never", "whenNotActive"]] = None
     repeatCount: Optional[str] = None
     repeatDur: Optional[str] = None
-
-# TODO: descTitleMetadata
