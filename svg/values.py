@@ -13,15 +13,6 @@ Number = Union[Decimal, float, int]
 
 
 @dataclass
-class Angle:
-    value: Number
-    unit: Literal["deg", "grad", "rad"]
-
-    def __str__(self) -> str:
-        return f"{self.value}{self.unit}"
-
-
-@dataclass
 class Length:
     value: Number
     unit: Literal["em", "ex", "px", "pt", "pc", "cm", "mm", "in"]
@@ -80,7 +71,6 @@ ContentType = str
 StyleSheet = str
 
 # union
-FontSize = Union[Length, INHERIT]
 FontSizeAdjust = Union[Number, NONE, INHERIT]
 NumberOptionalNumber = Union[Number, Tuple[Number, Number]]
 Opacity = Union[Number, INHERIT]

@@ -34,15 +34,15 @@ class Color(AttrsMixin):
 class FillStroke(AttrsMixin):
     stroke: Optional[str] = None
     stroke_dasharray: Optional[values.StrokeDashArray] = None
-    stroke_dashoffset: Optional[Union[Literal["none"], values.Length]] = None
+    stroke_dashoffset: Union[Literal["none"], values.Length, values.Number, None] = None
     stroke_opacity: Optional[values.Opacity] = None
-    stroke_width: Optional[values.Length] = None
+    stroke_width: Union[values.Length, values.Number, None] = None
 
 
 @dataclass
 class FontSpecification(AttrsMixin):
     font_family: Optional[str] = None
-    font_size: Optional[values.FontSize] = None
+    font_size: Union[values.Length, values.Number, None] = None
     font_size_adjust: Optional[values.FontSizeAdjust] = None
     font_stretch: Optional[Literal[
         "normal", "wider", "narrower",
@@ -90,8 +90,8 @@ class TextContentElements(AttrsMixin):
 
 @dataclass
 class FilterPrimitive(AttrsMixin):
-    x: Optional[values.Length] = None
-    y: Optional[values.Length] = None
+    x: Union[values.Length, values.Number, None] = None
+    y: Union[values.Length, values.Number, None] = None
 
 
 @dataclass
