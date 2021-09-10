@@ -1,5 +1,6 @@
 from dataclasses import astuple, dataclass
 from typing import ClassVar
+
 from .values import Number
 
 
