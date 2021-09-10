@@ -3,34 +3,14 @@ from typing import Any, List, Optional, Union
 
 from typing_extensions import Literal
 
-from . import _mixins as m, elements as e, values
+from . import _mixins as m, values
 from .elements import Element
-from .transforms import Transform
+from ._transforms import Transform
 
 
 @dataclass
 class Filter(Element, m.FilterPrimitive):
     element_name = "filter"
-    elements: Optional[List[Union[
-        "FeBlend",
-        "FeFlood",
-        "FeColorMatrix",
-        "FeComponentTransfer",
-        "FeComposite",
-        "FeConvolveMatrix",
-        "FeDiffuseLighting",
-        "FeDisplacementMap",
-        "FeGaussianBlur",
-        "FeImage",
-        "FeMerge",
-        "FeMorphology",
-        "FeOffset",
-        "FeSpecularLighting",
-        "FeTile",
-        "FeTurbulence",
-        e.Animate,
-        e.Set,
-    ]]] = None
     externalResourcesRequired: Optional[bool] = None
     filterUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
     primitiveUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
@@ -174,7 +154,6 @@ class FeConvolveMatrix(Element, m.FilterPrimitive):
 @dataclass
 class FeDiffuseLighting(Element, m.FilterPrimitive):
     element_name = "feDiffuseLighting"
-    elements: Optional[List[Union[e.Animate, e.Set]]] = None
     surfaceScale: Optional[values.Number] = None
     diffuseConstant: Optional[Any] = None
     in_: Optional[str] = None
@@ -285,7 +264,6 @@ class FeOffset(Element, m.FilterPrimitive):
 @dataclass
 class FeSpecularLighting(Element, m.FilterPrimitive):
     element_name = "feSpecularLighting"
-    elements: Optional[List[Union[e.Animate, e.Set]]] = None
     surfaceScale: Optional[values.Number] = None
     specularConstant: Optional[values.Number] = None
     specularExponent: Optional[values.Number] = None

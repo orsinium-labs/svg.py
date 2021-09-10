@@ -8,14 +8,14 @@ from .elements import (
     Pattern, Polygon, Polyline, RadialGradient, Rect, Script, Set, Stop, Style,
     Switch, Symbol, Text, TextPath, Title, TSpan, Use, View,
 )
-from .filters import (
+from ._filters import (
     FeBlend, FeColorMatrix, FeComponentTransfer, FeComposite, FeConvolveMatrix,
     FeDiffuseLighting, FeDisplacementMap, FeDistantLight, FeFlood, FeFuncA,
     FeFuncB, FeFuncG, FeFuncR, FeGaussianBlur, FeImage, FeMerge, FeMergeNode,
     FeMorphology, FeOffset, FePointLight, FeSpecularLighting, FeSpotLight,
     FeTile, FeTurbulence, Filter,
 )
-from .transforms import (
+from ._transforms import (
     Matrix, Rotate, Scale, SkewX, SkewY, Transform, Translate,
 )
 
