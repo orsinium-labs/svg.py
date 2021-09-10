@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from decimal import Decimal
-from typing import List, Union
+from typing import Union
 
 from typing_extensions import Literal
 
@@ -46,16 +46,3 @@ class ViewBoxSpec:
 
     def __str__(self) -> str:
         return f"{self.min_x} {self.min_y} {self.width} {self.height}"
-
-
-StyleSheet = str
-Cursor = Union[
-    str,
-    Literal[
-        "auto", "crosshair", "default", "pointer", "move",
-        "e-resize", "ne-resize", "nw-resize", "n-resize", "se-resize",
-        "sw-resize", "s-resize", "w-resize",
-        "text", "wait", "help", "inherit",
-    ],
-]
-Classes = List[str]

@@ -18,6 +18,7 @@ from ._filters import (
 from ._transforms import (
     Matrix, Rotate, Scale, SkewX, SkewY, Transform, Translate,
 )
+from ._helpers import escape
 from ._path import (
     PathData,
     M, MoveTo,
@@ -45,6 +46,7 @@ from ._path import (
 __version__ = '0.1.0'
 __all__ = [
     'values',
+    'escape',
 
     # elements
     'Element',

@@ -24,7 +24,7 @@ class Element:
     xml__lang: Optional[str] = None
 
     transform_origin: Optional[str] = None
-    style: Optional[values.StyleSheet] = None
+    style: Optional[str] = None
 
     @classmethod
     def _as_str(cls, val: Any) -> str:
@@ -637,7 +637,7 @@ class Use(Element, m.GraphicsElementEvents, m.Color, m.Graphics):
     element_name = "use"
     href: Optional[str] = None
     class_: Optional[List[str]] = None
-    style: Optional[values.StyleSheet] = None
+    style: Optional[str] = None
     transform: Optional[List[Transform]] = None
     x: Union[values.Length, values.Number, None] = None
     y: Union[values.Length, values.Number, None] = None
