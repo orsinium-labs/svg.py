@@ -3,7 +3,7 @@ from typing import List, Optional, Union
 
 from typing_extensions import Literal
 
-from . import values
+from ._types import Length, Number
 
 
 class AttrsMixin:
@@ -33,17 +33,17 @@ class Color(AttrsMixin):
 @dataclass
 class FillStroke(AttrsMixin):
     stroke: Optional[str] = None
-    stroke_dasharray: Union[List[values.Number], Literal["none"], values.Length, None] = None
-    stroke_dashoffset: Union[Literal["none"], values.Length, values.Number, None] = None
-    stroke_opacity: Optional[values.Number] = None
-    stroke_width: Union[values.Length, values.Number, None] = None
+    stroke_dasharray: Union[List[Number], Literal["none"], Length, None] = None
+    stroke_dashoffset: Union[Literal["none"], Length, Number, None] = None
+    stroke_opacity: Optional[Number] = None
+    stroke_width: Union[Length, Number, None] = None
 
 
 @dataclass
 class FontSpecification(AttrsMixin):
     font_family: Optional[str] = None
-    font_size: Union[values.Length, values.Number, None] = None
-    font_size_adjust: Union[values.Number, None, Literal["none"]] = None
+    font_size: Union[Length, Number, None] = None
+    font_size_adjust: Union[Number, None, Literal["none"]] = None
     font_stretch: Optional[Literal[
         "normal", "wider", "narrower",
         "ultra-condensed", "extra-condensed", "semi-condensed",
@@ -90,8 +90,8 @@ class TextContentElements(AttrsMixin):
 
 @dataclass
 class FilterPrimitive(AttrsMixin):
-    x: Union[values.Length, values.Number, None] = None
-    y: Union[values.Length, values.Number, None] = None
+    x: Union[Length, Number, None] = None
+    y: Union[Length, Number, None] = None
 
 
 @dataclass

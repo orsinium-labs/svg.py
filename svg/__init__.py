@@ -1,6 +1,5 @@
 """SVG drawing library
 """
-from . import values
 from ._filters import (
     FeBlend, FeColorMatrix, FeComponentTransfer, FeComposite, FeConvolveMatrix,
     FeDiffuseLighting, FeDisplacementMap, FeDistantLight, FeFlood, FeFuncA,
@@ -20,6 +19,7 @@ from ._path import (
 from ._transforms import (
     Matrix, Rotate, Scale, SkewX, SkewY, Transform, Translate,
 )
+from ._types import Length, PreserveAspectRatio, ViewBoxSpec
 from .elements import (
     SVG, A, Animate, AnimateMotion, AnimateTransform, Circle, ClipPath,
     ColorProfile, DefinitionSrc, Defs, Desc, Element, Ellipse, ForeignObject,
@@ -135,4 +135,8 @@ __all__ = [
     'a', 'ArcRel',
     'Z', 'ClosePath',
 
+    # types
+    'Length',
+    'PreserveAspectRatio',
+    'ViewBoxSpec',
 ]
