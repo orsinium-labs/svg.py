@@ -6,6 +6,7 @@ from typing_extensions import Literal
 
 from . import _mixins as m, values
 from ._transforms import Transform
+from ._path import PathData
 
 
 @dataclass
@@ -214,7 +215,7 @@ class Path(Element, _FigureElement):
     element_name = "path"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[List[Transform]] = None
-    d: Optional[List[values.PathData]] = None
+    d: Optional[List[PathData]] = None
     marker_start: Optional[str] = None
     marker_mid: Optional[str] = None
     marker_end: Optional[str] = None

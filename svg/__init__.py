@@ -18,6 +18,28 @@ from ._filters import (
 from ._transforms import (
     Matrix, Rotate, Scale, SkewX, SkewY, Transform, Translate,
 )
+from ._path import (
+    PathData,
+    M, MoveTo,
+    m, MoveToRel,
+    L, LineTo,
+    l, LineToRel,
+    H, HorizontalLineTo,
+    h, HorizontalLineToRel,
+    V, VerticalLineTo,
+    v, VerticalLineToRel,
+    C, CubicBezier,
+    c, CubicBezierRel,
+    S, SmoothCubicBezier,
+    s, SmoothCubicBezierRel,
+    Q, QuadraticBezier,
+    q, QuadraticBezierRel,
+    T, SmoothQuadraticBezier,
+    t, SmoothQuadraticBezierRel,
+    Arc,
+    a, ArcRel,
+    Z, ClosePath,
+)
 
 
 __version__ = '0.1.0'
@@ -102,4 +124,27 @@ __all__ = [
     'Rotate',
     'SkewX',
     'SkewY',
+
+    # path data
+    'PathData',
+    'M', 'MoveTo',
+    'm', 'MoveToRel',
+    'L', 'LineTo',
+    'l', 'LineToRel',
+    'H', 'HorizontalLineTo',
+    'h', 'HorizontalLineToRel',
+    'V', 'VerticalLineTo',
+    'v', 'VerticalLineToRel',
+    'C', 'CubicBezier',
+    'c', 'CubicBezierRel',
+    'S', 'SmoothCubicBezier',
+    's', 'SmoothCubicBezierRel',
+    'Q', 'QuadraticBezier',
+    'q', 'QuadraticBezierRel',
+    'T', 'SmoothQuadraticBezier',
+    't', 'SmoothQuadraticBezierRel',
+    'A', 'Arc',
+    'a', 'ArcRel',
+    'Z', 'ClosePath',
+
 ]

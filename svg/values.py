@@ -18,19 +18,6 @@ class Length:
 
 
 @dataclass
-class PathData:
-    type: Union[
-        Literal["M", "L", "H", "V", "C", "S", "Q", "T", "A", "Z"],
-        Literal["m", "l", "h", "v", "c", "s", "q", "t", "a", "z"],
-    ]
-    points: List[Number]
-
-    def __str__(self) -> str:
-        points = " ".join(str(p) for p in self.points)
-        return f"{self.type} {points}"
-
-
-@dataclass
 class PreserveAspectRatio:
     alignment: Literal[
         "none",
