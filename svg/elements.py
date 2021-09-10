@@ -1,4 +1,4 @@
-from dataclasses import asdict, dataclass
+from dataclasses import dataclass
 from enum import Enum
 from typing import Any, ClassVar, Dict, List, Optional, Union
 
@@ -42,7 +42,7 @@ class Element:
 
     def as_dict(self) -> Dict[str, str]:
         result = {}
-        for key, val in asdict(self).items():
+        for key, val in vars(self).items():
             if val is None:
                 continue
             if key == "elements":
@@ -72,6 +72,7 @@ class SVG(
     m.Graphics,
 ):
     element_name = "svg"
+    xmlns: Optional[str] = None
     viewBox: Optional[values.ViewBoxSpec] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
     x: Union[values.Length, values.Number, None] = None

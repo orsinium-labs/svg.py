@@ -3,6 +3,7 @@ from typing import ClassVar
 from .values import Number
 
 
+@dataclass
 class PathData:
     """
     https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d
