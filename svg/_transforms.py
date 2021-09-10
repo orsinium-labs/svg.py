@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from typing import Optional
+from ._types import Number
 
 
 class Transform:
@@ -8,12 +9,12 @@ class Transform:
 
 @dataclass
 class Matrix(Transform):
-    a: int
-    b: int
-    c: int
-    d: int
-    e: int
-    f: int
+    a: Number
+    b: Number
+    c: Number
+    d: Number
+    e: Number
+    f: Number
 
     def __str__(self):
         return f'matrix({self.a} {self.b} {self.c} {self.d} {self.e} {self.f})'
@@ -21,8 +22,8 @@ class Matrix(Transform):
 
 @dataclass
 class Translate(Transform):
-    x: int
-    y: Optional[int] = None
+    x: Number
+    y: Optional[Number] = None
 
     def __str__(self):
         if self.y is None:
@@ -32,8 +33,8 @@ class Translate(Transform):
 
 @dataclass
 class Scale(Transform):
-    x: int
-    y: Optional[int] = None
+    x: Number
+    y: Optional[Number] = None
 
     def __str__(self):
         if self.y is None:
@@ -43,9 +44,9 @@ class Scale(Transform):
 
 @dataclass
 class Rotate(Transform):
-    a: int
-    x: Optional[int] = None
-    y: Optional[int] = None
+    a: Number
+    x: Optional[Number] = None
+    y: Optional[Number] = None
 
     def __str__(self):
         if self.x is None:
@@ -56,7 +57,7 @@ class Rotate(Transform):
 
 @dataclass
 class SkewX(Transform):
-    a: int
+    a: Number
 
     def __str__(self):
         return f'skewX({self.a})'
@@ -64,7 +65,7 @@ class SkewX(Transform):
 
 @dataclass
 class SkewY(Transform):
-    a: int
+    a: Number
 
     def __str__(self):
         return f'skewY({self.a})'

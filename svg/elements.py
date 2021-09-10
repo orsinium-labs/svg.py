@@ -107,6 +107,9 @@ class G(
     mask: Optional[str] = None
     opacity: Optional[Number] = None
     clip_path: Optional[str] = None
+    fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
+    fill_opacity: Optional[Number] = None
+    fill: Optional[str] = None
 
 
 @dataclass
@@ -634,7 +637,7 @@ class ForeignObject(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
 
 
 @dataclass
-class Use(Element, m.GraphicsElementEvents, m.Color, m.Graphics):
+class Use(Element, m.GraphicsElementEvents, m.Color, m.Graphics, m.FillStroke):
     element_name = "use"
     href: Optional[str] = None
     class_: Optional[List[str]] = None
@@ -648,3 +651,6 @@ class Use(Element, m.GraphicsElementEvents, m.Color, m.Graphics):
     opacity: Optional[Number] = None
     clip_path: Optional[str] = None
     mask: Optional[str] = None
+    fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
+    fill_opacity: Optional[Number] = None
+    fill: Optional[str] = None
