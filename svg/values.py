@@ -87,9 +87,6 @@ Cursor = Union[
         "text", "wait", "help", "inherit",
     ],
 ]
-EnableBackground = Union[
-    URI, Literal["accumulate", "x", "y", "width", "height", "inherit", "new"]
-]
 Marker = Union[URI, NONE, INHERIT]
 Mask = Union[URI, NONE, INHERIT]
 

@@ -16,7 +16,7 @@ class Element:
 
     element_name: ClassVar[str]
 
-    elements: Optional[List[Any]] = None
+    elements: Optional[List['Element']] = None
     id: Optional[str] = None
     tabindex: Optional[int] = None
     lang: Optional[str] = None
@@ -54,10 +54,8 @@ class Element:
 
     def as_str(self) -> str:
         props = " ".join(f'{k}="{v}"' for k, v in self.as_dict().items())
-        elements: Optional[List[Element]]
-        elements = getattr(self, "elements", None)
-        if elements:
-            content = "".join(self._as_str(e) for e in elements)
+        if self.elements:
+            content = "".join(self._as_str(e) for e in self.elements)
             return f"<{self.element_name} {props}>{content}</{self.element_name}>"
         return f"<{self.element_name} {props}/>"
 
@@ -73,7 +71,6 @@ class SVG(
     m.Graphics,
 ):
     element_name = "svg"
-    elements: Optional[List[Element]] = None
     viewBox: Optional[values.ViewBoxSpec] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
     x: Union[values.Length, values.Number, None] = None
@@ -102,7 +99,6 @@ class G(
     m.Graphics,
 ):
     element_name = "g"
-    elements: Optional[List[Element]] = None
     transform: Optional[List[Transform]] = None
     class_: Optional[values.Classes] = None
     mask: Optional[values.Mask] = None
@@ -117,7 +113,6 @@ class Defs(
     m.GraphicsElementEvents,
 ):
     element_name = "defs"
-    elements: Optional[List[Element]] = None
     transform: Optional[List[Transform]] = None
     class_: Optional[values.Classes] = None
     pointer_events: Optional[str] = None  # TODO
@@ -145,7 +140,6 @@ class Symbol(
     m.Graphics,
 ):
     element_name = "symbol"
-    elements: Optional[List[Element]] = None
     viewBox: Optional[values.ViewBoxSpec] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
     refX: Union[values.Length, values.Number, None] = None
@@ -204,12 +198,6 @@ class Style(Element, m.GraphicsElementEvents):
 
 @dataclass
 class _FigureElement(m.Color, m.GraphicsElementEvents, m.Graphics, m.FillStroke):
-    elements: Optional[List[Union[
-        "Animate",
-        "Set",
-        "AnimateMotion",
-        "AnimateTransform",
-    ]]] = None
     pathLength: Optional[float] = None
     paint_order: Optional[Literal["normal", "fill", "stroke", "markers"]] = None
     shape_rendering: Optional[Literal["auto", "optimizeSpeed", "crispEdges", "geometricPrecision", "inherit"]] = None
@@ -403,9 +391,6 @@ class TSpan(Element, _TextElement):
 @dataclass
 class TextPath(Element, _TextElement):
     element_name = "textPath"
-    elements: Optional[List[Union[
-        "Desc", "Title", "Metadata", "TSpan", "A", "Animate", "Set",
-    ]]] = None
     externalResourcesRequired: Optional[bool] = None
     startOffset: Optional[str] = None
     textLength: Union[values.Length, values.Number, None] = None
@@ -457,7 +442,6 @@ class ColorProfile(Element):
 
 @dataclass
 class _Gradient:
-    elements: Optional[List[Union["Stop", "Animate", "Set", "AnimateTransform"]]] = None
     externalResourcesRequired: Optional[bool] = None
     gradientUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
     gradientTransform: Optional[List[Transform]] = None
@@ -518,10 +502,6 @@ class Pattern(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
 @dataclass
 class ClipPath(Element, m.Color, m.Graphics):
     element_name = "clipPath"
-    elements: Optional[List[Union[
-        "Path", "Text", "Rect", "Circle", "Ellipse", "Line",
-        "Polyline", "Polygon", "Animate", "Set", "AnimateMotion", "AnimateTransform",
-    ]]] = None
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[List[Transform]] = None
     clipPathUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
@@ -533,7 +513,6 @@ class ClipPath(Element, m.Color, m.Graphics):
 @dataclass
 class Mask(Element, m.Color, m.Graphics):
     element_name = "mask"
-    elements: Optional[List[Element]] = None
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[List[Transform]] = None
     maskUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
@@ -654,7 +633,6 @@ class ForeignObject(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
 @dataclass
 class Use(Element, m.GraphicsElementEvents, m.Color, m.Graphics):
     element_name = "use"
-    elements: Optional[List[Union["Set", "Animate", "AnimateMotion", "AnimateTransform"]]] = None
     href: Optional[str] = None
     class_: Optional[values.Classes] = None
     style: Optional[values.StyleSheet] = None
