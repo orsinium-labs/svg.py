@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Optional, Union
+from typing import List, Optional, Union
 
 from typing_extensions import Literal
 
@@ -33,9 +33,9 @@ class Color(AttrsMixin):
 @dataclass
 class FillStroke(AttrsMixin):
     stroke: Optional[str] = None
-    stroke_dasharray: Optional[values.StrokeDashArray] = None
+    stroke_dasharray: Union[List[values.Number], Literal["none"], values.Length, None] = None
     stroke_dashoffset: Union[Literal["none"], values.Length, values.Number, None] = None
-    stroke_opacity: Optional[values.Opacity] = None
+    stroke_opacity: Optional[values.Number] = None
     stroke_width: Union[values.Length, values.Number, None] = None
 
 
@@ -43,7 +43,7 @@ class FillStroke(AttrsMixin):
 class FontSpecification(AttrsMixin):
     font_family: Optional[str] = None
     font_size: Union[values.Length, values.Number, None] = None
-    font_size_adjust: Optional[values.FontSizeAdjust] = None
+    font_size_adjust: Union[values.Number, None, Literal["none"]] = None
     font_stretch: Optional[Literal[
         "normal", "wider", "narrower",
         "ultra-condensed", "extra-condensed", "semi-condensed",

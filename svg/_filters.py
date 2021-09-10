@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Any, List, Optional, Union
+from typing import Any, List, Optional, Tuple, Union
 
 from typing_extensions import Literal
 
@@ -183,7 +183,7 @@ class FeDisplacementMap(Element, m.FilterPrimitive):
 @dataclass
 class FeFlood(Element, m.FilterPrimitive):
     element_name = "feFlood"
-    flood_opacity: Optional[values.Opacity] = None
+    flood_opacity: Optional[values.Number] = None
     flood_color: Optional[str] = None
     color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
     result: Optional[str] = None
@@ -195,7 +195,7 @@ class FeFlood(Element, m.FilterPrimitive):
 @dataclass
 class FeGaussianBlur(Element, m.FilterPrimitive):
     element_name = "feGaussianBlur"
-    stdDeviation: Optional[values.NumberOptionalNumber] = None
+    stdDeviation: Optional[Tuple[values.Number, values.Number]] = None
     edgeMode: Optional[Literal["duplicate", "wrap", "none"]] = None
     in_: Optional[str] = None
     color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None

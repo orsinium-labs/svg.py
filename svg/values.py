@@ -1,12 +1,8 @@
 from dataclasses import dataclass
 from decimal import Decimal
-from typing import List, Tuple, Union
+from typing import List, Union
 
 from typing_extensions import Literal
-
-
-INHERIT = Literal["inherit"]
-NONE = Literal["none"]
 
 
 Number = Union[Decimal, float, int]
@@ -65,21 +61,9 @@ class ViewBoxSpec:
         return f"{self.min_x} {self.min_y} {self.width} {self.height}"
 
 
-# str
-URI = str
-ContentType = str
 StyleSheet = str
-
-# union
-FontSizeAdjust = Union[Number, NONE, INHERIT]
-NumberOptionalNumber = Union[Number, Tuple[Number, Number]]
-Opacity = Union[Number, INHERIT]
-StrokeDashArray = Union[str, List[Number]]
-
-# str union
-ClipPath = Union[URI, Literal["auto"], INHERIT, NONE]
 Cursor = Union[
-    URI,
+    str,
     Literal[
         "auto", "crosshair", "default", "pointer", "move",
         "e-resize", "ne-resize", "nw-resize", "n-resize", "se-resize",
@@ -87,8 +71,4 @@ Cursor = Union[
         "text", "wait", "help", "inherit",
     ],
 ]
-Marker = Union[URI, NONE, INHERIT]
-Mask = Union[URI, NONE, INHERIT]
-
-# list of strings
 Classes = List[str]

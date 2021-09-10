@@ -36,7 +36,7 @@ class Element:
         if isinstance(val, bool):
             return str(val).lower()
         if isinstance(val, (list, tuple)):
-            return ",".join(cls._as_str(v) for v in val)
+            return " ".join(cls._as_str(v) for v in val)
         return str(val)
 
     def as_dict(self) -> Dict[str, str]:
@@ -77,10 +77,10 @@ class SVG(
     y: Union[values.Length, values.Number, None] = None
     width: Union[values.Length, values.Number, None] = None
     height: Union[values.Length, values.Number, None] = None
-    class_: Optional[values.Classes] = None
-    mask: Optional[values.Mask] = None
-    opacity: Optional[values.Opacity] = None
-    clip_path: Optional[values.ClipPath] = None
+    class_: Optional[List[str]] = None
+    mask: Optional[str] = None
+    opacity: Optional[values.Number] = None
+    clip_path: Optional[str] = None
     overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
 
     onunload: Optional[str] = None
@@ -100,10 +100,10 @@ class G(
 ):
     element_name = "g"
     transform: Optional[List[Transform]] = None
-    class_: Optional[values.Classes] = None
-    mask: Optional[values.Mask] = None
-    opacity: Optional[values.Opacity] = None
-    clip_path: Optional[values.ClipPath] = None
+    class_: Optional[List[str]] = None
+    mask: Optional[str] = None
+    opacity: Optional[values.Number] = None
+    clip_path: Optional[str] = None
 
 
 @dataclass
@@ -114,7 +114,7 @@ class Defs(
 ):
     element_name = "defs"
     transform: Optional[List[Transform]] = None
-    class_: Optional[values.Classes] = None
+    class_: Optional[List[str]] = None
     pointer_events: Optional[str] = None  # TODO
 
 
@@ -122,14 +122,14 @@ class Defs(
 class Desc(Element, m.GraphicsElementEvents):
     element_name = "desc"
     content: Optional[str] = None
-    class_: Optional[values.Classes] = None
+    class_: Optional[List[str]] = None
 
 
 @dataclass
 class Title(Element, m.GraphicsElementEvents):
     element_name = "title"
     content: Optional[str] = None
-    class_: Optional[values.Classes] = None
+    class_: Optional[List[str]] = None
 
 
 @dataclass
@@ -146,10 +146,10 @@ class Symbol(
     refY: Union[values.Length, values.Number, None] = None
     x: Union[values.Length, values.Number, None] = None
     y: Union[values.Length, values.Number, None] = None
-    class_: Optional[values.Classes] = None
-    mask: Optional[values.Mask] = None
-    opacity: Optional[values.Opacity] = None
-    clip_path: Optional[values.ClipPath] = None
+    class_: Optional[List[str]] = None
+    mask: Optional[str] = None
+    opacity: Optional[values.Number] = None
+    clip_path: Optional[str] = None
     overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
 
 
@@ -169,12 +169,12 @@ class Image(
     height: Union[values.Length, values.Number, None] = None
     preserveAspectRatio: Optional[values.PreserveAspectRatio] = None
     image_rendering: Optional[Literal["auto", "optimizeSpeed", "optimizeQuality"]] = None
-    class_: Optional[values.Classes] = None
+    class_: Optional[List[str]] = None
     vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
     visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
-    mask: Optional[values.Mask] = None
-    opacity: Optional[values.Opacity] = None
-    clip_path: Optional[values.ClipPath] = None
+    mask: Optional[str] = None
+    opacity: Optional[values.Number] = None
+    clip_path: Optional[str] = None
     overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
 
 
@@ -183,15 +183,15 @@ class Switch(Element, m.Color, m.GraphicsElementEvents):
     element_name = "switch"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[List[Transform]] = None
-    opacity: Optional[values.Opacity] = None
-    class_: Optional[values.Classes] = None
+    opacity: Optional[values.Number] = None
+    class_: Optional[List[str]] = None
     pointer_events: Optional[str] = None  # TODO
 
 
 @dataclass
 class Style(Element, m.GraphicsElementEvents):
     element_name = "style"
-    type: Optional[values.ContentType] = None
+    type: Optional[str] = None
     media: Optional[List[str]] = None
     title: Optional[str] = None
 
@@ -201,12 +201,12 @@ class _FigureElement(m.Color, m.GraphicsElementEvents, m.Graphics, m.FillStroke)
     pathLength: Optional[float] = None
     paint_order: Optional[Literal["normal", "fill", "stroke", "markers"]] = None
     shape_rendering: Optional[Literal["auto", "optimizeSpeed", "crispEdges", "geometricPrecision", "inherit"]] = None
-    class_: Optional[values.Classes] = None
+    class_: Optional[List[str]] = None
     vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
     visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
-    mask: Optional[values.Mask] = None
-    opacity: Optional[values.Opacity] = None
-    clip_path: Optional[values.ClipPath] = None
+    mask: Optional[str] = None
+    opacity: Optional[values.Number] = None
+    clip_path: Optional[str] = None
 
 
 @dataclass
@@ -215,14 +215,14 @@ class Path(Element, _FigureElement):
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[List[Transform]] = None
     d: Optional[List[values.PathData]] = None
-    marker_start: Optional[values.Marker] = None
-    marker_mid: Optional[values.Marker] = None
-    marker_end: Optional[values.Marker] = None
+    marker_start: Optional[str] = None
+    marker_mid: Optional[str] = None
+    marker_end: Optional[str] = None
     stroke_linecap: Optional[Literal["butt", "round", "square", "inherit"]] = None
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
     stroke_miterlimit: Optional[values.Number] = None
     fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
-    fill_opacity: Optional[values.Opacity] = None
+    fill_opacity: Optional[values.Number] = None
     fill: Optional[str] = None
 
 
@@ -237,12 +237,12 @@ class Rect(Element, _FigureElement):
     height: Union[values.Length, values.Number, None] = None
     rx: Union[values.Length, values.Number, None] = None
     ry: Union[values.Length, values.Number, None] = None
-    marker_start: Optional[values.Marker] = None
-    marker_mid: Optional[values.Marker] = None
-    marker_end: Optional[values.Marker] = None
+    marker_start: Optional[str] = None
+    marker_mid: Optional[str] = None
+    marker_end: Optional[str] = None
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
     stroke_miterlimit: Optional[values.Number] = None
-    fill_opacity: Optional[values.Opacity] = None
+    fill_opacity: Optional[values.Number] = None
     fill: Optional[str] = None
 
 
@@ -254,8 +254,8 @@ class Circle(Element, _FigureElement):
     cx: Union[values.Length, values.Number, None] = None
     cy: Union[values.Length, values.Number, None] = None
     r: Union[values.Length, values.Number, None] = None
-    marker_mid: Optional[values.Marker] = None
-    fill_opacity: Optional[values.Opacity] = None
+    marker_mid: Optional[str] = None
+    fill_opacity: Optional[values.Number] = None
     fill: Optional[str] = None
 
 
@@ -268,10 +268,10 @@ class Ellipse(Element, _FigureElement):
     cy: Union[values.Length, values.Number, None] = None
     rx: Union[values.Length, values.Number, None] = None
     ry: Union[values.Length, values.Number, None] = None
-    marker_start: Optional[values.Marker] = None
-    marker_mid: Optional[values.Marker] = None
-    marker_end: Optional[values.Marker] = None
-    fill_opacity: Optional[values.Opacity] = None
+    marker_start: Optional[str] = None
+    marker_mid: Optional[str] = None
+    marker_end: Optional[str] = None
+    fill_opacity: Optional[values.Number] = None
     fill: Optional[str] = None
 
 
@@ -284,9 +284,9 @@ class Line(Element, _FigureElement):
     y1: Union[values.Length, values.Number, None] = None
     x2: Union[values.Length, values.Number, None] = None
     y2: Union[values.Length, values.Number, None] = None
-    marker_start: Optional[values.Marker] = None
-    marker_mid: Optional[values.Marker] = None
-    marker_end: Optional[values.Marker] = None
+    marker_start: Optional[str] = None
+    marker_mid: Optional[str] = None
+    marker_end: Optional[str] = None
     stroke_linecap: Optional[Literal["butt", "round", "square", "inherit"]] = None
 
 
@@ -296,14 +296,14 @@ class Polyline(Element, _FigureElement):
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[List[Transform]] = None
     points: Optional[List[values.Number]] = None
-    marker_start: Optional[values.Marker] = None
-    marker_mid: Optional[values.Marker] = None
-    marker_end: Optional[values.Marker] = None
+    marker_start: Optional[str] = None
+    marker_mid: Optional[str] = None
+    marker_end: Optional[str] = None
     stroke_linecap: Optional[Literal["butt", "round", "square", "inherit"]] = None
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
     stroke_miterlimit: Optional[values.Number] = None
     fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
-    fill_opacity: Optional[values.Opacity] = None
+    fill_opacity: Optional[values.Number] = None
     fill: Optional[str] = None
 
 
@@ -313,13 +313,13 @@ class Polygon(Element, _FigureElement):
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[List[Transform]] = None
     points: Optional[List[values.Number]] = None
-    marker_start: Optional[values.Marker] = None
-    marker_mid: Optional[values.Marker] = None
-    marker_end: Optional[values.Marker] = None
+    marker_start: Optional[str] = None
+    marker_mid: Optional[str] = None
+    marker_end: Optional[str] = None
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
     stroke_miterlimit: Optional[values.Number] = None
     fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
-    fill_opacity: Optional[values.Opacity] = None
+    fill_opacity: Optional[values.Number] = None
     fill: Optional[str] = None
 
 
@@ -333,10 +333,10 @@ class _TextElement(
     m.FillStroke,
 ):
     paint_order: Optional[Literal["normal", "fill", "stroke", "markers"]] = None
-    class_: Optional[values.Classes] = None
+    class_: Optional[List[str]] = None
     vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
     visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
-    fill_opacity: Optional[values.Opacity] = None
+    fill_opacity: Optional[values.Number] = None
     fill: Optional[str] = None
 
 
@@ -357,9 +357,9 @@ class Text(Element, _TextElement):
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
     stroke_miterlimit: Optional[values.Number] = None
     fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
-    mask: Optional[values.Mask] = None
-    opacity: Optional[values.Opacity] = None
-    clip_path: Optional[values.ClipPath] = None
+    mask: Optional[str] = None
+    opacity: Optional[values.Number] = None
+    clip_path: Optional[str] = None
     overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
 
 
@@ -385,7 +385,7 @@ class TSpan(Element, _TextElement):
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
     stroke_miterlimit: Optional[values.Number] = None
     fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
-    opacity: Optional[values.Opacity] = None
+    opacity: Optional[values.Number] = None
 
 
 @dataclass
@@ -412,7 +412,7 @@ class TextPath(Element, _TextElement):
     stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
     stroke_miterlimit: Optional[values.Number] = None
     fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
-    opacity: Optional[values.Opacity] = None
+    opacity: Optional[values.Number] = None
 
 
 @dataclass
@@ -427,10 +427,10 @@ class Marker(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     markerWidth: Union[values.Length, values.Number, None] = None
     markerHeight: Union[values.Length, values.Number, None] = None
     orient: Optional[str] = None
-    opacity: Optional[values.Opacity] = None
-    clip_path: Optional[values.ClipPath] = None
-    class_: Optional[values.Classes] = None
-    mask: Optional[values.Mask] = None
+    opacity: Optional[values.Number] = None
+    clip_path: Optional[str] = None
+    class_: Optional[List[str]] = None
+    mask: Optional[str] = None
     overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
 
 
@@ -447,7 +447,7 @@ class _Gradient:
     gradientTransform: Optional[List[Transform]] = None
     spreadMethod: Optional[Literal["pad", "reflect", "repeat"]] = None
     href: Optional[str] = None
-    class_: Optional[values.Classes] = None
+    class_: Optional[List[str]] = None
 
 
 @dataclass
@@ -474,9 +474,9 @@ class RadialGradient(Element, _Gradient, m.Color, m.GraphicsElementEvents):
 class Stop(Element, m.GraphicsElementEvents):
     element_name = "stop"
     offset: Union[values.Length, values.Number, None] = None
-    stop_opacity: Optional[values.Opacity] = None
+    stop_opacity: Optional[values.Number] = None
     stop_color: Optional[str] = None
-    class_: Optional[values.Classes] = None
+    class_: Optional[List[str]] = None
 
 
 @dataclass
@@ -493,9 +493,9 @@ class Pattern(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     height: Union[values.Length, values.Number, None] = None
     patternContentUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
     href: Optional[str] = None
-    class_: Optional[values.Classes] = None
-    mask: Optional[values.Mask] = None
-    clip_path: Optional[values.ClipPath] = None
+    class_: Optional[List[str]] = None
+    mask: Optional[str] = None
+    clip_path: Optional[str] = None
     overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
 
 
@@ -505,9 +505,9 @@ class ClipPath(Element, m.Color, m.Graphics):
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[List[Transform]] = None
     clipPathUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
-    class_: Optional[values.Classes] = None
-    mask: Optional[values.Mask] = None
-    clip_path: Optional[values.ClipPath] = None
+    class_: Optional[List[str]] = None
+    mask: Optional[str] = None
+    clip_path: Optional[str] = None
 
 
 @dataclass
@@ -521,9 +521,9 @@ class Mask(Element, m.Color, m.Graphics):
     width: Union[values.Length, values.Number, None] = None
     height: Union[values.Length, values.Number, None] = None
     maskContentUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
-    class_: Optional[values.Classes] = None
-    mask: Optional[values.Mask] = None
-    clip_path: Optional[values.ClipPath] = None
+    class_: Optional[List[str]] = None
+    mask: Optional[str] = None
+    clip_path: Optional[str] = None
 
 
 @dataclass
@@ -533,11 +533,11 @@ class A(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     transform: Optional[List[Transform]] = None
     target: Optional[Literal["_self", "_parent", "_top", "_blank"]] = None
     href: Optional[str] = None
-    class_: Optional[values.Classes] = None
+    class_: Optional[List[str]] = None
     visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
-    mask: Optional[values.Mask] = None
-    opacity: Optional[values.Opacity] = None
-    clip_path: Optional[values.ClipPath] = None
+    mask: Optional[str] = None
+    opacity: Optional[values.Number] = None
+    clip_path: Optional[str] = None
 
 
 @dataclass
@@ -623,10 +623,10 @@ class ForeignObject(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     width: Union[values.Length, values.Number, None] = None
     height: Union[values.Length, values.Number, None] = None
     content: Optional[str] = None
-    class_: Optional[values.Classes] = None
+    class_: Optional[List[str]] = None
     vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
     visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
-    opacity: Optional[values.Opacity] = None
+    opacity: Optional[values.Number] = None
     overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
 
 
@@ -634,7 +634,7 @@ class ForeignObject(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
 class Use(Element, m.GraphicsElementEvents, m.Color, m.Graphics):
     element_name = "use"
     href: Optional[str] = None
-    class_: Optional[values.Classes] = None
+    class_: Optional[List[str]] = None
     style: Optional[values.StyleSheet] = None
     transform: Optional[List[Transform]] = None
     x: Union[values.Length, values.Number, None] = None
@@ -642,6 +642,6 @@ class Use(Element, m.GraphicsElementEvents, m.Color, m.Graphics):
     width: Union[values.Length, values.Number, None] = None
     height: Union[values.Length, values.Number, None] = None
     vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
-    opacity: Optional[values.Opacity] = None
-    clip_path: Optional[values.ClipPath] = None
-    mask: Optional[values.Mask] = None
+    opacity: Optional[values.Number] = None
+    clip_path: Optional[str] = None
+    mask: Optional[str] = None
