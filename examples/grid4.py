@@ -1,14 +1,3 @@
-"""
-Tutorial:
-    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform
-
-Usage:
-    PYTHONPATH=. python3 examples/transform.py > examples/transform.svg
-    xdg-open examples/transform.svg
-
-We use functions instead of <g> and <use>
-because it gives a better control over types.
-"""
 import svg
 
 
