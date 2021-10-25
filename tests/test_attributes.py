@@ -22,6 +22,9 @@ def test_attrs(lib_element: reflect.LibElement, mdn_attr: reflect.MDNAttr):
         msg = f'attr `{mdn_attr.title}` should be set for `{lib_element.title}` but it is not'
         assert mdn_attr.title in lib_element.attrs, msg
 
+    # <g> and <use> may have additional undocumented attributes
+    if lib_element.title in {'g', 'use'}:
+        return
     if mdn_attr.elements and lib_element.title not in mdn_attr.elements:
         msg = f'attr `{mdn_attr.title}` should not be set for `{lib_element.title}` but it is'
         assert mdn_attr.title not in lib_element.attrs, msg
