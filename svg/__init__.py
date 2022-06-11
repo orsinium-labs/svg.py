@@ -7,7 +7,7 @@ from ._filters import (
     FeMorphology, FeOffset, FePointLight, FeSpecularLighting, FeSpotLight,
     FeTile, FeTurbulence, Filter,
 )
-from ._helpers import escape
+from ._helpers import escape, mm, px
 from ._path import (
     Arc, ArcRel, C, ClosePath, CubicBezier, CubicBezierRel, H,
     HorizontalLineTo, HorizontalLineToRel, L, LineTo, LineToRel, M, MoveTo,
@@ -29,10 +29,12 @@ from .elements import (
 )
 
 
-__version__ = '1.0.0'
+__version__ = '1.1.0'
 __all__ = [
     'values',
     'escape',
+    'mm',
+    'px',
 
     # elements
     'Element',
