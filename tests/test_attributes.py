@@ -6,8 +6,12 @@ import reflect
 
 
 LIB_ELEMENTS = reflect.LibElement.parse_all()
+# git clone https://github.com/mdn/content.git mdn-source
 MDN_ROOT = Path(__file__).parent.parent.parent / 'mdn-source' / 'files' / 'en-us' / 'web' / 'svg'
 MDN_ATTRS = reflect.MDNAttr.parse_all(MDN_ROOT)
+
+assert LIB_ELEMENTS
+assert MDN_ATTRS
 
 
 @pytest.mark.parametrize('lib_element', LIB_ELEMENTS)

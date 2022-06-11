@@ -29,17 +29,19 @@ class MDNAttr:
     slug: str
     tags: List[str]
     content: str
+    spec_urls: List[str]
 
     @classmethod
     def parse(cls, path: Path) -> Optional['MDNAttr']:
-        path /= 'index.html'
+        path /= 'index.md'
         if not path.is_file():
             return None
         raw = path.read_text()
         first, _, second = raw.partition('\n---\n')
         fields: dict = next(yaml.load_all(first, Loader=yaml.SafeLoader))
         fields.pop('browser-compat', None)
-        return cls(**fields, content=second)
+        spec_urls = fields.pop('spec-urls', [])
+        return cls(**fields, content=second, spec_urls=spec_urls)
 
     @classmethod
     def parse_all(cls, path: Path) -> List['MDNAttr']:
