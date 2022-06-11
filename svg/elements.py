@@ -19,6 +19,7 @@ class Element:
     element_name: ClassVar[str]
 
     elements: Optional[List['Element']] = None
+    text: Optional[str] = None
     id: Optional[str] = None
     tabindex: Optional[int] = None
     lang: Optional[str] = None
@@ -46,7 +47,7 @@ class Element:
         for key, val in vars(self).items():
             if val is None:
                 continue
-            if key == "elements":
+            if key in ("elements", "text"):
                 continue
             key = key.rstrip("_")
             key = key.replace("__", ":")
@@ -56,6 +57,8 @@ class Element:
 
     def as_str(self) -> str:
         props = " ".join(f'{k}="{v}"' for k, v in self.as_dict().items())
+        if self.text:
+            return f"<{self.element_name} {props}>{self.text}</{self.element_name}>"
         if self.elements:
             content = "".join(self._as_str(e) for e in self.elements)
             return f"<{self.element_name} {props}>{content}</{self.element_name}>"
@@ -348,6 +351,9 @@ class _TextElement(
 
 @dataclass
 class Text(Element, _TextElement):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/text
+    """
     element_name = "text"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[List[Transform]] = None
