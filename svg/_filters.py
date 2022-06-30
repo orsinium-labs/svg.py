@@ -1,13 +1,14 @@
 from __future__ import annotations
 from dataclasses import dataclass
-from typing import Any, List, Optional, Tuple, Union
-
-from typing_extensions import Literal
+from typing import TYPE_CHECKING, Any, List, Optional, Tuple, Union
 
 from . import _mixins as m
 from ._transforms import Transform
 from ._types import Length, Number, PreserveAspectRatio
 from .elements import Element
+
+if TYPE_CHECKING:
+    from typing_extensions import Literal
 
 
 @dataclass

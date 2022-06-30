@@ -1,10 +1,11 @@
 from __future__ import annotations
 from dataclasses import dataclass
-from typing import List, Optional, Union
-
-from typing_extensions import Literal
+from typing import TYPE_CHECKING, List, Optional, Union
 
 from ._types import Length, Number
+
+if TYPE_CHECKING:
+    from typing_extensions import Literal
 
 
 class AttrsMixin:

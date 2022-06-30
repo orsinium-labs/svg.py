@@ -1,14 +1,15 @@
 from __future__ import annotations
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any, ClassVar, Dict, List, Optional, Union
-
-from typing_extensions import Literal
+from typing import TYPE_CHECKING, Any, ClassVar, Dict, List, Optional, Union
 
 from . import _mixins as m
 from ._path import PathData
 from ._transforms import Transform
 from ._types import Length, Number, PreserveAspectRatio, ViewBoxSpec
+
+if TYPE_CHECKING:
+    from typing_extensions import Literal
 
 
 @dataclass
