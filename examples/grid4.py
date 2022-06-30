@@ -24,7 +24,6 @@ def draw() -> svg.SVG:
             ])
     return svg.SVG(
         viewBox=svg.ViewBoxSpec(0, 0, WIDTH, HEIGHT),
-        xmlns="http://www.w3.org/2000/svg",
         elements=[svg.Path(
             stroke="#2c3e50",
             stroke_width=1,

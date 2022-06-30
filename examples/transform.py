@@ -27,8 +27,6 @@ def heart_path() -> List[svg.PathData]:
 def draw() -> svg.SVG:
     return svg.SVG(
         viewBox=svg.ViewBoxSpec(-40, 0, 150, 100),
-        xmlns="http://www.w3.org/2000/svg",
-
         elements=[
             svg.Path(
                 d=heart_path(),

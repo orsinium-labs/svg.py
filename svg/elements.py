@@ -76,7 +76,7 @@ class SVG(
     m.Graphics,
 ):
     element_name = "svg"
-    xmlns: Optional[str] = None
+    xmlns: Optional[str] = "http://www.w3.org/2000/svg"
     viewBox: Optional[ViewBoxSpec] = None
     preserveAspectRatio: Optional[PreserveAspectRatio] = None
     x: Union[Length, Number, None] = None
