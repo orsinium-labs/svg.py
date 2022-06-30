@@ -1,3 +1,4 @@
+from __future__ import annotations
 from dataclasses import astuple, dataclass
 from typing import ClassVar
 
