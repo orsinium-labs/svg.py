@@ -1,6 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, List, Optional, Union
+from typing import TYPE_CHECKING, Optional, Union
 
 from ._types import Length, Number
 
@@ -35,7 +35,7 @@ class Color(AttrsMixin):
 @dataclass
 class FillStroke(AttrsMixin):
     stroke: Optional[str] = None
-    stroke_dasharray: Union[List[Number], Literal["none"], Length, None] = None
+    stroke_dasharray: Union[list[Number], Literal["none"], Length, None] = None
     stroke_dashoffset: Union[Literal["none"], Length, Number, None] = None
     stroke_opacity: Optional[Number] = None
     stroke_width: Union[Length, Number, None] = None

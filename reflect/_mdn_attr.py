@@ -1,8 +1,8 @@
+from __future__ import annotations
 import re
 from dataclasses import dataclass
 from functools import cached_property
 from pathlib import Path
-from typing import List, Optional, Set
 
 import yaml
 
@@ -27,12 +27,12 @@ DEPRECATED = [
 class MDNAttr:
     title: str
     slug: str
-    tags: List[str]
+    tags: list[str]
     content: str
-    spec_urls: List[str]
+    spec_urls: list[str]
 
     @classmethod
-    def parse(cls, path: Path) -> Optional['MDNAttr']:
+    def parse(cls, path: Path) -> MDNAttr | None:
         path /= 'index.md'
         if not path.is_file():
             return None
@@ -44,7 +44,7 @@ class MDNAttr:
         return cls(**fields, content=second, spec_urls=spec_urls)
 
     @classmethod
-    def parse_all(cls, path: Path) -> List['MDNAttr']:
+    def parse_all(cls, path: Path) -> list['MDNAttr']:
         result = []
         for subpath in (path / 'attribute').iterdir():
             attr = cls.parse(subpath)
@@ -67,7 +67,7 @@ class MDNAttr:
         return False
 
     @cached_property
-    def elements(self) -> Set[str]:
+    def elements(self) -> set[str]:
         sep = 'You can use this attribute with the following SVG elements:'
         _, _, txt = self.content.partition(sep)
         txt, _, _ = self.content.partition('</ul>')

@@ -1,7 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass
 from enum import Enum
-from typing import TYPE_CHECKING, Any, ClassVar, Dict, List, Optional, Union
+from typing import TYPE_CHECKING, Any, ClassVar, Optional, Union
 
 from . import _mixins as m
 from ._path import PathData
@@ -20,7 +20,7 @@ class Element:
 
     element_name: ClassVar[str]
 
-    elements: Optional[List['Element']] = None
+    elements: Optional[list['Element']] = None
     text: Optional[str] = None
     id: Optional[str] = None
     tabindex: Optional[int] = None
@@ -44,7 +44,7 @@ class Element:
             return " ".join(cls._as_str(v) for v in val)
         return str(val)
 
-    def as_dict(self) -> Dict[str, str]:
+    def as_dict(self) -> dict[str, str]:
         result = {}
         for key, val in vars(self).items():
             if val is None:
@@ -85,7 +85,7 @@ class SVG(
     y: Union[Length, Number, None] = None
     width: Union[Length, Number, None] = None
     height: Union[Length, Number, None] = None
-    class_: Optional[List[str]] = None
+    class_: Optional[list[str]] = None
     mask: Optional[str] = None
     opacity: Optional[Number] = None
     clip_path: Optional[str] = None
@@ -107,8 +107,8 @@ class G(
     m.Graphics,
 ):
     element_name = "g"
-    transform: Optional[List[Transform]] = None
-    class_: Optional[List[str]] = None
+    transform: Optional[list[Transform]] = None
+    class_: Optional[list[str]] = None
     mask: Optional[str] = None
     opacity: Optional[Number] = None
     clip_path: Optional[str] = None
@@ -124,8 +124,8 @@ class Defs(
     m.GraphicsElementEvents,
 ):
     element_name = "defs"
-    transform: Optional[List[Transform]] = None
-    class_: Optional[List[str]] = None
+    transform: Optional[list[Transform]] = None
+    class_: Optional[list[str]] = None
     pointer_events: Optional[str] = None  # TODO
 
 
@@ -133,14 +133,14 @@ class Defs(
 class Desc(Element, m.GraphicsElementEvents):
     element_name = "desc"
     content: Optional[str] = None
-    class_: Optional[List[str]] = None
+    class_: Optional[list[str]] = None
 
 
 @dataclass
 class Title(Element, m.GraphicsElementEvents):
     element_name = "title"
     content: Optional[str] = None
-    class_: Optional[List[str]] = None
+    class_: Optional[list[str]] = None
 
 
 @dataclass
@@ -157,7 +157,7 @@ class Symbol(
     refY: Union[Length, Number, None] = None
     x: Union[Length, Number, None] = None
     y: Union[Length, Number, None] = None
-    class_: Optional[List[str]] = None
+    class_: Optional[list[str]] = None
     mask: Optional[str] = None
     opacity: Optional[Number] = None
     clip_path: Optional[str] = None
@@ -173,14 +173,14 @@ class Image(
 ):
     element_name = "image"
     href: Optional[str] = None
-    transform: Optional[List[Transform]] = None
+    transform: Optional[list[Transform]] = None
     x: Union[Length, Number, None] = None
     y: Union[Length, Number, None] = None
     width: Union[Length, Number, None] = None
     height: Union[Length, Number, None] = None
     preserveAspectRatio: Optional[PreserveAspectRatio] = None
     image_rendering: Optional[Literal["auto", "optimizeSpeed", "optimizeQuality"]] = None
-    class_: Optional[List[str]] = None
+    class_: Optional[list[str]] = None
     vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
     visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
     mask: Optional[str] = None
@@ -193,9 +193,9 @@ class Image(
 class Switch(Element, m.Color, m.GraphicsElementEvents):
     element_name = "switch"
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[List[Transform]] = None
+    transform: Optional[list[Transform]] = None
     opacity: Optional[Number] = None
-    class_: Optional[List[str]] = None
+    class_: Optional[list[str]] = None
     pointer_events: Optional[str] = None  # TODO
 
 
@@ -203,7 +203,7 @@ class Switch(Element, m.Color, m.GraphicsElementEvents):
 class Style(Element, m.GraphicsElementEvents):
     element_name = "style"
     type: Optional[str] = None
-    media: Optional[List[str]] = None
+    media: Optional[list[str]] = None
     title: Optional[str] = None
 
 
@@ -212,7 +212,7 @@ class _FigureElement(m.Color, m.GraphicsElementEvents, m.Graphics, m.FillStroke)
     pathLength: Optional[float] = None
     paint_order: Optional[Literal["normal", "fill", "stroke", "markers"]] = None
     shape_rendering: Optional[Literal["auto", "optimizeSpeed", "crispEdges", "geometricPrecision", "inherit"]] = None
-    class_: Optional[List[str]] = None
+    class_: Optional[list[str]] = None
     vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
     visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
     mask: Optional[str] = None
@@ -224,8 +224,8 @@ class _FigureElement(m.Color, m.GraphicsElementEvents, m.Graphics, m.FillStroke)
 class Path(Element, _FigureElement):
     element_name = "path"
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[List[Transform]] = None
-    d: Optional[List[PathData]] = None
+    transform: Optional[list[Transform]] = None
+    d: Optional[list[PathData]] = None
     marker_start: Optional[str] = None
     marker_mid: Optional[str] = None
     marker_end: Optional[str] = None
@@ -241,7 +241,7 @@ class Path(Element, _FigureElement):
 class Rect(Element, _FigureElement):
     element_name = "rect"
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[List[Transform]] = None
+    transform: Optional[list[Transform]] = None
     x: Union[Length, Number, None] = None
     y: Union[Length, Number, None] = None
     width: Union[Length, Number, None] = None
@@ -261,7 +261,7 @@ class Rect(Element, _FigureElement):
 class Circle(Element, _FigureElement):
     element_name = "circle"
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[List[Transform]] = None
+    transform: Optional[list[Transform]] = None
     cx: Union[Length, Number, None] = None
     cy: Union[Length, Number, None] = None
     r: Union[Length, Number, None] = None
@@ -274,7 +274,7 @@ class Circle(Element, _FigureElement):
 class Ellipse(Element, _FigureElement):
     element_name = "ellipse"
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[List[Transform]] = None
+    transform: Optional[list[Transform]] = None
     cx: Union[Length, Number, None] = None
     cy: Union[Length, Number, None] = None
     rx: Union[Length, Number, None] = None
@@ -290,7 +290,7 @@ class Ellipse(Element, _FigureElement):
 class Line(Element, _FigureElement):
     element_name = "line"
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[List[Transform]] = None
+    transform: Optional[list[Transform]] = None
     x1: Union[Length, Number, None] = None
     y1: Union[Length, Number, None] = None
     x2: Union[Length, Number, None] = None
@@ -305,8 +305,8 @@ class Line(Element, _FigureElement):
 class Polyline(Element, _FigureElement):
     element_name = "polyline"
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[List[Transform]] = None
-    points: Optional[List[Number]] = None
+    transform: Optional[list[Transform]] = None
+    points: Optional[list[Number]] = None
     marker_start: Optional[str] = None
     marker_mid: Optional[str] = None
     marker_end: Optional[str] = None
@@ -322,8 +322,8 @@ class Polyline(Element, _FigureElement):
 class Polygon(Element, _FigureElement):
     element_name = "polygon"
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[List[Transform]] = None
-    points: Optional[List[Number]] = None
+    transform: Optional[list[Transform]] = None
+    points: Optional[list[Number]] = None
     marker_start: Optional[str] = None
     marker_mid: Optional[str] = None
     marker_end: Optional[str] = None
@@ -344,7 +344,7 @@ class _TextElement(
     m.FillStroke,
 ):
     paint_order: Optional[Literal["normal", "fill", "stroke", "markers"]] = None
-    class_: Optional[List[str]] = None
+    class_: Optional[list[str]] = None
     vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
     visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
     fill_opacity: Optional[Number] = None
@@ -358,7 +358,7 @@ class Text(Element, _TextElement):
     """
     element_name = "text"
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[List[Transform]] = None
+    transform: Optional[list[Transform]] = None
     x: Union[Length, Number, None] = None
     y: Union[Length, Number, None] = None
     dx: Union[Length, Number, None] = None
@@ -443,7 +443,7 @@ class Marker(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     orient: Optional[str] = None
     opacity: Optional[Number] = None
     clip_path: Optional[str] = None
-    class_: Optional[List[str]] = None
+    class_: Optional[list[str]] = None
     mask: Optional[str] = None
     overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
 
@@ -458,10 +458,10 @@ class ColorProfile(Element):
 class _Gradient:
     externalResourcesRequired: Optional[bool] = None
     gradientUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
-    gradientTransform: Optional[List[Transform]] = None
+    gradientTransform: Optional[list[Transform]] = None
     spreadMethod: Optional[Literal["pad", "reflect", "repeat"]] = None
     href: Optional[str] = None
-    class_: Optional[List[str]] = None
+    class_: Optional[list[str]] = None
 
 
 @dataclass
@@ -490,7 +490,7 @@ class Stop(Element, m.GraphicsElementEvents):
     offset: Union[Length, Number, None] = None
     stop_opacity: Optional[Number] = None
     stop_color: Optional[str] = None
-    class_: Optional[List[str]] = None
+    class_: Optional[list[str]] = None
 
 
 @dataclass
@@ -500,14 +500,14 @@ class Pattern(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     viewBox: Optional[ViewBoxSpec] = None
     preserveAspectRatio: Optional[PreserveAspectRatio] = None
     patternUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
-    patternTransform: Optional[List[Transform]] = None
+    patternTransform: Optional[list[Transform]] = None
     x: Union[Length, Number, None] = None
     y: Union[Length, Number, None] = None
     width: Union[Length, Number, None] = None
     height: Union[Length, Number, None] = None
     patternContentUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
     href: Optional[str] = None
-    class_: Optional[List[str]] = None
+    class_: Optional[list[str]] = None
     mask: Optional[str] = None
     clip_path: Optional[str] = None
     overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
@@ -517,9 +517,9 @@ class Pattern(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
 class ClipPath(Element, m.Color, m.Graphics):
     element_name = "clipPath"
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[List[Transform]] = None
+    transform: Optional[list[Transform]] = None
     clipPathUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
-    class_: Optional[List[str]] = None
+    class_: Optional[list[str]] = None
     mask: Optional[str] = None
     clip_path: Optional[str] = None
 
@@ -528,14 +528,14 @@ class ClipPath(Element, m.Color, m.Graphics):
 class Mask(Element, m.Color, m.Graphics):
     element_name = "mask"
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[List[Transform]] = None
+    transform: Optional[list[Transform]] = None
     maskUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
     x: Union[Length, Number, None] = None
     y: Union[Length, Number, None] = None
     width: Union[Length, Number, None] = None
     height: Union[Length, Number, None] = None
     maskContentUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
-    class_: Optional[List[str]] = None
+    class_: Optional[list[str]] = None
     mask: Optional[str] = None
     clip_path: Optional[str] = None
 
@@ -544,10 +544,10 @@ class Mask(Element, m.Color, m.Graphics):
 class A(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     element_name = "a"
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[List[Transform]] = None
+    transform: Optional[list[Transform]] = None
     target: Optional[Literal["_self", "_parent", "_top", "_blank"]] = None
     href: Optional[str] = None
-    class_: Optional[List[str]] = None
+    class_: Optional[list[str]] = None
     visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
     mask: Optional[str] = None
     opacity: Optional[Number] = None
@@ -631,13 +631,13 @@ class Metadata(Element, m.GraphicsElementEvents):
 class ForeignObject(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     element_name = "foreignObject"
     externalResourcesRequired: Optional[bool] = None
-    transform: Optional[List[Transform]] = None
+    transform: Optional[list[Transform]] = None
     x: Union[Length, Number, None] = None
     y: Union[Length, Number, None] = None
     width: Union[Length, Number, None] = None
     height: Union[Length, Number, None] = None
     content: Optional[str] = None
-    class_: Optional[List[str]] = None
+    class_: Optional[list[str]] = None
     vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
     visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
     opacity: Optional[Number] = None
@@ -648,9 +648,9 @@ class ForeignObject(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
 class Use(Element, m.GraphicsElementEvents, m.Color, m.Graphics, m.FillStroke):
     element_name = "use"
     href: Optional[str] = None
-    class_: Optional[List[str]] = None
+    class_: Optional[list[str]] = None
     style: Optional[str] = None
-    transform: Optional[List[Transform]] = None
+    transform: Optional[list[Transform]] = None
     x: Union[Length, Number, None] = None
     y: Union[Length, Number, None] = None
     width: Union[Length, Number, None] = None
