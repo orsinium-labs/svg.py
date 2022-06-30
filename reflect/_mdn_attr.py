@@ -1,10 +1,15 @@
 from __future__ import annotations
 import re
 from dataclasses import dataclass
-from functools import cached_property
 from pathlib import Path
 
 import yaml
+
+
+try:
+    from functools import cached_property
+except ImportError:
+    cached_property = property  # type: ignore
 
 
 REX_EL = re.compile(r'li>\{\{\s*SVGElement\(["\']([a-zA-Z-]+)["\']\)\s*\}\}\.?</')

@@ -1,8 +1,12 @@
 from __future__ import annotations
 from dataclasses import dataclass, fields
-from functools import cached_property
 
 import svg
+
+try:
+    from functools import cached_property
+except ImportError:
+    cached_property = property  # type: ignore
 
 
 @dataclass
