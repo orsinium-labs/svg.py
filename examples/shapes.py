@@ -13,8 +13,6 @@ def draw() -> svg.SVG:
     return svg.SVG(
         width=200,
         height=250,
-        xmlns="http://www.w3.org/2000/svg",
-
         elements=[
             svg.Rect(
                 x=10, y=10,

@@ -1,8 +1,10 @@
+from __future__ import annotations
 from dataclasses import dataclass
 from decimal import Decimal
-from typing import Union
+from typing import TYPE_CHECKING, Union
 
-from typing_extensions import Literal
+if TYPE_CHECKING:
+    from typing_extensions import Literal
 
 
 Number = Union[Decimal, float, int]

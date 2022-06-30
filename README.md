@@ -26,7 +26,6 @@ import svg
 canvas = svg.SVG(
     width=60,
     height=60,
-    xmlns="http://www.w3.org/2000/svg",
     elements=[
         svg.Circle(
             cx=30, cy=30, r=20,

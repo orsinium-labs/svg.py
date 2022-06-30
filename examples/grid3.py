@@ -1,4 +1,4 @@
-from typing import List
+from __future__ import annotations
 import svg
 
 
@@ -12,7 +12,7 @@ STEP = STROKE_LEN + GAP
 
 
 def draw() -> svg.SVG:
-    elements: List[svg.Element] = []
+    elements: list[svg.Element] = []
     do_shift = True
     for y in range(STROKE_LEN, HEIGHT, STEP):
         do_shift = not do_shift
@@ -33,7 +33,6 @@ def draw() -> svg.SVG:
                 ))
     return svg.SVG(
         viewBox=svg.ViewBoxSpec(0, 0, WIDTH, HEIGHT),
-        xmlns="http://www.w3.org/2000/svg",
         elements=elements,
     )
 

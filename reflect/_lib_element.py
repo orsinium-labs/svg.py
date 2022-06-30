@@ -1,17 +1,21 @@
+from __future__ import annotations
 from dataclasses import dataclass, fields
-from functools import cached_property
-from typing import List, Set
 
 import svg
+
+try:
+    from functools import cached_property
+except ImportError:
+    cached_property = property  # type: ignore
 
 
 @dataclass
 class LibElement:
     title: str
-    fields: List[str]
+    fields: list[str]
 
     @classmethod
-    def parse_all(cls) -> List['LibElement']:
+    def parse_all(cls) -> list['LibElement']:
         result = []
         for el in svg.Element.__subclasses__():
             result.append(cls(
@@ -21,7 +25,7 @@ class LibElement:
         return result
 
     @cached_property
-    def attrs(self) -> Set[str]:
+    def attrs(self) -> set[str]:
         result = set()
         for field in self.fields:
             if field == 'elements':

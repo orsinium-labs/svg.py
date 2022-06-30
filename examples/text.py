@@ -14,8 +14,6 @@ def draw() -> svg.SVG:
     return svg.SVG(
         width=240,
         height=80,
-        xmlns="http://www.w3.org/2000/svg",
-
         elements=[
             svg.Style(
                 text=dedent("""

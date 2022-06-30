@@ -9,11 +9,11 @@ Usage:
 We use functions instead of <g> and <use>
 because it gives a better control over types.
 """
-from typing import List
+from __future__ import annotations
 import svg
 
 
-def heart_path() -> List[svg.PathData]:
+def heart_path() -> list[svg.PathData]:
     return [
         svg.M(10, 30),
         svg.Arc(20, 20, 0, False, True, x=50, y=30),
@@ -27,8 +27,6 @@ def heart_path() -> List[svg.PathData]:
 def draw() -> svg.SVG:
     return svg.SVG(
         viewBox=svg.ViewBoxSpec(-40, 0, 150, 100),
-        xmlns="http://www.w3.org/2000/svg",
-
         elements=[
             svg.Path(
                 d=heart_path(),

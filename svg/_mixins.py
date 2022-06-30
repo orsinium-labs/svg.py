@@ -1,9 +1,11 @@
+from __future__ import annotations
 from dataclasses import dataclass
-from typing import List, Optional, Union
-
-from typing_extensions import Literal
+from typing import TYPE_CHECKING, Optional
 
 from ._types import Length, Number
+
+if TYPE_CHECKING:
+    from typing_extensions import Literal
 
 
 class AttrsMixin:
@@ -33,17 +35,17 @@ class Color(AttrsMixin):
 @dataclass
 class FillStroke(AttrsMixin):
     stroke: Optional[str] = None
-    stroke_dasharray: Union[List[Number], Literal["none"], Length, None] = None
-    stroke_dashoffset: Union[Literal["none"], Length, Number, None] = None
+    stroke_dasharray: list[Number] | Literal["none"] | Length | None = None
+    stroke_dashoffset: Literal["none"] | Length | Number | None = None
     stroke_opacity: Optional[Number] = None
-    stroke_width: Union[Length, Number, None] = None
+    stroke_width: Length | Number | None = None
 
 
 @dataclass
 class FontSpecification(AttrsMixin):
     font_family: Optional[str] = None
-    font_size: Union[Length, Number, None] = None
-    font_size_adjust: Union[Number, None, Literal["none"]] = None
+    font_size: Length | Number | None = None
+    font_size_adjust: Number | None | Literal["none"] = None
     font_stretch: Optional[Literal[
         "normal", "wider", "narrower",
         "ultra-condensed", "extra-condensed", "semi-condensed",
@@ -90,8 +92,8 @@ class TextContentElements(AttrsMixin):
 
 @dataclass
 class FilterPrimitive(AttrsMixin):
-    x: Union[Length, Number, None] = None
-    y: Union[Length, Number, None] = None
+    x: Length | Number | None = None
+    y: Length | Number | None = None
 
 
 @dataclass
