@@ -2,7 +2,7 @@
 """
 from ._filters import (
     FeBlend, FeColorMatrix, FeComponentTransfer, FeComposite, FeConvolveMatrix,
-    FeDiffuseLighting, FeDisplacementMap, FeDistantLight, FeFlood, FeFuncA,
+    FeDiffuseLighting, FeDisplacementMap, FeDistantLight, FeDropShadow, FeFlood, FeFuncA,
     FeFuncB, FeFuncG, FeFuncR, FeGaussianBlur, FeImage, FeMerge, FeMergeNode,
     FeMorphology, FeOffset, FePointLight, FeSpecularLighting, FeSpotLight,
     FeTile, FeTurbulence, Filter,
@@ -89,6 +89,7 @@ __all__ = [
     'FeDiffuseLighting',
     'FeDisplacementMap',
     'FeDistantLight',
+    'FeDropShadow',
     'FeFlood',
     'FeFuncA',
     'FeFuncB',

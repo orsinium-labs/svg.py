@@ -252,6 +252,17 @@ class FeMorphology(Element, m.FilterPrimitive):
 
 
 @dataclass
+class FeDropShadow(Element, m.FilterPrimitive):
+    element_name = "feDropShadow"
+    dx: Optional[Any] = None
+    dy: Optional[Any] = None
+    flood_opacity: Optional[Number] = None
+    flood_color: Optional[str] = None
+    stdDeviation: Optional[Tuple[Number, Number]] = None
+    class_: Optional[list[str]] = None
+
+
+@dataclass
 class FeOffset(Element, m.FilterPrimitive):
     element_name = "feOffset"
     dx: Optional[Any] = None
