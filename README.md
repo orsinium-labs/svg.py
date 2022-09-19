@@ -21,6 +21,8 @@ python3 -m pip install --user svg.py
 
 ## Usage
 
+**Try svg.py online:** [svg.orsinium.dev](https://svg.orsinium.dev/).
+
 ```python
 import svg
 canvas = svg.SVG(
