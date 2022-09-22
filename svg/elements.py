@@ -25,7 +25,6 @@ class Element:
     id: Optional[str] = None
     tabindex: Optional[int] = None
     lang: Optional[str] = None
-    xml__lang: Optional[str] = None
 
     transform_origin: Optional[str] = None
     style: Optional[str] = None
