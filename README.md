@@ -41,3 +41,9 @@ print(canvas)
 ```
 
 See [examples](./examples/) for more.
+
+## Projects using svg.py
+
+The github topic [svg-py](https://github.com/topics/svg-py) contains some of the projects that use svg.py in one way or another. If you want your project to appear on the list, simply add `svg-py` into the list of project topics. [Here is how][add-topic].
+
+[add-topic]: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/classifying-your-repository-with-topics#adding-topics-to-your-repository
