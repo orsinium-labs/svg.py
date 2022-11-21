@@ -13,7 +13,7 @@ Number = Union[Decimal, float, int]
 @dataclass
 class Length:
     value: Number
-    unit: Literal["em", "ex", "px", "pt", "pc", "cm", "mm", "in"]
+    unit: Literal["em", "ex", "px", "pt", "pc", "cm", "mm", "in", "%"]
 
     def __str__(self) -> str:
         return f"{self.value}{self.unit}"
