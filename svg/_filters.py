@@ -13,6 +13,9 @@ if TYPE_CHECKING:
 
 @dataclass
 class Filter(Element, m.FilterPrimitive):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/filter
+    """
     element_name = "filter"
     externalResourcesRequired: Optional[bool] = None
     filterUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
@@ -26,6 +29,9 @@ class Filter(Element, m.FilterPrimitive):
 
 @dataclass
 class FeDistantLight(Element):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feDistantLight
+    """
     element_name = "feDistantLight"
     azimuth: Optional[Number] = None
     elevation: Optional[Number] = None
@@ -33,6 +39,9 @@ class FeDistantLight(Element):
 
 @dataclass
 class FePointLight(Element, m.FilterPrimitive):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/fePointLight
+    """
     element_name = "fePointLight"
     x: Length | Number | None = None
     y: Length | Number | None = None
@@ -41,6 +50,9 @@ class FePointLight(Element, m.FilterPrimitive):
 
 @dataclass
 class FeSpotLight(Element, m.FilterPrimitive):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feSpotLight
+    """
     element_name = "feSpotLight"
     x: Length | Number | None = None
     y: Length | Number | None = None
@@ -55,6 +67,9 @@ class FeSpotLight(Element, m.FilterPrimitive):
 
 @dataclass
 class FeBlend(Element, m.FilterPrimitive):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feBlend
+    """
     element_name = "feBlend"
     in2: Optional[str] = None
     mode: Optional[Literal[
@@ -72,6 +87,9 @@ class FeBlend(Element, m.FilterPrimitive):
 
 @dataclass
 class FeColorMatrix(Element, m.FilterPrimitive):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feColorMatrix
+    """
     element_name = "feColorMatrix"
     type: Optional[Literal["matrix", "saturate", "hueRotate", "luminanceToAlpha"]] = None
     in_: Optional[str] = None
@@ -85,6 +103,9 @@ class FeColorMatrix(Element, m.FilterPrimitive):
 
 @dataclass
 class FeComponentTransfer(Element, m.FilterPrimitive):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feComponentTransfer
+    """
     element_name = "feComponentTransfer"
     in_: Optional[str] = None
     color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
@@ -96,30 +117,45 @@ class FeComponentTransfer(Element, m.FilterPrimitive):
 
 @dataclass
 class FeFuncR(Element, m.FilterPrimitive, m.ComponentTransferFunction):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feFuncR
+    """
     element_name = "feFuncR"
     type2: Optional[Literal["identity", "table", "discrete", "linear", "gamma"]] = None
 
 
 @dataclass
 class FeFuncG(Element, m.FilterPrimitive, m.ComponentTransferFunction):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feFuncG
+    """
     element_name = "feFuncG"
     type2: Optional[Literal["identity", "table", "discrete", "linear", "gamma"]] = None
 
 
 @dataclass
 class FeFuncB(Element, m.FilterPrimitive, m.ComponentTransferFunction):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feFuncB
+    """
     element_name = "feFuncB"
     type2: Optional[Literal["identity", "table", "discrete", "linear", "gamma"]] = None
 
 
 @dataclass
 class FeFuncA(Element, m.FilterPrimitive, m.ComponentTransferFunction):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feFuncA
+    """
     element_name = "feFuncA"
     type3: Optional[Literal["identity", "table", "discrete", "linear", "gamma"]] = None
 
 
 @dataclass
 class FeComposite(Element, m.FilterPrimitive):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feComposite
+    """
     element_name = "feComposite"
     in2: Optional[str] = None
     operator: Optional[Literal["over", "in", "out", "atop", "xor", "lighter", "arithmetic"]] = None
@@ -137,6 +173,9 @@ class FeComposite(Element, m.FilterPrimitive):
 
 @dataclass
 class FeConvolveMatrix(Element, m.FilterPrimitive):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feConvolveMatrix
+    """
     element_name = "feConvolveMatrix"
     order: Optional[Any] = None
     kernelMatrix: Optional[str] = None
@@ -156,6 +195,9 @@ class FeConvolveMatrix(Element, m.FilterPrimitive):
 
 @dataclass
 class FeDiffuseLighting(Element, m.FilterPrimitive):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feDiffuseLighting
+    """
     element_name = "feDiffuseLighting"
     surfaceScale: Optional[Number] = None
     diffuseConstant: Optional[Any] = None
@@ -170,6 +212,9 @@ class FeDiffuseLighting(Element, m.FilterPrimitive):
 
 @dataclass
 class FeDisplacementMap(Element, m.FilterPrimitive):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feDisplacementMap
+    """
     element_name = "feDisplacementMap"
     in2: Optional[str] = None
     scale: Optional[Any] = None
@@ -185,6 +230,9 @@ class FeDisplacementMap(Element, m.FilterPrimitive):
 
 @dataclass
 class FeFlood(Element, m.FilterPrimitive):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feFlood
+    """
     element_name = "feFlood"
     flood_opacity: Optional[Number] = None
     flood_color: Optional[str] = None
@@ -197,6 +245,9 @@ class FeFlood(Element, m.FilterPrimitive):
 
 @dataclass
 class FeGaussianBlur(Element, m.FilterPrimitive):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feGaussianBlur
+    """
     element_name = "feGaussianBlur"
     stdDeviation: Optional[Tuple[Number, Number]] = None
     edgeMode: Optional[Literal["duplicate", "wrap", "none"]] = None
@@ -210,6 +261,9 @@ class FeGaussianBlur(Element, m.FilterPrimitive):
 
 @dataclass
 class FeImage(Element, m.FilterPrimitive):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feImage
+    """
     element_name = "feImage"
     externalResourcesRequired: Optional[Any] = None
     transform: Optional[list[Transform]] = None
@@ -224,6 +278,9 @@ class FeImage(Element, m.FilterPrimitive):
 
 @dataclass
 class FeMerge(Element, m.FilterPrimitive):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feMerge
+    """
     element_name = "feMerge"
     color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
     result: Optional[str] = None
@@ -234,12 +291,18 @@ class FeMerge(Element, m.FilterPrimitive):
 
 @dataclass
 class FeMergeNode(Element, m.FilterPrimitive):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feMergeNode
+    """
     element_name = "feMergeNode"
     in_: Optional[str] = None
 
 
 @dataclass
 class FeMorphology(Element, m.FilterPrimitive):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feMorphology
+    """
     element_name = "feMorphology"
     operator: Optional[Literal["erode", "dilate"]] = None
     radius: Optional[Any] = None
@@ -253,6 +316,9 @@ class FeMorphology(Element, m.FilterPrimitive):
 
 @dataclass
 class FeDropShadow(Element, m.FilterPrimitive):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feDropShadow
+    """
     element_name = "feDropShadow"
     dx: Optional[Any] = None
     dy: Optional[Any] = None
@@ -264,6 +330,9 @@ class FeDropShadow(Element, m.FilterPrimitive):
 
 @dataclass
 class FeOffset(Element, m.FilterPrimitive):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feOffset
+    """
     element_name = "feOffset"
     dx: Optional[Any] = None
     dy: Optional[Any] = None
@@ -277,6 +346,9 @@ class FeOffset(Element, m.FilterPrimitive):
 
 @dataclass
 class FeSpecularLighting(Element, m.FilterPrimitive):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feSpecularLighting
+    """
     element_name = "feSpecularLighting"
     surfaceScale: Optional[Number] = None
     specularConstant: Optional[Number] = None
@@ -292,6 +364,9 @@ class FeSpecularLighting(Element, m.FilterPrimitive):
 
 @dataclass
 class FeTile(Element, m.FilterPrimitive):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feTile
+    """
     element_name = "feTile"
     in_: Optional[str] = None
     color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
@@ -303,6 +378,9 @@ class FeTile(Element, m.FilterPrimitive):
 
 @dataclass
 class FeTurbulence(Element, m.FilterPrimitive):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feTurbulence
+    """
     element_name = "feTurbulence"
     baseFrequency: Optional[str] = None
     numOctaves: Optional[int] = None

@@ -5,11 +5,17 @@ from ._types import Number
 
 
 class Transform:
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform
+    """
     pass
 
 
 @dataclass
 class Matrix(Transform):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform#matrix
+    """
     a: Number
     b: Number
     c: Number
@@ -23,6 +29,9 @@ class Matrix(Transform):
 
 @dataclass
 class Translate(Transform):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform#translate
+    """
     x: Number
     y: Optional[Number] = None
 
@@ -34,6 +43,9 @@ class Translate(Transform):
 
 @dataclass
 class Scale(Transform):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform#scale
+    """
     x: Number
     y: Optional[Number] = None
 
@@ -45,6 +57,9 @@ class Scale(Transform):
 
 @dataclass
 class Rotate(Transform):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform#rotate
+    """
     a: Number
     x: Optional[Number] = None
     y: Optional[Number] = None
@@ -58,6 +73,9 @@ class Rotate(Transform):
 
 @dataclass
 class SkewX(Transform):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform#skewx
+    """
     a: Number
 
     def __str__(self):
@@ -66,6 +84,9 @@ class SkewX(Transform):
 
 @dataclass
 class SkewY(Transform):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform#skewy
+    """
     a: Number
 
     def __str__(self):

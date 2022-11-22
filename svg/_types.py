@@ -12,6 +12,9 @@ Number = Union[Decimal, float, int]
 
 @dataclass
 class Length:
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Content_type#length
+    """
     value: Number
     unit: Literal["em", "ex", "px", "pt", "pc", "cm", "mm", "in", "%"]
 
@@ -21,6 +24,9 @@ class Length:
 
 @dataclass
 class PreserveAspectRatio:
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio
+    """
     alignment: Literal[
         "none",
         "xMinYMin",
@@ -41,6 +47,9 @@ class PreserveAspectRatio:
 
 @dataclass
 class ViewBoxSpec:
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox
+    """
     min_x: Number
     min_y: Number
     width: Number

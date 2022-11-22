@@ -29,7 +29,9 @@ class GraphicsElementEvents(AttrsMixin):
 @dataclass
 class Color(AttrsMixin):
     color: Optional[str] = None
-    color_interpolation: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
+    color_interpolation: Optional[Literal[
+        "auto", "sRGB", "linearRGB", "inherit",
+    ]] = None
 
 
 @dataclass
@@ -52,7 +54,9 @@ class FontSpecification(AttrsMixin):
         "semi-expanded", "expanded", "extra-expanded", "ultra-expanded",
         "inherit",
     ]] = None
-    font_style: Optional[Literal["normal", "italic", "oblique", "inherit"]] = None
+    font_style: Optional[Literal[
+        "normal", "italic", "oblique", "inherit",
+    ]] = None
     font_variant: Optional[Literal["normal", "small-caps", "inherit"]] = None
     font_weight: Optional[Literal[
         "normal", "bold", "bolder", "lighter", "inherit",
@@ -82,11 +86,16 @@ class TextContentElements(AttrsMixin):
     dominant_baseline: Optional[Literal[
         "auto", "autosense-script", "no-change", "reset", "ideographic",
         "lower", "hanging", "mathematical", "inherit",
+        "text-bottom", "alphabetic", "middle", "central", "text-top",
     ]] = None
     letter_spacing: Optional[Literal["auto", "exact"]] = None
     text_anchor: Optional[Literal["start", "middle", "end", "inherit"]] = None
-    text_decoration: Optional[Literal["none", "underline", "overline", "line-through"]] = None
-    unicode_bidi: Optional[Literal["normal", "embed", "isolate", "bidi-override", "isolate-override", "plaintext"]] = None
+    text_decoration: Optional[Literal[
+        "none", "underline", "overline", "line-through",
+    ]] = None
+    unicode_bidi: Optional[Literal[
+        "normal", "embed", "isolate", "bidi-override", "isolate-override", "plaintext",
+    ]] = None
     word_spacing: Optional[Literal["auto", "exact"]] = None
 
 

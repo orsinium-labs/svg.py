@@ -76,6 +76,13 @@ class SVG(
     m.Color,
     m.Graphics,
 ):
+    """The svg element is a container that defines a new coordinate system and viewport.
+
+    It is used as the outermost element of SVG documents, but it can also be used
+    to embed an SVG fragment inside an SVG or HTML document.
+
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg
+    """
     element_name = "svg"
     xmlns: Optional[str] = "http://www.w3.org/2000/svg"
     viewBox: Optional[ViewBoxSpec] = None
@@ -105,6 +112,14 @@ class G(
     m.Color,
     m.Graphics,
 ):
+    """The <g> SVG element is a container used to group other SVG elements.
+
+    Transformations applied to the <g> element are performed on its child elements,
+    and its attributes are inherited by its children. It can also group multiple elements
+    to be referenced later with the <use> element.
+
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/g
+    """
     element_name = "g"
     transform: Optional[list[Transform]] = None
     class_: Optional[list[str]] = None
@@ -122,6 +137,10 @@ class Defs(
     m.Color,
     m.GraphicsElementEvents,
 ):
+    """The <defs> is used to store graphical objects that will be used at a later time.
+
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/defs
+    """
     element_name = "defs"
     transform: Optional[list[Transform]] = None
     class_: Optional[list[str]] = None
@@ -130,6 +149,10 @@ class Defs(
 
 @dataclass
 class Desc(Element, m.GraphicsElementEvents):
+    """The <desc> element provides an accessible, long-text description of any element.
+
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/desc
+    """
     element_name = "desc"
     content: Optional[str] = None
     class_: Optional[list[str]] = None
@@ -137,6 +160,10 @@ class Desc(Element, m.GraphicsElementEvents):
 
 @dataclass
 class Title(Element, m.GraphicsElementEvents):
+    """The <title> element provides an accessible, short-text description of any element.
+
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title
+    """
     element_name = "title"
     content: Optional[str] = None
     class_: Optional[list[str]] = None
@@ -149,6 +176,14 @@ class Symbol(
     m.Color,
     m.Graphics,
 ):
+    """The <symbol> is used to define template objects which can be used by a <use> element.
+
+    The use of <symbol> elements for graphics that are used multiple times in the same
+    document adds structure and semantics. Documents that are rich in structure may be
+    rendered graphically, as speech, or as Braille, and thus promote accessibility.
+
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol
+    """
     element_name = "symbol"
     viewBox: Optional[ViewBoxSpec] = None
     preserveAspectRatio: Optional[PreserveAspectRatio] = None
@@ -170,6 +205,13 @@ class Image(
     m.Graphics,
     m.GraphicsElementEvents,
 ):
+    """The <image> SVG element includes images inside SVG documents.
+
+    The only image formats SVG software must support are JPEG, PNG, and other SVG files.
+    Animated GIF behavior is undefined.
+
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/image
+    """
     element_name = "image"
     href: Optional[str] = None
     transform: Optional[list[Transform]] = None
@@ -190,6 +232,9 @@ class Image(
 
 @dataclass
 class Switch(Element, m.Color, m.GraphicsElementEvents):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/switch
+    """
     element_name = "switch"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[list[Transform]] = None
@@ -200,6 +245,9 @@ class Switch(Element, m.Color, m.GraphicsElementEvents):
 
 @dataclass
 class Style(Element, m.GraphicsElementEvents):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/style
+    """
     element_name = "style"
     type: Optional[str] = None
     media: Optional[list[str]] = None
@@ -221,6 +269,9 @@ class _FigureElement(m.Color, m.GraphicsElementEvents, m.Graphics, m.FillStroke)
 
 @dataclass
 class Path(Element, _FigureElement):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path
+    """
     element_name = "path"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[list[Transform]] = None
@@ -238,6 +289,9 @@ class Path(Element, _FigureElement):
 
 @dataclass
 class Rect(Element, _FigureElement):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/rect
+    """
     element_name = "rect"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[list[Transform]] = None
@@ -258,6 +312,9 @@ class Rect(Element, _FigureElement):
 
 @dataclass
 class Circle(Element, _FigureElement):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle
+    """
     element_name = "circle"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[list[Transform]] = None
@@ -271,6 +328,9 @@ class Circle(Element, _FigureElement):
 
 @dataclass
 class Ellipse(Element, _FigureElement):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/ellipse
+    """
     element_name = "ellipse"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[list[Transform]] = None
@@ -287,6 +347,9 @@ class Ellipse(Element, _FigureElement):
 
 @dataclass
 class Line(Element, _FigureElement):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/line
+    """
     element_name = "line"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[list[Transform]] = None
@@ -302,6 +365,9 @@ class Line(Element, _FigureElement):
 
 @dataclass
 class Polyline(Element, _FigureElement):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/polyline
+    """
     element_name = "polyline"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[list[Transform]] = None
@@ -319,6 +385,9 @@ class Polyline(Element, _FigureElement):
 
 @dataclass
 class Polygon(Element, _FigureElement):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/polygon
+    """
     element_name = "polygon"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[list[Transform]] = None
@@ -352,7 +421,11 @@ class _TextElement(
 
 @dataclass
 class Text(Element, _TextElement):
-    """
+    """The SVG <text> element draws a graphics element consisting of text.
+
+    It's possible to apply a gradient, pattern, clipping path, mask, or filter to <text>,
+    like any other SVG graphics element.
+
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/text
     """
     element_name = "text"
@@ -378,6 +451,9 @@ class Text(Element, _TextElement):
 
 @dataclass
 class TSpan(Element, _TextElement):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/tspan
+    """
     element_name = "tspan"
     externalResourcesRequired: Optional[bool] = None
     x: Length | Number | None = None
@@ -403,6 +479,9 @@ class TSpan(Element, _TextElement):
 
 @dataclass
 class TextPath(Element, _TextElement):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/textPath
+    """
     element_name = "textPath"
     externalResourcesRequired: Optional[bool] = None
     startOffset: Optional[str] = None
@@ -430,6 +509,9 @@ class TextPath(Element, _TextElement):
 
 @dataclass
 class Marker(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/marker
+    """
     element_name = "marker"
     externalResourcesRequired: Optional[bool] = None
     viewBox: Optional[ViewBoxSpec] = None
@@ -449,6 +531,9 @@ class Marker(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
 
 @dataclass
 class ColorProfile(Element):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/color
+    """
     element_name = "color-profile"
     local: Optional[str] = None
 
@@ -465,6 +550,9 @@ class _Gradient:
 
 @dataclass
 class LinearGradient(Element, _Gradient, m.Color, m.GraphicsElementEvents):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/linearGradient
+    """
     element_name = "linearGradient"
     x1: Length | Number | None = None
     y1: Length | Number | None = None
@@ -474,6 +562,9 @@ class LinearGradient(Element, _Gradient, m.Color, m.GraphicsElementEvents):
 
 @dataclass
 class RadialGradient(Element, _Gradient, m.Color, m.GraphicsElementEvents):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/radialGradient
+    """
     element_name = "radialGradient"
     cx: Length | Number | None = None
     cy: Length | Number | None = None
@@ -485,6 +576,9 @@ class RadialGradient(Element, _Gradient, m.Color, m.GraphicsElementEvents):
 
 @dataclass
 class Stop(Element, m.GraphicsElementEvents):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/stop
+    """
     element_name = "stop"
     offset: Length | Number | None = None
     stop_opacity: Optional[Number] = None
@@ -494,6 +588,9 @@ class Stop(Element, m.GraphicsElementEvents):
 
 @dataclass
 class Pattern(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/pattern
+    """
     element_name = "pattern"
     externalResourcesRequired: Optional[bool] = None
     viewBox: Optional[ViewBoxSpec] = None
@@ -514,6 +611,9 @@ class Pattern(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
 
 @dataclass
 class ClipPath(Element, m.Color, m.Graphics):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/clipPath
+    """
     element_name = "clipPath"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[list[Transform]] = None
@@ -525,6 +625,9 @@ class ClipPath(Element, m.Color, m.Graphics):
 
 @dataclass
 class Mask(Element, m.Color, m.Graphics):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/mask
+    """
     element_name = "mask"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[list[Transform]] = None
@@ -541,6 +644,9 @@ class Mask(Element, m.Color, m.Graphics):
 
 @dataclass
 class A(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/a
+    """
     element_name = "a"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[list[Transform]] = None
@@ -555,6 +661,9 @@ class A(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
 
 @dataclass
 class View(Element, m.GraphicsElementEvents):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/view
+    """
     element_name = "view"
     externalResourcesRequired: Optional[bool] = None
     viewBox: Optional[ViewBoxSpec] = None
@@ -563,6 +672,9 @@ class View(Element, m.GraphicsElementEvents):
 
 @dataclass
 class Script(Element, m.GraphicsElementEvents):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/script
+    """
     element_name = "script"
     externalResourcesRequired: Optional[bool] = None
     type: Optional[str] = None
@@ -571,6 +683,9 @@ class Script(Element, m.GraphicsElementEvents):
 
 @dataclass
 class Animate(Element, m.Animation, m.Color, m.AnimationTiming, m.GraphicsElementEvents):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/animate
+    """
     element_name = "animate"
     externalResourcesRequired: Optional[bool] = None
     keyPoints: Optional[str] = None
@@ -579,6 +694,9 @@ class Animate(Element, m.Animation, m.Color, m.AnimationTiming, m.GraphicsElemen
 
 @dataclass
 class Set(Element, m.AnimationTiming, m.GraphicsElementEvents):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/set
+    """
     element_name = "set"
     externalResourcesRequired: Optional[bool] = None
     to: Optional[str] = None
@@ -590,6 +708,9 @@ class Set(Element, m.AnimationTiming, m.GraphicsElementEvents):
 
 @dataclass
 class AnimateMotion(Element, m.Animation, m.AnimationTiming, m.GraphicsElementEvents):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/animateMotion
+    """
     element_name = "animateMotion"
     externalResourcesRequired: Optional[bool] = None
     path: Optional[str] = None
@@ -600,6 +721,9 @@ class AnimateMotion(Element, m.Animation, m.AnimationTiming, m.GraphicsElementEv
 
 @dataclass
 class MPath(Element, m.GraphicsElementEvents):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/mpath
+    """
     element_name = "mpath"
     externalResourcesRequired: Optional[bool] = None
     href: Optional[str] = None
@@ -607,6 +731,9 @@ class MPath(Element, m.GraphicsElementEvents):
 
 @dataclass
 class AnimateTransform(Element, m.Animation, m.AnimationTiming, m.GraphicsElementEvents):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/animateTransform
+    """
     element_name = "animateTransform"
     externalResourcesRequired: Optional[bool] = None
     type: Optional[Literal["translate", "scale", "rotate", "skewX", "skewY"]] = None
@@ -616,18 +743,27 @@ class AnimateTransform(Element, m.Animation, m.AnimationTiming, m.GraphicsElemen
 
 @dataclass
 class DefinitionSrc(Element):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/definition
+    """
     element_name = "definition-src"
     pass
 
 
 @dataclass
 class Metadata(Element, m.GraphicsElementEvents):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/metadata
+    """
     element_name = "metadata"
     pass
 
 
 @dataclass
 class ForeignObject(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/foreignObject
+    """
     element_name = "foreignObject"
     externalResourcesRequired: Optional[bool] = None
     transform: Optional[list[Transform]] = None
@@ -645,6 +781,9 @@ class ForeignObject(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
 
 @dataclass
 class Use(Element, m.GraphicsElementEvents, m.Color, m.Graphics, m.FillStroke):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use
+    """
     element_name = "use"
     href: Optional[str] = None
     class_: Optional[list[str]] = None
