@@ -76,7 +76,11 @@ class SVG(
     m.Color,
     m.Graphics,
 ):
-    """
+    """The svg element is a container that defines a new coordinate system and viewport.
+
+    It is used as the outermost element of SVG documents, but it can also be used
+    to embed an SVG fragment inside an SVG or HTML document.
+
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg
     """
     element_name = "svg"
@@ -108,7 +112,12 @@ class G(
     m.Color,
     m.Graphics,
 ):
-    """
+    """The <g> SVG element is a container used to group other SVG elements.
+
+    Transformations applied to the <g> element are performed on its child elements,
+    and its attributes are inherited by its children. It can also group multiple elements
+    to be referenced later with the <use> element.
+
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/g
     """
     element_name = "g"
@@ -128,7 +137,8 @@ class Defs(
     m.Color,
     m.GraphicsElementEvents,
 ):
-    """
+    """The <defs> is used to store graphical objects that will be used at a later time.
+
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/defs
     """
     element_name = "defs"
@@ -139,7 +149,8 @@ class Defs(
 
 @dataclass
 class Desc(Element, m.GraphicsElementEvents):
-    """
+    """The <desc> element provides an accessible, long-text description of any element.
+
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/desc
     """
     element_name = "desc"
@@ -149,7 +160,8 @@ class Desc(Element, m.GraphicsElementEvents):
 
 @dataclass
 class Title(Element, m.GraphicsElementEvents):
-    """
+    """The <title> element provides an accessible, short-text description of any element.
+
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title
     """
     element_name = "title"
@@ -164,7 +176,12 @@ class Symbol(
     m.Color,
     m.Graphics,
 ):
-    """
+    """The <symbol> is used to define template objects which can be used by a <use> element.
+
+    The use of <symbol> elements for graphics that are used multiple times in the same
+    document adds structure and semantics. Documents that are rich in structure may be
+    rendered graphically, as speech, or as Braille, and thus promote accessibility.
+
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol
     """
     element_name = "symbol"
@@ -188,7 +205,11 @@ class Image(
     m.Graphics,
     m.GraphicsElementEvents,
 ):
-    """
+    """The <image> SVG element includes images inside SVG documents.
+
+    The only image formats SVG software must support are JPEG, PNG, and other SVG files.
+    Animated GIF behavior is undefined.
+
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/image
     """
     element_name = "image"
@@ -400,10 +421,11 @@ class _TextElement(
 
 @dataclass
 class Text(Element, _TextElement):
-    """
-    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/text
-    """
-    """
+    """The SVG <text> element draws a graphics element consisting of text.
+
+    It's possible to apply a gradient, pattern, clipping path, mask, or filter to <text>,
+    like any other SVG graphics element.
+
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/text
     """
     element_name = "text"
