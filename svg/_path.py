@@ -24,6 +24,9 @@ class PathData:
 
 @dataclass
 class MoveTo(PathData):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#moveto_path_commands
+    """
     command = 'M'
     x: Number
     y: Number
@@ -31,6 +34,9 @@ class MoveTo(PathData):
 
 @dataclass
 class MoveToRel(PathData):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#moveto_path_commands
+    """
     command = 'm'
     dx: Number
     dy: Number
@@ -38,6 +44,9 @@ class MoveToRel(PathData):
 
 @dataclass
 class LineTo(PathData):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#lineto_path_commands
+    """
     command = 'L'
     x: Number
     y: Number
@@ -45,6 +54,9 @@ class LineTo(PathData):
 
 @dataclass
 class LineToRel(PathData):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#lineto_path_commands
+    """
     command = 'l'
     dx: Number
     dy: Number
@@ -52,30 +64,45 @@ class LineToRel(PathData):
 
 @dataclass
 class HorizontalLineTo(PathData):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#lineto_path_commands
+    """
     command = 'H'
     x: Number
 
 
 @dataclass
 class HorizontalLineToRel(PathData):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#lineto_path_commands
+    """
     command = 'h'
     dx: Number
 
 
 @dataclass
 class VerticalLineTo(PathData):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#lineto_path_commands
+    """
     command = 'V'
     y: Number
 
 
 @dataclass
 class VerticalLineToRel(PathData):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#lineto_path_commands
+    """
     command = 'v'
     dy: Number
 
 
 @dataclass
 class CubicBezier(PathData):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#cubic_b%C3%A9zier_curve
+    """
     command = 'C'
     x1: Number
     y1: Number
@@ -87,6 +114,9 @@ class CubicBezier(PathData):
 
 @dataclass
 class CubicBezierRel(PathData):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#cubic_b%C3%A9zier_curve
+    """
     command = 'c'
     dx1: Number
     dy1: Number
@@ -98,6 +128,9 @@ class CubicBezierRel(PathData):
 
 @dataclass
 class SmoothCubicBezier(PathData):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#cubic_b%C3%A9zier_curve
+    """
     command = 'S'
     x2: Number
     y2: Number
@@ -107,6 +140,9 @@ class SmoothCubicBezier(PathData):
 
 @dataclass
 class SmoothCubicBezierRel(PathData):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#cubic_b%C3%A9zier_curve
+    """
     command = 's'
     dx2: Number
     dy2: Number
@@ -116,6 +152,9 @@ class SmoothCubicBezierRel(PathData):
 
 @dataclass
 class QuadraticBezier(PathData):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#quadratic_b%C3%A9zier_curve
+    """
     command = 'Q'
     x1: Number
     y1: Number
@@ -125,6 +164,9 @@ class QuadraticBezier(PathData):
 
 @dataclass
 class QuadraticBezierRel(PathData):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#quadratic_b%C3%A9zier_curve
+    """
     command = 'q'
     dx1: Number
     dy1: Number
@@ -134,6 +176,9 @@ class QuadraticBezierRel(PathData):
 
 @dataclass
 class SmoothQuadraticBezier(PathData):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#quadratic_b%C3%A9zier_curve
+    """
     command = 'T'
     x: Number
     y: Number
@@ -141,6 +186,9 @@ class SmoothQuadraticBezier(PathData):
 
 @dataclass
 class SmoothQuadraticBezierRel(PathData):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#quadratic_b%C3%A9zier_curve
+    """
     command = 't'
     dx: Number
     dy: Number
@@ -148,6 +196,9 @@ class SmoothQuadraticBezierRel(PathData):
 
 @dataclass
 class Arc(PathData):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#elliptical_arc_curve
+    """
     command = 'A'
     rx: Number
     ry: Number
@@ -160,6 +211,9 @@ class Arc(PathData):
 
 @dataclass
 class ArcRel(PathData):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#elliptical_arc_curve
+    """
     command = 'a'
     rx: Number
     ry: Number
@@ -172,6 +226,9 @@ class ArcRel(PathData):
 
 @dataclass
 class ClosePath(PathData):
+    """
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#closepath
+    """
     command = 'Z'
 
 
