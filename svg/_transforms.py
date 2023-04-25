@@ -67,7 +67,7 @@ class Rotate(Transform):
     def __str__(self):
         if self.x is None:
             return f'rotate({self.a})'
-        assert self.y
+        assert self.y is not None
         return f'rotate({self.a} {self.x} {self.y})'
 
 
