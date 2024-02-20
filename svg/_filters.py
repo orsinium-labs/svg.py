@@ -1,6 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Any, Optional, Tuple
+from typing import TYPE_CHECKING, Any, Optional, Tuple, Union
 
 from . import _mixins as m
 from ._transforms import Transform
@@ -249,7 +249,7 @@ class FeGaussianBlur(Element, m.FilterPrimitive):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feGaussianBlur
     """
     element_name = "feGaussianBlur"
-    stdDeviation: Optional[Tuple[Number, Number]] = None
+    stdDeviation: Optional[Union[Number, Tuple[Number, Number]]] = None
     edgeMode: Optional[Literal["duplicate", "wrap", "none"]] = None
     in_: Optional[str] = None
     color_interpolation_filters: Optional[Literal["auto", "sRGB", "linearRGB", "inherit"]] = None
@@ -324,7 +324,7 @@ class FeDropShadow(Element, m.FilterPrimitive):
     dy: Optional[Any] = None
     flood_opacity: Optional[Number] = None
     flood_color: Optional[str] = None
-    stdDeviation: Optional[Tuple[Number, Number]] = None
+    stdDeviation: Optional[Union[Number, Tuple[Number, Number]]] = None
     class_: Optional[list[str]] = None
 
 
