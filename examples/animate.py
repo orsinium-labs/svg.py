@@ -4,7 +4,7 @@ Tutorial:
 
 Usage:
     python3 examples/animate.py > examples/animate.svg
-    xdg-open examples/animate.svg
+    chromium examples/animate.svg
 """
 import svg
 
@@ -12,15 +12,16 @@ import svg
 def draw() -> svg.SVG:
     return svg.SVG(
         x=0, y=0,
-        width=10, height=10,
-        elements=[svg.Rect(x=0, y=0,
-                           width=10, height=10,
-                           elements=[svg.Animate(
-                               attributeName="rx",
-                               values="0;5;0",
-                               dur="10s",
-                               repeatCount="indefinite")]
-                           )]
+        width=100, height=100,
+        elements=[svg.Rect(
+            x=0, y=0,
+            width=100, height=100,
+            elements=[svg.Animate(
+                attributeName="rx",
+                values="0;50;0",
+                dur="10s",
+                repeatCount="indefinite")]
+        )]
     )
 
 
