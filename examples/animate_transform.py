@@ -3,8 +3,8 @@ Tutorial:
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/animateTransform
 
 Usage:
-    python3 examples/animateTransform.py > examples/animateTransform.svg
-    chromium examples/animateTransform.svg
+    python3 examples/animate_transform.py > examples/animate_transform.svg
+    chromium examples/animate_transform.svg
 """
 import svg
 
