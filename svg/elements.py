@@ -28,6 +28,7 @@ class Element:
 
     transform_origin: Optional[str] = None
     style: Optional[str] = None
+    data: Optional[dict] = None
 
     @classmethod
     def _as_str(cls, val: Any) -> str:
@@ -48,7 +49,7 @@ class Element:
         for key, val in vars(self).items():
             if val is None:
                 continue
-            if key in ("elements", "text"):
+            if key in ("elements", "text", "data"):
                 continue
             key = key.rstrip("_")
             key = key.replace("__", ":")
@@ -58,6 +59,8 @@ class Element:
 
     def as_str(self) -> str:
         props = " ".join(f'{k}="{v}"' for k, v in self.as_dict().items())
+        if self.data:
+            props += " "+" ".join(f'data-{k}="{v}"' for k, v in self.data.items())
         if self.text:
             return f"<{self.element_name} {props}>{self.text}</{self.element_name}>"
         if self.elements:
