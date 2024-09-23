@@ -2,10 +2,10 @@
 """
 from ._filters import (
     FeBlend, FeColorMatrix, FeComponentTransfer, FeComposite, FeConvolveMatrix,
-    FeDiffuseLighting, FeDisplacementMap, FeDistantLight, FeDropShadow, FeFlood, FeFuncA,
-    FeFuncB, FeFuncG, FeFuncR, FeGaussianBlur, FeImage, FeMerge, FeMergeNode,
-    FeMorphology, FeOffset, FePointLight, FeSpecularLighting, FeSpotLight,
-    FeTile, FeTurbulence, Filter,
+    FeDiffuseLighting, FeDisplacementMap, FeDistantLight, FeDropShadow,
+    FeFlood, FeFuncA, FeFuncB, FeFuncG, FeFuncR, FeGaussianBlur, FeImage,
+    FeMerge, FeMergeNode, FeMorphology, FeOffset, FePointLight,
+    FeSpecularLighting, FeSpotLight, FeTile, FeTurbulence, Filter,
 )
 from ._helpers import escape, mm, px
 from ._path import (

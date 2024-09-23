@@ -9,6 +9,7 @@ from ._path import PathData
 from ._transforms import Transform
 from ._types import Length, Number, PreserveAspectRatio, ViewBoxSpec
 
+
 if TYPE_CHECKING:
     from typing_extensions import Literal
 

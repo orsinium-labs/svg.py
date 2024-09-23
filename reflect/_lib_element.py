@@ -4,6 +4,7 @@ from dataclasses import dataclass, fields
 
 import svg
 
+
 try:
     from functools import cached_property
 except ImportError:
