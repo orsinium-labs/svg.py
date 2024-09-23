@@ -7,6 +7,7 @@ Usage:
     chromium examples/text.svg
 """
 from textwrap import dedent
+
 import svg
 
 

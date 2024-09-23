@@ -1,5 +1,12 @@
-from . import shapes
-from . import transform
+from . import animate, animate_transform, grid3, grid4, shapes, text, transform
 
 
-__all__ = ['shapes', 'transform']
+__all__ = [
+    'animate',
+    'animate_transform',
+    'grid3',
+    'grid4',
+    'shapes',
+    'text',
+    'transform',
+]

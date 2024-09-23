@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -32,9 +33,10 @@ DEPRECATED = [
 class MDNAttr:
     title: str
     slug: str
-    tags: list[str]
     content: str
-    spec_urls: list[str]
+    status: list[str] | None = None
+    spec_urls: list[str] | None = None
+    browser_compat: object | None = None
 
     @classmethod
     def parse(cls, path: Path) -> MDNAttr | None:
@@ -42,14 +44,15 @@ class MDNAttr:
         if not path.is_file():
             return None
         raw = path.read_text()
-        first, _, second = raw.partition('\n---\n')
-        fields: dict = next(yaml.load_all(first, Loader=yaml.SafeLoader))
-        fields.pop('browser-compat', None)
-        spec_urls = fields.pop('spec-urls', [])
-        return cls(**fields, content=second, spec_urls=spec_urls)
+        front_matter, _, markdown = raw.partition('\n---\n')
+        fields: dict = next(yaml.load_all(front_matter, Loader=yaml.SafeLoader))
+        page_type = fields.pop('page-type')
+        assert page_type == 'svg-attribute'
+        fields = {k.replace('-', '_'): v for k, v in fields.items()}
+        return cls(**fields, content=markdown)
 
     @classmethod
-    def parse_all(cls, path: Path) -> list['MDNAttr']:
+    def parse_all(cls, path: Path) -> list[MDNAttr]:
         result = []
         for subpath in (path / 'attribute').iterdir():
             attr = cls.parse(subpath)
@@ -61,7 +64,7 @@ class MDNAttr:
     def is_deprecated(self) -> bool:
         if self.title in DEPRECATED:
             return True
-        if 'Deprecated' in self.tags:
+        if self.status and 'deprecated' in self.status:
             return True
         if '<div>{{SVGRef}}{{Deprecated_Header}}</div>' in self.content:
             return True
