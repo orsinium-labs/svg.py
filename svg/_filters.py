@@ -74,11 +74,11 @@ class FeBlend(Element, m.FilterPrimitive):
     """
     element_name = "feBlend"
     in2: str | None = None
-    mode: None | (Literal[
+    mode: None | Literal[
         "normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge",
         "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue",
         "saturation", "color", "luminosity", "inherit",
-    ]) = None
+    ] = None
     in_: str | None = None
     color_interpolation_filters: Literal["auto", "sRGB", "linearRGB", "inherit"] | None = None
     result: str | None = None

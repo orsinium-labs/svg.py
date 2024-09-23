@@ -468,12 +468,12 @@ class TSpan(Element, _TextElement):
     textLength: Length | Number | None = None
     lengthAdjust: Literal["spacing", "spacingAndGlyphs"] | None = None
     writing_mode: Literal["horizontal-tb", "vertical-rl", "vertical-lr"] | None = None
-    alignment_baseline: None | (Literal[
+    alignment_baseline: None | Literal[
         "baseline", "top", "before-edge", "text-top",
         "text-before-edge", "middle", "bottom",
         "after-edge", "text-bottom", "text-after-edge", "ideographic",
         "lower", "hanging", "mathematical", "inherit",
-    ]) = None
+    ] = None
     baseline_shift: Literal["baseline", "sub", "super", "inherit"] | None = None
     stroke_linecap: Literal["butt", "round", "square", "inherit"] | None = None
     stroke_linejoin: Literal["miter", "round", "bevel", "inherit"] | None = None
@@ -498,12 +498,12 @@ class TextPath(Element, _TextElement):
     path: str | None = None
     side: Literal["left", "right"] | None = None
     writing_mode: Literal["horizontal-tb", "vertical-rl", "vertical-lr"] | None = None
-    alignment_baseline: None | (Literal[
+    alignment_baseline: None | Literal[
         "baseline", "top", "before-edge", "text-top",
         "text-before-edge", "middle", "bottom",
         "after-edge", "text-bottom", "text-after-edge", "ideographic",
         "lower", "hanging", "mathematical", "inherit",
-    ]) = None
+    ] = None
     baseline_shift: Literal["baseline", "sub", "super", "inherit"] | None = None
     stroke_linecap: Literal["butt", "round", "square", "inherit"] | None = None
     stroke_linejoin: Literal["miter", "round", "bevel", "inherit"] | None = None

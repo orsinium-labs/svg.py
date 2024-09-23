@@ -31,9 +31,9 @@ class GraphicsElementEvents(AttrsMixin):
 @dataclass
 class Color(AttrsMixin):
     color: str | None = None
-    color_interpolation: None | (Literal[
+    color_interpolation: None | Literal[
         "auto", "sRGB", "linearRGB", "inherit",
-    ]) = None
+    ] = None
 
 
 @dataclass
@@ -50,54 +50,54 @@ class FontSpecification(AttrsMixin):
     font_family: str | None = None
     font_size: Length | Number | None = None
     font_size_adjust: Number | None | Literal["none"] = None
-    font_stretch: None | (Literal[
+    font_stretch: None | Literal[
         "normal", "wider", "narrower",
         "ultra-condensed", "extra-condensed", "semi-condensed",
         "semi-expanded", "expanded", "extra-expanded", "ultra-expanded",
         "inherit",
-    ]) = None
-    font_style: None | (Literal[
+    ] = None
+    font_style: None | Literal[
         "normal", "italic", "oblique", "inherit",
-    ]) = None
+    ] = None
     font_variant: Literal["normal", "small-caps", "inherit"] | None = None
-    font_weight: None | (Literal[
+    font_weight: None | Literal[
         "normal", "bold", "bolder", "lighter", "inherit",
         "100", "200", "300", "400", "500", "600", "700", "800", "900",
-    ]) = None
+    ] = None
 
 
 @dataclass
 class Graphics(AttrsMixin):
     clip_rule: Literal["evenodd", "nonzero", "inherit"] | None = None
-    cursor: None | (Literal[
+    cursor: None | Literal[
         "auto", "crosshair", "default", "pointer", "move",
         "e-resize", "ne-resize", "nw-resize", "n-resize", "se-resize", "sw-resize", "s-resize", "w-resize",
         "text", "wait", "help", "inherit",
-    ]) = None
+    ] = None
     display: str | None = None
     filter: str | None = None
-    pointer_events: None | (Literal[
+    pointer_events: None | Literal[
         "bounding-box", "visiblePainted", "visibleFill", "visibleStroke",
         "visible", "painted", "fill", "stroke", "all", "none",
-    ]) = None
+    ] = None
 
 
 @dataclass
 class TextContentElements(AttrsMixin):
     direction: Literal["ltr", "rtl", "inherit"] | None = None
-    dominant_baseline: None | (Literal[
+    dominant_baseline: None | Literal[
         "auto", "autosense-script", "no-change", "reset", "ideographic",
         "lower", "hanging", "mathematical", "inherit",
         "text-bottom", "alphabetic", "middle", "central", "text-top",
-    ]) = None
+    ] = None
     letter_spacing: Literal["auto", "exact"] | None = None
     text_anchor: Literal["start", "middle", "end", "inherit"] | None = None
-    text_decoration: None | (Literal[
+    text_decoration: None | Literal[
         "none", "underline", "overline", "line-through",
-    ]) = None
-    unicode_bidi: None | (Literal[
+    ] = None
+    unicode_bidi: None | Literal[
         "normal", "embed", "isolate", "bidi-override", "isolate-override", "plaintext",
-    ]) = None
+    ] = None
     word_spacing: Literal["auto", "exact"] | None = None
 
 
