@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 from dataclasses import dataclass, fields
 
 import svg
@@ -15,7 +16,7 @@ class LibElement:
     fields: list[str]
 
     @classmethod
-    def parse_all(cls) -> list['LibElement']:
+    def parse_all(cls) -> list[LibElement]:
         result = []
         for el in svg.Element.__subclasses__():
             result.append(cls(

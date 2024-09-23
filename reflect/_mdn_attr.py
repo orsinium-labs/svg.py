@@ -49,7 +49,7 @@ class MDNAttr:
         return cls(**fields, content=second, spec_urls=spec_urls)
 
     @classmethod
-    def parse_all(cls, path: Path) -> list['MDNAttr']:
+    def parse_all(cls, path: Path) -> list[MDNAttr]:
         result = []
         for subpath in (path / 'attribute').iterdir():
             attr = cls.parse(subpath)

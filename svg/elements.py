@@ -1,7 +1,8 @@
 from __future__ import annotations
+
 from dataclasses import dataclass
 from enum import Enum
-from typing import TYPE_CHECKING, Any, ClassVar, Optional
+from typing import TYPE_CHECKING, Any, ClassVar
 
 from . import _mixins as m
 from ._path import PathData
@@ -20,15 +21,15 @@ class Element:
 
     element_name: ClassVar[str]
 
-    elements: Optional[list['Element']] = None
-    text: Optional[str] = None
-    id: Optional[str] = None
-    tabindex: Optional[int] = None
-    lang: Optional[str] = None
+    elements: list[Element] | None = None
+    text: str | None = None
+    id: str | None = None
+    tabindex: int | None = None
+    lang: str | None = None
 
-    transform_origin: Optional[str] = None
-    style: Optional[str] = None
-    data: Optional[dict] = None
+    transform_origin: str | None = None
+    style: str | None = None
+    data: dict | None = None
 
     @classmethod
     def _as_str(cls, val: Any) -> str:
@@ -60,7 +61,7 @@ class Element:
     def as_str(self) -> str:
         props = " ".join(f'{k}="{v}"' for k, v in self.as_dict().items())
         if self.data:
-            props += " "+" ".join(f'data-{k}="{v}"' for k, v in self.data.items())
+            props += " " + " ".join(f'data-{k}="{v}"' for k, v in self.data.items())
         if self.text:
             return f"<{self.element_name} {props}>{self.text}</{self.element_name}>"
         if self.elements:
@@ -87,25 +88,25 @@ class SVG(
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg
     """
     element_name = "svg"
-    xmlns: Optional[str] = "http://www.w3.org/2000/svg"
-    viewBox: Optional[ViewBoxSpec] = None
-    preserveAspectRatio: Optional[PreserveAspectRatio] = None
+    xmlns: str | None = "http://www.w3.org/2000/svg"
+    viewBox: ViewBoxSpec | None = None
+    preserveAspectRatio: PreserveAspectRatio | None = None
     x: Length | Number | None = None
     y: Length | Number | None = None
     width: Length | Number | None = None
     height: Length | Number | None = None
-    class_: Optional[list[str]] = None
-    mask: Optional[str] = None
-    opacity: Optional[Number] = None
-    clip_path: Optional[str] = None
-    overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
+    class_: list[str] | None = None
+    mask: str | None = None
+    opacity: Number | None = None
+    clip_path: str | None = None
+    overflow: Literal["visible", "hidden", "scroll", "auto", "inherit"] | None = None
 
-    onunload: Optional[str] = None
-    onabort: Optional[str] = None
-    onerror: Optional[str] = None
-    onresize: Optional[str] = None
-    onscroll: Optional[str] = None
-    onzoom: Optional[str] = None
+    onunload: str | None = None
+    onabort: str | None = None
+    onerror: str | None = None
+    onresize: str | None = None
+    onscroll: str | None = None
+    onzoom: str | None = None
 
 
 @dataclass
@@ -124,14 +125,14 @@ class G(
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/g
     """
     element_name = "g"
-    transform: Optional[list[Transform]] = None
-    class_: Optional[list[str]] = None
-    mask: Optional[str] = None
-    opacity: Optional[Number] = None
-    clip_path: Optional[str] = None
-    fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
-    fill_opacity: Optional[Number] = None
-    fill: Optional[str] = None
+    transform: list[Transform] | None = None
+    class_: list[str] | None = None
+    mask: str | None = None
+    opacity: Number | None = None
+    clip_path: str | None = None
+    fill_rule: Literal["evenodd", "nonzero", "inherit"] | None = None
+    fill_opacity: Number | None = None
+    fill: str | None = None
 
 
 @dataclass
@@ -145,9 +146,9 @@ class Defs(
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/defs
     """
     element_name = "defs"
-    transform: Optional[list[Transform]] = None
-    class_: Optional[list[str]] = None
-    pointer_events: Optional[str] = None  # TODO
+    transform: list[Transform] | None = None
+    class_: list[str] | None = None
+    pointer_events: str | None = None  # TODO
 
 
 @dataclass
@@ -157,8 +158,8 @@ class Desc(Element, m.GraphicsElementEvents):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/desc
     """
     element_name = "desc"
-    content: Optional[str] = None
-    class_: Optional[list[str]] = None
+    content: str | None = None
+    class_: list[str] | None = None
 
 
 @dataclass
@@ -168,8 +169,8 @@ class Title(Element, m.GraphicsElementEvents):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title
     """
     element_name = "title"
-    content: Optional[str] = None
-    class_: Optional[list[str]] = None
+    content: str | None = None
+    class_: list[str] | None = None
 
 
 @dataclass
@@ -188,17 +189,17 @@ class Symbol(
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol
     """
     element_name = "symbol"
-    viewBox: Optional[ViewBoxSpec] = None
-    preserveAspectRatio: Optional[PreserveAspectRatio] = None
+    viewBox: ViewBoxSpec | None = None
+    preserveAspectRatio: PreserveAspectRatio | None = None
     refX: Length | Number | None = None
     refY: Length | Number | None = None
     x: Length | Number | None = None
     y: Length | Number | None = None
-    class_: Optional[list[str]] = None
-    mask: Optional[str] = None
-    opacity: Optional[Number] = None
-    clip_path: Optional[str] = None
-    overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
+    class_: list[str] | None = None
+    mask: str | None = None
+    opacity: Number | None = None
+    clip_path: str | None = None
+    overflow: Literal["visible", "hidden", "scroll", "auto", "inherit"] | None = None
 
 
 @dataclass
@@ -216,21 +217,21 @@ class Image(
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/image
     """
     element_name = "image"
-    href: Optional[str] = None
-    transform: Optional[list[Transform]] = None
+    href: str | None = None
+    transform: list[Transform] | None = None
     x: Length | Number | None = None
     y: Length | Number | None = None
     width: Length | Number | None = None
     height: Length | Number | None = None
-    preserveAspectRatio: Optional[PreserveAspectRatio] = None
-    image_rendering: Optional[Literal["auto", "optimizeSpeed", "optimizeQuality"]] = None
-    class_: Optional[list[str]] = None
-    vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
-    visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
-    mask: Optional[str] = None
-    opacity: Optional[Number] = None
-    clip_path: Optional[str] = None
-    overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
+    preserveAspectRatio: PreserveAspectRatio | None = None
+    image_rendering: Literal["auto", "optimizeSpeed", "optimizeQuality"] | None = None
+    class_: list[str] | None = None
+    vector_effect: Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"] | None = None
+    visibility: Literal["visible", "hidden", "inherit"] | None = None
+    mask: str | None = None
+    opacity: Number | None = None
+    clip_path: str | None = None
+    overflow: Literal["visible", "hidden", "scroll", "auto", "inherit"] | None = None
 
 
 @dataclass
@@ -239,11 +240,11 @@ class Switch(Element, m.Color, m.GraphicsElementEvents):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/switch
     """
     element_name = "switch"
-    externalResourcesRequired: Optional[bool] = None
-    transform: Optional[list[Transform]] = None
-    opacity: Optional[Number] = None
-    class_: Optional[list[str]] = None
-    pointer_events: Optional[str] = None  # TODO
+    externalResourcesRequired: bool | None = None
+    transform: list[Transform] | None = None
+    opacity: Number | None = None
+    class_: list[str] | None = None
+    pointer_events: str | None = None  # TODO
 
 
 @dataclass
@@ -252,22 +253,22 @@ class Style(Element, m.GraphicsElementEvents):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/style
     """
     element_name = "style"
-    type: Optional[str] = None
-    media: Optional[list[str]] = None
-    title: Optional[str] = None
+    type: str | None = None
+    media: list[str] | None = None
+    title: str | None = None
 
 
 @dataclass
 class _FigureElement(m.Color, m.GraphicsElementEvents, m.Graphics, m.FillStroke):
-    pathLength: Optional[float] = None
-    paint_order: Optional[Literal["normal", "fill", "stroke", "markers"]] = None
-    shape_rendering: Optional[Literal["auto", "optimizeSpeed", "crispEdges", "geometricPrecision", "inherit"]] = None
-    class_: Optional[list[str]] = None
-    vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
-    visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
-    mask: Optional[str] = None
-    opacity: Optional[Number] = None
-    clip_path: Optional[str] = None
+    pathLength: float | None = None
+    paint_order: Literal["normal", "fill", "stroke", "markers"] | None = None
+    shape_rendering: Literal["auto", "optimizeSpeed", "crispEdges", "geometricPrecision", "inherit"] | None = None
+    class_: list[str] | None = None
+    vector_effect: Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"] | None = None
+    visibility: Literal["visible", "hidden", "inherit"] | None = None
+    mask: str | None = None
+    opacity: Number | None = None
+    clip_path: str | None = None
 
 
 @dataclass
@@ -276,18 +277,18 @@ class Path(Element, _FigureElement):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path
     """
     element_name = "path"
-    externalResourcesRequired: Optional[bool] = None
-    transform: Optional[list[Transform]] = None
-    d: Optional[list[PathData]] = None
-    marker_start: Optional[str] = None
-    marker_mid: Optional[str] = None
-    marker_end: Optional[str] = None
-    stroke_linecap: Optional[Literal["butt", "round", "square", "inherit"]] = None
-    stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
-    stroke_miterlimit: Optional[Number] = None
-    fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
-    fill_opacity: Optional[Number] = None
-    fill: Optional[str] = None
+    externalResourcesRequired: bool | None = None
+    transform: list[Transform] | None = None
+    d: list[PathData] | None = None
+    marker_start: str | None = None
+    marker_mid: str | None = None
+    marker_end: str | None = None
+    stroke_linecap: Literal["butt", "round", "square", "inherit"] | None = None
+    stroke_linejoin: Literal["miter", "round", "bevel", "inherit"] | None = None
+    stroke_miterlimit: Number | None = None
+    fill_rule: Literal["evenodd", "nonzero", "inherit"] | None = None
+    fill_opacity: Number | None = None
+    fill: str | None = None
 
 
 @dataclass
@@ -296,21 +297,21 @@ class Rect(Element, _FigureElement):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/rect
     """
     element_name = "rect"
-    externalResourcesRequired: Optional[bool] = None
-    transform: Optional[list[Transform]] = None
+    externalResourcesRequired: bool | None = None
+    transform: list[Transform] | None = None
     x: Length | Number | None = None
     y: Length | Number | None = None
     width: Length | Number | None = None
     height: Length | Number | None = None
     rx: Length | Number | None = None
     ry: Length | Number | None = None
-    marker_start: Optional[str] = None
-    marker_mid: Optional[str] = None
-    marker_end: Optional[str] = None
-    stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
-    stroke_miterlimit: Optional[Number] = None
-    fill_opacity: Optional[Number] = None
-    fill: Optional[str] = None
+    marker_start: str | None = None
+    marker_mid: str | None = None
+    marker_end: str | None = None
+    stroke_linejoin: Literal["miter", "round", "bevel", "inherit"] | None = None
+    stroke_miterlimit: Number | None = None
+    fill_opacity: Number | None = None
+    fill: str | None = None
 
 
 @dataclass
@@ -319,14 +320,14 @@ class Circle(Element, _FigureElement):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle
     """
     element_name = "circle"
-    externalResourcesRequired: Optional[bool] = None
-    transform: Optional[list[Transform]] = None
+    externalResourcesRequired: bool | None = None
+    transform: list[Transform] | None = None
     cx: Length | Number | None = None
     cy: Length | Number | None = None
     r: Length | Number | None = None
-    marker_mid: Optional[str] = None
-    fill_opacity: Optional[Number] = None
-    fill: Optional[str] = None
+    marker_mid: str | None = None
+    fill_opacity: Number | None = None
+    fill: str | None = None
 
 
 @dataclass
@@ -335,17 +336,17 @@ class Ellipse(Element, _FigureElement):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/ellipse
     """
     element_name = "ellipse"
-    externalResourcesRequired: Optional[bool] = None
-    transform: Optional[list[Transform]] = None
+    externalResourcesRequired: bool | None = None
+    transform: list[Transform] | None = None
     cx: Length | Number | None = None
     cy: Length | Number | None = None
     rx: Length | Number | None = None
     ry: Length | Number | None = None
-    marker_start: Optional[str] = None
-    marker_mid: Optional[str] = None
-    marker_end: Optional[str] = None
-    fill_opacity: Optional[Number] = None
-    fill: Optional[str] = None
+    marker_start: str | None = None
+    marker_mid: str | None = None
+    marker_end: str | None = None
+    fill_opacity: Number | None = None
+    fill: str | None = None
 
 
 @dataclass
@@ -354,16 +355,16 @@ class Line(Element, _FigureElement):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/line
     """
     element_name = "line"
-    externalResourcesRequired: Optional[bool] = None
-    transform: Optional[list[Transform]] = None
+    externalResourcesRequired: bool | None = None
+    transform: list[Transform] | None = None
     x1: Length | Number | None = None
     y1: Length | Number | None = None
     x2: Length | Number | None = None
     y2: Length | Number | None = None
-    marker_start: Optional[str] = None
-    marker_mid: Optional[str] = None
-    marker_end: Optional[str] = None
-    stroke_linecap: Optional[Literal["butt", "round", "square", "inherit"]] = None
+    marker_start: str | None = None
+    marker_mid: str | None = None
+    marker_end: str | None = None
+    stroke_linecap: Literal["butt", "round", "square", "inherit"] | None = None
 
 
 @dataclass
@@ -372,18 +373,18 @@ class Polyline(Element, _FigureElement):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/polyline
     """
     element_name = "polyline"
-    externalResourcesRequired: Optional[bool] = None
-    transform: Optional[list[Transform]] = None
-    points: Optional[list[Number]] = None
-    marker_start: Optional[str] = None
-    marker_mid: Optional[str] = None
-    marker_end: Optional[str] = None
-    stroke_linecap: Optional[Literal["butt", "round", "square", "inherit"]] = None
-    stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
-    stroke_miterlimit: Optional[Number] = None
-    fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
-    fill_opacity: Optional[Number] = None
-    fill: Optional[str] = None
+    externalResourcesRequired: bool | None = None
+    transform: list[Transform] | None = None
+    points: list[Number] | None = None
+    marker_start: str | None = None
+    marker_mid: str | None = None
+    marker_end: str | None = None
+    stroke_linecap: Literal["butt", "round", "square", "inherit"] | None = None
+    stroke_linejoin: Literal["miter", "round", "bevel", "inherit"] | None = None
+    stroke_miterlimit: Number | None = None
+    fill_rule: Literal["evenodd", "nonzero", "inherit"] | None = None
+    fill_opacity: Number | None = None
+    fill: str | None = None
 
 
 @dataclass
@@ -392,17 +393,17 @@ class Polygon(Element, _FigureElement):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/polygon
     """
     element_name = "polygon"
-    externalResourcesRequired: Optional[bool] = None
-    transform: Optional[list[Transform]] = None
-    points: Optional[list[Number]] = None
-    marker_start: Optional[str] = None
-    marker_mid: Optional[str] = None
-    marker_end: Optional[str] = None
-    stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
-    stroke_miterlimit: Optional[Number] = None
-    fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
-    fill_opacity: Optional[Number] = None
-    fill: Optional[str] = None
+    externalResourcesRequired: bool | None = None
+    transform: list[Transform] | None = None
+    points: list[Number] | None = None
+    marker_start: str | None = None
+    marker_mid: str | None = None
+    marker_end: str | None = None
+    stroke_linejoin: Literal["miter", "round", "bevel", "inherit"] | None = None
+    stroke_miterlimit: Number | None = None
+    fill_rule: Literal["evenodd", "nonzero", "inherit"] | None = None
+    fill_opacity: Number | None = None
+    fill: str | None = None
 
 
 @dataclass
@@ -414,12 +415,12 @@ class _TextElement(
     m.Graphics,
     m.FillStroke,
 ):
-    paint_order: Optional[Literal["normal", "fill", "stroke", "markers"]] = None
-    class_: Optional[list[str]] = None
-    vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
-    visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
-    fill_opacity: Optional[Number] = None
-    fill: Optional[str] = None
+    paint_order: Literal["normal", "fill", "stroke", "markers"] | None = None
+    class_: list[str] | None = None
+    vector_effect: Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"] | None = None
+    visibility: Literal["visible", "hidden", "inherit"] | None = None
+    fill_opacity: Number | None = None
+    fill: str | None = None
 
 
 @dataclass
@@ -432,24 +433,24 @@ class Text(Element, _TextElement):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/text
     """
     element_name = "text"
-    externalResourcesRequired: Optional[bool] = None
-    transform: Optional[list[Transform]] = None
+    externalResourcesRequired: bool | None = None
+    transform: list[Transform] | None = None
     x: Length | Number | None = None
     y: Length | Number | None = None
     dx: Length | Number | None = None
     dy: Length | Number | None = None
     textLength: Length | Number | None = None
-    lengthAdjust: Optional[Literal["spacing", "spacingAndGlyphs"]] = None
-    writing_mode: Optional[Literal["horizontal-tb", "vertical-rl", "vertical-lr"]] = None
-    text_rendering: Optional[Literal["auto", "optimizeSpeed", "optimizeLegibility", "geometricPrecision"]] = None
-    stroke_linecap: Optional[Literal["butt", "round", "square", "inherit"]] = None
-    stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
-    stroke_miterlimit: Optional[Number] = None
-    fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
-    mask: Optional[str] = None
-    opacity: Optional[Number] = None
-    clip_path: Optional[str] = None
-    overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
+    lengthAdjust: Literal["spacing", "spacingAndGlyphs"] | None = None
+    writing_mode: Literal["horizontal-tb", "vertical-rl", "vertical-lr"] | None = None
+    text_rendering: Literal["auto", "optimizeSpeed", "optimizeLegibility", "geometricPrecision"] | None = None
+    stroke_linecap: Literal["butt", "round", "square", "inherit"] | None = None
+    stroke_linejoin: Literal["miter", "round", "bevel", "inherit"] | None = None
+    stroke_miterlimit: Number | None = None
+    fill_rule: Literal["evenodd", "nonzero", "inherit"] | None = None
+    mask: str | None = None
+    opacity: Number | None = None
+    clip_path: str | None = None
+    overflow: Literal["visible", "hidden", "scroll", "auto", "inherit"] | None = None
 
 
 @dataclass
@@ -458,26 +459,26 @@ class TSpan(Element, _TextElement):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/tspan
     """
     element_name = "tspan"
-    externalResourcesRequired: Optional[bool] = None
+    externalResourcesRequired: bool | None = None
     x: Length | Number | None = None
     y: Length | Number | None = None
     dx: Length | Number | None = None
     dy: Length | Number | None = None
     textLength: Length | Number | None = None
-    lengthAdjust: Optional[Literal["spacing", "spacingAndGlyphs"]] = None
-    writing_mode: Optional[Literal["horizontal-tb", "vertical-rl", "vertical-lr"]] = None
-    alignment_baseline: Optional[Literal[
+    lengthAdjust: Literal["spacing", "spacingAndGlyphs"] | None = None
+    writing_mode: Literal["horizontal-tb", "vertical-rl", "vertical-lr"] | None = None
+    alignment_baseline: None | (Literal[
         "baseline", "top", "before-edge", "text-top",
         "text-before-edge", "middle", "bottom",
         "after-edge", "text-bottom", "text-after-edge", "ideographic",
         "lower", "hanging", "mathematical", "inherit",
-    ]] = None
-    baseline_shift: Optional[Literal["baseline", "sub", "super", "inherit"]] = None
-    stroke_linecap: Optional[Literal["butt", "round", "square", "inherit"]] = None
-    stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
-    stroke_miterlimit: Optional[Number] = None
-    fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
-    opacity: Optional[Number] = None
+    ]) = None
+    baseline_shift: Literal["baseline", "sub", "super", "inherit"] | None = None
+    stroke_linecap: Literal["butt", "round", "square", "inherit"] | None = None
+    stroke_linejoin: Literal["miter", "round", "bevel", "inherit"] | None = None
+    stroke_miterlimit: Number | None = None
+    fill_rule: Literal["evenodd", "nonzero", "inherit"] | None = None
+    opacity: Number | None = None
 
 
 @dataclass
@@ -486,28 +487,28 @@ class TextPath(Element, _TextElement):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/textPath
     """
     element_name = "textPath"
-    externalResourcesRequired: Optional[bool] = None
-    startOffset: Optional[str] = None
+    externalResourcesRequired: bool | None = None
+    startOffset: str | None = None
     textLength: Length | Number | None = None
-    lengthAdjust: Optional[Literal["spacing", "spacingAndGlyphs"]] = None
-    method: Optional[Literal["align", "stretch"]] = None
-    spacing: Optional[Literal["auto", "exact"]] = None
-    href: Optional[str] = None
-    path: Optional[str] = None
-    side: Optional[Literal["left", "right"]] = None
-    writing_mode: Optional[Literal["horizontal-tb", "vertical-rl", "vertical-lr"]] = None
-    alignment_baseline: Optional[Literal[
+    lengthAdjust: Literal["spacing", "spacingAndGlyphs"] | None = None
+    method: Literal["align", "stretch"] | None = None
+    spacing: Literal["auto", "exact"] | None = None
+    href: str | None = None
+    path: str | None = None
+    side: Literal["left", "right"] | None = None
+    writing_mode: Literal["horizontal-tb", "vertical-rl", "vertical-lr"] | None = None
+    alignment_baseline: None | (Literal[
         "baseline", "top", "before-edge", "text-top",
         "text-before-edge", "middle", "bottom",
         "after-edge", "text-bottom", "text-after-edge", "ideographic",
         "lower", "hanging", "mathematical", "inherit",
-    ]] = None
-    baseline_shift: Optional[Literal["baseline", "sub", "super", "inherit"]] = None
-    stroke_linecap: Optional[Literal["butt", "round", "square", "inherit"]] = None
-    stroke_linejoin: Optional[Literal["miter", "round", "bevel", "inherit"]] = None
-    stroke_miterlimit: Optional[Number] = None
-    fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
-    opacity: Optional[Number] = None
+    ]) = None
+    baseline_shift: Literal["baseline", "sub", "super", "inherit"] | None = None
+    stroke_linecap: Literal["butt", "round", "square", "inherit"] | None = None
+    stroke_linejoin: Literal["miter", "round", "bevel", "inherit"] | None = None
+    stroke_miterlimit: Number | None = None
+    fill_rule: Literal["evenodd", "nonzero", "inherit"] | None = None
+    opacity: Number | None = None
 
 
 @dataclass
@@ -516,20 +517,20 @@ class Marker(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/marker
     """
     element_name = "marker"
-    externalResourcesRequired: Optional[bool] = None
-    viewBox: Optional[ViewBoxSpec] = None
-    preserveAspectRatio: Optional[PreserveAspectRatio] = None
+    externalResourcesRequired: bool | None = None
+    viewBox: ViewBoxSpec | None = None
+    preserveAspectRatio: PreserveAspectRatio | None = None
     refX: Length | Number | None = None
     refY: Length | Number | None = None
-    markerUnits: Optional[Literal["strokeWidth", "userSpaceOnUse", "userSpace"]] = None
+    markerUnits: Literal["strokeWidth", "userSpaceOnUse", "userSpace"] | None = None
     markerWidth: Length | Number | None = None
     markerHeight: Length | Number | None = None
-    orient: Optional[str] = None
-    opacity: Optional[Number] = None
-    clip_path: Optional[str] = None
-    class_: Optional[list[str]] = None
-    mask: Optional[str] = None
-    overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
+    orient: str | None = None
+    opacity: Number | None = None
+    clip_path: str | None = None
+    class_: list[str] | None = None
+    mask: str | None = None
+    overflow: Literal["visible", "hidden", "scroll", "auto", "inherit"] | None = None
 
 
 @dataclass
@@ -538,17 +539,17 @@ class ColorProfile(Element):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/color
     """
     element_name = "color-profile"
-    local: Optional[str] = None
+    local: str | None = None
 
 
 @dataclass
 class _Gradient:
-    externalResourcesRequired: Optional[bool] = None
-    gradientUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
-    gradientTransform: Optional[list[Transform]] = None
-    spreadMethod: Optional[Literal["pad", "reflect", "repeat"]] = None
-    href: Optional[str] = None
-    class_: Optional[list[str]] = None
+    externalResourcesRequired: bool | None = None
+    gradientUnits: Literal["userSpaceOnUse", "objectBoundingBox"] | None = None
+    gradientTransform: list[Transform] | None = None
+    spreadMethod: Literal["pad", "reflect", "repeat"] | None = None
+    href: str | None = None
+    class_: list[str] | None = None
 
 
 @dataclass
@@ -584,9 +585,9 @@ class Stop(Element, m.GraphicsElementEvents):
     """
     element_name = "stop"
     offset: Length | Number | None = None
-    stop_opacity: Optional[Number] = None
-    stop_color: Optional[str] = None
-    class_: Optional[list[str]] = None
+    stop_opacity: Number | None = None
+    stop_color: str | None = None
+    class_: list[str] | None = None
 
 
 @dataclass
@@ -595,21 +596,21 @@ class Pattern(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/pattern
     """
     element_name = "pattern"
-    externalResourcesRequired: Optional[bool] = None
-    viewBox: Optional[ViewBoxSpec] = None
-    preserveAspectRatio: Optional[PreserveAspectRatio] = None
-    patternUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
-    patternTransform: Optional[list[Transform]] = None
+    externalResourcesRequired: bool | None = None
+    viewBox: ViewBoxSpec | None = None
+    preserveAspectRatio: PreserveAspectRatio | None = None
+    patternUnits: Literal["userSpaceOnUse", "objectBoundingBox"] | None = None
+    patternTransform: list[Transform] | None = None
     x: Length | Number | None = None
     y: Length | Number | None = None
     width: Length | Number | None = None
     height: Length | Number | None = None
-    patternContentUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
-    href: Optional[str] = None
-    class_: Optional[list[str]] = None
-    mask: Optional[str] = None
-    clip_path: Optional[str] = None
-    overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
+    patternContentUnits: Literal["userSpaceOnUse", "objectBoundingBox"] | None = None
+    href: str | None = None
+    class_: list[str] | None = None
+    mask: str | None = None
+    clip_path: str | None = None
+    overflow: Literal["visible", "hidden", "scroll", "auto", "inherit"] | None = None
 
 
 @dataclass
@@ -618,12 +619,12 @@ class ClipPath(Element, m.Color, m.Graphics):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/clipPath
     """
     element_name = "clipPath"
-    externalResourcesRequired: Optional[bool] = None
-    transform: Optional[list[Transform]] = None
-    clipPathUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
-    class_: Optional[list[str]] = None
-    mask: Optional[str] = None
-    clip_path: Optional[str] = None
+    externalResourcesRequired: bool | None = None
+    transform: list[Transform] | None = None
+    clipPathUnits: Literal["userSpaceOnUse", "objectBoundingBox"] | None = None
+    class_: list[str] | None = None
+    mask: str | None = None
+    clip_path: str | None = None
 
 
 @dataclass
@@ -632,17 +633,17 @@ class Mask(Element, m.Color, m.Graphics):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/mask
     """
     element_name = "mask"
-    externalResourcesRequired: Optional[bool] = None
-    transform: Optional[list[Transform]] = None
-    maskUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
+    externalResourcesRequired: bool | None = None
+    transform: list[Transform] | None = None
+    maskUnits: Literal["userSpaceOnUse", "objectBoundingBox"] | None = None
     x: Length | Number | None = None
     y: Length | Number | None = None
     width: Length | Number | None = None
     height: Length | Number | None = None
-    maskContentUnits: Optional[Literal["userSpaceOnUse", "objectBoundingBox"]] = None
-    class_: Optional[list[str]] = None
-    mask: Optional[str] = None
-    clip_path: Optional[str] = None
+    maskContentUnits: Literal["userSpaceOnUse", "objectBoundingBox"] | None = None
+    class_: list[str] | None = None
+    mask: str | None = None
+    clip_path: str | None = None
 
 
 @dataclass
@@ -651,15 +652,15 @@ class A(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/a
     """
     element_name = "a"
-    externalResourcesRequired: Optional[bool] = None
-    transform: Optional[list[Transform]] = None
-    target: Optional[Literal["_self", "_parent", "_top", "_blank"]] = None
-    href: Optional[str] = None
-    class_: Optional[list[str]] = None
-    visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
-    mask: Optional[str] = None
-    opacity: Optional[Number] = None
-    clip_path: Optional[str] = None
+    externalResourcesRequired: bool | None = None
+    transform: list[Transform] | None = None
+    target: Literal["_self", "_parent", "_top", "_blank"] | None = None
+    href: str | None = None
+    class_: list[str] | None = None
+    visibility: Literal["visible", "hidden", "inherit"] | None = None
+    mask: str | None = None
+    opacity: Number | None = None
+    clip_path: str | None = None
 
 
 @dataclass
@@ -668,9 +669,9 @@ class View(Element, m.GraphicsElementEvents):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/view
     """
     element_name = "view"
-    externalResourcesRequired: Optional[bool] = None
-    viewBox: Optional[ViewBoxSpec] = None
-    preserveAspectRatio: Optional[PreserveAspectRatio] = None
+    externalResourcesRequired: bool | None = None
+    viewBox: ViewBoxSpec | None = None
+    preserveAspectRatio: PreserveAspectRatio | None = None
 
 
 @dataclass
@@ -679,9 +680,9 @@ class Script(Element, m.GraphicsElementEvents):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/script
     """
     element_name = "script"
-    externalResourcesRequired: Optional[bool] = None
-    type: Optional[str] = None
-    href: Optional[str] = None
+    externalResourcesRequired: bool | None = None
+    type: str | None = None
+    href: str | None = None
 
 
 @dataclass
@@ -690,9 +691,9 @@ class Animate(Element, m.Animation, m.Color, m.AnimationTiming, m.GraphicsElemen
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/animate
     """
     element_name = "animate"
-    externalResourcesRequired: Optional[bool] = None
-    keyPoints: Optional[str] = None
-    attributeName: Optional[str] = None
+    externalResourcesRequired: bool | None = None
+    keyPoints: str | None = None
+    attributeName: str | None = None
 
 
 @dataclass
@@ -701,12 +702,12 @@ class Set(Element, m.AnimationTiming, m.GraphicsElementEvents):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/set
     """
     element_name = "set"
-    externalResourcesRequired: Optional[bool] = None
-    to: Optional[str] = None
-    min: Optional[str] = None
-    keyPoints: Optional[str] = None
-    attributeName: Optional[str] = None
-    href: Optional[str] = None
+    externalResourcesRequired: bool | None = None
+    to: str | None = None
+    min: str | None = None
+    keyPoints: str | None = None
+    attributeName: str | None = None
+    href: str | None = None
 
 
 @dataclass
@@ -715,11 +716,11 @@ class AnimateMotion(Element, m.Animation, m.AnimationTiming, m.GraphicsElementEv
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/animateMotion
     """
     element_name = "animateMotion"
-    externalResourcesRequired: Optional[bool] = None
-    path: Optional[str] = None
-    keyPoints: Optional[str] = None
-    rotate: Optional[str] = None
-    origin: Optional[str] = None
+    externalResourcesRequired: bool | None = None
+    path: str | None = None
+    keyPoints: str | None = None
+    rotate: str | None = None
+    origin: str | None = None
 
 
 @dataclass
@@ -728,8 +729,8 @@ class MPath(Element, m.GraphicsElementEvents):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/mpath
     """
     element_name = "mpath"
-    externalResourcesRequired: Optional[bool] = None
-    href: Optional[str] = None
+    externalResourcesRequired: bool | None = None
+    href: str | None = None
 
 
 @dataclass
@@ -738,10 +739,10 @@ class AnimateTransform(Element, m.Animation, m.AnimationTiming, m.GraphicsElemen
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/animateTransform
     """
     element_name = "animateTransform"
-    externalResourcesRequired: Optional[bool] = None
-    type: Optional[Literal["translate", "scale", "rotate", "skewX", "skewY"]] = None
-    keyPoints: Optional[str] = None
-    attributeName: Optional[str] = None
+    externalResourcesRequired: bool | None = None
+    type: Literal["translate", "scale", "rotate", "skewX", "skewY"] | None = None
+    keyPoints: str | None = None
+    attributeName: str | None = None
 
 
 @dataclass
@@ -768,18 +769,18 @@ class ForeignObject(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/foreignObject
     """
     element_name = "foreignObject"
-    externalResourcesRequired: Optional[bool] = None
-    transform: Optional[list[Transform]] = None
+    externalResourcesRequired: bool | None = None
+    transform: list[Transform] | None = None
     x: Length | Number | None = None
     y: Length | Number | None = None
     width: Length | Number | None = None
     height: Length | Number | None = None
-    content: Optional[str] = None
-    class_: Optional[list[str]] = None
-    vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
-    visibility: Optional[Literal["visible", "hidden", "inherit"]] = None
-    opacity: Optional[Number] = None
-    overflow: Optional[Literal["visible", "hidden", "scroll", "auto", "inherit"]] = None
+    content: str | None = None
+    class_: list[str] | None = None
+    vector_effect: Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"] | None = None
+    visibility: Literal["visible", "hidden", "inherit"] | None = None
+    opacity: Number | None = None
+    overflow: Literal["visible", "hidden", "scroll", "auto", "inherit"] | None = None
 
 
 @dataclass
@@ -788,18 +789,18 @@ class Use(Element, m.GraphicsElementEvents, m.Color, m.Graphics, m.FillStroke):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use
     """
     element_name = "use"
-    href: Optional[str] = None
-    class_: Optional[list[str]] = None
-    style: Optional[str] = None
-    transform: Optional[list[Transform]] = None
+    href: str | None = None
+    class_: list[str] | None = None
+    style: str | None = None
+    transform: list[Transform] | None = None
     x: Length | Number | None = None
     y: Length | Number | None = None
     width: Length | Number | None = None
     height: Length | Number | None = None
-    vector_effect: Optional[Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"]] = None
-    opacity: Optional[Number] = None
-    clip_path: Optional[str] = None
-    mask: Optional[str] = None
-    fill_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
-    fill_opacity: Optional[Number] = None
-    fill: Optional[str] = None
+    vector_effect: Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"] | None = None
+    opacity: Number | None = None
+    clip_path: str | None = None
+    mask: str | None = None
+    fill_rule: Literal["evenodd", "nonzero", "inherit"] | None = None
+    fill_opacity: Number | None = None
+    fill: str | None = None

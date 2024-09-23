@@ -1,6 +1,5 @@
 from __future__ import annotations
 from dataclasses import dataclass
-from typing import Optional
 from ._types import Number
 
 
@@ -33,7 +32,7 @@ class Translate(Transform):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform#translate
     """
     x: Number
-    y: Optional[Number] = None
+    y: Number | None = None
 
     def __str__(self):
         if self.y is None:
@@ -47,7 +46,7 @@ class Scale(Transform):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform#scale
     """
     x: Number
-    y: Optional[Number] = None
+    y: Number | None = None
 
     def __str__(self):
         if self.y is None:
@@ -61,8 +60,8 @@ class Rotate(Transform):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform#rotate
     """
     a: Number
-    x: Optional[Number] = None
-    y: Optional[Number] = None
+    x: Number | None = None
+    y: Number | None = None
 
     def __str__(self):
         if self.x is None:

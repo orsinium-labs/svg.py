@@ -1,6 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING
 
 from ._types import Length, Number
 
@@ -14,89 +14,89 @@ class AttrsMixin:
 
 @dataclass
 class GraphicsElementEvents(AttrsMixin):
-    onfocusin: Optional[str] = None
-    onfocusout: Optional[str] = None
-    onactivate: Optional[str] = None
-    onclick: Optional[str] = None
-    onmousedown: Optional[str] = None
-    onmouseup: Optional[str] = None
-    onmouseover: Optional[str] = None
-    onmousemove: Optional[str] = None
-    onmouseout: Optional[str] = None
-    onload: Optional[str] = None
+    onfocusin: str | None = None
+    onfocusout: str | None = None
+    onactivate: str | None = None
+    onclick: str | None = None
+    onmousedown: str | None = None
+    onmouseup: str | None = None
+    onmouseover: str | None = None
+    onmousemove: str | None = None
+    onmouseout: str | None = None
+    onload: str | None = None
 
 
 @dataclass
 class Color(AttrsMixin):
-    color: Optional[str] = None
-    color_interpolation: Optional[Literal[
+    color: str | None = None
+    color_interpolation: None | (Literal[
         "auto", "sRGB", "linearRGB", "inherit",
-    ]] = None
+    ]) = None
 
 
 @dataclass
 class FillStroke(AttrsMixin):
-    stroke: Optional[str] = None
+    stroke: str | None = None
     stroke_dasharray: list[Number] | Literal["none"] | Length | None = None
     stroke_dashoffset: Literal["none"] | Length | Number | None = None
-    stroke_opacity: Optional[Number] = None
+    stroke_opacity: Number | None = None
     stroke_width: Length | Number | None = None
 
 
 @dataclass
 class FontSpecification(AttrsMixin):
-    font_family: Optional[str] = None
+    font_family: str | None = None
     font_size: Length | Number | None = None
     font_size_adjust: Number | None | Literal["none"] = None
-    font_stretch: Optional[Literal[
+    font_stretch: None | (Literal[
         "normal", "wider", "narrower",
         "ultra-condensed", "extra-condensed", "semi-condensed",
         "semi-expanded", "expanded", "extra-expanded", "ultra-expanded",
         "inherit",
-    ]] = None
-    font_style: Optional[Literal[
+    ]) = None
+    font_style: None | (Literal[
         "normal", "italic", "oblique", "inherit",
-    ]] = None
-    font_variant: Optional[Literal["normal", "small-caps", "inherit"]] = None
-    font_weight: Optional[Literal[
+    ]) = None
+    font_variant: Literal["normal", "small-caps", "inherit"] | None = None
+    font_weight: None | (Literal[
         "normal", "bold", "bolder", "lighter", "inherit",
         "100", "200", "300", "400", "500", "600", "700", "800", "900",
-    ]] = None
+    ]) = None
 
 
 @dataclass
 class Graphics(AttrsMixin):
-    clip_rule: Optional[Literal["evenodd", "nonzero", "inherit"]] = None
-    cursor: Optional[Literal[
+    clip_rule: Literal["evenodd", "nonzero", "inherit"] | None = None
+    cursor: None | (Literal[
         "auto", "crosshair", "default", "pointer", "move",
         "e-resize", "ne-resize", "nw-resize", "n-resize", "se-resize", "sw-resize", "s-resize", "w-resize",
         "text", "wait", "help", "inherit",
-    ]] = None
-    display: Optional[str] = None
-    filter: Optional[str] = None
-    pointer_events: Optional[Literal[
+    ]) = None
+    display: str | None = None
+    filter: str | None = None
+    pointer_events: None | (Literal[
         "bounding-box", "visiblePainted", "visibleFill", "visibleStroke",
         "visible", "painted", "fill", "stroke", "all", "none",
-    ]] = None
+    ]) = None
 
 
 @dataclass
 class TextContentElements(AttrsMixin):
-    direction: Optional[Literal["ltr", "rtl", "inherit"]] = None
-    dominant_baseline: Optional[Literal[
+    direction: Literal["ltr", "rtl", "inherit"] | None = None
+    dominant_baseline: None | (Literal[
         "auto", "autosense-script", "no-change", "reset", "ideographic",
         "lower", "hanging", "mathematical", "inherit",
         "text-bottom", "alphabetic", "middle", "central", "text-top",
-    ]] = None
-    letter_spacing: Optional[Literal["auto", "exact"]] = None
-    text_anchor: Optional[Literal["start", "middle", "end", "inherit"]] = None
-    text_decoration: Optional[Literal[
+    ]) = None
+    letter_spacing: Literal["auto", "exact"] | None = None
+    text_anchor: Literal["start", "middle", "end", "inherit"] | None = None
+    text_decoration: None | (Literal[
         "none", "underline", "overline", "line-through",
-    ]] = None
-    unicode_bidi: Optional[Literal[
+    ]) = None
+    unicode_bidi: None | (Literal[
         "normal", "embed", "isolate", "bidi-override", "isolate-override", "plaintext",
-    ]] = None
-    word_spacing: Optional[Literal["auto", "exact"]] = None
+    ]) = None
+    word_spacing: Literal["auto", "exact"] | None = None
 
 
 @dataclass
@@ -108,39 +108,39 @@ class FilterPrimitive(AttrsMixin):
 @dataclass
 class ComponentTransferFunction(AttrsMixin):
     type: Literal["identity", "table", "discrete", "linear", "gamma"]
-    tableValues: Optional[str] = None
-    intercept: Optional[float] = None
-    amplitude: Optional[float] = None
-    exponent: Optional[float] = None
-    offset: Optional[float] = None
+    tableValues: str | None = None
+    intercept: float | None = None
+    amplitude: float | None = None
+    exponent: float | None = None
+    offset: float | None = None
 
 
 @dataclass
 class Animation(AttrsMixin):
     # Animation value attributes
-    calcMode: Optional[Literal["discrete", "linear", "paced", "spline"]] = None
-    values: Optional[str] = None
-    keyTimes: Optional[str] = None
-    keySplines: Optional[str] = None
-    from_: Optional[str] = None
-    to: Optional[str] = None
-    by: Optional[str] = None
+    calcMode: Literal["discrete", "linear", "paced", "spline"] | None = None
+    values: str | None = None
+    keyTimes: str | None = None
+    keySplines: str | None = None
+    from_: str | None = None
+    to: str | None = None
+    by: str | None = None
 
     # Animation target element attributes
-    href: Optional[str] = None
+    href: str | None = None
 
     # Animation addition attributes
-    additive: Optional[Literal["replace", "sum"]] = None
-    accumulate: Optional[Literal["none", "sum"]] = None
+    additive: Literal["replace", "sum"] | None = None
+    accumulate: Literal["none", "sum"] | None = None
 
 
 @dataclass
 class AnimationTiming(AttrsMixin):
-    begin: Optional[str] = None
-    dur: Optional[str] = None
-    end: Optional[str] = None
-    min: Optional[str] = None
-    max: Optional[str] = None
-    restart: Optional[Literal["always", "never", "whenNotActive"]] = None
-    repeatCount: Optional[str] = None
-    repeatDur: Optional[str] = None
+    begin: str | None = None
+    dur: str | None = None
+    end: str | None = None
+    min: str | None = None
+    max: str | None = None
+    restart: Literal["always", "never", "whenNotActive"] | None = None
+    repeatCount: str | None = None
+    repeatDur: str | None = None
