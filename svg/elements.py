@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
+from itertools import chain
 from typing import TYPE_CHECKING, Any, ClassVar
 
 from . import _mixins as m
@@ -60,15 +61,16 @@ class Element:
         return result
 
     def as_str(self) -> str:
-        props = " ".join(f'{k}="{v}"' for k, v in self.as_dict().items())
+        props = (f'{k}="{v}"' for k, v in self.as_dict().items())
         if self.data:
-            props += " " + " ".join(f'data-{k}="{v}"' for k, v in self.data.items())
+            props = chain(props, (f'data-{k}="{v}"' for k, v in self.data.items()))
+        tag_and_props = f"{' '.join(chain((self.element_name,), props))}"
         if self.text:
-            return f"<{self.element_name} {props}>{self.text}</{self.element_name}>"
+            return f"<{tag_and_props}>{self.text}</{self.element_name}>"
         if self.elements:
             content = "".join(self._as_str(e) for e in self.elements)
-            return f"<{self.element_name} {props}>{content}</{self.element_name}>"
-        return f"<{self.element_name} {props}/>"
+            return f"<{tag_and_props}>{content}</{self.element_name}>"
+        return f"<{tag_and_props}/>"
 
     def __str__(self) -> str:
         return self.as_str()
