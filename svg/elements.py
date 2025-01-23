@@ -63,15 +63,16 @@ class Element:
         props = " ".join(f'{k}="{v}"' for k, v in self.as_dict().items())
         if self.data:
             props += " " + " ".join(f'data-{k}="{v}"' for k, v in self.data.items())
+        ename = f"{self.element_name} {props}".strip()
         if self.text:
-            ename = f"{self.element_name} {props}".strip()
             if len(self.text.split('\n')) > 1:
                 return f"<{ename}>\n{self.text}\n</{self.element_name}>"
+
             return f"<{ename}>{self.text}</{self.element_name}>"
         if self.elements:
             content = "\n".join(self._as_str(e) for e in self.elements)
-            return f"<{self.element_name} {props}>\n{content}\n</{self.element_name}>"
-        return f"<{self.element_name} {props}/>\n"
+            return f"<{ename}>\n{content}\n</{self.element_name}>"
+        return f"<{ename}/>\n"
 
     def __str__(self) -> str:
         return self.as_str()
