@@ -72,7 +72,7 @@ class Element:
         if self.elements:
             content = "\n".join(self._as_str(e) for e in self.elements)
             return f"<{ename}>\n{content}\n</{self.element_name}>"
-        return f"<{ename}/>\n"
+        return f"<{ename}/>"
 
     def __str__(self) -> str:
         return self.as_str()
