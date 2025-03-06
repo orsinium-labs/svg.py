@@ -118,6 +118,7 @@ class G(
     m.GraphicsElementEvents,
     m.Color,
     m.Graphics,
+    m.FillStroke,
 ):
     """The <g> SVG element is a container used to group other SVG elements.
 
