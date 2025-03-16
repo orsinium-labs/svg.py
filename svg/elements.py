@@ -68,15 +68,21 @@ class Element:
     def as_str(self) -> str:
         props = " ".join(f'{k}="{v}"' for k, v in self.as_dict().items())
         if self.data:
-            props += " " + " ".join(f'data-{k}="{v}"' for k, v in self.data.items())
+            if props:
+                props += " "
+            props += " ".join(f'data-{k}="{v}"' for k, v in self.data.items())
         if self.extra:
-            props += " " + " ".join(f'{k}="{v}"' for k, v in self.extra.items())
+            if props:
+                props += " "
+            props += " ".join(f'{k}="{v}"' for k, v in self.extra.items())
+        if props:
+            props = " " + props
         if self.text:
-            return f"<{self.element_name} {props}>{self.text}</{self.element_name}>"
+            return f"<{self.element_name}{props}>{self.text}</{self.element_name}>"
         if self.elements:
             content = "".join(self._as_str(e) for e in self.elements)
-            return f"<{self.element_name} {props}>{content}</{self.element_name}>"
-        return f"<{self.element_name} {props}/>"
+            return f"<{self.element_name}{props}>{content}</{self.element_name}>"
+        return f"<{self.element_name}{props}/>"
 
     def __str__(self) -> str:
         return self.as_str()
