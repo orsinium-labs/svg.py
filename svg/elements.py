@@ -31,7 +31,12 @@ class Element:
     transform_origin: str | None = None
     style: str | None = None
     data: dict | None = None
-    attributes: dict | None = None
+
+    extra: dict[str, str] | None = None
+    """Any extra attributes to add to the element.
+
+    Useful for HTMX and other HTML frameworks. Use with caution.
+    """
 
     @classmethod
     def _as_str(cls, val: Any) -> str:
@@ -64,8 +69,8 @@ class Element:
         props = " ".join(f'{k}="{v}"' for k, v in self.as_dict().items())
         if self.data:
             props += " " + " ".join(f'data-{k}="{v}"' for k, v in self.data.items())
-        if self.attributes:
-            props += " " + " ".join(f'{k}="{v}"' for k, v in self.attributes.items())
+        if self.extra:
+            props += " " + " ".join(f'{k}="{v}"' for k, v in self.extra.items())
         if self.text:
             return f"<{self.element_name} {props}>{self.text}</{self.element_name}>"
         if self.elements:
