@@ -50,12 +50,6 @@ class FontSpecification(AttrsMixin):
     font_family: str | None = None
     font_size: Length | Number | None = None
     font_size_adjust: Number | None | Literal["none"] = None
-    font_stretch: None | Literal[
-        "normal", "wider", "narrower",
-        "ultra-condensed", "extra-condensed", "semi-condensed",
-        "semi-expanded", "expanded", "extra-expanded", "ultra-expanded",
-        "inherit",
-    ] = None
     font_style: None | Literal[
         "normal", "italic", "oblique", "inherit",
     ] = None
