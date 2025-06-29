@@ -141,6 +141,3 @@ class AnimationTiming(AttrsMixin):
     repeatCount: Number | Literal["indefinite"] | None = None
     repeatDur: ClockValue | Literal["indefinite"] | None = None
 
-
-# Offset Value:         +/- ClockValue
-# Syncbase Value:   <id>.(begin/end)<Offset>
