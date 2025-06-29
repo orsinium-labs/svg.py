@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
-from ._types import Length, Number
+from ._types import AnimationTimingEvent, Length, Number, ClockValue, SemicolonSeperatedList
 
 
 if TYPE_CHECKING:
@@ -132,11 +132,15 @@ class Animation(AttrsMixin):
 
 @dataclass
 class AnimationTiming(AttrsMixin):
-    begin: str | None = None
-    dur: str | None = None
-    end: str | None = None
-    min: str | None = None
-    max: str | None = None
+    begin: AnimationTimingEvent | SemicolonSeperatedList[AnimationTimingEvent] | None = None
+    dur: ClockValue | Literal["media", "indefinite"] | None = None
+    end: AnimationTimingEvent | SemicolonSeperatedList[AnimationTimingEvent] | None = None
+    min: ClockValue | None = None
+    max: ClockValue | None = None
     restart: Literal["always", "never", "whenNotActive"] | None = None
-    repeatCount: str | None = None
-    repeatDur: str | None = None
+    repeatCount: Number | Literal["indefinite"] | None = None
+    repeatDur: ClockValue | Literal["indefinite"] | None = None
+
+
+# Offset Value:         +/- ClockValue
+# Syncbase Value:   <id>.(begin/end)<Offset>
