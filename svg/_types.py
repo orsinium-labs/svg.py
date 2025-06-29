@@ -143,6 +143,9 @@ class ClockValue:
         return f"{self.hours}:{self.minutes:02}:{full_seconds:02}"
 
 
+# https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/begin
+# https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/end
+
 @dataclass
 class OffsetValue:
     sign: Literal["+", "-"]
