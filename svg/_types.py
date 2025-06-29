@@ -6,9 +6,10 @@ from dataclasses import dataclass
 from decimal import Decimal
 from typing import TYPE_CHECKING, Optional, Union, List
 
-
+Indefinite = str
 if TYPE_CHECKING:
     from typing_extensions import Literal
+    Indefinite = Literal["indefinite"]
 
 
 Number = Union[Decimal, float, int]
@@ -248,7 +249,6 @@ class WallclockSyncValue:
     def __str__(self) -> str:
         return f"wallclock({self.time.isoformat(" ")})"
 
-
 AnimationTimingEvent = Union[
     ClockValue,
     OffsetValue,
@@ -257,12 +257,12 @@ AnimationTimingEvent = Union[
     RepeatValue,
     AccessKeyValue,
     WallclockSyncValue,
-    Literal["indefinite"]
+    Indefinite
 ]
 
 @dataclass
 class SemicolonSeperatedList[T]:
-    element: List[T] = []
+    element: List[T]
 
     def __str__(self) -> str:
         return ";".join([str(t) for t in self.element])
