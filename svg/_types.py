@@ -5,7 +5,7 @@ import re
 from dataclasses import dataclass
 from decimal import Decimal
 
-from typing import TYPE_CHECKING, Optional, Union, List
+from typing import TYPE_CHECKING, Optional, Union, List, Generic, TypeVar
 
 
 Indefinite = str
@@ -68,8 +68,9 @@ class ViewBoxSpec:
     def __str__(self) -> str:
         return f"{self.min_x} {self.min_y} {self.width} {self.height}"
 
+T = TypeVar("T")
 @dataclass
-class SemicolonSeperatedList[T]:
+class SemicolonSeperatedList(Generic[T]):
     element: List[T]
 
     def __str__(self) -> str:
@@ -268,7 +269,8 @@ class WallclockSyncValue:
     time: datetime
 
     def __str__(self) -> str:
-        return f"wallclock({self.time.isoformat(" ")})"
+        iso_time = self.time.isoformat(" ")
+        return f"wallclock({iso_time})"
 
 AnimationTimingEvent = Union[
     ClockValue,

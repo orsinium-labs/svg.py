@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING, Any, ClassVar, List
 from . import _mixins as m
 from ._path import PathData
 from ._transforms import Transform
-from ._types import Length, Number, PreserveAspectRatio, SemicolonSeperatedList, ViewBoxSpec
+from ._types import Length, Number, PreserveAspectRatio, ViewBoxSpec
 
 
 if TYPE_CHECKING:
