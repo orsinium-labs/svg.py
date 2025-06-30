@@ -2,12 +2,12 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
-from typing import TYPE_CHECKING, Any, ClassVar
+from typing import TYPE_CHECKING, Any, ClassVar, List
 
 from . import _mixins as m
 from ._path import PathData
 from ._transforms import Transform
-from ._types import Length, Number, PreserveAspectRatio, ViewBoxSpec
+from ._types import Length, Number, PreserveAspectRatio, SemicolonSeperatedList, ViewBoxSpec
 
 
 if TYPE_CHECKING:
@@ -708,7 +708,6 @@ class Animate(Element, m.Animation, m.Color, m.AnimationTiming, m.GraphicsElemen
     """
     element_name = "animate"
     externalResourcesRequired: bool | None = None
-    keyPoints: str | None = None
     attributeName: str | None = None
 
 
@@ -720,10 +719,9 @@ class Set(Element, m.AnimationTiming, m.GraphicsElementEvents):
     element_name = "set"
     externalResourcesRequired: bool | None = None
     to: str | None = None
-    min: str | None = None
-    keyPoints: str | None = None
     attributeName: str | None = None
     href: str | None = None
+    fill: Literal["freeze", "remove"] | None = None
 
 
 @dataclass
@@ -733,10 +731,9 @@ class AnimateMotion(Element, m.Animation, m.AnimationTiming, m.GraphicsElementEv
     """
     element_name = "animateMotion"
     externalResourcesRequired: bool | None = None
-    path: str | None = None
-    keyPoints: str | None = None
-    rotate: str | None = None
-    origin: str | None = None
+    path: List[PathData] | None = None
+    rotate: Number | Literal["auto", "auto-reverse"] | None = None
+    origin: Literal["default"] | None = None
 
 
 @dataclass
@@ -757,7 +754,6 @@ class AnimateTransform(Element, m.Animation, m.AnimationTiming, m.GraphicsElemen
     element_name = "animateTransform"
     externalResourcesRequired: bool | None = None
     type: Literal["translate", "scale", "rotate", "skewX", "skewY"] | None = None
-    keyPoints: str | None = None
     attributeName: str | None = None
 
 

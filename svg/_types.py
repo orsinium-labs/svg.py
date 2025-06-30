@@ -4,7 +4,9 @@ import math
 import re
 from dataclasses import dataclass
 from decimal import Decimal
+
 from typing import TYPE_CHECKING, Optional, Union, List
+
 
 Indefinite = str
 if TYPE_CHECKING:
@@ -66,6 +68,25 @@ class ViewBoxSpec:
     def __str__(self) -> str:
         return f"{self.min_x} {self.min_y} {self.width} {self.height}"
 
+@dataclass
+class SemicolonSeperatedList[T]:
+    element: List[T]
+
+    def __str__(self) -> str:
+        return ";".join([str(t) for t in self.element])
+
+@dataclass
+class TimeBezierPoint:
+    x1: Number
+    y1: Number 
+    x2: Number
+    y2: Number 
+
+    def __post_init__(self):
+        assert self.x1 >= 0 and self.x1 <= 1 
+        assert self.y1 >= 0 and self.y1 <= 1 
+        assert self.x2 >= 0 and self.x2 <= 1 
+        assert self.y2 >= 0 and self.y2 <= 1 
 
 @dataclass
 class ClockValue:
@@ -259,10 +280,3 @@ AnimationTimingEvent = Union[
     WallclockSyncValue,
     Indefinite
 ]
-
-@dataclass
-class SemicolonSeperatedList[T]:
-    element: List[T]
-
-    def __str__(self) -> str:
-        return ";".join([str(t) for t in self.element])
