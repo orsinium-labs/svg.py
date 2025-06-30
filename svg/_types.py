@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from decimal import Decimal
-from typing import TYPE_CHECKING, Union
+from typing import TYPE_CHECKING, Union, List
 
 
 if TYPE_CHECKING:
@@ -59,3 +59,23 @@ class ViewBoxSpec:
 
     def __str__(self) -> str:
         return f"{self.min_x} {self.min_y} {self.width} {self.height}"
+
+@dataclass
+class SemicolonSeperatedList[T]:
+    element: List[T]
+
+    def __str__(self) -> str:
+        return ";".join([str(t) for t in self.element])
+
+@dataclass
+class TimeBezierPoint:
+    x1: Number
+    y1: Number 
+    x2: Number
+    y2: Number 
+
+    def __post_init__(self):
+        assert self.x1 >= 0 and self.x1 <= 1 
+        assert self.y1 >= 0 and self.y1 <= 1 
+        assert self.x2 >= 0 and self.x2 <= 1 
+        assert self.y2 >= 0 and self.y2 <= 1 
