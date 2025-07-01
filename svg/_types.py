@@ -80,4 +80,6 @@ class TimeBezierPoint:
         assert self.y1 >= 0 and self.y1 <= 1 
         assert self.x2 >= 0 and self.x2 <= 1 
         assert self.y2 >= 0 and self.y2 <= 1 
-
+    
+    def __str__(self) -> str:
+        return f"{self.x1} {self.y1} {self.x2} {self.y2}"
