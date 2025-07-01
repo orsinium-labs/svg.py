@@ -118,6 +118,7 @@ class Animation(AttrsMixin):
     values: str | None = None
     keyTimes: str | None = None
     keySplines: str | None = None
+    keyPoints: str | None = None
     from_: str | None = None
     to: str | None = None
     by: str | None = None
