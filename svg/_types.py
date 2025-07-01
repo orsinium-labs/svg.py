@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from decimal import Decimal
-from typing import TYPE_CHECKING, Union, TypeVar, Generic, List
+from typing import TYPE_CHECKING, Union, TypeVar, Generic
 
 
 if TYPE_CHECKING:
@@ -63,7 +63,7 @@ class ViewBoxSpec:
 T = TypeVar("T")
 @dataclass
 class SemicolonSeperatedList(Generic[T]):
-    element: List[T]
+    element: list[T]
 
     def __str__(self) -> str:
         return ";".join([str(t) for t in self.element])
