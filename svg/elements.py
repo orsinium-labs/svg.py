@@ -721,7 +721,6 @@ class Set(Element, m.AnimationTiming, m.GraphicsElementEvents):
     to: str | None = None
     attributeName: str | None = None
     href: str | None = None
-    fill: Literal["freeze", "remove"] | None = None
 
 
 @dataclass

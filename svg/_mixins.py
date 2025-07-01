@@ -129,7 +129,6 @@ class Animation(AttrsMixin):
     # Animation addition attributes
     additive: Literal["replace", "sum"] | None = None
     accumulate: Literal["none", "sum"] | None = None
-    fill: Literal["freeze", "remove"] | None = None
 
 
 @dataclass
@@ -142,4 +141,5 @@ class AnimationTiming(AttrsMixin):
     restart: Literal["always", "never", "whenNotActive"] | None = None
     repeatCount: Number | Literal["indefinite"] | None = None
     repeatDur: ClockValue | Literal["indefinite"] | None = None
+    fill: Literal["freeze", "remove"] | None = None
 
