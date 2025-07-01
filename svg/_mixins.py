@@ -140,3 +140,4 @@ class AnimationTiming(AttrsMixin):
     restart: Literal["always", "never", "whenNotActive"] | None = None
     repeatCount: str | None = None
     repeatDur: str | None = None
+    fill: Literal["freeze", "remove"] | None = None
