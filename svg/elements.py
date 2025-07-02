@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
-from typing import TYPE_CHECKING, Any, ClassVar, List
+from typing import TYPE_CHECKING, Any, ClassVar
 
 from . import _mixins as m
 from ._path import PathData
@@ -730,7 +730,7 @@ class AnimateMotion(Element, m.Animation, m.AnimationTiming, m.GraphicsElementEv
     """
     element_name = "animateMotion"
     externalResourcesRequired: bool | None = None
-    path: List[PathData] | None = None
+    path: list[PathData] | None = None
     rotate: Number | Literal["auto", "auto-reverse"] | None = None
     origin: Literal["default"] | None = None
 
