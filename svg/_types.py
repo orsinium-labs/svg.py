@@ -77,7 +77,7 @@ class TimeBezierPoint:
     x2: Number
     y2: Number 
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         assert self.x1 >= 0 and self.x1 <= 1 
         assert self.y1 >= 0 and self.y1 <= 1 
         assert self.x2 >= 0 and self.x2 <= 1 
