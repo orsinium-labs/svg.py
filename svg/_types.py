@@ -5,7 +5,7 @@ import re
 from dataclasses import dataclass
 from decimal import Decimal
 
-from typing import TYPE_CHECKING, Optional, Union, List, Generic, TypeVar
+from typing import TYPE_CHECKING, Optional, Union, Generic, TypeVar
 
 
 Indefinite = str
@@ -69,12 +69,14 @@ class ViewBoxSpec:
         return f"{self.min_x} {self.min_y} {self.width} {self.height}"
 
 T = TypeVar("T")
+
+
 @dataclass
 class SemicolonSeparatedList(Generic[T]):
-    element: List[T]
+    element: list[T]
 
     def __str__(self) -> str:
-        return ";".join([str(t) for t in self.element])
+        return ";".join(str(t) for t in self.element)
 
 @dataclass
 class TimeBezierPoint:
@@ -83,11 +85,14 @@ class TimeBezierPoint:
     x2: Number
     y2: Number 
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         assert self.x1 >= 0 and self.x1 <= 1 
         assert self.y1 >= 0 and self.y1 <= 1 
         assert self.x2 >= 0 and self.x2 <= 1 
         assert self.y2 >= 0 and self.y2 <= 1 
+
+    def __str__(self) -> str:
+        return f"{self.x1} {self.y1} {self.x2} {self.y2}"
 
 @dataclass
 class ClockValue:
@@ -182,7 +187,7 @@ class OffsetValue:
 class SyncbaseValue:
     element_id: str
     event: Literal["begin", "end"]
-    offset: Optional[OffsetValue]
+    offset: OffsetValue | None
 
     def __str__(self) -> str:
         str_value = f"{self.element_id}.{self.event}"
@@ -229,7 +234,7 @@ class EventValue:
         "endEvent",
         "repeatEvent",
     ]
-    offset: Optional[OffsetValue]
+    offset: OffsetValue | None
 
     def __str__(self) -> str:
         str_value = f"{self.element_id}.{self.event}"
@@ -242,7 +247,7 @@ class EventValue:
 class RepeatValue:
     element_id: str
     repeat_number: int
-    offset: Optional[OffsetValue]
+    offset: OffsetValue| None
 
     def __str__(self) -> str:
         str_value = f"{self.element_id}.repeat({self.repeat_number})"
@@ -282,3 +287,4 @@ AnimationTimingEvent = Union[
     WallclockSyncValue,
     Indefinite
 ]
+    
