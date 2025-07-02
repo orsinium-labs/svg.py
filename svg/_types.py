@@ -68,7 +68,7 @@ class SemicolonSeperatedList(Generic[T]):
     element: list[T]
 
     def __str__(self) -> str:
-        return ";".join([str(t) for t in self.element])
+        return ";".join(str(t) for t in self.element)
 
 @dataclass
 class TimeBezierPoint:
