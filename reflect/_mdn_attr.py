@@ -37,6 +37,7 @@ class MDNAttr:
     status: list[str] | None = None
     spec_urls: list[str] | None = None
     browser_compat: object | None = None
+    sidebar: object | None = None
 
     @classmethod
     def parse(cls, path: Path) -> MDNAttr | None:

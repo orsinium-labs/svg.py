@@ -6,7 +6,8 @@ import reflect
 
 
 LIB_ELEMENTS = reflect.LibElement.parse_all()
-MDN_ROOT = Path(__file__).parent.parent.parent / 'mdn-source' / 'files' / 'en-us' / 'web' / 'svg'
+ROOT = Path(__file__).parent.parent.parent
+MDN_ROOT = ROOT / 'mdn-source' / 'files' / 'en-us' / 'web' / 'svg' / 'reference'
 # If the line below fails, run the following one directory up the root of svg.py:
 #   git clone https://github.com/mdn/content.git mdn-source --depth 1
 assert MDN_ROOT.is_dir(), f'you must clone mdn-source into {MDN_ROOT} before you can run tests'
