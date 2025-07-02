@@ -1,9 +1,9 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
-from ._types import Length, Number, SemicolonSeperatedList, TimeBezierPoint
+from ._types import Length, Number, SemicolonSeparatedList, TimeBezierPoint
 
 
 if TYPE_CHECKING:
@@ -115,10 +115,10 @@ class ComponentTransferFunction(AttrsMixin):
 class Animation(AttrsMixin):
     # Animation value attributes
     calcMode: Literal["discrete", "linear", "paced", "spline"] | None = None
-    values: str |  SemicolonSeperatedList | None = None
-    keyTimes: SemicolonSeperatedList[Number] | None = None
-    keySplines: SemicolonSeperatedList[TimeBezierPoint] | None = None
-    keyPoints: SemicolonSeperatedList[Number] | None = None
+    values: str |  SemicolonSeparatedList[Any] | None = None
+    keyTimes: SemicolonSeparatedList[Number] | None = None
+    keySplines: SemicolonSeparatedList[TimeBezierPoint] | None = None
+    keyPoints: SemicolonSeparatedList[Number] | None = None
     from_: str | None = None
     to: str | None = None
     by: str | None = None

@@ -64,7 +64,7 @@ T = TypeVar("T")
 
 
 @dataclass
-class SemicolonSeperatedList(Generic[T]):
+class SemicolonSeparatedList(Generic[T]):
     element: list[T]
 
     def __str__(self) -> str:
