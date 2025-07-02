@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any
 
-from ._types import Length, Number, SemicolonSeparatedList, TimeBezierPoint
+from ._types import Length, Number, ClockValue, SemicolonSeparatedList, TimeBezierPoint
 
 
 if TYPE_CHECKING:
@@ -134,11 +134,11 @@ class Animation(AttrsMixin):
 @dataclass
 class AnimationTiming(AttrsMixin):
     begin: str | None = None
-    dur: str | None = None
+    dur: ClockValue | None = None
     end: str | None = None
-    min: str | None = None
-    max: str | None = None
+    min: ClockValue | None = None
+    max: ClockValue | None = None
     restart: Literal["always", "never", "whenNotActive"] | None = None
-    repeatCount: str | None = None
-    repeatDur: str | None = None
+    repeatCount: Number | Literal["indefinite"] | None = None
+    repeatDur: ClockValue | Literal["indefinite"] | None = None
     fill: Literal["freeze", "remove"] | None = None
