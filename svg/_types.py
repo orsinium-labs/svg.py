@@ -61,6 +61,8 @@ class ViewBoxSpec:
         return f"{self.min_x} {self.min_y} {self.width} {self.height}"
 
 T = TypeVar("T")
+
+
 @dataclass
 class SemicolonSeperatedList(Generic[T]):
     element: list[T]
