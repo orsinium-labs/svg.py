@@ -13,6 +13,9 @@ MDN_ROOT = ROOT / 'mdn-source' / 'files' / 'en-us' / 'web' / 'svg' / 'reference'
 assert MDN_ROOT.is_dir(), f'you must clone mdn-source into {MDN_ROOT} before you can run tests'
 MDN_ATTRS = reflect.MDNAttr.parse_all(MDN_ROOT)
 
+FIXTURES = Path(__file__).parent / 'fixtures'
+DEPRECATED = (FIXTURES / 'deprecated_attrs.txt').read_text().split()
+
 assert LIB_ELEMENTS
 assert MDN_ATTRS
 
@@ -21,6 +24,10 @@ assert MDN_ATTRS
 @pytest.mark.parametrize('mdn_attr', MDN_ATTRS)
 def test_attrs(lib_element: reflect.LibElement, mdn_attr: reflect.MDNAttr):
     if mdn_attr.is_deprecated:
+        msg = f'attr `{mdn_attr.title}` is deprecated but is set for `{lib_element.title}`'
+        assert mdn_attr.title not in lib_element.attrs, msg
+        return
+    if mdn_attr.title in DEPRECATED:
         msg = f'attr `{mdn_attr.title}` is deprecated but is set for `{lib_element.title}`'
         assert mdn_attr.title not in lib_element.attrs, msg
         return
