@@ -19,7 +19,7 @@ from ._path import (
 from ._transforms import (
     Matrix, Rotate, Scale, SkewX, SkewY, Transform, Translate,
 )
-from ._types import Length, PreserveAspectRatio, ViewBoxSpec
+from ._types import Length, PreserveAspectRatio, ViewBoxSpec, SemicolonSeparatedList, TimeBezierPoint
 from .elements import (
     SVG, A, Animate, AnimateMotion, AnimateTransform, Circle, ClipPath,
     ColorProfile, DefinitionSrc, Defs, Desc, Element, Ellipse, ForeignObject,
@@ -142,4 +142,6 @@ __all__ = [
     'Length',
     'PreserveAspectRatio',
     'ViewBoxSpec',
+    'SemicolonSeparatedList',
+    'TimeBezierPoint'
 ]
