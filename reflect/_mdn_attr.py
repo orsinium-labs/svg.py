@@ -67,11 +67,7 @@ class MDNAttr:
             return True
         if self.status and 'deprecated' in self.status:
             return True
-        if '<div>{{SVGRef}}{{Deprecated_Header}}</div>' in self.content:
-            return True
-        if '<div>{{SVGRef}}{{deprecated_header}}</div>' in self.content:
-            return True
-        if '<div>{{deprecated_header}}</div>' in self.content:
+        if '{{deprecated_header}}' in self.content.lower():
             return True
         return False
 
