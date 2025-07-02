@@ -118,6 +118,7 @@ class Animation(AttrsMixin):
     values: str | None = None
     keyTimes: str | None = None
     keySplines: str | None = None
+    keyPoints: str | None = None
     from_: str | None = None
     to: str | None = None
     by: str | None = None
@@ -140,3 +141,4 @@ class AnimationTiming(AttrsMixin):
     restart: Literal["always", "never", "whenNotActive"] | None = None
     repeatCount: str | None = None
     repeatDur: str | None = None
+    fill: Literal["freeze", "remove"] | None = None

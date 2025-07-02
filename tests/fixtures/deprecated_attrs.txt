@@ -1,0 +1,17 @@
+xlink_colon_show
+attributetype
+kernelunitlength
+version
+xml_colon_lang
+xlink_colon_type
+requiredfeatures
+xml_colon_space
+glyph-orientation-horizontal
+font-stretch
+zoomandpan
+xlink_colon_arcrole
+xlink_colon_href
+clip
+baseprofile
+glyph-orientation-vertical
+xlink_colon_title

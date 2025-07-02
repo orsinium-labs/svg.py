@@ -708,7 +708,6 @@ class Animate(Element, m.Animation, m.Color, m.AnimationTiming, m.GraphicsElemen
     """
     element_name = "animate"
     externalResourcesRequired: bool | None = None
-    keyPoints: str | None = None
     attributeName: str | None = None
 
 
@@ -720,8 +719,6 @@ class Set(Element, m.AnimationTiming, m.GraphicsElementEvents):
     element_name = "set"
     externalResourcesRequired: bool | None = None
     to: str | None = None
-    min: str | None = None
-    keyPoints: str | None = None
     attributeName: str | None = None
     href: str | None = None
 
@@ -736,6 +733,7 @@ class AnimateMotion(Element, m.Animation, m.AnimationTiming, m.GraphicsElementEv
     path: list[PathData] | None = None
     rotate: Number | Literal["auto", "auto-reverse"] | None = None
     origin: Literal["default"] | None = None
+
 
 @dataclass
 class MPath(Element, m.GraphicsElementEvents):
@@ -755,7 +753,6 @@ class AnimateTransform(Element, m.Animation, m.AnimationTiming, m.GraphicsElemen
     element_name = "animateTransform"
     externalResourcesRequired: bool | None = None
     type: Literal["translate", "scale", "rotate", "skewX", "skewY"] | None = None
-    keyPoints: str | None = None
     attributeName: str | None = None
 
 
