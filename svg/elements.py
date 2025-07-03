@@ -52,7 +52,7 @@ class Element:
         if isinstance(val, (list, tuple)):
             return " ".join(cls._as_str(v) for v in val)
         if isinstance(val, timedelta):
-            return to_clock_value(abs(val))
+            return to_clock_value(val)
         return str(val)
 
     def as_dict(self) -> dict[str, str]:
