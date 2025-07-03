@@ -19,7 +19,7 @@ from ._path import (
 from ._transforms import (
     Matrix, Rotate, Scale, SkewX, SkewY, Transform, Translate,
 )
-from ._types import (Length, PreserveAspectRatio, ViewBoxSpec, SemicolonSeparatedList, TimeBezierPoint, ClockValue, OffsetValue, SyncbaseValue, EventValue, RepeatValue, AccessKeyValue, WallclockSyncValue, AnimationTimingEvent)
+from ._types import (Length, PreserveAspectRatio, ViewBoxSpec, SemicolonSeparatedList, TimeBezierPoint, SyncbaseValue, EventValue, RepeatValue, AccessKeyValue, WallclockSyncValue, AnimationTimingEvent)
 from .elements import (
     SVG, A, Animate, AnimateMotion, AnimateTransform, Circle, ClipPath,
     ColorProfile, DefinitionSrc, Defs, Desc, Element, Ellipse, ForeignObject,
@@ -144,8 +144,6 @@ __all__ = [
     'ViewBoxSpec',
     'SemicolonSeparatedList',
     'TimeBezierPoint',
-    'ClockValue', 
-    'OffsetValue', 
     'SyncbaseValue', 
     'EventValue',
     'RepeatValue',
