@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from datetime import timedelta
 from typing import TYPE_CHECKING, Any
 
 from ._types import Length, Number, SemicolonSeparatedList, TimeBezierPoint
@@ -134,11 +135,11 @@ class Animation(AttrsMixin):
 @dataclass
 class AnimationTiming(AttrsMixin):
     begin: str | None = None
-    dur: str | None = None
+    dur: timedelta | None = None
     end: str | None = None
-    min: str | None = None
-    max: str | None = None
+    min: timedelta | None = None
+    max: timedelta | None = None
     restart: Literal["always", "never", "whenNotActive"] | None = None
-    repeatCount: str | None = None
-    repeatDur: str | None = None
+    repeatCount: Number | Literal["indefinite"] | None = None
+    repeatDur: timedelta | Literal["indefinite"] | None = None
     fill: Literal["freeze", "remove"] | None = None

@@ -3,11 +3,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from enum import Enum
 from typing import TYPE_CHECKING, Any, ClassVar
+from datetime import timedelta
 
 from . import _mixins as m
 from ._path import PathData
 from ._transforms import Transform
-from ._types import Length, Number, PreserveAspectRatio, ViewBoxSpec
+from ._types import Length, Number, PreserveAspectRatio, ViewBoxSpec, to_clock_value
 
 
 if TYPE_CHECKING:
@@ -50,6 +51,8 @@ class Element:
             return str(val).lower()
         if isinstance(val, (list, tuple)):
             return " ".join(cls._as_str(v) for v in val)
+        if isinstance(val, timedelta):
+            return to_clock_value(val)
         return str(val)
 
     def as_dict(self) -> dict[str, str]:
