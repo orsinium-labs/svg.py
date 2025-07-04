@@ -1,0 +1,26 @@
+# https://taskfile.dev/
+version: "3"
+
+env:
+  FLIT_ROOT_INSTALL: "1"
+
+tasks:
+  install-flit:
+    status:
+      - which flit
+    cmds:
+      - python3 -m pip install --break-system-packages flit
+
+  release:
+    cmds:
+      - task: install-flit
+      - which gh
+      - grep -F {{.CLI_ARGS}} svg/__init__.py
+      - git add svg/__init__.py
+      - git commit -m "bump version"
+      - git tag {{.CLI_ARGS}}
+      - flit publish
+      - git push
+      - git push --tags
+      - gh release create --generate-notes {{.CLI_ARGS}}
+      - gh release upload {{.CLI_ARGS}} ./dist/*
