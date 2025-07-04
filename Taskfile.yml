@@ -15,6 +15,7 @@ tasks:
     cmds:
       - task: install-flit
       - which gh
+      - rm -rf dist
       - grep -F {{.CLI_ARGS}} svg/__init__.py
       - git add svg/__init__.py
       - git commit -m "bump version"
