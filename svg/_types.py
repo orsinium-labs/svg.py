@@ -4,11 +4,14 @@ import math
 from dataclasses import dataclass
 from datetime import timedelta
 from decimal import Decimal
+
 from typing import TYPE_CHECKING, Generic, TypeVar, Union
 
 
+Indefinite = str
 if TYPE_CHECKING:
     from typing_extensions import Literal
+    Indefinite = Literal["indefinite"]
 
 
 Number = Union[Decimal, float, int]
@@ -94,6 +97,125 @@ class TimeBezierPoint:
         return f"{self.x1} {self.y1} {self.x2} {self.y2}"
 
 
+# https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/begin
+# https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/end
+
+@dataclass
+class SyncbaseValue:
+    element_id: str
+    event: Literal["begin", "end"]
+    offset: timedelta | None
+
+    def __str__(self) -> str:
+        str_value = f"{self.element_id}.{self.event}"
+        if self.offset is not None:
+            offset_str = to_clock_value(self.offset)
+            if not offset_str.startswith("-"):
+                offset_str = "+"+offset_str
+            str_value += offset_str
+        return str_value
+
+
+@dataclass
+class EventValue:
+    element_id: str
+    event: Literal[
+        "focus",
+        "blur",
+        "focusin",
+        "focusout",
+        "DOMActivate",
+        "auxclick",
+        "click",
+        "dblclick",
+        "mousedown",
+        "mouseenter",
+        "mouseleave",
+        "mousemove",
+        "mouseout",
+        "mouseover",
+        "mouseup",
+        "wheel",
+        "beforeinput",
+        "input",
+        "keydown",
+        "keyup",
+        "compositionstart",
+        "compositionupdate",
+        "compositionend",
+        "load",
+        "unload",
+        "abort",
+        "error",
+        "select",
+        "resize",
+        "scroll",
+        "beginEvent",
+        "endEvent",
+        "repeatEvent",
+    ]
+    offset: timedelta | None
+
+    def __str__(self) -> str:
+        str_value = f"{self.element_id}.{self.event}"
+        if self.offset is not None:
+            offset_str = to_clock_value(self.offset)
+            if not offset_str.startswith("-"):
+                offset_str = "+"+offset_str
+            str_value += offset_str
+        return str_value
+
+
+@dataclass
+class RepeatValue:
+    element_id: str
+    repeat_number: int
+    offset: timedelta | None
+
+    def __str__(self) -> str:
+        str_value = f"{self.element_id}.repeat({self.repeat_number})"
+        if self.offset is not None:
+            offset_str = to_clock_value(self.offset)
+            if not offset_str.startswith("-"):
+                offset_str = "+"+offset_str
+            str_value += offset_str
+        return str_value
+
+
+@dataclass
+class AccessKeyValue:
+    key: str
+    offset: timedelta | None
+
+    def __str__(self) -> str:
+        str_value = f'accessKey("{self.key}")'
+        if self.offset is not None:
+            offset_str = to_clock_value(self.offset)
+            if not offset_str.startswith("-"):
+                offset_str = "+"+offset_str
+            str_value += offset_str
+        return str_value
+
+
+from datetime import datetime
+
+class WallclockSyncValue:
+    time: datetime
+
+    def __str__(self) -> str:
+        iso_time = self.time.isoformat(" ")
+        return f"wallclock({iso_time})"
+
+AnimationTimingEvent = Union[
+    timedelta,
+    SyncbaseValue,
+    EventValue,
+    RepeatValue,
+    AccessKeyValue,
+    WallclockSyncValue,
+    Indefinite
+]
+ 
 def to_clock_value(delta: timedelta) -> str:
     seconds = delta.total_seconds()
     sign = ""
