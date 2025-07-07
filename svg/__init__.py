@@ -22,7 +22,7 @@ from ._transforms import (
 from ._types import (
     Length, PreserveAspectRatio, ViewBoxSpec, SemicolonSeparatedList,
     TimeBezierPoint, SyncbaseValue, EventValue, RepeatValue, AccessKeyValue,
-    WallclockSyncValue, AnimationTimingEvent,
+     AnimationTimingEvent,
 )
 from .elements import (
     SVG, A, Animate, AnimateMotion, AnimateTransform, Circle, ClipPath,
@@ -153,5 +153,4 @@ __all__ = [
     'SyncbaseValue',
     'TimeBezierPoint',
     'ViewBoxSpec',
-    'WallclockSyncValue',
 ]
