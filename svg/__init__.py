@@ -143,15 +143,15 @@ __all__ = [
     'Z', 'ClosePath',
 
     # types
+    'AccessKeyValue',
+    'AnimationTimingEvent',
+    'EventValue',
     'Length',
     'PreserveAspectRatio',
-    'ViewBoxSpec',
-    'SemicolonSeparatedList',
-    'TimeBezierPoint',
-    'SyncbaseValue',
-    'EventValue',
     'RepeatValue',
-    'AccessKeyValue',
+    'SemicolonSeparatedList',
+    'SyncbaseValue',
+    'TimeBezierPoint',
+    'ViewBoxSpec',
     'WallclockSyncValue',
-    'AnimationTimingEvent'
 ]
