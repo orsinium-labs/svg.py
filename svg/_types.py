@@ -187,7 +187,7 @@ class AccessKeyValue:
     offset: timedelta | None
 
     def __str__(self) -> str:
-        str_value = f'accessKey("{self.key}")'
+        str_value = f"accessKey({self.key})"
         if self.offset is not None:
             offset_str = to_clock_value(self.offset)
             if not offset_str.startswith("-"):
