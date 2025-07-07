@@ -1,4 +1,5 @@
 from __future__ import annotations
+from datetime import datetime
 
 import math
 from dataclasses import dataclass
@@ -8,10 +9,8 @@ from decimal import Decimal
 from typing import TYPE_CHECKING, Generic, TypeVar, Union
 
 
-Indefinite = str
 if TYPE_CHECKING:
     from typing_extensions import Literal
-    Indefinite = Literal["indefinite"]
 
 
 Number = Union[Decimal, float, int]
@@ -111,7 +110,7 @@ class SyncbaseValue:
         if self.offset is not None:
             offset_str = to_clock_value(self.offset)
             if not offset_str.startswith("-"):
-                offset_str = "+"+offset_str
+                offset_str = "+" + offset_str
             str_value += offset_str
         return str_value
 
@@ -161,7 +160,7 @@ class EventValue:
         if self.offset is not None:
             offset_str = to_clock_value(self.offset)
             if not offset_str.startswith("-"):
-                offset_str = "+"+offset_str
+                offset_str = "+" + offset_str
             str_value += offset_str
         return str_value
 
@@ -177,7 +176,7 @@ class RepeatValue:
         if self.offset is not None:
             offset_str = to_clock_value(self.offset)
             if not offset_str.startswith("-"):
-                offset_str = "+"+offset_str
+                offset_str = "+" + offset_str
             str_value += offset_str
         return str_value
 
@@ -192,12 +191,10 @@ class AccessKeyValue:
         if self.offset is not None:
             offset_str = to_clock_value(self.offset)
             if not offset_str.startswith("-"):
-                offset_str = "+"+offset_str
+                offset_str = "+" + offset_str
             str_value += offset_str
         return str_value
 
-
-from datetime import datetime
 
 class WallclockSyncValue:
     time: datetime
@@ -206,6 +203,7 @@ class WallclockSyncValue:
         iso_time = self.time.isoformat(" ")
         return f"wallclock({iso_time})"
 
+
 AnimationTimingEvent = Union[
     timedelta,
     SyncbaseValue,
@@ -213,9 +211,10 @@ AnimationTimingEvent = Union[
     RepeatValue,
     AccessKeyValue,
     WallclockSyncValue,
-    Indefinite
+    'Literal["indefinite"]',
 ]
- 
+
+
 def to_clock_value(delta: timedelta) -> str:
     seconds = delta.total_seconds()
     sign = ""
@@ -229,4 +228,3 @@ def to_clock_value(delta: timedelta) -> str:
     if partial_seconds > 0:
         return f"{sign}{hours}:{minutes:02}:{full_seconds:02}{partial_seconds:.6f}"
     return f"{sign}{hours}:{minutes:02}:{full_seconds:02}"
-

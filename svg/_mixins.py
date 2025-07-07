@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from datetime import timedelta
 from typing import TYPE_CHECKING, Any
 
-from ._types import AnimationTimingEvent, Length, Number,  SemicolonSeparatedList, TimeBezierPoint
+from ._types import AnimationTimingEvent, Length, Number, SemicolonSeparatedList, TimeBezierPoint
 
 
 if TYPE_CHECKING:
@@ -116,7 +116,7 @@ class ComponentTransferFunction(AttrsMixin):
 class Animation(AttrsMixin):
     # Animation value attributes
     calcMode: Literal["discrete", "linear", "paced", "spline"] | None = None
-    values: str |  SemicolonSeparatedList[Any] | None = None
+    values: str | SemicolonSeparatedList[Any] | None = None
     keyTimes: SemicolonSeparatedList[Number] | None = None
     keySplines: SemicolonSeparatedList[TimeBezierPoint] | None = None
     keyPoints: SemicolonSeparatedList[Number] | None = None
