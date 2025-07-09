@@ -19,7 +19,11 @@ from ._path import (
 from ._transforms import (
     Matrix, Rotate, Scale, SkewX, SkewY, Transform, Translate,
 )
-from ._types import Length, PreserveAspectRatio, ViewBoxSpec, SemicolonSeparatedList, TimeBezierPoint
+from ._types import (
+    Length, PreserveAspectRatio, ViewBoxSpec, SemicolonSeparatedList,
+    TimeBezierPoint, SyncbaseValue, EventValue, RepeatValue, AccessKeyValue,
+    AnimationTimingEvent,
+)
 from .elements import (
     SVG, A, Animate, AnimateMotion, AnimateTransform, Circle, ClipPath,
     ColorProfile, DefinitionSrc, Defs, Desc, Element, Ellipse, ForeignObject,
@@ -139,9 +143,14 @@ __all__ = [
     'Z', 'ClosePath',
 
     # types
+    'AccessKeyValue',
+    'AnimationTimingEvent',
+    'EventValue',
     'Length',
     'PreserveAspectRatio',
-    'ViewBoxSpec',
+    'RepeatValue',
     'SemicolonSeparatedList',
-    'TimeBezierPoint'
+    'SyncbaseValue',
+    'TimeBezierPoint',
+    'ViewBoxSpec',
 ]
