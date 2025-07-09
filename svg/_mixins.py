@@ -135,7 +135,7 @@ class Animation(AttrsMixin):
 @dataclass
 class AnimationTiming(AttrsMixin):
     begin: AnimationTimingEvent | SemicolonSeparatedList[AnimationTimingEvent] | None = None
-    dur: timedelta | None = None
+    dur: timedelta | Literal["media", "indefinite"] | None = None
     end: AnimationTimingEvent | SemicolonSeparatedList[AnimationTimingEvent] | None = None
     min: timedelta | None = None
     max: timedelta | None = None
