@@ -135,7 +135,7 @@ class Animation(AttrsMixin):
 @dataclass
 class AnimationTiming(AttrsMixin):
     begin: str | None = None
-    dur: timedelta | None = None
+    dur: timedelta | Literal["media", "indefinite"] | None = None
     end: str | None = None
     min: timedelta | None = None
     max: timedelta | None = None
