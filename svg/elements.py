@@ -15,6 +15,17 @@ if TYPE_CHECKING:
     from typing_extensions import Literal
 
 
+# Attributes whose elements should be separated by a semicolon (;) rather than a space.
+_SEMICOLON_ATTRS = frozenset({
+    "values",
+    "keyTimes",
+    "keySplines",
+    "keyPoints",
+    "begin",
+    "end",
+})
+
+
 @dataclass
 class Element:
     """
@@ -40,7 +51,7 @@ class Element:
     """
 
     @classmethod
-    def _as_str(cls, val: Any) -> str:
+    def _as_str(cls, val: Any, key: str | None = None) -> str:
         if val is None:
             return ""
         if isinstance(val, Element):
@@ -50,7 +61,8 @@ class Element:
         if isinstance(val, bool):
             return str(val).lower()
         if isinstance(val, (list, tuple)):
-            return " ".join(cls._as_str(v) for v in val)
+            sep = ";" if key in _SEMICOLON_ATTRS else " "
+            return sep.join(cls._as_str(v) for v in val)
         if isinstance(val, timedelta):
             return to_clock_value(val)
         if isinstance(val, datetime):
@@ -67,7 +79,7 @@ class Element:
             key = key.rstrip("_")
             key = key.replace("__", ":")
             key = key.replace("_", "-")
-            result[key] = self._as_str(val)
+            result[key] = self._as_str(val, key=key)
         return result
 
     def as_str(self) -> str:

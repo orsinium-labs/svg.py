@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from datetime import timedelta
 from decimal import Decimal
 
-from typing import TYPE_CHECKING, Generic, TypeVar, Union
+from typing import TYPE_CHECKING, TypeVar, Union
 
 
 if TYPE_CHECKING:
@@ -69,14 +69,6 @@ class ViewBoxSpec:
 
 
 T = TypeVar("T")
-
-
-@dataclass
-class SemicolonSeparatedList(Generic[T]):
-    element: list[T]
-
-    def __str__(self) -> str:
-        return ";".join(str(t) for t in self.element)
 
 
 @dataclass
