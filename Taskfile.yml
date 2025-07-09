@@ -32,10 +32,10 @@ tasks:
     env:
       PYTHONPATH: .
     cmds:
-      - python3 examples/animate.py > animate.svg
-      - python3 examples/animate_transform.py > animate_transform.svg
-      - python3 examples/grid3.py > grid3.svg
-      - python3 examples/grid4.py > grid4.svg
-      - python3 examples/shapes.py > shapes.svg
-      - python3 examples/text.py > text.svg
-      - python3 examples/transform.py > transform.svg
+      - python3 examples/animate.py           > examples/animate.svg
+      - python3 examples/animate_transform.py > examples/animate_transform.svg
+      - python3 examples/grid3.py             > examples/grid3.svg
+      - python3 examples/grid4.py             > examples/grid4.svg
+      - python3 examples/shapes.py            > examples/shapes.svg
+      - python3 examples/text.py              > examples/text.svg
+      - python3 examples/transform.py         > examples/transform.svg
