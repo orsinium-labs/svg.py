@@ -195,6 +195,7 @@ class AccessKeyValue:
             str_value += offset_str
         return str_value
 
+
 AnimationTimingEvent = Union[
     timedelta,
     SyncbaseValue,
@@ -220,8 +221,7 @@ def to_clock_value(delta: timedelta) -> str:
         return f"{sign}{hours}:{minutes:02}:{full_seconds:02}{partial_seconds:.6f}"
     return f"{sign}{hours}:{minutes:02}:{full_seconds:02}"
 
+
 def to_wallclock_sync_value(time: datetime) -> str:
     iso_time = time.isoformat(" ")
     return f"wallclock({iso_time})"
-
-
