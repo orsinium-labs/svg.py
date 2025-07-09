@@ -12,6 +12,7 @@ tasks:
       - python3 -m pip install --break-system-packages flit
 
   release:
+    desc: build and upload release
     cmds:
       - task: install-flit
       - which gh
@@ -25,3 +26,16 @@ tasks:
       - git push --tags
       - gh release create --generate-notes {{.CLI_ARGS}}
       - gh release upload {{.CLI_ARGS}} ./dist/*
+
+  examples:
+    desc: run and actualize all examples
+    env:
+      PYTHONPATH: .
+    cmds:
+      - python3 examples/animate.py > animate.svg
+      - python3 examples/animate_transform.py > animate_transform.svg
+      - python3 examples/grid3.py > grid3.svg
+      - python3 examples/grid4.py > grid4.svg
+      - python3 examples/shapes.py > shapes.svg
+      - python3 examples/text.py > text.svg
+      - python3 examples/transform.py > transform.svg
