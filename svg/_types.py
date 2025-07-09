@@ -213,12 +213,15 @@ def to_clock_value(delta: timedelta) -> str:
     if seconds < 0:
         sign = "-"
         seconds = abs(seconds)
-    minutes, seconds = divmod(seconds, 60)
+
+    partial_seconds = seconds - math.floor(seconds)
+    seconds = int(seconds)
+    minutes, full_seconds = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)
-    full_seconds = math.floor(seconds)
-    partial_seconds = seconds - full_seconds
+
     if partial_seconds > 0:
-        return f"{sign}{hours}:{minutes:02}:{full_seconds:02}{partial_seconds:.6f}"
+        partial_second_str = f"{partial_seconds:.6f}".strip("0")
+        return f"{sign}{hours}:{minutes:02}:{full_seconds:02}{partial_second_str}"
     return f"{sign}{hours}:{minutes:02}:{full_seconds:02}"
 
 
