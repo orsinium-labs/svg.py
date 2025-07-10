@@ -19,7 +19,7 @@ def draw() -> svg.SVG:
             width=100, height=100,
             elements=[svg.Animate(
                 attributeName="rx",
-                values="0;50;0",
+                values=[0, 50, 0],
                 dur=timedelta(seconds=10),
                 repeatCount="indefinite")]
         )]
