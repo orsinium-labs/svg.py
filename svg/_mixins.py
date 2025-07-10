@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from datetime import timedelta
 from typing import TYPE_CHECKING, Any
 
-from ._types import AnimationTimingEvent, Length, Number, SemicolonSeparatedList, TimeBezierPoint
+from ._types import AnimationTimingEvent, Length, Number, TimeBezierPoint
 
 
 if TYPE_CHECKING:
@@ -116,10 +116,10 @@ class ComponentTransferFunction(AttrsMixin):
 class Animation(AttrsMixin):
     # Animation value attributes
     calcMode: Literal["discrete", "linear", "paced", "spline"] | None = None
-    values: str | SemicolonSeparatedList[Any] | None = None
-    keyTimes: SemicolonSeparatedList[Number] | None = None
-    keySplines: SemicolonSeparatedList[TimeBezierPoint] | None = None
-    keyPoints: SemicolonSeparatedList[Number] | None = None
+    values: str | list[Any] | None = None
+    keyTimes: list[Number] | None = None
+    keySplines: list[TimeBezierPoint] | None = None
+    keyPoints: list[Number] | None = None
     from_: str | None = None
     to: str | None = None
     by: str | None = None
@@ -134,9 +134,9 @@ class Animation(AttrsMixin):
 
 @dataclass
 class AnimationTiming(AttrsMixin):
-    begin: AnimationTimingEvent | SemicolonSeparatedList[AnimationTimingEvent] | None = None
+    begin: AnimationTimingEvent | list[AnimationTimingEvent] | None = None
     dur: timedelta | Literal["media", "indefinite"] | None = None
-    end: AnimationTimingEvent | SemicolonSeparatedList[AnimationTimingEvent] | None = None
+    end: AnimationTimingEvent | list[AnimationTimingEvent] | None = None
     min: timedelta | None = None
     max: timedelta | None = None
     restart: Literal["always", "never", "whenNotActive"] | None = None

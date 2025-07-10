@@ -6,6 +6,7 @@ Usage:
     python3 examples/animate_transform.py > examples/animate_transform.svg
     chromium examples/animate_transform.svg
 """
+from datetime import timedelta
 import svg
 
 
@@ -20,7 +21,7 @@ def draw() -> svg.SVG:
                 type="rotate",
                 from_="0 60 70",
                 to="360 60 70",
-                dur="10s",
+                dur=timedelta(seconds=10),
                 repeatCount="indefinite",
             )]
         )]
