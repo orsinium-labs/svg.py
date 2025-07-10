@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from datetime import timedelta
 from decimal import Decimal
 
-from typing import TYPE_CHECKING, TypeVar, Union
+from typing import TYPE_CHECKING, Union
 
 
 if TYPE_CHECKING:
@@ -66,9 +66,6 @@ class ViewBoxSpec:
 
     def __str__(self) -> str:
         return f"{self.min_x} {self.min_y} {self.width} {self.height}"
-
-
-T = TypeVar("T")
 
 
 @dataclass
