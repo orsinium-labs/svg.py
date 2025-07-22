@@ -117,7 +117,7 @@ class SyncbaseValue:
 
 @dataclass
 class EventValue:
-    element_id: str
+    element_id: str | None
     event: Literal[
         "focus",
         "blur",
@@ -156,7 +156,10 @@ class EventValue:
     offset: timedelta | None
 
     def __str__(self) -> str:
-        str_value = f"{self.element_id}.{self.event}"
+        str_value = ""
+        if self.element_id is not None:
+            str_value= f"{self.element_id}."
+        str_value += f"{self.event}"
         if self.offset is not None:
             offset_str = to_clock_value(self.offset)
             if not offset_str.startswith("-"):
@@ -167,12 +170,16 @@ class EventValue:
 
 @dataclass
 class RepeatValue:
-    element_id: str
+    element_id: str | None
     repeat_number: int
     offset: timedelta | None
 
     def __str__(self) -> str:
-        str_value = f"{self.element_id}.repeat({self.repeat_number})"
+        str_value = ""
+        if self.element_id is not None:
+            str_value = f"{self.element_id}."
+        str_value+= f"repeat({self.repeat_number})"
+
         if self.offset is not None:
             offset_str = to_clock_value(self.offset)
             if not offset_str.startswith("-"):
