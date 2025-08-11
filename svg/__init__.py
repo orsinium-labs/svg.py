@@ -38,7 +38,7 @@ DEPRECATED: we keep it only for backward compatibility. Use `list` instead.
 """
 
 
-__version__ = '1.7.0'
+__version__ = '1.8.0'
 __all__ = [
     'values',
     'escape',
