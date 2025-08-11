@@ -197,7 +197,13 @@ AnimationTimingEvent = Union[
 
 
 def to_clock_value(delta: timedelta) -> str:
+    """Format timedelta as ClockValue SVG type.
+
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Guides/Content_type#clock-value
+    https://svgwg.org/specs/animations/#ClockValueSyntax
+    """
     seconds = delta.total_seconds()
+
     sign = ""
     if seconds < 0:
         sign = "-"
@@ -205,13 +211,21 @@ def to_clock_value(delta: timedelta) -> str:
 
     partial_seconds = seconds - math.floor(seconds)
     seconds = int(seconds)
+    fraction = ""
+    if partial_seconds > 0:
+        fraction = f"{partial_seconds:.6f}".strip("0")
+
+    # Format as Timecount-val.
+    if abs(seconds) < 60:
+        # The "s" suffix is optional but it's good for readability:
+        # in JS, time is represented in miliseconds, so
+        # just a number without a suffix may confuse JS engineers.
+        return f"{sign}{seconds}{fraction}s"
+
+    # Format as Full-clock-val.
     minutes, full_seconds = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)
-
-    if partial_seconds > 0:
-        partial_second_str = f"{partial_seconds:.6f}".strip("0")
-        return f"{sign}{hours}:{minutes:02}:{full_seconds:02}{partial_second_str}"
-    return f"{sign}{hours}:{minutes:02}:{full_seconds:02}"
+    return f"{sign}{hours}:{minutes:02}:{full_seconds:02}{fraction}"
 
 
 def to_wallclock_sync_value(time: datetime) -> str:
