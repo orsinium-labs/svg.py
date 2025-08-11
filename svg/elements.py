@@ -65,10 +65,12 @@ class Element:
         if isinstance(val, bool):
             return str(val).lower()
         if isinstance(val, (list, tuple)):
-            use_semicolon = key in _SEMICOLON_ATTRS
-            if use_semicolon:
-                use_semicolon = bool(set(cls.__bases__) & _SEMICOLON_TYPES)
-            sep = ";" if use_semicolon else " "
+            sep = " "
+            # Some attributes of some animation-related elements
+            # use semicolon instead of space to separate list elements.
+            if key in _SEMICOLON_ATTRS:
+                if set(cls.__bases__) & _SEMICOLON_TYPES:
+                    sep = ";"
             return sep.join(cls._as_str(v) for v in val)
         if isinstance(val, timedelta):
             return to_clock_value(val)
