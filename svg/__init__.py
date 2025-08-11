@@ -20,7 +20,7 @@ from ._transforms import (
     Matrix, Rotate, Scale, SkewX, SkewY, Transform, Translate,
 )
 from ._types import (
-    Length, PreserveAspectRatio, ViewBoxSpec, SemicolonSeparatedList,
+    Length, PreserveAspectRatio, ViewBoxSpec,
     TimeBezierPoint, SyncbaseValue, EventValue, RepeatValue, AccessKeyValue,
     AnimationTimingEvent,
 )
@@ -31,6 +31,11 @@ from .elements import (
     Pattern, Polygon, Polyline, RadialGradient, Rect, Script, Set, Stop, Style,
     Switch, Symbol, Text, TextPath, Title, TSpan, Use, View,
 )
+
+SemicolonSeparatedList = list
+"""
+DEPRECATED: we keep it only for backward compatibility. Use `list` instead.
+"""
 
 
 __version__ = '1.7.0'
@@ -149,7 +154,6 @@ __all__ = [
     'Length',
     'PreserveAspectRatio',
     'RepeatValue',
-    'SemicolonSeparatedList',
     'SyncbaseValue',
     'TimeBezierPoint',
     'ViewBoxSpec',

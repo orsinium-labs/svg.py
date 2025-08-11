@@ -6,6 +6,7 @@ Usage:
     python3 examples/animate.py > examples/animate.svg
     chromium examples/animate.svg
 """
+from datetime import timedelta
 import svg
 
 
@@ -18,8 +19,8 @@ def draw() -> svg.SVG:
             width=100, height=100,
             elements=[svg.Animate(
                 attributeName="rx",
-                values="0;50;0",
-                dur="10s",
+                values=[0, 50, 0],
+                dur=timedelta(seconds=10),
                 repeatCount="indefinite")]
         )]
     )
