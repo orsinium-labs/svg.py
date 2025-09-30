@@ -113,6 +113,9 @@ class Element:
     def __str__(self) -> str:
         return self.as_str()
 
+    def _repr_svg_(self) -> str:
+        return self.as_str()
+
 
 @dataclass
 class SVG(
