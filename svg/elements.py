@@ -114,6 +114,8 @@ class Element:
         return self.as_str()
 
     def _repr_svg_(self) -> str:
+        """Used by Jupyter Notebook for rich display.
+        """
         return self.as_str()
 
 
