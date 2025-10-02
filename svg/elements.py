@@ -57,7 +57,7 @@ class Element:
         for key, val in vars(self).items():
             if val is None:
                 continue
-            if key in ("elements", "text", "data", "attributes"):
+            if key in ("elements", "text", "data", "extra"):
                 continue
             key = key.rstrip("_")
             key = key.replace("__", ":")
