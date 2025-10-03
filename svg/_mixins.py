@@ -104,7 +104,7 @@ class FilterPrimitive(AttrsMixin):
 
 @dataclass
 class ComponentTransferFunction(AttrsMixin):
-    type: Literal["identity", "table", "discrete", "linear", "gamma"]
+    type: Literal["identity", "table", "discrete", "linear", "gamma"] | None = None
     tableValues: str | None = None
     intercept: float | None = None
     amplitude: float | None = None
