@@ -205,7 +205,6 @@ class Desc(Element, m.GraphicsElementEvents):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/desc
     """
     element_name = "desc"
-    content: str | None = None
     class_: list[str] | None = None
 
 
@@ -216,7 +215,6 @@ class Title(Element, m.GraphicsElementEvents):
     https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title
     """
     element_name = "title"
-    content: str | None = None
     class_: list[str] | None = None
 
 
@@ -817,7 +815,6 @@ class ForeignObject(Element, m.Color, m.GraphicsElementEvents, m.Graphics):
     y: Length | Number | None = None
     width: Length | Number | None = None
     height: Length | Number | None = None
-    content: str | None = None
     class_: list[str] | None = None
     vector_effect: Literal["none", "non-scaling-stroke", "non-scaling-size", "non-rotation", "fixed-position"] | None = None
     visibility: Literal["visible", "hidden", "inherit"] | None = None
