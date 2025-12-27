@@ -238,3 +238,15 @@ def to_clock_value(delta: timedelta) -> str:
 def to_wallclock_sync_value(time: datetime) -> str:
     iso_time = time.isoformat(" ")
     return f"wallclock({iso_time})"
+
+
+@dataclass
+class Point:
+    """Point for use in Polygon and Polyline elements.
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/points
+    """
+    x: Number
+    y: Number
+
+    def __str__(self) -> str:
+        return f"{self.x},{self.y}"

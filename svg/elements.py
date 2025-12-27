@@ -8,7 +8,7 @@ from datetime import timedelta, datetime
 from . import _mixins as m
 from ._path import PathData
 from ._transforms import Transform
-from ._types import Length, Number, PreserveAspectRatio, ViewBoxSpec, to_clock_value, to_wallclock_sync_value
+from ._types import Length, Number, PreserveAspectRatio, ViewBoxSpec, to_clock_value, to_wallclock_sync_value, Point
 
 
 if TYPE_CHECKING:
@@ -420,7 +420,7 @@ class Polyline(Element, _FigureElement):
     element_name = "polyline"
     externalResourcesRequired: bool | None = None
     transform: list[Transform] | None = None
-    points: list[Number] | None = None
+    points: list[Point] | None = None
     marker_start: str | None = None
     marker_mid: str | None = None
     marker_end: str | None = None
@@ -440,7 +440,7 @@ class Polygon(Element, _FigureElement):
     element_name = "polygon"
     externalResourcesRequired: bool | None = None
     transform: list[Transform] | None = None
-    points: list[Number] | None = None
+    points: list[Point] | None = None
     marker_start: str | None = None
     marker_mid: str | None = None
     marker_end: str | None = None
