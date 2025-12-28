@@ -22,7 +22,7 @@ from ._transforms import (
 from ._types import (
     Length, PreserveAspectRatio, ViewBoxSpec,
     TimeBezierPoint, SyncbaseValue, EventValue, RepeatValue, AccessKeyValue,
-    AnimationTimingEvent,
+    AnimationTimingEvent, Point,
 )
 from .elements import (
     SVG, A, Animate, AnimateMotion, AnimateTransform, Circle, ClipPath,
