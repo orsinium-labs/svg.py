@@ -147,7 +147,7 @@ class EventValue:
     def __str__(self) -> str:
         str_value = ""
         if self.element_id is not None:
-            str_value= f"{self.element_id}."
+            str_value = f"{self.element_id}."
         str_value += f"{self.event}"
         if self.offset is not None:
             offset_str = to_clock_value(self.offset)
@@ -167,7 +167,7 @@ class RepeatValue:
         str_value = ""
         if self.element_id is not None:
             str_value = f"{self.element_id}."
-        str_value+= f"repeat({self.repeat_number})"
+        str_value += f"repeat({self.repeat_number})"
 
         if self.offset is not None:
             offset_str = to_clock_value(self.offset)
@@ -243,6 +243,7 @@ def to_wallclock_sync_value(time: datetime) -> str:
 @dataclass
 class Point:
     """Point for use in Polygon and Polyline elements.
+
     https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/points
     """
     x: Number

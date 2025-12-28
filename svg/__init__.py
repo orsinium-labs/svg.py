@@ -38,7 +38,7 @@ DEPRECATED: we keep it only for backward compatibility. Use `list` instead.
 """
 
 
-__version__ = '1.9.2'
+__version__ = '1.10.0'
 __all__ = [
     'values',
     'escape',
@@ -152,6 +152,7 @@ __all__ = [
     'AnimationTimingEvent',
     'EventValue',
     'Length',
+    'Point',
     'PreserveAspectRatio',
     'RepeatValue',
     'SyncbaseValue',
